@@ -35,6 +35,10 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: #fff; }
+nav.scrolled { background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid #eee; transition: background 0.3s, border 0.3s; }
+nav.scrolled .nav-logo { color: #111; }
+nav.scrolled .nav-links a { color: #111; }
+nav.scrolled .nav-links a:hover { color: #555; }
 .btn-book {
   padding: 0.6rem 1.25rem;
   background: #111; color: #fff;
@@ -200,7 +204,7 @@ footer {
 <body>
 
 <nav>
-  <a class="nav-logo" href="#hero">Glenhold</a>
+  <a class="nav-logo" href="#hero">Glenhold Advisory</a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -309,5 +313,16 @@ footer {
 </footer>
 
 
+<script>
+const nav = document.querySelector('nav');
+const hero = document.getElementById('hero');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > hero.offsetHeight * 0.7) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+</script>
 </body>
 </html>
