@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glenhold Advisory LLC</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,7 +22,7 @@ nav {
   padding: 1.4rem 2.5rem;
 }
 .nav-logo {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: 1.1rem; font-weight: 400;
   color: #fff; text-decoration: none;
   letter-spacing: 0.01em;
@@ -72,7 +72,7 @@ nav.scrolled .nav-links a:hover { color: #555; }
   padding: 0 1.5rem;
 }
 .hero-content h1 {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 400;
   color: #fff;
@@ -86,7 +86,7 @@ nav.scrolled .nav-links a:hover { color: #555; }
 /* SERVICES */
 #services { border-top: 1px solid #eee; }
 .services-heading {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
   margin-bottom: 4rem;
@@ -95,7 +95,7 @@ nav.scrolled .nav-links a:hover { color: #555; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem 4rem; }
 .service-item {}
 .service-name {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: 1.4rem; font-weight: 400;
   margin-bottom: 1.25rem;
   letter-spacing: -0.01em;
@@ -120,7 +120,7 @@ nav.scrolled .nav-links a:hover { color: #555; }
 }
 #testimonials .section-pad { max-width: 1200px; }
 .test-heading {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
   margin-bottom: 3rem;
@@ -133,7 +133,7 @@ nav.scrolled .nav-links a:hover { color: #555; }
   border-radius: 2px;
 }
 .test-quote {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: 1rem; font-style: italic;
   line-height: 1.75; color: #333;
   margin-bottom: 1.5rem;
@@ -146,7 +146,7 @@ nav.scrolled .nav-links a:hover { color: #555; }
 .contact-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start; }
 .contact-left {}
 .contact-heading {
-  font-family: 'Lora', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -189,7 +189,7 @@ footer {
   border-top: 1px solid #eee;
   display: flex; justify-content: space-between; align-items: center;
 }
-.footer-brand { font-family: 'Lora', serif; font-size: 0.95rem; }
+.footer-brand { font-family: 'EB Garamond', serif; font-size: 0.95rem; }
 .footer-copy { font-size: 0.75rem; color: #aaa; font-weight: 300; }
 
 @media (max-width: 800px) {
@@ -285,21 +285,21 @@ footer {
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" style="font-size:0.7rem;color:#aaa;">First Name</label>
-              <input class="form-input" type="text" required>
+              <input class="form-input" type="text" name="first_name" required>
             </div>
             <div class="form-group">
               <label class="form-label" style="font-size:0.7rem;color:#aaa;">Last Name</label>
-              <input class="form-input" type="text" required>
+              <input class="form-input" type="text" name="last_name" required>
             </div>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Email <span>(required)</span></label>
-          <input class="form-input" type="email" required>
+          <input class="form-input" type="email" name="email" required>
         </div>
         <div class="form-group">
           <label class="form-label">Message <span>(required)</span></label>
-          <textarea class="form-textarea" required></textarea>
+          <textarea class="form-textarea" name="message" required></textarea>
         </div>
         <button type="submit" class="btn-send">Send</button>
       </form>
