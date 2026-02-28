@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.48,0,0,0.48,0,0)">
+        <g transform="matrix(1.01972,0,0,1.03233,-11.8297,-19.3996)">
+            <path d="M600,112.312C600,60.697 557.577,18.792 505.323,18.792L106.278,18.792C54.024,18.792 11.601,60.697 11.601,112.312L11.601,506.48C11.601,558.095 54.024,600 106.278,600L505.323,600C557.577,600 600,558.095 600,506.48L600,112.312Z" style="fill:rgb(34,34,34);"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-51.3107,-73.3044)">
+            <g id="Layer1">
+                <text x="138.686px" y="559.077px" style="font-family:'EBGaramond-Regular', 'EB Garamond';font-size:583.333px;fill:white;">G</text>
+            </g>
+        </g>
+    </g>
+</svg>
