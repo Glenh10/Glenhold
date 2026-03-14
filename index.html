@@ -195,6 +195,8 @@
     .photo-placeholder { text-align: center; color: rgba(255,255,255,0.25); font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
     .photo-placeholder-icon { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
 
+    .hero-photo-mobile { display: none; }
+
     /* SECTIONS */
     section { padding: 80px 5%; }
 
@@ -447,8 +449,13 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding-bottom: 60px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 5% 80px; }
       .hero-photo { display: none; }
+      .hero-photo-mobile { display: block; margin-top: 32px; }
+      .hero-content { text-align: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-social { justify-content: center; margin-top: 24px; }
+      .hero-content { padding-bottom: 0; }
       .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
       .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
       .about-photo-box { height: 420px; }
@@ -482,6 +489,9 @@
       <div class="hero-ctas">
         <a href="https://calendly.com/jack-glenhold" target="_blank" class="btn-primary">Book a Free Call</a>
         <a href="#contact" class="btn-ghost">Send a Quick Note</a>
+      </div>
+      <div class="hero-photo-mobile">
+        <img src="headshot.jpg" alt="Jack — Glenhold Bookkeeping" style="width:80%;display:block;border-radius:6px;margin:0 auto;" />
       </div>
       <div class="hero-social">
         <a href="https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley" target="_blank">★★★★★ &nbsp;Yelp Reviews</a>
