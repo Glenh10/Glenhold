@@ -49,7 +49,7 @@
     /* NAV */
     nav {
       background: var(--slate);
-      padding: 0 5%;
+      padding: 0 max(5%, calc((100% - 1600px) / 2));
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -97,7 +97,7 @@
     /* HERO */
     .hero {
       background: var(--slate);
-      padding: 80px 5%;
+      padding: 80px max(5%, calc((100% - 1600px) / 2));
       display: grid;
       grid-template-columns: 1fr minmax(320px, 420px);
       gap: 60px;
@@ -212,7 +212,7 @@
     .hero-photo-mobile { display: none; }
 
     /* SECTIONS */
-    section { padding: 80px 5%; }
+    section { padding: 80px max(5%, calc((100% - 1600px) / 2)); }
 
     .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
 
@@ -366,7 +366,7 @@
     .badge { background: var(--cream-dark); border: 1px solid var(--border); border-radius: 100px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; color: var(--slate); }
 
     /* CTA BANNER */
-    .cta-banner { background: var(--sage); padding: 60px 5%; text-align: center; }
+    .cta-banner { background: var(--sage); padding: 60px max(5%, calc((100% - 1600px) / 2)); text-align: center; }
 
     .cta-banner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--slate); margin-bottom: 12px; }
 
@@ -429,7 +429,7 @@
     .contact-detail-text small { display: block; color: var(--text-muted); font-size: 0.8rem; }
 
     /* FOOTER */
-    footer { background: var(--slate); padding: 48px 5% 28px; }
+    footer { background: var(--slate); padding: 48px max(5%, calc((100% - 1600px) / 2)) 28px; }
 
     .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
 
