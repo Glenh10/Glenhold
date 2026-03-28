@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glenhold Bookkeeping | Ventura County & the Greater LA Area</title>
+  <meta name="description" content="Bookkeeping for small businesses across Ventura County and the Greater LA Area. Clean books, clear numbers, real communication from someone who actually responds." />
+  <link rel="canonical" href="https://glenhold.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Glenhold Bookkeeping | Ventura County & the Greater LA Area" />
+  <meta property="og:description" content="Bookkeeping for small businesses across Ventura County and the Greater LA Area. Clean books, clear numbers, real communication from someone who actually responds." />
+  <meta property="og:url" content="https://glenhold.com/" />
+  <meta property="og:image" content="https://glenhold.com/headshot.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Glenhold Bookkeeping | Ventura County & the Greater LA Area" />
+  <meta name="twitter:description" content="Bookkeeping for small businesses across Ventura County and the Greater LA Area. Clean books, clear numbers, real communication from someone who actually responds." />
+  <meta name="twitter:image" content="https://glenhold.com/headshot.jpg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --slate: #3d6b65;
+      --slate-mid: #4e8079;
+      --sage: #a3cb9d;
+      --sage-light: #d4ead1;
+      --cream: #f7f6f3;
+      --cream-dark: #edeae3;
+      --white: #ffffff;
+      --text: #1a2e2b;
+      --text-muted: #527068;
+      --border: #d4dbd8;
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--slate);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--white);
+      font-size: 1.4rem;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--sage); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sage); }
+
+    .nav-phone {
+      color: var(--sage);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-phone:hover { opacity: 0.8; }
+
+    /* HERO */
+    .hero {
+      background: var(--slate);
+      padding: 80px 5%;
+      display: grid;
+      grid-template-columns: 1fr minmax(320px, 420px);
+      gap: 60px;
+      align-items: center;
+      overflow: hidden;
+      min-height: 560px;
+    }
+
+    .hero-content { padding-bottom: 80px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--slate);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em { color: var(--sage); font-style: italic; }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--sage);
+      color: var(--slate);
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: #88b882; transform: translateY(-1px); }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--sage); background: rgba(163,203,157,0.15); }
+
+    .hero-social { display: flex; gap: 16px; margin-top: 40px; }
+    .hero-credentials { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 12px; }
+
+    .hero-social a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-social a:hover { color: var(--sage); }
+
+    .hero-photo { display: flex; align-items: flex-end; margin-top: -60px; }
+
+    .hero-photo-box {
+      width: 100%;
+      height: 560px;
+      background: linear-gradient(160deg, #4e8079 0%, #2e524d 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201,150,58,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom center, rgba(232,200,110,0.1) 0%, transparent 70%);
+    }
+
+    .photo-placeholder { text-align: center; color: rgba(255,255,255,0.25); font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .photo-placeholder-icon { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+    .hero-photo-mobile { display: none; }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+
+    .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--slate); line-height: 1.2; margin-bottom: 16px; }
+
+    .section-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 36px 28px;
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover { border-color: var(--sage); box-shadow: 0 4px 24px rgba(61,107,101,0.12); }
+
+    .service-icon { font-size: 1.8rem; margin-bottom: 16px; }
+
+    .service-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--slate); margin-bottom: 12px; }
+
+    .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .service-list li { font-size: 0.9rem; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+
+    .service-list li::before { content: '✓'; color: var(--sage); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* PRICING */
+    .pricing { background: var(--cream-dark); }
+
+    .pricing-guarantee {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--slate);
+      color: var(--sage-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 48px;
+    }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+
+    .pricing-card { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 36px 28px; position: relative; }
+
+    .pricing-card.featured { border-color: var(--sage); box-shadow: 0 8px 40px rgba(163,203,157,0.2); }
+
+    .pricing-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--sage); color: var(--slate);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 100px; white-space: nowrap;
+    }
+
+    .pricing-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--slate); margin-bottom: 4px; }
+
+    .pricing-tagline { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 20px; }
+
+    .pricing-price { font-size: 2rem; font-weight: 700; color: var(--slate); margin-bottom: 4px; }
+
+    .pricing-price span { font-size: 0.95rem; font-weight: 400; color: var(--text-muted); }
+
+    .pricing-best { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; font-style: italic; }
+
+    .pricing-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+
+    .pricing-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+    .pricing-list li { font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
+
+    .pricing-list li::before { content: '✓'; color: var(--sage); font-weight: 700; flex-shrink: 0; }
+
+    .btn-slate { display: block; text-align: center; background: var(--slate); color: var(--white); padding: 13px 20px; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s; }
+
+    .btn-slate:hover { background: var(--slate-mid); }
+
+    .btn-sage { display: block; text-align: center; background: var(--sage); color: var(--slate); padding: 13px 20px; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: background 0.2s; }
+
+    .btn-sage:hover { background: #88b882; }
+
+    .pricing-note {
+      margin-top: 40px; background: var(--white); border: 1px solid var(--border);
+      border-radius: 6px; padding: 24px 28px; display: flex; gap: 16px; align-items: flex-start;
+    }
+
+    .pricing-note-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+    .pricing-note p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    .pricing-note strong { color: var(--text); }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--slate); }
+
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-label { color: var(--sage); }
+    .testimonials .section-sub { color: rgba(255,255,255,0.6); }
+
+    .review-count {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px; padding: 6px 16px; color: var(--sage-light);
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 40px;
+    }
+
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 28px; transition: background 0.2s;
+    }
+
+    .testimonial-card:hover { background: rgba(255,255,255,0.08); }
+
+    .stars { color: var(--sage); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 14px; }
+
+    .testimonial-card blockquote { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+
+    .testimonial-author { color: rgba(255,255,255,0.45); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .about-photo-box {
+      height: 560px; background: linear-gradient(145deg, var(--cream-dark), var(--cream));
+      border-radius: 6px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+
+    .about-photo-placeholder { text-align: center; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .about-photo-placeholder-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--border); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+    .about-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+
+    .about-content p strong { color: var(--text); }
+
+    .about-badges { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    .badge { background: var(--cream-dark); border: 1px solid var(--border); border-radius: 100px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; color: var(--slate); }
+
+    /* CTA BANNER */
+    .cta-banner { background: var(--sage); padding: 60px 5%; text-align: center; }
+
+    .cta-banner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--slate); margin-bottom: 12px; }
+
+    .cta-banner p { color: rgba(30,45,61,0.75); font-size: 1.05rem; margin-bottom: 32px; }
+
+    .cta-banner-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-slate-solid { background: var(--slate); color: var(--white); padding: 14px 32px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: background 0.2s; }
+
+    .btn-slate-solid:hover { background: var(--slate-mid); }
+
+    .btn-outline-slate { border: 2px solid var(--slate); color: var(--slate); padding: 13px 32px; border-radius: var(--radius); font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: background 0.2s; }
+
+    .btn-outline-slate:hover { background: rgba(30,45,61,0.08); }
+
+    /* CONTACT */
+    .contact { background: var(--cream); }
+
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    label { font-size: 0.85rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+
+    input, select, textarea {
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text);
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 12px 16px; width: 100%; transition: border-color 0.2s; outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: var(--sage); }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      background: var(--sage); color: var(--slate); border: none;
+      padding: 14px 28px; border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s; width: 100%;
+    }
+
+    .form-submit:hover { background: #88b882; }
+
+    .contact-info { padding-top: 8px; }
+
+    .contact-info h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--slate); margin-bottom: 16px; }
+
+    .contact-info p { color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 14px; }
+
+    .contact-detail { display: flex; gap: 14px; align-items: center; }
+
+    .contact-detail-icon { width: 40px; height: 40px; background: var(--sage-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+    .contact-detail-text { font-size: 0.95rem; color: var(--text); }
+
+    .contact-detail-text small { display: block; color: var(--text-muted); font-size: 0.8rem; }
+
+    /* FOOTER */
+    footer { background: var(--slate); padding: 48px 5% 28px; }
+
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+
+    .footer-brand { font-family: 'DM Serif Display', serif; color: var(--white); font-size: 1.3rem; margin-bottom: 12px; }
+
+    .footer-brand span { color: var(--sage); }
+
+    .footer-desc { color: rgba(255,255,255,0.45); font-size: 0.875rem; line-height: 1.7; max-width: 220px; }
+
+    .footer-col h4 { color: var(--white); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; text-align: right; }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: right; }
+
+    .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+
+    .footer-col ul li a:hover { color: var(--sage); }
+
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+    .footer-social { display: flex; gap: 16px; }
+
+    .footer-social a { color: rgba(255,255,255,0.35); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
+
+    .footer-social a:hover { color: var(--sage); }
+
+    .qbo-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 8px 14px; margin-top: 20px; }
+
+    .qbo-badge span { color: rgba(255,255,255,0.6); font-size: 0.78rem; font-weight: 600; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 72px 5% 80px; }
+      .hero-photo { display: none; }
+      .hero-photo-mobile { display: block; margin-top: 32px; }
+      .hero-photo-mobile img { width: 75% !important; max-width: 360px; }
+      .hero-content { text-align: center; padding-bottom: 0; }
+      .hero-ctas { justify-content: center; }
+      .hero-social { justify-content: center; margin-top: 24px; }
+      .hero-credentials { justify-content: center; gap: 8px; flex-direction: column; align-items: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .nav-phone { display: block; }
+      .nav-wordmark { max-width: 120px; }
+      .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-box { height: 420px; }
+      .nav-links { display: none; }
+      .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; }
+      .footer-top > div:first-child { display: block; }
+      .footer-brand, .footer-desc { display: block; }
+      .footer-col { text-align: right !important; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (min-width: 901px) and (max-width: 1100px) {
+      .hero-content { text-align: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-social { justify-content: center; }
+      .hero-credentials { align-items: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "Glenhold Bookkeeping",
+    "url": "https://glenhold.com/",
+    "telephone": "+18054193451",
+    "email": "jack@glenhold.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Simi Valley",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Ventura County","Los Angeles County"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#" style="display:flex;align-items:center;gap:10px;"><img src="logo.png" alt="Glenhold Bookkeeping" style="height:38px;width:auto;display:block;" /><span class="nav-wordmark" style="color:white;font-family:'DM Serif Display',serif;font-size:1.25rem;letter-spacing:0.02em;line-height:1.1;">Glenhold <span style="color:var(--white);">Bookkeeping</span></span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-phone" href="tel:8054193451">(805) 419-3451</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Ventura County &amp; the Greater LA Area</div>
+      <h1>Your books should<br/>work as hard as<br/><em>you do.</em></h1>
+      <p class="hero-sub">Clean books. Accurate numbers. Real communication.</p>
+      <div class="hero-ctas">
+        <a href="https://calendar.app.google/4tubkrcpmxVYzNSRA" target="_blank" class="btn-primary">Book a Free Call</a>
+        <a href="#contact" class="btn-ghost">Send a Quick Note</a>
+      </div>
+      <div class="hero-photo-mobile">
+        <img src="headshot.jpg" alt="Jack — Glenhold Bookkeeping" style="width:80%;display:block;border-radius:6px;margin:0 auto;" />
+      </div>
+      <div class="hero-social">
+        <a href="https://share.google/ZFSpIuhD39akrC2DT" target="_blank">★★★★★ &nbsp;Google Reviews</a>
+        <a href="https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley" target="_blank">★★★★★ &nbsp;Yelp Reviews</a>
+      </div>
+      <div class="hero-credentials" style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--sage); font-size: 1rem; font-weight: 700;">✓</span>
+          <span style="color: rgba(255,255,255,0.55); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Former Big 4 Accountant</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--sage); font-size: 1rem; font-weight: 700;">✓</span>
+          <span style="color: rgba(255,255,255,0.55); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Certified QuickBooks ProAdvisor</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-box">
+        <img src="headshot.jpg" alt="Jack — Glenhold Bookkeeping" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center -10%;display:block;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-title">Bookkeeping services that make sense.</h2>
+    <p class="section-sub">Choose the level of support that fits where your business is right now. You can always adjust as you grow.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📅</div>
+        <h3>Monthly Bookkeeping</h3>
+        <p>Consistent, reliable books every month so you always know where you stand — no surprises at tax time.</p>
+        <ul class="service-list">
+          <li>Bank &amp; credit card reconciliation</li>
+          <li>Automated categorization with smart rules</li>
+          <li>Financial statements within 15 business days</li>
+          <li>Email support for questions</li>
+          <li>Optional monthly video walkthrough</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <h3>Cleanup &amp; Catch-Up</h3>
+        <p>Months or years behind? I'll get everything sorted, corrected, and tax-ready so you can move forward with confidence.</p>
+        <ul class="service-list">
+          <li>Rebuild months or years of records</li>
+          <li>Transaction review and correction</li>
+          <li>Advanced import tools for bank statements</li>
+          <li>Tax-ready handoff for your CPA</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3>Consulting &amp; Training</h3>
+        <p>Want to keep bookkeeping in-house? I'll set you up right and check in periodically to keep things on track.</p>
+        <ul class="service-list">
+          <li>QuickBooks setup and personalized training</li>
+          <li>Chart of accounts and workflow optimization</li>
+          <li>Monthly or quarterly accuracy reviews</li>
+          <li>Option to upgrade to full monthly service</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Transparent pricing.<br/>No surprises.</h2>
+    <p class="section-sub">Most small businesses lose thousands each year from messy books and avoidable tax issues. Clean books cost less than one bad decision.</p>
+    <div class="pricing-guarantee">
+      <span>★</span> 100% satisfaction in month one — or you don't pay
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Essential</h3>
+        <p class="pricing-tagline">Simple, accurate books every month</p>
+        <div class="pricing-price">$300–$350 <span>/ mo</span></div>
+        <p class="pricing-best">Best for sole proprietors and freelancers under $100k revenue</p>
+        <hr class="pricing-divider" />
+        <ul class="pricing-list">
+          <li>Monthly bank &amp; card reconciliation</li>
+          <li>Expense categorization with bank rules</li>
+          <li>Monthly financial statements</li>
+        </ul>
+        <a href="#cta-banner" class="btn-slate">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3>Professional</h3>
+        <p class="pricing-tagline">Clear numbers that support growth</p>
+        <div class="pricing-price">$350–$450 <span>/ mo</span></div>
+        <p class="pricing-best">Best for growing businesses with multiple accounts</p>
+        <hr class="pricing-divider" />
+        <ul class="pricing-list">
+          <li>Everything in Essential</li>
+          <li>Light AR and AP tracking</li>
+          <li>Quarterly performance summary</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#cta-banner" class="btn-sage">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <p class="pricing-tagline">Hands-on support and advanced reporting</p>
+        <div class="pricing-price">$450–$750 <span>/ mo</span></div>
+        <p class="pricing-best">Best for established or multi-entity businesses</p>
+        <hr class="pricing-divider" />
+        <ul class="pricing-list">
+          <li>Everything in Professional</li>
+          <li>Custom reports and KPI dashboards</li>
+          <li>Accrual, payroll, and loan tracking</li>
+          <li>Monthly Loom video walkthrough</li>
+          <li>CPA-ready books for tax time</li>
+        </ul>
+        <a href="#cta-banner" class="btn-slate">Get Started</a>
+      </div>
+    </div>
+    <div class="pricing-note">
+      <div class="pricing-note-icon">📌</div>
+      <p><strong>Not ready for monthly bookkeeping?</strong> Quarterly bookkeeping is available at 75% of the monthly rate — ideal if you don't need monthly reports but still want clean, tax-ready books. Pricing reflects complexity. Cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-photo-box">
+        <img src="aboutme.jpg" alt="Jack — Glenhold Bookkeeping" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
+      </div>
+      <div class="about-content">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Hi, I'm Jack.</h2>
+        <p>As a Simi Valley local, I am proud to raise my family in this beautiful community. I've always had a natural affinity for math — and a college professor showed me it was a perfect fit for accounting. After earning my Accounting degree, I began my career at a Big 4 firm, handling high-level accounting and bookkeeping work for multi-million dollar enterprises and auditing Fortune 500 financial services companies.</p>
+        <p>I founded Glenhold to bring that high-level expertise and insight to the local businesses that serve as the backbone of our country.</p>
+        <p>When I'm not working, I enjoy fly fishing, going on walks, and attending Mass with my wife and two children. I believe that professional excellence is rooted in personal character; as I often say, integrity is not something you can choose on a whim—it must be practiced daily over a lifetime.</p>
+        <div class="about-badges">
+          <span class="badge">Former Big 4 Accountant</span>
+          <span class="badge">Certified QuickBooks ProAdvisor</span>
+          <span class="badge">LA &amp; Ventura County</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div id="cta-banner" class="cta-banner">
+    <h2>Every month you wait costs you clarity.</h2>
+    <p>One free call today could save you hours of stress this year.</p>
+    <div class="cta-banner-btns">
+      <a href="https://calendar.app.google/4tubkrcpmxVYzNSRA" target="_blank" class="btn-slate-solid">Book a Free Call</a>
+      <a href="#contact" class="btn-outline-slate">Send a Message</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="section-label">Get In Touch</div>
+        <h3>Let's talk about<br/>your books</h3>
+        <p>Fill out the form and I'll get back to you by the end of the day.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text">
+              (805) 419-3451
+              <small>Mon–Sat, 6am–6pm PT</small>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div class="contact-detail-text">
+              jack&#64;glenhold.com
+              <small>Reply within one business day</small>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              Simi Valley, CA
+              <small>Serving Ventura County &amp; the Greater LA Area</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xvzwqvgv" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="John Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(805) 419-3451" />
+        </div>
+        <div class="form-group">
+          <label for="service">What can I help with?</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option>Monthly Bookkeeping</option>
+            <option>Cleanup / Catch-Up</option>
+            <option>Consulting &amp; Training</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Anything else?</label>
+          <textarea id="message" name="message" placeholder="Tell me a bit about your business and where things stand with your books..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Glenhold <span>Bookkeeping</span></div>
+        <p class="footer-desc">Clean books and clear financials for small businesses in Ventura County and the Greater LA Area.</p>
+
+      </div>
+      <div class="footer-col" style="text-align: right;">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8054193451">(805) 419-3451</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#016b60626a272237353a666d646f696e6d652f626e6c">jack&#64;glenhold.com</a></li>
+          <li><a href="#">Simi Valley, CA</a></li>
+        </ul>
+      </div>
+        </div>
+    <div style="padding-top: 24px; text-align: center;">
+      <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">© 2025 Glenhold Advisory LLC</p>
+    </div>
+  </footer>
+
+</body>
+</html>
