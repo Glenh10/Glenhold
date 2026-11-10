@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- OpenAI Ads conversion measurement. -->
+  <script>
+    !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+    oaiq("init", {pixelId: "CFtmLaAKWainpP7irzAdWa"});
+  </script>
   <!-- Google Ads measurement: anonymous events only; contact fields are never sent to Google. -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17998714201"></script>
   <script>
@@ -844,6 +849,11 @@
         send_to: 'AW-17998714201/jcT9CLryvoQcENmquoZD',
         transaction_id: window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : String(Date.now())
       });
+      try {
+        oaiq("measure", "lead_created", {type: "customer_action"}, {opt_out: true});
+      } catch (_) {
+        // Measurement must never interrupt a successfully delivered inquiry.
+      }
       form.reset();
     } catch (_) {
       status.textContent = 'Your message could not be sent. Please try again, call (805) 419-3451, or email jack@glenhold.com.';
