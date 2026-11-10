@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Ads measurement: anonymous events only; contact fields are never sent to Google. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17998714201"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17998714201', {allow_enhanced_conversions: false});
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glenhold Bookkeeping | Ventura County & the Greater LA Area</title>
@@ -530,8 +538,8 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-eyebrow">Ventura County &amp; the Greater LA Area</div>
-      <h1>Love your first month,<br/><em>or it's free</em></h1>
-      <p class="hero-sub">Clean books. Accurate numbers. Real communication.</p>
+      <h1>Local bookkeeping.<br/><em>Clear numbers.</em></h1>
+      <p class="hero-sub">Small business bookkeeping in Simi Valley and Ventura County, from $349/month. Work directly with a former Big 4 accountant. Love your first month of books, or it's free.</p>
       <div class="hero-ctas">
         <a href="https://calendar.app.google/4tubkrcpmxVYzNSRA" target="_blank" class="btn-primary">Book a Free Call</a>
         <a href="#contact" class="btn-ghost">Send a Message</a>
@@ -756,6 +764,7 @@
           <textarea id="message" name="message" placeholder="Tell me a bit about your business and where things stand with your books..."></textarea>
         </div>
         <button type="submit" class="form-submit">Send Message →</button>
+        <p id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -772,7 +781,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="tel:8054193451">(805) 419-3451</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#016b60626a272237353a666d646f696e6d652f626e6c">jack&#64;glenhold.com</a></li>
+          <li><a href="mailto:jack@glenhold.com">jack&#64;glenhold.com</a></li>
           <li><a href="#">Simi Valley, CA</a></li>
         </ul>
       </div>
@@ -782,5 +791,70 @@
     </div>
   </footer>
 
+<script>
+(function () {
+  const form = document.querySelector('.contact-form');
+  const status = document.getElementById('form-status');
+  const button = form.querySelector('button[type="submit"]');
+  const attributionKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid'];
+  const params = new URLSearchParams(window.location.search);
+  let attribution = {};
+  try {
+    attribution = JSON.parse(sessionStorage.getItem('glenhold_attribution') || '{}');
+    attributionKeys.forEach(function(key) {
+      if (params.has(key)) attribution[key] = params.get(key).slice(0, 500);
+    });
+    sessionStorage.setItem('glenhold_attribution', JSON.stringify(attribution));
+  } catch (_) {
+    attributionKeys.forEach(function(key) {
+      if (params.has(key)) attribution[key] = params.get(key).slice(0, 500);
+    });
+  }
+  attributionKeys.forEach(function(key) {
+    if (!attribution[key]) return;
+    const input = document.createElement('input');
+    input.type = 'hidden'; input.name = key; input.value = attribution[key];
+    form.appendChild(input);
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'phone_link_click', {event_category: 'engagement'});
+    });
+  });
+  document.querySelectorAll('a[href^="https://calendar.app.google/"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'consultation_booking_click', {event_category: 'engagement'});
+    });
+  });
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    if (!form.reportValidity() || button.disabled) return;
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    status.textContent = '';
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST', body: new FormData(form), headers: {Accept: 'application/json'}
+      });
+      if (!response.ok) throw new Error('Unable to send');
+      status.textContent = 'Thank you! Your message has been sent. Jack will reply within one business day.';
+      status.style.color = 'var(--slate)';
+      button.textContent = 'Message sent';
+      gtag('event', 'conversion', {
+        send_to: 'AW-17998714201/jcT9CLryvoQcENmquoZD',
+        transaction_id: window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : String(Date.now())
+      });
+      form.reset();
+    } catch (_) {
+      status.textContent = 'Your message could not be sent. Please try again, call (805) 419-3451, or email jack@glenhold.com.';
+      status.style.color = '#9b2525';
+      button.disabled = false;
+      button.textContent = 'Send Message →';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
+
