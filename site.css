@@ -570,3 +570,9 @@ details p {max-width:800px;margin-top:12px;color:var(--text-muted)}
 @media(max-width:600px){.area-list{columns:1}.hero-proof{margin-left:auto;margin-right:auto}}
 
 .area-description {font-size:.9rem;color:var(--text-muted);font-weight:400;margin:4px 0 18px!important}
+
+/* Service coverage is a directory, with no repeated city descriptions. */
+.service-city-list {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 28px;list-style:none;padding:0!important;margin:24px 0!important;max-width:none!important}
+.service-city-list li {margin:0;scroll-margin-top:140px}
+@media(max-width:800px){.service-city-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.service-city-list{grid-template-columns:1fr}}

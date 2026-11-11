@@ -128,22 +128,42 @@ def build_industries():
         section('Find the help your business needs','<p>Glenhold works with small businesses across industries. These examples show the information that may be useful when discussing your bookkeeping. If your business is not listed, get in touch—we can still discuss whether it is a fit.</p>'+hub_cards(cards)))
 
 
+LOCAL_PAGE_CONTENT = {
+    'simi-valley': ('Based here in Simi Valley.', 'I’m Jack, a Simi Valley local and the founder of Glenhold Bookkeeping. I offer monthly bookkeeping, catch-up work, and QuickBooks Online support for small businesses across industries.', 'If bookkeeping keeps slipping behind the day-to-day work, we can discuss which tasks you want to hand off and the reports you need. You work directly with me throughout the engagement.'),
+    'moorpark': ('Bookkeeping support from neighboring Simi Valley.', 'I offer monthly bookkeeping, cleanup, and QuickBooks Online support for Moorpark small businesses. The scope is based on your accounts, transaction volume, and reporting needs.', 'You can hand off the monthly work or ask for help improving the routine you manage yourself. During the first call, tell me which periods are complete and where you need support.'),
+    'thousand-oaks': ('Monthly bookkeeping, catch-up, and QuickBooks Online help.', 'Glenhold offers bookkeeping for small businesses in Thousand Oaks, including Newbury Park. I’m based in Simi Valley, and you work directly with me.', 'If your CPA or tax preparer has asked for financial reports, bring that request to the first conversation. We can discuss the work needed to provide organized records and an agreed reporting schedule.'),
+    'westlake-village': ('Work directly with your bookkeeper.', 'I offer bookkeeping support for small businesses in Westlake Village. Choose monthly bookkeeping, cleanup for unfinished periods, or help using QuickBooks Online.', 'Tell me which reports you use today and what you need to understand better. The monthly plans provide different levels of reporting and support, with the final scope agreed before work begins.'),
+    'camarillo': ('Bookkeeping for your Camarillo business.', 'Glenhold offers monthly bookkeeping, cleanup, and QuickBooks Online support for small businesses in Camarillo. I work from Simi Valley and handle your bookkeeping directly.', 'If you use several bank accounts, cards, or payment processors, mention them during the first conversation. A complete account list helps establish the work and an appropriate quote.'),
+    'santa-clarita': ('Clear records and a consistent monthly routine.', 'I offer bookkeeping support for businesses in Santa Clarita, including Valencia, Newhall, Saugus, and Canyon Country. Monthly bookkeeping, cleanup, and QuickBooks Online help can be scoped around your needs.', 'If the books are behind, tell me the last completed month and any accounts closed or replaced during the period. That helps establish a starting point before an ongoing monthly routine begins.'),
+}
+
+
 def build_cities():
     for city in CITIES:
         path = '/service-areas/' + city['slug'] + '/'
-        body = section('How I can help in ' + esc(city['name']), ''.join(city['paragraphs']))
-        body += section('Choose the help you need', '<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> keeps the records current. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> address unfinished periods. <a href="/quickbooks-online/">QuickBooks Online support</a> helps with setup, training, and specific questions.</p><p><a href="/pricing/">Compare the monthly plans</a> or <a href="/getting-started/">see what to prepare</a> for a handoff.</p>')
-        write_inner(city['title'], city['description'], path, city['h1'], city['lede'], body,
-            [('Home','/'),('Service areas','/service-areas/'),(city['name'],path)],
-            faqs=city['faqs'])
-    groups = {}
-    for city in CITIES:
-        groups.setdefault(city['group'], []).append(city)
-    body = section('Based in Simi Valley, serving the surrounding region', '<p>I work with small businesses across nearby Ventura County and Los Angeles County communities. My local focus is generally within about an hour of Simi Valley, depending on traffic. Share your city when you get in touch so we can discuss the help you need and how we would work together.</p>')
-    for name, places in groups.items():
-        body += section(esc(name), '<ul class="area-list">' + ''.join('<li id="' + city['slug'] + '"><a href="/service-areas/' + city['slug'] + '/">' + esc(city['name']) + '</a><p class="area-description">' + esc(city['hub']) + '</p></li>' for city in places) + '</ul>')
-    body += section('Nearby communities', '<p>Oak Park, Winnetka, and Tarzana are also within the surrounding region. If your community is not listed, get in touch with your location and the help you need.</p>')
-    write_inner('Bookkeeping Service Areas | Simi Valley & Nearby', 'Simi Valley-based bookkeeping for Ventura County and nearby Los Angeles communities. Find your city and learn about working directly with Jack.', '/service-areas/', 'Bookkeeping around Simi Valley', 'Local support for businesses across our surrounding communities.', body)
+        if city['slug'] not in LOCAL_PAGE_CONTENT:
+            target = '/service-areas/#' + city['slug']
+            doc = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=' + target + '"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://glenhold.com/service-areas/"><title>' + esc(city['name']) + ' service area | Glenhold Bookkeeping</title></head><body><main><h1>Glenhold Bookkeeping service areas</h1><p><a href="' + target + '">View coverage for ' + esc(city['name']) + '</a>.</p></main></body></html>'
+            dest = ROOT / path.strip('/') / 'index.html'
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(doc)
+            continue
+        lede, first, second = LOCAL_PAGE_CONTENT[city['slug']]
+        body = section('How I can help', '<p>' + esc(first) + '</p><p>' + esc(second) + '</p>')
+        body += section('Services and pricing', '<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> starts at $349. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> and <a href="/quickbooks-online/">QuickBooks Online support</a> are quoted separately.</p><p>Every monthly plan includes transaction categorization, bank and credit card reconciliation, and financial statements. Core adds quarterly summaries and year-to-date comparisons. Strategic adds tailored reporting and a monthly walkthrough.</p><p><a href="/pricing/">Compare plans</a> or <a href="/getting-started/">see what to prepare</a> for a handoff.</p>')
+        write_inner('Bookkeeping in ' + city['name'] + ' | Glenhold', 'Monthly bookkeeping, cleanup, and QuickBooks Online help for small businesses in ' + city['name'] + '. Work directly with Jack. Monthly plans from $349.', path, 'Bookkeeping for ' + city['name'] + ' small businesses', lede, body, [('Home','/'),('Service areas','/service-areas/'),(city['name'],path)])
+    body = section('Based in Simi Valley', '<p>I offer bookkeeping for small businesses in Simi Valley and surrounding Ventura County and Los Angeles County communities. My local focus is generally within about an hour of Simi Valley, depending on traffic.</p><p>The services are the same across the area: monthly bookkeeping, cleanup and catch-up, and QuickBooks Online support.</p>')
+    for county in ['Ventura County', 'Los Angeles County']:
+        members = [c for c in CITIES if c['group'] == county]
+        items = []
+        for city in sorted(members, key=lambda c:c['name']):
+            label = '<a href="/service-areas/' + city['slug'] + '/">' + esc(city['name']) + '</a>' if city['slug'] in LOCAL_PAGE_CONTENT else esc(city['name'])
+            items.append('<li id="' + city['slug'] + '">' + label + '</li>')
+        extras = ['Oak Park'] if county == 'Ventura County' else ['Tarzana', 'Winnetka']
+        items += ['<li>' + name + '</li>' for name in extras]
+        body += section(county, '<ul class="service-city-list">' + ''.join(items) + '</ul>')
+    body += section('Not sure whether you are in the area?', '<p>Send your city and a short description of the help you need. I can confirm the fit before we discuss the work.</p>')
+    write_inner('Bookkeeping Service Areas | Simi Valley & Nearby', 'Bookkeeping for small businesses in Simi Valley and surrounding Ventura County and Los Angeles County communities. Monthly support, cleanup, and QuickBooks Online help.', '/service-areas/', 'Areas I serve', 'Bookkeeping for businesses in Simi Valley and the surrounding communities.', body)
 
 
 def build_faq():
@@ -219,6 +239,6 @@ def main():
     PAGES.clear()
     for build in [build_home,build_services,build_industries,build_cities,build_faq,build_resources,build_getting_started,build_about,build_pricing,build_contact,build_privacy]:build()
     write_discovery()
-    print('Generated',len(PAGES),'pages, including',len(CITIES),'location pages and a privacy notice.')
+    print('Generated',len(PAGES),'indexable pages and 24 legacy location redirects.')
 
 if __name__=='__main__':main()
