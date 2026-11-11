@@ -13,7 +13,7 @@ PHONE_DISPLAY = "(805) 419-3451"
 PHONE_TEL = "8054193451"
 EMAIL = "jack@glenhold.com"
 CALENDAR = "https://calendar.app.google/4tubkrcpmxVYzNSRA"
-YOUTUBE = "https://www.youtube.com/@BookkeepingWithJack"
+YOUTUBE = "https://www.youtube.com/@BookkeepingBizBlueprint"
 FORM_ACTION = "https://formspree.io/f/xvzwqvgv"
 INDEXNOW_KEY = "7f3c1a9e4b28d6c0a15e8f47b2d9046c"
 HEADSHOT_W, HEADSHOT_H = 1000, 1333
@@ -33,7 +33,7 @@ PAGES: list[dict] = []
 NAV = [
     ("/services/", "Services"),
     ("/pricing/", "Pricing"),
-    ("/who-we-work-with/", "Who we serve"),
+    ("/who-we-work-with/", "Who I work with"),
     ("/service-areas/", "Areas"),
     ("/bookkeeping-faq/", "FAQ"),
     ("/about/", "About"),
@@ -104,7 +104,7 @@ def nav(path: str) -> str:
 
 
 
-def cta(heading: str = "Let's talk about your books", text: str = "Start with a free call, or send a message. You work directly with Jack.") -> str:
+def cta(heading: str = "Let's talk about your books", text: str = "Start with a free call, or send a message. You work with me.") -> str:
     return f'''<div class="cta-banner" id="cta-banner"><h2>{heading}</h2><p>{text}</p><div class="cta-banner-btns"><a class="btn-slate-solid" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a><a class="btn-outline-slate" href="#contact">Send a Message</a></div></div>'''
 
 
@@ -190,7 +190,7 @@ def footer(cities: list[dict]) -> str:
         <ul>
           <li><a href="/services/">Services</a></li>
           <li><a href="/pricing/">Pricing</a></li>
-          <li><a href="/who-we-work-with/">Who we work with</a></li>
+          <li><a href="/who-we-work-with/">Who I work with</a></li>
           <li><a href="/service-areas/">Service areas</a></li>
           <li><a href="/bookkeeping-faq/">Bookkeeping FAQ</a></li>
           <li><a href="/resources/">Resources</a></li>
@@ -205,6 +205,7 @@ def footer(cities: list[dict]) -> str:
           <li><a href="mailto:{EMAIL}">jack&#64;glenhold.com</a></li>
           <li>Mon–Sat, 6am–6pm PT</li>
           <li><a href="/service-areas/">Simi Valley, CA · Service areas</a></li>
+          <li><a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingBizBlueprint</a></li>
         </ul>
       </div>
     </div>
@@ -310,7 +311,7 @@ def business_graph(area: list[dict]) -> list[dict]:
         "telephone": "+18054193451",
         "email": EMAIL,
         "currenciesAccepted": "USD",
-        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses across industries in Simi Valley and surrounding communities.",
+        "description": "Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses around Simi Valley. Jack has been in accounting since 2021, including audit work at PwC, and is a Certified QuickBooks ProAdvisor.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Simi Valley",
@@ -356,7 +357,7 @@ def business_graph(area: list[dict]) -> list[dict]:
         "url": abs_url("/about/"),
         "image": HOME + "/headshot.webp",
         "worksFor": {"@id": HOME + "/#business"},
-        "description": "Jack is the founder of Glenhold Bookkeeping in Simi Valley, California. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
+        "description": "Jack keeps the books at Glenhold Bookkeeping in Simi Valley. He has been in accounting since 2021, including audit work at PwC, and is a Certified QuickBooks ProAdvisor.",
         "hasCredential": {
             "@type": "EducationalOccupationalCredential",
             "name": "Certified QuickBooks ProAdvisor",
