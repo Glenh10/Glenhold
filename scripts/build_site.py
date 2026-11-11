@@ -188,9 +188,15 @@ def portrait(source,alt):
     width,height=('1000','1333') if source=='headshot' else ('1100','1467')
     return '<picture><source srcset="/'+source+'.webp" type="image/webp"><img src="/'+source+'.jpg" width="'+width+'" height="'+height+'" alt="'+alt+'" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></picture>'
 
+def youtube_section():
+    if not YOUTUBE:
+        return ''
+    return '<section class="video-section" id="videos"><div class="section-label">Bookkeeping videos</div><h2 class="section-title">Watch how I explain the books</h2><p class="section-sub">Get to know me and how I approach bookkeeping on my YouTube channel.</p><a class="btn-slate-solid" href="' + YOUTUBE + '" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></section>'
+
 def build_about():
     body='<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content">'+BIO+'</div></div></section>'
-    body+=section('Working with me','<p>You work with me directly, from the first call through every close. I also post bookkeeping videos on <a href="'+YOUTUBE+'" target="_blank" rel="noopener noreferrer">YouTube</a>.</p>')
+    body+=youtube_section()
+    body+=section('Working with me','<p>You work with me directly, from the first call through every close. </p>')
     write_inner('About Jack | Glenhold Bookkeeping','Meet Jack, a Simi Valley local, former Big 4 accountant, Certified QuickBooks ProAdvisor, and founder of Glenhold Bookkeeping.','/about/','Hi, I’m Jack','Local roots and a direct relationship with your bookkeeper.',body)
 
 def build_pricing():
@@ -219,6 +225,7 @@ def build_home():
     homefaq=[(i['q'],i['a']) for i in FAQ if i['id'] in ['industries','catch-up','owner','tax-preparer']]
     main+='<section class="faq-section" id="faq"><h2 class="section-title">Before we talk</h2>'+faq_html(homefaq)+'<div class="content-links"><a href="/bookkeeping-faq/">Read all questions</a></div></section>'
     main+='<section class="about" id="about"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content"><div class="section-label">Meet your bookkeeper</div><h2 class="section-title">Hi, I’m Jack</h2>'+BIO+'<p><a href="/about/">More about Glenhold</a></p></div></div></section>'
+    main+=youtube_section()
     main+=cta('Ready to get your books in order?','Start with a free call to discuss the help you need.')+contact_block('/')
     write_page('Small Business Bookkeeping in Simi Valley | Glenhold','Monthly bookkeeping, catch-up, and QuickBooks Online help for Simi Valley and nearby small businesses. Work directly with Jack. Plans from $349.','/',main,[('Home','/')],[faq_node(homefaq,'/')],CITIES,AREA)
 

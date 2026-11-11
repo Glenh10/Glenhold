@@ -3,17 +3,19 @@
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME = "https://glenhold.com"
+STYLE_VERSION = sha256((ROOT / "site.css").read_bytes()).hexdigest()[:12]
 LASTMOD = "2026-11-11"
 PHONE_DISPLAY = "(805) 419-3451"
 PHONE_TEL = "8054193451"
 EMAIL = "jack@glenhold.com"
 CALENDAR = "https://calendar.app.google/4tubkrcpmxVYzNSRA"
-YOUTUBE = "https://www.youtube.com/@BookkeepingWithJack"
+YOUTUBE = ""  # Set after the owner provides the verified channel URL.
 FORM_ACTION = "https://formspree.io/f/xvzwqvgv"
 INDEXNOW_KEY = "7f3c1a9e4b28d6c0a15e8f47b2d9046c"
 HEADSHOT_W, HEADSHOT_H = 1000, 1333
@@ -219,7 +221,7 @@ def footer(cities: list[dict]) -> str:
     </div>
     <div class="footer-resources"><a href="/service-areas/">View all service areas</a><a href="/privacy/">Privacy notice</a></div>
     <div style="padding-top: 8px; text-align: center;">
-      <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">© 2026 Glenhold Advisory LLC · Doing business as Glenhold Bookkeeping</p>
+      <p class="footer-copy" style="font-size: 0.8rem;">© 2026 Glenhold Advisory LLC · Doing business as Glenhold Bookkeeping</p>
     </div>
   </footer>'''
 
@@ -345,7 +347,7 @@ def business_graph(area: list[dict]) -> list[dict]:
             ],
         },
         "founder": {"@id": HOME + "/#jack"},
-        "sameAs": [YOUTUBE, "https://share.google/ZFSpIuhD39akrC2DT", "https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley"],
+        "sameAs": ([YOUTUBE] if YOUTUBE else []) + ["https://share.google/ZFSpIuhD39akrC2DT", "https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley"],
         "knowsAbout": ["Small business bookkeeping", "QuickBooks Online", "Bank reconciliation", "Financial statements"],
     }
     person = {
@@ -362,7 +364,7 @@ def business_graph(area: list[dict]) -> list[dict]:
             "name": "Certified QuickBooks ProAdvisor",
             "credentialCategory": "certification",
         },
-        "sameAs": [YOUTUBE],
+        "sameAs": [YOUTUBE] if YOUTUBE else [],
         "knowsAbout": ["Bookkeeping", "QuickBooks Online"],
     }
     website = {
@@ -481,7 +483,7 @@ def head(title: str, description: str, path: str, graph: list) -> str:
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/site.css" />
+  <link rel="stylesheet" href="/site.css?v={STYLE_VERSION}" />
   {json_ld({"@context": "https://schema.org", "@graph": graph})}
 </head>'''
 
