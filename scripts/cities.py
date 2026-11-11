@@ -14,13 +14,13 @@ CITIES = [
         lede="If your shop, practice, or crew is in Simi Valley, you can hand me the month and get books you can read.",
         paragraphs=[
             "<p>Los Angeles Avenue, Tapo Street, Cochran Street, and First Street are full of owner-run businesses: trades, offices, clinics, restaurants, and shops. I set the books up around how you actually get paid and what you spend, so the profit and loss matches the way you work.</p>",
-            "<p>I live here. When a meeting helps, we'll sit down in Simi Valley. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free. <a href=\"/monthly-bookkeeping/\">Monthly bookkeeping</a> aims for a profit and loss and balance sheet by the 15th.</p>",
+            "<p>I live here. When a meeting helps, we'll sit down in Simi Valley. Plans are $349, $599, or $1,499 a month to start. Love your first month of books, or it's free. <a href=\"/monthly-bookkeeping/\">Monthly bookkeeping</a> aims for a profit and loss and balance sheet by the 15th.</p>",
         ],
         hub="From shops on Los Angeles Avenue to crews along Tapo and Cochran, I help Simi Valley owners close each month with books they can read.",
         neighbors=["moorpark", "chatsworth", "thousand-oaks"],
         industries=["contractors", "home-services", "professional-services", "medical-dental"],
         faqs=[
-            ("Can we meet in Simi Valley?", "Yes. I'm here, and I'm glad to sit down when a conversation helps. Call (805) 419-3451 and we'll pick a time."),
+            ("My shop is on Los Angeles Avenue and the books live in a shared inbox. Is that enough to start?", "Yes. Tell me which accounts are yours and who can explain a weird transaction. We'll sort the access on the first call."),
             ("What if my books are a few months behind?", "That's a catch-up project. Tell me the months and the accounts, and I'll quote it before we start. After that, we can keep each month current."),
         ],
     ),
@@ -30,16 +30,16 @@ CITIES = [
         title="Bookkeeping in Thousand Oaks, CA | Glenhold",
         description="I help Thousand Oaks practices, restaurants, and Boulevard businesses keep monthly books they can use. Plans from $349.",
         h1="Bookkeeping for Thousand Oaks small businesses",
-        lede="Thousand Oaks businesses need a close they can trust, whether you're on the Boulevard or covering the whole Conejo.",
+        lede="Whether you're on Thousand Oaks Boulevard or covering the whole Conejo, the month should be closed before you have to wonder where it went.",
         paragraphs=[
             "<p>Thousand Oaks Boulevard, the Civic Arts Plaza area, and The Oaks sit among professional offices, clinics, restaurants, and shops. I categorize the month, reconcile the accounts, and send statements you can hand to your CPA or use to run the business.</p>",
-            "<p>Newbury Park is part of Thousand Oaks and has its own page, because owners there look for it by name. Westlake Village, next door, is its own city. The plans are the same: <a href=\"/pricing/\">$349, $599, and $1,499</a> to start.</p>",
+            "<p>Newbury Park is part of Thousand Oaks and has its own page, because owners there look for it by name. Westlake Village, next door, is its own city. Plans are <a href=\"/pricing/\">$349, $599, or $1,499 a month</a> to start.</p>",
         ],
         hub="I help Thousand Oaks practices, restaurants, and Boulevard businesses keep the month closed and the numbers clear.",
         neighbors=["newbury-park", "westlake-village", "simi-valley", "moorpark"],
         industries=["professional-services", "medical-dental", "restaurants", "retail"],
         faqs=[
-            ("Can we meet in Thousand Oaks?", "Yes. We'll pick a time in the Conejo Valley or in Simi Valley, whichever is easier for you."),
+            ("We already have a CPA in Thousand Oaks. Where do you fit?", "Keep your CPA. I keep the months closed so they get reconciled statements instead of a year of unsorted activity."),
             ("Is Newbury Park included?", "Newbury Park is part of the City of Thousand Oaks. It has its own page because that's how people search for it."),
         ],
     ),
@@ -49,7 +49,7 @@ CITIES = [
         title="Bookkeeping in Newbury Park, CA | Glenhold",
         description="I help Newbury Park owners on Wendy, Borchard, and in Dos Vientos keep clean monthly books. Plans from $349.",
         h1="Bookkeeping in Newbury Park",
-        lede="Newbury Park is the western part of Thousand Oaks, and the businesses here deserve books as clear as anyone's.",
+        lede="Newbury Park is the west end of Thousand Oaks, closer in feel to Camarillo than to Westlake, and the books should match that local mix of trades, clinics, and shops.",
         paragraphs=[
             "<p>Wendy, Borchard, and Dos Vientos are home to local services, trades, clinics, restaurants, and shops. I build the chart of accounts around how you collect money and what you spend, then close the month so you can see it.</p>",
             "<p>If the file is behind, start with <a href=\"/cleanup-catch-up/\">cleanup and catch-up</a>. If you want to keep doing the entry yourself, start with <a href=\"/quickbooks-online/\">QuickBooks Online training</a>.</p>",
@@ -77,7 +77,7 @@ CITIES = [
         neighbors=["simi-valley", "thousand-oaks", "camarillo"],
         industries=["contractors", "home-services", "professional-services", "retail"],
         faqs=[
-            ("Can we meet in Moorpark?", "Yes. I'm in Simi Valley, and Moorpark is an easy place for us to sit down."),
+            ("Part of our year is still tied to the fields, and part is a shop on High Street. Can one set of books cover both?", "Yes, if it's one company. I'll separate the field costs from the shop so you can see each side of the year."),
             ("Do you work with farms and with shops?", "Yes. A roadside stand and a High Street office can both work with me. Tell me what you need the numbers to show."),
         ],
     ),
@@ -90,14 +90,14 @@ CITIES = [
         lede="Westlake Village is its own city, on the county line, and I keep books for the firms and practices here.",
         paragraphs=[
             "<p>Westlake Boulevard and the offices along the 101 hold professional firms, medical practices, and small companies that sell across the Conejo. The village retail is the other face of the city. I reconcile the accounts and send statements you can use with your CPA or your partners.</p>",
-            "<p>The City of Westlake Village is in Los Angeles County. Thousand Oaks, next door, is in Ventura County. I work on both sides of that line, at the same starting prices: <a href=\"/pricing/\">$349, $599, and $1,499</a>.</p>",
+            "<p>The City of Westlake Village is in Los Angeles County. Thousand Oaks, next door, is in Ventura County. I work on both sides of that line. Plans are <a href=\"/pricing/\">$349, $599, or $1,499 a month</a> to start.</p>",
         ],
         hub="I help Westlake Village professional offices, clinics, and small firms keep current books and a clear monthly picture.",
         neighbors=["thousand-oaks", "agoura-hills", "newbury-park"],
         industries=["professional-services", "medical-dental", "real-estate", "ecommerce"],
         faqs=[
             ("Is Westlake Village in Ventura County?", "The city is in Los Angeles County. Thousand Oaks, next door, is in Ventura County. I work with businesses in both."),
-            ("Are your prices different in Westlake Village?", "The starting prices are the same everywhere I work: $349, $599, and $1,499 a month. Your quote follows the work."),
+            ("We have a couple of professional entities. Can you keep them straight?", "Yes. Tell me which accounts belong to which company, and I'll keep the books separate so each one is readable on its own."),
         ],
     ),
     _city(
@@ -106,7 +106,7 @@ CITIES = [
         title="Bookkeeping in Agoura Hills, CA | Glenhold",
         description="I help Agoura Hills restaurants, shops, and home-service businesses keep monthly books in order. Plans from $349.",
         h1="Bookkeeping for Agoura Hills businesses",
-        lede="Agoura Hills businesses, from the freeway frontage to the hills, need books that keep up with the work.",
+        lede="Agoura Road and Kanan are full of restaurants, shops, and home-service companies that outgrow a shoebox of receipts.",
         paragraphs=[
             "<p>Agoura Road and Kanan Road serve local retail, restaurants, offices, and home-service companies. Reyes Adobe is the landmark people use for directions. I close the month the same way I do in Simi Valley: categorize, reconcile, and send statements you can read.</p>",
             "<p>If the file is already tangled, start with <a href=\"/cleanup-catch-up/\">cleanup</a>. If you want to keep the data entry, start with <a href=\"/quickbooks-online/\">QuickBooks Online training</a>.</p>",
@@ -115,7 +115,7 @@ CITIES = [
         neighbors=["westlake-village", "calabasas", "malibu", "thousand-oaks"],
         industries=["home-services", "professional-services", "restaurants", "retail"],
         faqs=[
-            ("Can we meet in Agoura Hills?", "Yes. Tell me what you want to walk through, and we'll set a time."),
+            ("We invoice some clients and also sell at the counter. Can you keep both straight?", "Yes. I'll split service income from counter sales, including sales tax on the retail piece, so the month isn't one blended number."),
             ("My crews also work in Malibu. Is that a problem?", "Tell me how deposits, materials, and draws move through the accounts. I'll set the books up around that."),
         ],
     ),
@@ -125,7 +125,7 @@ CITIES = [
         title="Bookkeeping in Calabasas, CA | Glenhold",
         description="I help Calabasas offices, clinics, and Commons businesses keep clean monthly books. Plans from $349. You work with me.",
         h1="Bookkeeping in Calabasas",
-        lede="Calabasas owners need books that are as buttoned-up as the work they do for their own clients.",
+        lede="The Commons and the offices along Calabasas Road look buttoned-up from the sidewalk. The books ought to match.",
         paragraphs=[
             "<p>The Commons and Calabasas Road are the retail and restaurant core, with professional and medical offices along the same streets. Malibu Canyon Road heads toward the coast. I keep the monthly plans simple: Essential from $349, Core from $599, Strategic from $1,499. Your volume and your reporting needs set the quote.</p>",
             "<p>I'm a Certified QuickBooks ProAdvisor. Setup and training are on the <a href=\"/quickbooks-online/\">QuickBooks page</a>. Your CPA files the return. I hand them books they can use.</p>",
@@ -134,8 +134,8 @@ CITIES = [
         neighbors=["agoura-hills", "woodland-hills", "malibu"],
         industries=["professional-services", "real-estate", "medical-dental", "restaurants"],
         faqs=[
-            ("Do Calabasas businesses pay a different rate?", "The starting prices are the same: $349, $599, and $1,499 a month. The quote changes with volume, accounts, and reporting."),
-            ("Can we meet in Calabasas?", "Yes. We'll set a time when walking through the reports together is the right next step."),
+            ("Our office has several cards and a loan. Which plan is that?", "Tell me the accounts and how much activity runs through them. That's what moves a quote between Essential, Core, and Strategic."),
+            ("Our practice wants a monthly walkthrough of the numbers. Is that Core or Strategic?", "That's Strategic. It includes a monthly call to walk through the numbers, along with custom reports if you need them."),
         ],
     ),
     _city(
@@ -144,7 +144,7 @@ CITIES = [
         title="Bookkeeping in Camarillo, CA | Glenhold",
         description="I help Camarillo shops, restaurants, and Old Town businesses keep the books current. Plans from $349.",
         h1="Bookkeeping for Camarillo small businesses",
-        lede="Camarillo businesses, from Old Town to the plain, need a monthly close that keeps up with the register and the payroll.",
+        lede="Old Town, the outlets, and the businesses by the airport all take in money. The reports should show which part of Camarillo earned it.",
         paragraphs=[
             "<p>Old Town runs along Ventura Boulevard. The Premium Outlets pull people off the 101. Camarillo Airport sits on the west side, and the agricultural plain opens toward Oxnard. Shops, restaurants, trades, and offices share the city and need different charts of accounts. I build yours around how you operate.</p>",
             "<p>If tax season is why you're calling, read <a href=\"/cpa-ready-books/\">CPA-ready books</a>. If a lender asked for statements, read <a href=\"/loan-ready-books/\">loan-ready financials</a>.</p>",
@@ -154,7 +154,7 @@ CITIES = [
         industries=["retail", "restaurants", "contractors", "professional-services"],
         faqs=[
             ("Do you work with shops and with farm-adjacent businesses?", "Yes. A storefront and a company tied to the plain can both work with me. The accounts and the reports set the scope."),
-            ("Can we meet in Camarillo?", "Yes. Tell me what you want to cover and we'll put it on the calendar."),
+            ("Old Town sales and the airport-side business share a bank account. Will the reports still make sense?", "Yes. I'll tag the income and costs so you can see each side, even when the cash lands in one account."),
         ],
     ),
     _city(
@@ -163,7 +163,7 @@ CITIES = [
         title="Bookkeeping in Oxnard, CA | Glenhold",
         description="I help Oxnard owners on the Boulevard, at the harbor, and across the plain keep clean monthly books. Plans from $349.",
         h1="Bookkeeping for Oxnard small businesses",
-        lede="Oxnard is the largest city in Ventura County, and its businesses need books as varied as the city itself.",
+        lede="Oxnard is the largest city in Ventura County: a harbor, a farm plain, and a long commercial boulevard, each with its own way of making money.",
         paragraphs=[
             "<p>Oxnard Boulevard carries the everyday commercial strip. Channel Islands Harbor is a different set of marine and visitor businesses. The plain around the city is still strawberry and row-crop country, so packing, field services, and equipment sit beside retail and restaurants. I set the categories up for the business you actually run.</p>",
             "<p>Sales tax you collect belongs in its own account, separate from sales. See the <a href=\"/bookkeeping-faq/#sales-tax-recording\">sales tax answer</a>. Your preparer files the return. I keep the trail clear. Port Hueneme is the next city south, with its own page.</p>",
@@ -173,7 +173,7 @@ CITIES = [
         industries=["restaurants", "retail", "contractors", "auto-repair"],
         faqs=[
             ("Do you work with harbor businesses and with shops on the Boulevard?", "Yes. Tell me how you get paid and which accounts you use. I'll build the close around that."),
-            ("We're behind a whole season. Can you start there?", "Yes. Catch-up is quoted from the months and the accounts. After that, we can keep each month current."),
+            ("We're behind a whole season. Can you start there?", "Yes. I'll price the catch-up once I see the months and the accounts. After that, we can keep each month current."),
         ],
     ),
     _city(
@@ -201,7 +201,7 @@ CITIES = [
         title="Bookkeeping in Port Hueneme, CA | Glenhold",
         description="I help Port Hueneme shops, trades, and service businesses keep simple, current books. Plans from $349.",
         h1="Bookkeeping in Port Hueneme",
-        lede="Port Hueneme is its own city, and its local businesses need books that are just as tidy as anyone's.",
+        lede="Port Hueneme is its own beach city, just south of Oxnard, and the shops and trades here need a close that fits a small local business.",
         paragraphs=[
             "<p>Port Hueneme sits south of Oxnard, beside the port and Naval Base Ventura County. The businesses I help here are the local ones: shops, trades, food, marine services, and offices. I categorize, reconcile, and send you a monthly picture you can use.</p>",
             "<p>The city line with Oxnard matters when you look up a sales-tax rate. Use the CDTFA lookup for where you sell. I'll record the tax you collect. If your shop is actually in Oxnard, the <a href=\"/service-areas/oxnard/\">Oxnard page</a> is the one to read.</p>",
@@ -211,7 +211,7 @@ CITIES = [
         industries=["retail", "restaurants", "contractors", "home-services"],
         faqs=[
             ("Is Port Hueneme part of Oxnard?", "Port Hueneme is its own city. Oxnard is next door. I work with businesses in both."),
-            ("Can we meet in Port Hueneme?", "Yes. We'll set a time, and I'll keep the monthly close moving from your statements and QuickBooks."),
+            ("We're a neighborhood shop by the port. Is that the kind of business you keep books for?", "Yes. Local shops, trades, and service businesses are exactly the work. Tell me how you get paid and I'll set the categories up around that."),
         ],
     ),
     _city(
@@ -220,7 +220,7 @@ CITIES = [
         title="Bookkeeping in Santa Paula, CA | Glenhold",
         description="I help Santa Paula's Main Street shops, cafes, and trades keep monthly books in order. Plans from $349.",
         h1="Bookkeeping in Santa Paula",
-        lede="Santa Paula still has a real downtown, and those businesses need books that keep up with a full season.",
+        lede="Santa Paula's Main Street still works as a downtown, and a valley year gets lumpy if the books only get touched in March.",
         paragraphs=[
             "<p>Main Street functions as a downtown, on Highway 126 in the Santa Clara River valley. Around it are trades, food, retail, clinics, and businesses tied to the valley's citrus and agriculture. I build the chart of accounts around your operation and close the month so you can see it.</p>",
             "<p>Fillmore is the next town east. Monthly statements are a profit and loss and a balance sheet, aimed at the 15th. Details are on the <a href=\"/financial-statements/\">financial statements</a> page.</p>",
@@ -229,7 +229,7 @@ CITIES = [
         neighbors=["fillmore", "ventura", "oxnard"],
         industries=["retail", "restaurants", "contractors", "home-services"],
         faqs=[
-            ("Can we meet in Santa Paula?", "Yes. Tell me what you want to cover and we'll put it on the calendar."),
+            ("Harvest season blows up the transaction count. Does the monthly price jump every fall?", "The quote follows a normal year of volume, so a busy season is part of the conversation up front rather than a surprise in October."),
             ("Do you work with farms and with downtown shops?", "Yes. The chart of accounts follows how you operate. A cafe and a valley business can both call."),
         ],
     ),
@@ -239,7 +239,7 @@ CITIES = [
         title="Bookkeeping in Fillmore, CA | Glenhold",
         description="I help Fillmore's downtown businesses and valley trades keep the books caught up. Plans from $349.",
         h1="Bookkeeping in Fillmore",
-        lede="Fillmore's downtown and the valley businesses around it need a bookkeeper who will simply get the month done.",
+        lede="Fillmore is the smaller Highway 126 town east of Santa Paula, and a folder of bank statements is often the whole accounting system.",
         paragraphs=[
             "<p>Central Avenue and the downtown grid are the local core, east of Santa Paula on Highway 126. Around them are trades, food, shops, services, and companies tied to the orchards and fields. I offer monthly bookkeeping, catch-up, and QuickBooks Online help, at the same starting prices I use everywhere.</p>",
             "<p>Piru, just east, shares this valley. If that's where you are, say so on the form. The first month of monthly books is free if you don't love it. <a href=\"/cleanup-catch-up/\">Catch-up is quoted on its own</a>.</p>",
@@ -248,7 +248,7 @@ CITIES = [
         neighbors=["santa-paula", "santa-clarita", "ventura"],
         industries=["contractors", "retail", "restaurants", "home-services"],
         faqs=[
-            ("Can we meet in Fillmore?", "Yes. We'll set a time that works for a real conversation about the books."),
+            ("We're a two-person trade shop and the books are a folder of bank statements. Can you start from that?", "Yes. Statements with opening and closing balances are enough to scope the catch-up. I'll tell you the price before we begin."),
             ("My business is in Piru. Can you help?", "Piru is just east on Highway 126. Mention it when you write, and I'll tell you how we can work together."),
         ],
     ),
@@ -258,7 +258,7 @@ CITIES = [
         title="Bookkeeping in Ojai, CA | Glenhold",
         description="I help Ojai shops, studios, and Arcade businesses keep books that match a seasonal year. Plans from $349.",
         h1="Bookkeeping for Ojai small businesses",
-        lede="Ojai's shops, studios, and restaurants need books that can handle a quiet winter and a busy spring.",
+        lede="The Arcade and the side streets do a quiet winter and a busy spring. You should be able to see that, month by month.",
         paragraphs=[
             "<p>The Arcade on Ojai Avenue, Libbey Park, and the side streets hold shops, restaurants, studios, and offices that serve the valley and the people who visit. I set the categories up for how you actually sell, and I close the month so a seasonal swing is visible instead of confusing.</p>",
             "<p>Sales tax on retail goods is a liability until you pay it. See <a href=\"/bookkeeping-faq/#sales-tax-recording\">how sales tax hits the books</a>. Your preparer files the CDTFA return.</p>",
@@ -267,7 +267,7 @@ CITIES = [
         neighbors=["ventura", "santa-paula", "oxnard"],
         industries=["retail", "restaurants", "fitness", "professional-services"],
         faqs=[
-            ("Can we meet in Ojai?", "Yes. We'll pick a time, and I'll keep the monthly work moving from your statements and QuickBooks."),
+            ("Winter is quiet and spring is slammed. Should the books look different those months?", "The categories stay the same so you can compare. The monthly reports will show the swing instead of hiding it."),
             ("My year is very seasonal. Does that change the books?", "Tell me when you're busy and when you're quiet. The categories stay steady, and the monthly reports will show the swing."),
         ],
     ),
@@ -287,7 +287,7 @@ CITIES = [
         industries=["medical-dental", "contractors", "restaurants", "professional-services"],
         faqs=[
             ("Is Valencia a separate city?", "Valencia is a community inside Santa Clarita, along with Newhall, Saugus, and Canyon Country. This page covers the whole city."),
-            ("Do you charge more in Santa Clarita?", "The starting prices are $349, $599, and $1,499 a month, same as everywhere I work. The quote follows the work."),
+            ("We have locations in Valencia and Canyon Country. One set of books?", "Often yes, if it's one company. If they're separate entities, I'll keep the books apart. Tell me how the bank accounts are set up."),
         ],
     ),
     _city(
@@ -296,7 +296,7 @@ CITIES = [
         title="Bookkeeping in Chatsworth, CA | Glenhold",
         description="I help Chatsworth shops and business-park companies keep reconciled, readable books. I'm just over the pass in Simi Valley. Plans from $349.",
         h1="Bookkeeping in Chatsworth",
-        lede="Chatsworth's shops and business parks need books that keep up with parts, payroll, and a busy week.",
+        lede="The business parks along Plummer, Mason, and De Soto run on parts, cards, and payroll, and those accounts should tie every month.",
         paragraphs=[
             "<p>Chatsworth has business parks along streets such as Plummer, Mason, and De Soto, plus neighborhood retail and the horse properties near the hills. I reconcile the accounts and categorize the spending so the reports match the company you run.</p>",
             "<p>I'm on the Simi Valley side of Santa Susana Pass, so meeting in Chatsworth is straightforward when you want it. Trades and shops can look at <a href=\"/who-we-work-with/contractors/\">contractors</a> and <a href=\"/who-we-work-with/auto-repair/\">auto repair</a> for how I usually set those books up.</p>",
@@ -315,9 +315,9 @@ CITIES = [
         title="Bookkeeping in Porter Ranch, CA | Glenhold",
         description="I help Porter Ranch clinics, restaurants, and local services keep a clean monthly close. Plans from $349.",
         h1="Bookkeeping in Porter Ranch",
-        lede="Porter Ranch practices and local services need a monthly close that's as orderly as the rest of the business.",
+        lede="Town Center clinics and the restaurants around them bill in different ways, and each one still has to tie to the bank.",
         paragraphs=[
-            "<p>Porter Ranch Town Center is the retail anchor, with medical and dental offices, restaurants, and home-service companies around it. I keep the same three plans I offer everywhere: Essential, Core, and Strategic, starting at $349, $599, and $1,499.</p>",
+            "<p>Porter Ranch Town Center is the retail anchor, with medical and dental offices, restaurants, and home-service companies around it. Essential, Core, and Strategic are $349, $599, or $1,499 a month to start, same as everywhere else I work.</p>",
             "<p>Granada Hills is the next community over. A new practice that needs a clean file should start with <a href=\"/quickbooks-online/\">QuickBooks Online setup</a>, then decide whether monthly bookkeeping or check-ins fit better. Your CPA files the return.</p>",
         ],
         hub="I help Porter Ranch clinics, restaurants, and local services keep a clean close every month.",
@@ -325,7 +325,7 @@ CITIES = [
         industries=["medical-dental", "professional-services", "restaurants", "home-services"],
         faqs=[
             ("Is Porter Ranch its own city?", "Porter Ranch is a neighborhood in the City of Los Angeles. I list it because that's the name you use."),
-            ("Can we meet near Town Center?", "Yes. Tell me what you want to review and we'll set a time."),
+            ("We're opening a second provider. Do we need a new QuickBooks file?", "Usually no. I'll add the accounts and categories the new provider needs. If the entity itself is new, we'll set that file up cleanly."),
         ],
     ),
     _city(
@@ -334,7 +334,7 @@ CITIES = [
         title="Bookkeeping in Northridge, CA | Glenhold",
         description="I help Northridge restaurants, clinics, and local businesses keep the books current. Plans from $349.",
         h1="Bookkeeping in Northridge",
-        lede="Northridge businesses, around CSUN and along Reseda Boulevard, need a close that survives a busy week.",
+        lede="Between CSUN and Reseda Boulevard, restaurants and clinics turn over a lot of small transactions. That belongs in a monthly close.",
         paragraphs=[
             "<p>Reseda Boulevard, Nordhoff Street, and Devonshire Street frame California State University, Northridge. Restaurants, retail, medical offices, tutors, trades, and professional services fill those corridors. I categorize, reconcile, and send the statements.</p>",
             "<p>QuickBooks training can be a screen share. Tips, sales tax, and food cost are common restaurant questions. The <a href=\"/who-we-work-with/restaurants/\">restaurant page</a> says how I record them.</p>",
@@ -353,7 +353,7 @@ CITIES = [
         title="Bookkeeping in Granada Hills, CA | Glenhold",
         description="I help Granada Hills dentists, salons, and neighborhood shops know where they stand each month. Plans from $349.",
         h1="Bookkeeping in Granada Hills",
-        lede="Granada Hills is a neighborhood of local shopping streets, and those businesses need a bookkeeper who will just keep the month moving.",
+        lede="Granada Hills sits between Porter Ranch and Northridge, with dentists, salons, and corner shops that each need their own clean month.",
         paragraphs=[
             "<p>Balboa Boulevard and Chatsworth Street are how people describe where a shop is. Dental and medical offices, restaurants, salons, and trades fill the corners. I set the books up around your accounts and the reports you want.</p>",
             "<p>Salon retail and product sales can carry sales tax even when a haircut is treated differently. The <a href=\"/who-we-work-with/salons/\">salon page</a> and the <a href=\"/bookkeeping-faq/#sales-tax-recording\">sales tax FAQ</a> walk through how I record that.</p>",
@@ -363,7 +363,7 @@ CITIES = [
         industries=["medical-dental", "salons", "restaurants", "professional-services"],
         faqs=[
             ("Is Granada Hills the same area as Porter Ranch?", "They're neighbors, and I work in both. The offer is the same. The pages are separate because you search for the name you use."),
-            ("Can we meet in Granada Hills?", "Yes. Call (805) 419-3451 or use the form and we'll set it."),
+            ("The salon sells product and the dentist next door is a separate company. Can you do both?", "Yes, as two sets of books. Product sales and a practice don't belong in one profit and loss."),
         ],
     ),
     _city(
@@ -439,7 +439,7 @@ CITIES = [
         industries=["professional-services", "medical-dental", "real-estate", "restaurants"],
         faqs=[
             ("Will you replace my CPA?", "Keep your CPA. I prepare the books and the statements. They prepare and file the return."),
-            ("Can we meet in Encino?", "Yes. We'll set a time to walk through the reports together."),
+            ("Partners want a quarterly look, and I just want to know the cash is right. Can the reports do both?", "Yes. Core adds a quarterly summary and a year-to-date comparison on top of the monthly close, so you're not waiting until tax time to see the year."),
         ],
     ),
     _city(
@@ -448,7 +448,7 @@ CITIES = [
         title="Bookkeeping in Van Nuys, CA | Glenhold",
         description="I help Van Nuys shops, trades, and civic-center businesses keep a monthly close they can rely on. Plans from $349.",
         h1="Bookkeeping in Van Nuys",
-        lede="Van Nuys Boulevard businesses need a monthly close that can handle a mix of shops, trades, and offices.",
+        lede="Van Nuys Boulevard, the civic center, and the airport are three different kinds of business on one map.",
         paragraphs=[
             "<p>Van Nuys is the central San Fernando Valley. The civic center, Van Nuys Boulevard, and Van Nuys Airport are the landmarks. The boulevard is a long street of independent businesses. I reconcile the accounts and send statements you can use.</p>",
             "<p>Sherman Oaks begins to the south and has its own page. If a closed bank account is part of the backlog, include it. Closed accounts belong in the catch-up, so the year still ties.</p>",
@@ -467,7 +467,7 @@ CITIES = [
         title="Bookkeeping in Sherman Oaks, CA | Glenhold",
         description="I help Sherman Oaks restaurants, practices, and Ventura Boulevard firms keep current books. Plans from $349.",
         h1="Bookkeeping in Sherman Oaks",
-        lede="Sherman Oaks businesses on Ventura Boulevard and around Fashion Square need books that stay current through a busy month.",
+        lede="Ventura Boulevard and Fashion Square pack restaurants, practices, and firms into a few dense blocks.",
         paragraphs=[
             "<p>Ventura Boulevard here is restaurants, medical offices, professional services, real estate, and retail. Fashion Square is a few blocks north. A home-service company in the hills is the same conversation: what hit the bank, what left, and what the month earned.</p>",
             "<p>Strategic includes a monthly call to walk through the numbers. That call can be on the phone or on video, and we can also meet in person. Your payroll company runs payroll. On Strategic I can record the journal entries. Your CPA files the return.</p>",
@@ -477,7 +477,7 @@ CITIES = [
         industries=["restaurants", "professional-services", "medical-dental", "real-estate"],
         faqs=[
             ("Does the Strategic plan include a call?", "Yes. Strategic includes a monthly call to walk through your numbers. We can do it by phone, video, or in person."),
-            ("Can we meet in Sherman Oaks?", "Yes. Tell me what you want to review and we'll set the time."),
+            ("Fashion Square rent and the Boulevard practice are different businesses. Will you mix them?", "Separate companies get their own books, even when you own both."),
         ],
     ),
     _city(
@@ -486,7 +486,7 @@ CITIES = [
         title="Bookkeeping in Studio City, CA | Glenhold",
         description="I help Studio City restaurants, shops, and small studios keep clean books behind a busy month. Plans from $349.",
         h1="Bookkeeping in Studio City",
-        lede="Studio City's restaurants, shops, and small studios need books that stay clear behind a busy schedule.",
+        lede="Restaurants, small studios, and shops share this stretch of Ventura Boulevard, and each one still needs its own readable month.",
         paragraphs=[
             "<p>Ventura Boulevard east of Sherman Oaks is restaurants, creative shops, fitness studios, offices, and retail. I keep the books for those small businesses: categorized, reconciled, and ready for your CPA. If a tax deadline is why you're calling, bring the date. Wait to send documents until I tell you how.</p>",
             "<p>The 101 and the 170 are the freeways people use to describe the neighborhood. What I need is simpler: your accounts, your reports, and what you want to understand about the month.</p>",
@@ -496,7 +496,7 @@ CITIES = [
         industries=["restaurants", "fitness", "professional-services", "retail"],
         faqs=[
             ("Do you work with creative businesses and with restaurants?", "Yes. A small studio, a restaurant, and a therapist can all work with me. Tell me how you get paid."),
-            ("Can we meet in Studio City?", "Yes. We'll set a time to walk through where the books stand."),
+            ("A project paid me in January for work I'll finish in March. How should that show up?", "Tell me and your CPA whether you want that on a cash basis or held until you earn it. Strategic is the plan that includes accrual accounting when you need the second version."),
         ],
     ),
     _city(
@@ -505,7 +505,7 @@ CITIES = [
         title="Bookkeeping in North Hollywood, CA | Glenhold",
         description="I help North Hollywood and NoHo owners keep current books, from arts-district shops to neighborhood businesses. Plans from $349.",
         h1="Bookkeeping in North Hollywood",
-        lede="North Hollywood owners, in NoHo and across the neighborhood, need a monthly close they can count on.",
+        lede="The NoHo Arts District and the wider North Hollywood grid are different kinds of businesses, and both still need a month that closes.",
         paragraphs=[
             "<p>Lankershim and Magnolia frame the arts district: small theaters, restaurants, shops, and studios. The rest of North Hollywood is a wide grid of trades, retail, and offices near the B Line and G Line. I help both keep the books current.</p>",
             "<p>A theater company or other nonprofit can read the <a href=\"/who-we-work-with/nonprofits/\">nonprofit page</a> to see how I organize income and expenses for a board. Your CPA files the Form 990. Burbank, next door, is its own city and has its own page.</p>",
@@ -524,7 +524,7 @@ CITIES = [
         title="Bookkeeping in Burbank, CA | Glenhold",
         description="I help Burbank's downtown shops, Magnolia Park businesses, and local offices keep clean books. Plans from $349.",
         h1="Bookkeeping for Burbank small businesses",
-        lede="Burbank's independent shops, restaurants, and offices need books that close, the same as any other city I serve.",
+        lede="Downtown Burbank and Magnolia Park are full of independent restaurants, shops, and offices that need a month they can actually read.",
         paragraphs=[
             "<p>Downtown Burbank, San Fernando Boulevard, and Magnolia Park are full of independent restaurants, shops, offices, and trades. Hollywood Burbank Airport sits at the north end. I help the small businesses that make those streets work: monthly books, catch-up, or QuickBooks Online.</p>",
             "<p>If a payroll company already runs payroll, the Strategic plan includes recording those journal entries. Glendale is the next city east and has its own page. Your CPA files the return. I hand them clean books.</p>",
@@ -534,7 +534,7 @@ CITIES = [
         industries=["restaurants", "retail", "professional-services", "ecommerce"],
         faqs=[
             ("Do you work with Burbank shops and with small offices?", "Yes. Tell me how money comes in and how many accounts you have. That's the start of the quote."),
-            ("Can we meet in Burbank?", "Yes. Downtown, Magnolia Park, or a call: we'll pick what helps you see the numbers."),
+            ("We have a shop in Magnolia Park and an office downtown. One close or two?", "If they're one company, one close with categories that show each location. If they're separate companies, two sets of books."),
         ],
     ),
     _city(
@@ -546,14 +546,14 @@ CITIES = [
         lede="Glendale owners, from Brand Boulevard to neighborhood restaurants, deserve a clear picture of every month.",
         paragraphs=[
             "<p>Brand Boulevard, the Galleria, and The Americana sit in a city full of professional services, medical offices, restaurants, retail, and family businesses. I keep the books the same way I do in Simi Valley: categorize, reconcile, and show you where you stand.</p>",
-            "<p>If you want custom reports and a monthly call, Strategic starts at $1,499 and is still a starting price. Essential and Core start at $349 and $599. Tell me about the accounts and I'll quote the work.</p>",
+            "<p>If you want custom reports and a monthly call, Strategic is $1,499 a month to start if you want custom reports and a monthly call. Essential is $349 and Core is $599, also to start. Tell me about the accounts and I'll quote the work.</p>",
         ],
         hub="From Brand Boulevard shops to family-run restaurants, I help Glendale owners keep clean, current books and know exactly where they stand each month.",
         neighbors=["burbank", "north-hollywood"],
         industries=["professional-services", "medical-dental", "restaurants", "retail"],
         faqs=[
-            ("Can we meet in Glendale?", "Yes. We'll set a time to walk through the books, in Glendale or on a call."),
-            ("Are the prices the same in Glendale?", "Yes. Plans start at $349, $599, and $1,499 a month. Your accounts and your volume set the quote."),
+            ("Our family restaurant and the retail shop next door share a bookkeeper's inbox. Can you tell them apart?", "Yes. I'll keep each company's income and expenses in its own file so Brand Boulevard rent doesn't land on the restaurant's profit."),
+            ("Are the prices the same in Glendale?", "Yes. Plans are $349, $599, or $1,499 a month to start. Your accounts and your volume set the quote."),
         ],
     ),
     _city(
@@ -562,7 +562,7 @@ CITIES = [
         title="Bookkeeping in Malibu, CA | Glenhold",
         description="I help Malibu restaurants, shops, and home-service businesses keep current, readable books. Plans from $349.",
         h1="Bookkeeping for Malibu small businesses",
-        lede="Malibu restaurants, shops, and home-service businesses need books that stay clear through a seasonal year.",
+        lede="PCH restaurants, canyon shops, and the crews that look after houses all collect money in different ways.",
         paragraphs=[
             "<p>Businesses along Pacific Coast Highway, in the canyons, and serving Malibu houses each collect money differently. Restaurants, retail, professional services, and trades all show up. I set the chart of accounts around how you operate and close the month so you can see it.</p>",
             "<p>Real estate operating books are described on the <a href=\"/who-we-work-with/real-estate/\">real estate page</a>. I keep the company's operating accounts in order. Your own trust process stays with you. We'll meet in person when that helps you walk through the numbers.</p>",
@@ -571,7 +571,7 @@ CITIES = [
         neighbors=["agoura-hills", "calabasas", "westlake-village"],
         industries=["real-estate", "restaurants", "home-services", "professional-services"],
         faqs=[
-            ("Can we meet in Malibu?", "Yes. We'll set a time that works for you, and I'll keep the monthly books moving from your statements and QuickBooks."),
+            ("Summer is the busy season and winter is thin. Will the categories still work both ways?", "Yes. I'll keep the categories steady so you can compare a packed August with a quiet January."),
             ("Do you keep books for property businesses in Malibu?", "I keep the company's operating books: income, expenses, and reconciled accounts. Your trust process stays with you."),
         ],
     ),

@@ -10,8 +10,8 @@ INDUSTRIES = [
         "lede": "I help contractors and trades keep job costs, materials, and owner draws clear so you can see if the work is paying you.",
         "paragraphs": [
             '''<p>Materials, subs, and the money you pulled out for yourself land in the same account, and by Friday the profit is a guess. I sort those into the right places from your statements and the notes you give me, so a job's costs stay with the job.</p>''',
-            '''<p>If you already track jobs, I'll follow your labels. If you don't yet, monthly bookkeeping still reconciles the accounts and categorizes the spending. Tell me if you want costs by job. That changes the quote, and I'll say so up front. Plans start at $349, $599, and $1,499.</p>''',
-            '''<p>Busy season is when the books usually fall behind. Bring the months, the cards, and any lender date. <a href="/cleanup-catch-up/">Catch-up</a> is quoted from that pile, and then we can keep the months current.</p>''',
+            '''<p>If you already track jobs, I'll follow your labels. If you don't yet, monthly bookkeeping still reconciles the accounts and categorizes the spending. Tell me if you want costs by job. That changes the quote, and I'll say so up front. Plans are $349, $599, or $1,499 a month to start.</p>''',
+            '''<p>Busy season is when the books usually fall behind. Bring the months, the cards, and any lender date. <a href="/cleanup-catch-up/">Catch-up</a> once I see the months, the cards, and any lender date. Then we can keep the months current.</p>''',
         ],
         "points": [
             "I'll separate what you paid yourself from what the jobs cost.",
@@ -62,7 +62,7 @@ INDUSTRIES = [
         "lede": "I help medical and dental practices keep deposits, expenses, and owner draws clear so you can see how the practice is doing.",
         "paragraphs": [
             '''<p>Insurance payments, patient payments, lab bills, rent, and what you take home all belong in the accounting file. Coding a visit and chasing a claim stay in the billing system you already use. I categorize what hits the bank, reconcile the accounts, and send a profit and loss and balance sheet you and your CPA can read.</p>''',
-            '''<p>A single-provider office with simple accounts often fits Essential or Core. Several providers, loans, or accrual questions may fit Strategic, which adds accrual accounting, loan tracking, and a monthly call. Those start at $349, $599, and $1,499.</p>''',
+            '''<p>A single-provider office with simple accounts often fits Essential or Core. Several providers, loans, or accrual questions may fit Strategic, which adds accrual accounting, loan tracking, and a monthly call. Plans are $349, $599, or $1,499 a month to start.</p>''',
             '''<p>Opening a new practice? Start with <a href="/quickbooks-online/">QuickBooks Online setup</a> before the first month piles up.</p>''',
         ],
         "points": [
@@ -115,7 +115,7 @@ INDUSTRIES = [
         "paragraphs": [
             '''<p>A Shopify, Amazon, or Etsy payout usually arrives after fees and refunds. If you record only the deposit, profit is wrong. I use the payout reports, when you can export them, to split gross sales, fees, and refunds.</p>''',
             '''<p>Many marketplaces collect sales tax on marketplace orders. Your own site may be different. Confirm which sales are covered with the CDTFA or your tax preparer, and I'll record it the way they direct.</p>''',
-            '''<p>A simple seller can run monthly books that categorize purchases. If you need inventory on the balance sheet, say so. Strategic is the plan that includes accrual accounting. There is one set of starting prices: $349, $599, and $1,499.</p>''',
+            '''<p>A simple seller can run monthly books that categorize purchases. If you need inventory on the balance sheet, say so. Strategic is the plan that includes accrual accounting. Plans are $349, $599, or $1,499 a month to start.</p>''',
         ],
         "points": [
             "I'll split payouts into sales, fees, and refunds.",
@@ -140,7 +140,7 @@ INDUSTRIES = [
         "lede": "I help small nonprofits keep donations and program expenses organized so the board and the CPA can see the year clearly.",
         "paragraphs": [
             '''<p>Donations, program costs, and overhead are hard to explain when they share one bank account and no categories. I'll set up a chart of accounts that separates programs when that's how the board wants to read the reports. You tell me which gifts are restricted. I won't guess.</p>''',
-            '''<p>Your CPA files the Form 990. I hand over reconciled accounts, statements, and a list of open questions. Monthly plans start at $349, $599, and $1,499. A backlog is <a href="/cleanup-catch-up/">catch-up</a>, quoted on its own.</p>''',
+            '''<p>Your CPA files the Form 990. I hand over reconciled accounts, statements, and a list of open questions. Plans are $349, $599, or $1,499 a month to start. A backlog is <a href="/cleanup-catch-up/">catch-up</a>, quoted on its own.</p>''',
             '''<p>Nonprofits are welcome here, and so is every other small organization. If yours is a for-profit company, you're in the right place too.</p>''',
         ],
         "points": [
@@ -165,7 +165,7 @@ INDUSTRIES = [
         "h1": "Bookkeeping for professional services",
         "lede": "I help consultants, agencies, and small firms keep retainers, invoices, and owner draws clear so profit is obvious.",
         "paragraphs": [
-            '''<p>A retainer feels like income the day it lands. Sometimes you've earned it, and sometimes you haven't. On Essential and Core I keep cash-basis books: categorize, reconcile, and send statements. Strategic adds accrual accounting when unearned fees should sit on the balance sheet. Ask me which one fits before we start. The plans begin at $349, $599, and $1,499.</p>''',
+            '''<p>A retainer feels like income the day it lands. Sometimes you've earned it, and sometimes you haven't. On Essential and Core I keep cash-basis books: categorize, reconcile, and send statements. Strategic adds accrual accounting when unearned fees should sit on the balance sheet. Ask me which one fits before we start. Plans are $349, $599, or $1,499 a month to start.</p>''',
             '''<p>I keep the operating books: fees, expenses, and what you take home. If a payroll company runs payroll, Strategic includes the journal entries. Client trust accounts stay with your firm's own process.</p>''',
             '''<p>If you'd rather keep the data entry and want a cleaner file, start with <a href="/quickbooks-online/">consulting and training</a>.</p>''',
         ],
@@ -218,7 +218,7 @@ INDUSTRIES = [
         "lede": "I help home-service owners separate business spending from personal spending so the month shows a real profit.",
         "paragraphs": [
             '''<p>Deposits taken before the work, materials from the yard, fuel, and a personal charge on the same card are the usual tangle. I categorize what you can identify and reconcile the accounts to the statements. Keep your own mileage log. Your CPA decides the vehicle deduction from that log.</p>''',
-            '''<p>A weekly route of houses usually needs clean categories and a reconciliation. A licensed remodeler with subs and job costs may want the <a href="/who-we-work-with/contractors/">contractor</a> setup instead. Tell me which one you are. The plans still start at $349, $599, and $1,499.</p>''',
+            '''<p>A weekly route of houses usually needs clean categories and a reconciliation. A licensed remodeler with subs and job costs may want the <a href="/who-we-work-with/contractors/">contractor</a> setup instead. Tell me which one you are. Plans are still $349, $599, or $1,499 a month to start.</p>''',
         ],
         "points": [
             "I'll separate your personal spending from the business.",

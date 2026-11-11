@@ -104,10 +104,6 @@ def nav(path: str) -> str:
   </nav>'''
 
 
-def fact_bar() -> str:
-    return f'''<aside class="fact-bar"><p>I'm Jack, in Simi Valley. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. I'm available Monday through Saturday, 6am to 6pm Pacific. I keep your books current, and we meet in person when that helps.</p></aside>'''
-
-
 def cta(heading: str = "Let's talk about your books", text: str = "Start with a free call, or send a message. You work directly with Jack.") -> str:
     return f'''<div class="cta-banner" id="cta-banner"><h2>{heading}</h2><p>{text}</p><div class="cta-banner-btns"><a class="btn-slate-solid" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a><a class="btn-outline-slate" href="#contact">Send a Message</a></div></div>'''
 
