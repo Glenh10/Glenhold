@@ -147,7 +147,7 @@ def build_services():
             "h1": "Monthly bookkeeping for small businesses",
             "lede": "Keep the month current. Know where the business stands.",
             "offer": offer("Essential monthly bookkeeping", "349", "Starting at $349 per month. Love your first month of books, or it is free."),
-            "body": '''<section><h2>Monthly bookkeeping for every kind of small business</h2><p>Glenhold Bookkeeping provides ongoing bookkeeping for small businesses in Simi Valley and nearby Ventura County and Los Angeles communities. You work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. You do not need to fit a particular industry. The scope is your accounts, your volume, and the reports you want.</p></section>
+            "body": '''<section><h2>I'll close the month for you</h2><p>If the books are always a week behind, you can't tell whether the business made money. I keep them current for small businesses around Simi Valley. You work with me. I'm a former Big 4 accountant and a Certified QuickBooks ProAdvisor. Any kind of small business is welcome. I price the work from your accounts, your volume, and the reports you want.</p></section>
 <section><h2>What is included</h2><ul><li><strong>Transaction categorization</strong> against a chart of accounts built for how you operate.</li><li><strong>Bank and credit card reconciliation</strong> so missing entries, duplicates, and transfers can be seen.</li><li><strong>Monthly financial statements:</strong> a profit and loss and a balance sheet.</li><li><strong>Email between closes</strong> for the questions that hold a month up.</li></ul><p>The target is a P&amp;L and balance sheet by the 15th. That date depends on statements and answers arriving in time.</p></section>
 <section><h2>Essential, Core, and Strategic</h2><div class="table-wrap"><table><thead><tr><th scope="col">Plan</th><th scope="col">Starting price</th><th scope="col">What changes</th></tr></thead><tbody><tr><th scope="row">Essential</th><td>$349 / month</td><td>Categorization, reconciliation, monthly statements, clean books for tax season.</td></tr><tr><th scope="row">Core</th><td>$599 / month</td><td>Essential, plus a quarterly profit and expense summary, a year-to-date comparison, and priority support.</td></tr><tr><th scope="row">Strategic</th><td>$1,499 / month</td><td>Core, plus custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call.</td></tr></tbody></table></div><p>These are starting prices. The quote depends on transaction volume, the number of accounts, and reporting complexity. Love your first month of books, or it's free. See <a href="/pricing/">the full comparison</a>.</p></section>
 <section><h2>If the past is not current</h2><p>Start with <a href="/cleanup-catch-up/">cleanup and catch-up</a> when months are unfinished. Stay on <a href="/quickbooks-online/">QuickBooks training</a> if you want to keep doing the entry. Monthly bookkeeping is for handing the close to Jack.</p></section>''',
@@ -162,12 +162,12 @@ def build_services():
             "title": "Bookkeeping Cleanup & Catch-Up | Glenhold Bookkeeping",
             "description": "Catch up months or years of books for Simi Valley-area businesses. Reconciled records and a CPA handoff. Quoted separately from monthly plans.",
             "h1": "Cleanup and catch-up bookkeeping",
-            "lede": "Behind on the books? Start with a clear scope, not a guess.",
+            "lede": "Behind on the books? I'll tell you what it will take before we start.",
             "offer": None,
-            "body": '''<section><h2>Bring unfinished bookkeeping up to date</h2><p>Cleanup means correcting books that already exist. Catch-up means recording periods that were never finished. Many projects are both. Glenhold Bookkeeping, based in Simi Valley, does this for small businesses across industries in nearby Ventura County and Los Angeles communities. You can stop when the backlog is done, or continue with monthly bookkeeping.</p></section>
-<section><h2>What a project can cover</h2><ul><li>Organizing statements, exports, and the existing accounting file.</li><li>Importing missing transactions and classifying income and expenses.</li><li>Reviewing duplicates, unmatched transfers, and balances that do not tie.</li><li>Reconciling bank and credit card accounts to the statements you have.</li><li>Tidying the chart of accounts so the reports can be read.</li><li>A handoff your CPA can use. Glenhold does not file the return.</li></ul><p>If an entry is unclear, the next step is to ask you. Guessing the purpose of a transfer is how cleanups fail.</p></section>
+            "body": '''<section><h2>Bring the backlog current</h2><p>Cleanup means the books exist and they're wrong. Catch-up means the months were never entered. A lot of projects are both. I do this for small businesses around Simi Valley. We can stop when the backlog is done, or keep going month to month.</p></section>
+<section><h2>What a project can cover</h2><ul><li>Organizing statements, exports, and the existing accounting file.</li><li>Importing missing transactions and classifying income and expenses.</li><li>Reviewing duplicates, unmatched transfers, and balances that do not tie.</li><li>Reconciling bank and credit card accounts to the statements you have.</li><li>Tidying the chart of accounts so the reports can be read.</li><li>A package your CPA can use. They file the return.</li></ul><p>If an entry is unclear, I'll ask you. I'd rather wait than guess what a transfer was for.</p></section>
 <section><h2>What to gather</h2><p>The months in question, every business bank and credit card account including accounts you closed, and statements that show opening and closing balances. Add loans, payroll reports, and owner contributions or draws when they matter. If you changed banks, include both sides. The <a href="/getting-started/">handoff checklist</a> is the longer version. Ask how to send files before you email anything sensitive.</p></section>
-<section><h2>Price and timing</h2><p>Cleanup is quoted from the number of periods, accounts, transactions, and corrections. The monthly starting prices of $349, $599, and $1,499 are not a cleanup quote. Timing depends on the backlog, missing records, and how fast open questions get answered. Name any tax or lender deadline on the first call.</p><p>When the project is done you can move to <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or to <a href="/quickbooks-online/">training and check-ins</a> if you want the file back.</p></section>''',
+<section><h2>Price and timing</h2><p>I quote cleanup from the periods, accounts, transactions, and fixes. The monthly starting prices of $349, $599, and $1,499 are for ongoing work. Tell me any tax or lender date on the first call so I can plan around it.</p><p>When the project is done you can move to <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or to <a href="/quickbooks-online/">training and check-ins</a> if you want the file back.</p></section>''',
             "faqs": [
                 ("How much does catch-up bookkeeping cost?", "It is quoted from the months, accounts, transactions, and corrections involved. It is not priced off the monthly plans. Jack scopes it before you commit."),
                 ("Will the books be ready for my CPA?", "That is the handoff: classified transactions, reconciled accounts, financial statements, and a note of anything the records could not support. Your CPA files the return."),
@@ -181,9 +181,9 @@ def build_services():
             "h1": "QuickBooks Online setup and training",
             "lede": "A file that matches the business, and a routine you can actually follow.",
             "offer": None,
-            "body": '''<section><h2>QuickBooks Online help from a Certified ProAdvisor</h2><p>Glenhold offers QuickBooks Online setup, consulting, and training for owners who want a clearer system or who want to keep doing the books themselves. Jack is a Certified QuickBooks ProAdvisor and a former Big 4 accountant, based in Simi Valley. The published offer is QuickBooks Online. QuickBooks Desktop is not a listed service. Say so on the intro call if your file is still on Desktop.</p></section>
+            "body": '''<section><h2>I'll set QuickBooks up so it fits your business</h2><p>If the file is noisy or you want to keep doing the entry yourself, I can set it up, train you, and check your work. I'm a Certified QuickBooks ProAdvisor and a former Big 4 accountant, in Simi Valley. I work in QuickBooks Online. If you're still on Desktop, tell me on the intro call before we start.</p></section>
 <section><h2>What setup covers</h2><ul><li>A QuickBooks Online file built around how money moves through the business.</li><li>A chart of accounts for income, expenses, assets, liabilities, and equity.</li><li>A routine for reviewing activity, separating transfers from income and expenses, and reconciling.</li><li>Accuracy check-ins on a schedule you agree to, if you want a review rather than a handoff.</li></ul><p>Too many overlapping accounts make a profit and loss hard to read. Too few hide the thing you meant to see. Setup starts by asking which reports you actually use.</p></section>
-<section><h2>Training or a monthly plan</h2><p>Choose training when you want to keep the day-to-day work. Choose <a href="/monthly-bookkeeping/">monthly bookkeeping</a> when you want categorization, reconciliation, and statements handled for you. You can start with one and move to the other. Consulting and training are scoped separately. The monthly plans start at $349. That number is not a training quote and it does not include the QuickBooks subscription, which you pay to Intuit.</p><p>An existing file does not have to be thrown out. It may need a chart review, or a <a href="/cleanup-catch-up/">cleanup</a>, before a routine makes sense.</p></section>''',
+<section><h2>Training or a monthly plan</h2><p>Choose training when you want to keep the day-to-day work. Choose <a href="/monthly-bookkeeping/">monthly bookkeeping</a> when you want me to categorize, reconcile, and send the statements. You can start with one and move to the other. Training is quoted on its own. Monthly plans start at $349. You pay Intuit for the QuickBooks subscription.</p><p>An existing file does not have to be thrown out. It may need a chart review, or a <a href="/cleanup-catch-up/">cleanup</a>, before a routine makes sense.</p></section>''',
             "faqs": [
                 ("Is Jack a QuickBooks ProAdvisor?", "Yes. Jack is a Certified QuickBooks ProAdvisor. The setup, training, and consulting on this page are for QuickBooks Online."),
                 ("Does monthly bookkeeping include the QuickBooks subscription?", "No. Intuit bills the subscription. Glenhold's prices are for the bookkeeping work. Check Intuit for the current software price."),
@@ -197,9 +197,9 @@ def build_services():
             "h1": "Financial statements for small businesses",
             "lede": "A profit and loss and a balance sheet, on a schedule, from reconciled accounts.",
             "offer": None,
-            "body": '''<section><h2>What you actually get each month</h2><p>Every Glenhold monthly plan includes financial statements: a profit and loss for the period and a balance sheet as of the close. The target is the 15th of the following month, if statements and answers show up in time. These reports are part of monthly bookkeeping. They are not a separately priced product and not a compilation, review, or audit.</p><p>A profit and loss shows income, expenses, and profit for a stretch of time. It does not, by itself, show the cash in the bank. A balance sheet shows what the business owns, what it owes, and the owner's equity on one date. You usually need both.</p></section>
-<section><h2>What Core and Strategic add</h2><ul><li><strong>Essential, from $349:</strong> the monthly statements and the reconciliation behind them.</li><li><strong>Core, from $599:</strong> those statements, plus a quarterly profit and expense summary and a year-to-date performance comparison.</li><li><strong>Strategic, from $1,499:</strong> Core, plus custom financial reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call to walk through the numbers.</li></ul><p>Accrual accounting is listed on Strategic, not on Essential or Core. If unearned deposits or unpaid bills need to sit on the balance sheet, say so before you pick a plan. Your CPA can confirm which basis the tax return expects. Glenhold does not file that return.</p></section>
-<section><h2>Who the statements are for</h2><p>Owners use them to see the month. CPAs use them at tax time. Lenders often ask for them when you apply for financing. Glenhold prepares the bookkeeping reports. It does not prepare a loan application and it does not provide audit assurance. If the history is incomplete, <a href="/cleanup-catch-up/">catch the books up</a> before you lean on a statement.</p></section>''',
+            "body": '''<section><h2>What you actually get each month</h2><p>Every monthly plan includes a profit and loss and a balance sheet. I aim for the 15th of the following month, once your statements and answers are in. These reports come with the bookkeeping. Your CPA still files the return.</p><p>A profit and loss shows income, expenses, and profit for a stretch of time. It does not, by itself, show the cash in the bank. A balance sheet shows what the business owns, what it owes, and the owner's equity on one date. You usually need both.</p></section>
+<section><h2>What Core and Strategic add</h2><ul><li><strong>Essential, from $349:</strong> the monthly statements and the reconciliation behind them.</li><li><strong>Core, from $599:</strong> those statements, plus a quarterly profit and expense summary and a year-to-date performance comparison.</li><li><strong>Strategic, from $1,499:</strong> Core, plus custom financial reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call to walk through the numbers.</li></ul><p>Accrual accounting is part of Strategic. If unearned deposits or unpaid bills should sit on the balance sheet, tell me before you pick a plan. Your CPA can confirm which basis the return expects. They file it.</p></section>
+<section><h2>Who the statements are for</h2><p>You use them to see the month. Your CPA uses them at tax time. A lender may ask for them when you apply for financing. I prepare the bookkeeping reports. If the history is incomplete, <a href="/cleanup-catch-up/">we'll catch the books up</a> before you lean on a statement.</p></section>''',
             "faqs": [
                 ("Are financial statements included in the monthly price?", "Yes. A profit and loss and a balance sheet are part of Essential, Core, and Strategic. They are not billed as an extra report fee on this site."),
                 ("Is this an audit or a review?", "No. Glenhold does bookkeeping and management statements from the reconciled accounts. Audits and reviews are attestation services this firm does not offer."),
@@ -209,11 +209,11 @@ def build_services():
             "path": "/cpa-ready-books/",
             "name": "CPA-ready books",
             "title": "CPA-Ready Books for Tax Season | Glenhold Bookkeeping",
-            "description": "Reconciled books and financial statements your CPA can use. Glenhold in Simi Valley does the bookkeeping and does not file the tax return.",
+            "description": "I reconcile the year and hand your CPA financial statements they can file from. I'm in Simi Valley. Plans support the monthly work from $349.",
             "h1": "Books your CPA can actually use",
             "lede": "Tax season goes faster when the year is reconciled before the CPA opens the file.",
             "offer": None,
-            "body": '''<section><h2>A handoff, not a tax return</h2><p>Glenhold Bookkeeping gets the accounts categorized, the bank and cards reconciled, and the profit and loss and balance sheet ready to send. That is what "clean books for tax season" means on this site. It does not mean the return has been prepared. Your CPA or other tax preparer still reviews the books and files. Jack is a former Big 4 accountant. This site does not list him as your CPA, and Big 4 experience is not a license to file your return.</p></section>
+            "body": '''<section><h2>Clean books for your CPA</h2><p>I categorize the accounts, reconcile the bank and cards, and send a profit and loss and balance sheet your preparer can use. That's what I mean by clean books for tax season. Your CPA still reviews them and files. I'm a former Big 4 accountant. I keep the books. They file the return.</p></section>
 <section><h2>What usually goes in the package</h2><ul><li>A profit and loss for the year, and a balance sheet at year end.</li><li>Accounts reconciled to statements, including accounts closed during the year.</li><li>A chart of accounts that did not change meaning halfway through the year.</li><li>A short list of items the records could not support, so the CPA is not left to discover them in March.</li><li>Loan balances and owner draws identified, when those records were provided.</li></ul><p>California LLC owners often ask about the $800 minimum franchise tax at the same time. That tax is filed with the Franchise Tax Board, not paid to Glenhold. The <a href="/bookkeeping-faq/#llc-800">FAQ states the general rule</a> and tells you to confirm it with your preparer.</p></section>
 <section><h2>When the year is already a mess</h2><p>If months were never closed, start with <a href="/cleanup-catch-up/">cleanup and catch-up</a>. The monthly plans assume a current rhythm. Name the filing deadline on the first call. Do not email source documents until Jack tells you how to share them.</p></section>''',
             "faqs": [
@@ -225,12 +225,12 @@ def build_services():
             "path": "/loan-ready-books/",
             "name": "Loan-ready financials",
             "title": "Loan-Ready Bookkeeping | Glenhold Bookkeeping",
-            "description": "Reconciled financial statements lenders often ask to see. Glenhold prepares the books, not the loan application, for Simi Valley-area businesses.",
+            "description": "I reconcile the books and prepare the statements lenders ask to see. You send the package. Plans from $349 support the monthly work.",
             "h1": "Books a lender can read",
-            "lede": "Lenders ask for statements. They do not accept a checkbook. Glenhold can produce the statements. It cannot approve the loan.",
+            "lede": "Lenders ask for statements that match the bank. I'll get the books there. They still make the decision.",
             "offer": None,
-            "body": '''<section><h2>What lenders usually ask the books to show</h2><p>A recent profit and loss, a balance sheet, and bank statements for the same months. Sometimes they also want the figures to tie: the cash on the balance sheet should agree with the statement, and transfers should not be hiding inside sales. Glenhold's cleanup and monthly work are built to get you there. The deliverable is reconciled bookkeeping and financial statements. It is not a loan application, a business plan, or a promise that anyone will lend.</p></section>
-<section><h2>What this is not</h2><ul><li>Not a conversation with your lender. You or your broker send the package.</li><li>Not a personal financial statement. Those are yours to complete.</li><li>Not a tax return. Lenders often want returns from your CPA as well.</li><li>Not an audit. There is no assurance report.</li></ul><p>If the books are months behind, the first step is <a href="/cleanup-catch-up/">catch-up</a>, scoped to the periods the lender named. If they are current, <a href="/financial-statements/">monthly statements</a> are already part of the plans that start at $349, $599, and $1,499. Tell Jack the deadline on the first call. A date changes the schedule. It does not change the fact that missing statements cannot be invented.</p></section>''',
+            "body": '''<section><h2>Give the lender statements that tie</h2><p>Lenders usually ask for a recent profit and loss, a balance sheet, and bank statements for the same months. They want the cash on the balance sheet to match the statement. I catch the books up and reconcile them so those reports agree. You or your broker send the package. Your CPA may still provide the tax returns.</p></section>
+<section><h2>If you're on a deadline</h2><p>If the books are months behind, we start with <a href="/cleanup-catch-up/">catch-up</a> for the periods the lender named. If they're current, <a href="/financial-statements/">monthly statements</a> are already part of the plans that start at $349, $599, and $1,499. Tell me the date on the first call. I can only use the statements you actually have.</p></section>''',
             "faqs": [
                 ("Can you guarantee my loan will be approved?", "No. Glenhold prepares reconciled financial statements. The lender decides."),
                 ("Do I still need my tax returns?", "Often yes. Lenders ask the CPA's returns as well as the bookkeeping statements. Glenhold does not file the returns."),
@@ -257,17 +257,17 @@ def build_service_hub():
         ("/cleanup-catch-up/", "Cleanup and catch-up", "Months or years behind. A quoted project, then a handoff to your CPA."),
         ("/quickbooks-online/", "QuickBooks Online", "Setup, chart of accounts, training, and check-ins from a ProAdvisor."),
         ("/financial-statements/", "Financial statements", "Profit and loss and balance sheet by the 15th, included in the monthly plans."),
-        ("/cpa-ready-books/", "CPA-ready books", "Reconciled records for tax season. Glenhold does not file the return."),
-        ("/loan-ready-books/", "Loan-ready financials", "Statements a lender can read. Not a loan application and not an approval."),
+        ("/cpa-ready-books/", "CPA-ready books", "Reconciled records your CPA can use at tax time."),
+        ("/loan-ready-books/", "Loan-ready financials", "Statements a lender can read, prepared from reconciled books."),
     ]
-    body = f'''<section><h2>Three ways to start, and the reports they produce</h2><p>The offers on the current Glenhold site are monthly bookkeeping, cleanup and catch-up, and QuickBooks Online consulting and training. Financial statements, a CPA handoff, and lender-ready reports are what that work produces. They are not extra brands with extra prices. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free. Cleanup and training are quoted on their own.</p>{hub_cards(cards)}</section>
-<section><h2>Not included, on purpose</h2><ul><li>Tax return preparation and filing.</li><li>Sales-tax return filing.</li><li>Running payroll. Strategic can record payroll journal entries from your payroll provider.</li><li>A QuickBooks Online subscription. That is billed by Intuit.</li><li>Audits, reviews, or trust-account compliance.</li></ul><p>Jack does the work. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor. The firm does not niche by industry. <a href="/who-we-work-with/">See the kinds of businesses</a> the books often come from, then call even if yours is not on the list.</p></section>'''
+    body = f'''<section><h2>Tell me where the books stand</h2><p>Most people call because the month never quite closes, a year got away from them, or QuickBooks feels harder than it should. I do monthly bookkeeping, catch-up, and QuickBooks Online setup and training. The statements, the CPA handoff, and the lender package come out of that work. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free.</p>{hub_cards(cards)}</section>
+<section><h2>You still keep your CPA</h2><p>I hand your CPA clean, tax-ready books. They file the return. If you already have a payroll company, the Strategic plan includes recording those journal entries. You pay Intuit for QuickBooks Online. You work with me, whatever kind of small business you run. <a href="/who-we-work-with/">See a few of them</a>.</p></section>'''
     write_inner(
         "Bookkeeping Services | Glenhold Bookkeeping",
-        "Monthly bookkeeping, catch-up, and QuickBooks Online setup from Glenhold in Simi Valley. Plans from $349. Tax filing is separate.",
+        "I do monthly bookkeeping, catch-up, and QuickBooks Online setup for small businesses around Simi Valley. Plans from $349. You work with me.",
         "/services/",
         "Bookkeeping services",
-        "Pick the job. The industry is not the filter.",
+        "Monthly books, a cleanup, or QuickBooks help. You work with me.",
         body,
         [("Home", "/"), ("Services", "/services/")],
         [],
@@ -281,8 +281,8 @@ def build_industries():
         rel = related_links([(f"/who-we-work-with/{s}/", IND_BY[s]["name"]) for s in ind["related"]])
         body = "".join(ind["paragraphs"])
         body += f"<section><h2>What the books usually need</h2>{points}<p>{esc(ind['limit'])}</p></section>"
-        body += f"<section><h2>Where this comes up</h2><p>These cities are examples of where this kind of business is common. They are not a client list, and they are not the only places Glenhold works.</p>{city_links}</section>"
-        body += f"<section><h2>Other kinds of businesses</h2><p>Glenhold does not niche. If your business is not this one, it can still be a fit.</p>{rel}<p><a href=\"/who-we-work-with/\">All the business types</a></p></section>"
+        body += f"<section><h2>Where I see this work</h2><p>These are a few of the cities where this kind of business is common. I work with you wherever you are in the area, and with plenty of other businesses too.</p>{city_links}</section>"
+        body += f"<section><h2>Other businesses I help</h2><p>Your business might look like one of these, or like something else entirely. Call me either way.</p>{rel}<p><a href=\"/who-we-work-with/\">All the business types</a></p></section>"
         body += "<section><h2>Services that apply</h2>" + service_links() + "</section>"
         write_inner(
             ind["title"], ind["description"], f"/who-we-work-with/{ind['slug']}/",
@@ -292,14 +292,14 @@ def build_industries():
             ind["faqs"], "Questions",
         )
     cards = [(f"/who-we-work-with/{i['slug']}/", i["name"], i["lede"]) for i in INDUSTRIES]
-    body = f'''<section><h2>Every kind of small business, listed so you can find yourself</h2><p>Glenhold Bookkeeping does not niche. The pages below describe how the books usually work in businesses that are common around Simi Valley. They are not a gate. A business that is missing from the list is still invited. Scope comes from your accounts, your volume, and the reports you need.</p>{hub_cards(cards)}</section>
-<section><h2>What does not change by industry</h2><p>Monthly plans still start at $349, $599, and $1,499. Cleanup and QuickBooks training are still quoted separately. Tax returns, sales-tax filings, and payroll processing are still outside the bookkeeping. Trust accounts for attorneys, brokers, and property managers are still not a service. Jack still does the work.</p>{service_links()}</section>'''
+    body = f'''<section><h2>I work with all kinds of small businesses</h2><p>These pages show how I usually set up the books for businesses I see around Simi Valley, so you can tell if it sounds like yours. If your business is missing, call anyway. What I need to know is your accounts, your volume, and the reports you want.</p>{hub_cards(cards)}</section>
+<section><h2>The plans stay the same</h2><p>Monthly plans start at $349, $599, and $1,499. Catch-up and QuickBooks training are quoted on their own. I hand your CPA clean books, and they file the return. If you already have a payroll company, Strategic includes recording those entries. You work with me.</p>{service_links()}</section>'''
     write_inner(
-        "Who Glenhold Works With | Small Businesses of Every Kind",
-        "Glenhold does not niche. Bookkeeping for contractors, restaurants, practices, shops, and every other small business near Simi Valley.",
+        "Who I Work With | Glenhold Bookkeeping",
+        "I keep books for contractors, restaurants, practices, shops, and every other small business around Simi Valley. Plans from $349.",
         "/who-we-work-with/",
-        "Who we work with",
-        "The industry is not the filter. The books are.",
+        "Who I work with",
+        "Find a business that sounds like yours. If it isn't listed, call me anyway.",
         body,
         [("Home", "/"), ("Who we work with", "/who-we-work-with/")],
         [],
@@ -311,7 +311,7 @@ def build_cities():
         neighbors = related_links([(f"/service-areas/{s}/", CITY_BY[s]["name"]) for s in city["neighbors"]])
         inds = related_links([(f"/who-we-work-with/{s}/", IND_BY[s]["name"]) for s in city["industries"]])
         body = "".join(city["paragraphs"])
-        body += f"<section><h2>Businesses in {esc(city['name'])}</h2><p>These are common local business types, not a menu you have to order from. Glenhold works with small businesses across industries.</p>{inds}</section>"
+        body += f"<section><h2>Businesses in {esc(city['name'])}</h2><p>These are a few of the businesses I help here. If yours is different, I still want to hear about it.</p>{inds}</section>"
         body += f"<section><h2>Nearby</h2>{neighbors}<p><a href=\"/service-areas/\">The full service area</a></p></section>"
         body += "<section><h2>How to start</h2>" + service_links() + "</section>"
         write_inner(
@@ -335,15 +335,15 @@ def build_cities():
                 f'<section id="{city["slug"]}"><h3><a href="/service-areas/{city["slug"]}/">{esc(city["name"])}</a></h3><p>{esc(city["hub"])}</p></section>'
             )
         sections.append(f"<h2>{esc(group)}</h2><div class=\"region-grid\">{''.join(blocks)}</div>")
-    body = '''<section><h2>About an hour from Simi Valley, traffic permitting</h2><p>Glenhold Bookkeeping is based in Simi Valley, California. There is no published street address and no office in each city. Day-to-day bookkeeping is remote. In-person meetings are by arrangement when they help. The focus is roughly an hour's drive. Some cities on this list, including Ojai, Malibu, Glendale, and parts of the east Valley, often take longer. Those pages say so.</p><p>Oak Park, Winnetka, and Tarzana do not have their own pages. They sit between cities that do, and they are part of the same service area. Name the neighborhood when you write.</p></section>'''
+    body = '''<section><h2>Cities where I keep the books</h2><p>I'm in Simi Valley, and I work with small businesses across Ventura County and nearby Los Angeles. Pick your city and you'll see the kinds of local businesses I help and how a monthly close works. Oak Park, Winnetka, and Tarzana sit between cities on this list. Name your neighborhood when you write, and I'll take it from there.</p><p>We'll meet in person when that helps. The plans are the same everywhere: $349, $599, and $1,499 to start.</p></section>'''
     body += "".join(sections)
     body += "<section><h2>Same services in every city</h2>" + service_links() + "</section>"
     write_inner(
         "Bookkeeping Service Area | Simi Valley and Nearby",
-        "Glenhold serves small businesses within about an hour of Simi Valley, across Ventura County and nearby Los Angeles. Remote books. No branch offices.",
+        "I keep books for small businesses across Ventura County and nearby Los Angeles, from Simi Valley outward. Plans from $349. You work with me.",
         "/service-areas/",
         "Bookkeeping around Simi Valley",
-        "One firm. A region of cities. No claim of an office in each of them.",
+        "Find your city. I'll show you how I help local owners keep the month clear.",
         body,
         [("Home", "/"), ("Service areas", "/service-areas/")],
         [],
@@ -357,7 +357,7 @@ def build_faq():
     toc = '<div class="toc">' + "".join(
         f'<a href="#{cat.lower().replace(" ", "-")}">{esc(cat)}</a>' for cat in groups
     ) + "</div>"
-    parts = ["<section><h2>Answers written to be used on their own</h2><p>Each answer stands alone. Prices are Glenhold's published starting prices, not a survey of other firms. Tax statements are general. Confirm anything that touches a return with your CPA or the agency named.</p>" + toc + "</section>"]
+    parts = ["<section><h2>Straight answers before we talk</h2><p>These are my prices and the way I work. Tax answers are general. Confirm anything that touches a return with your CPA or the agency named.</p>" + toc + "</section>"]
     for cat, items in groups.items():
         cid = cat.lower().replace(" ", "-")
         blocks = []
@@ -374,7 +374,7 @@ def build_faq():
         "Answers on Glenhold's prices, catch-up, QuickBooks, bookkeeper vs CPA, and California basics such as the $800 LLC tax and sales tax.",
         "/bookkeeping-faq/",
         "Small business bookkeeping FAQ",
-        "Prices, scope, and California basics, in answers a person can quote.",
+        "What I charge, how catch-up works, and the California questions people ask me first.",
         "".join(parts),
         [("Home", "/"), ("Bookkeeping FAQ", "/bookkeeping-faq/")],
         [faq_node(faqs, "/bookkeeping-faq/")],
@@ -382,12 +382,12 @@ def build_faq():
 
 
 def build_resources():
-    body = '''<section><h2>Short paths into the longer answers</h2><p>These pages are the practical ones: what bookkeeping costs here, what to hand a new bookkeeper, and the California items owners ask about before they call. Glenhold Bookkeeping is a Simi Valley-based firm. It does not file tax returns.</p></section>
+    body = '''<section><h2>A few places to start</h2><p>If you want the price, the handoff list, or a plain answer on the California $800 tax or sales tax, start here. I keep the books. Your CPA files the return.</p></section>
 <section><h2>Start here</h2><ul>
-<li><a href="/bookkeeping-faq/#pricing">What monthly bookkeeping costs</a>, including the Ventura County and Los Angeles answers.</li>
-<li><a href="/bookkeeping-faq/#bookkeeper-and-cpa">Bookkeeper versus CPA</a>, and what Glenhold will not file.</li>
-<li><a href="/bookkeeping-faq/#california-basics">California $800 franchise tax and sales tax</a>, stated generally.</li>
-<li><a href="/getting-started/">What to give your bookkeeper</a> before a cleanup or a monthly start.</li>
+<li><a href="/bookkeeping-faq/#pricing">What I charge</a> in Ventura County and nearby Los Angeles.</li>
+<li><a href="/bookkeeping-faq/#bookkeeper-and-cpa">Bookkeeper and CPA</a>, and how we work together.</li>
+<li><a href="/bookkeeping-faq/#california-basics">The $800 LLC tax and sales tax</a>, in plain language.</li>
+<li><a href="/getting-started/">What to send me</a> before a cleanup or a monthly start.</li>
 <li><a href="/pricing/">Essential, Core, and Strategic</a> side by side.</li>
 </ul></section>
 <section><h2>Services behind the answers</h2>''' + service_links() + "</section>"
@@ -411,12 +411,12 @@ def build_getting_started():
 <li><strong>Statements.</strong> Every statement for the period, including opening and closing balances. Exports help. They do not replace the statement.</li>
 <li><strong>The existing file.</strong> Your QuickBooks Online company, the last month that was finished, the last month that was reconciled, and any known problems. Those two months are often different.</li>
 <li><strong>Loans.</strong> Statements or schedules that separate principal, interest, and the balance, when you have them.</li>
-<li><strong>Payroll reports.</strong> If journals need to be recorded, name the payroll provider and the reports it gives you. Glenhold does not run payroll.</li>
+<li><strong>Payroll reports.</strong> If I need to record payroll journals, name the payroll provider and the reports it gives you. Your payroll company keeps running payroll.</li>
 <li><strong>Owner transactions.</strong> Money you put in, money you took out, and business costs you paid personally.</li>
 <li><strong>Deadlines and the CPA.</strong> Tax-preparer requests, lender dates, and who should receive the finished reports.</li>
 </ol></section>
 <section><h2>Three details that keep a handoff from stalling</h2><h3>Both sides of a transfer</h3><p>If cash moved between accounts, the records for both accounts need to be in the pile. One withdrawal does not explain the destination.</p><h3>The last reconciled month</h3><p>The last month with transactions typed in may not be the last month tied to a statement. Share both if you know them. If you do not, say that.</p><h3>What you cannot find</h3><p>A missing statement is useful information. Keep a short list of gaps so the work can be planned around them.</p></section>
-<section><h2>After the handoff</h2><p>Jack will talk through priorities and whether the next step is cleanup, monthly support, or <a href="/quickbooks-online/">QuickBooks consulting</a>. A free introductory call is enough before you gather documents you may not need.</p><p class="byline">By Jack, founder of Glenhold Bookkeeping. Updated November 11, 2026.</p></section>
+<section><h2>After the handoff</h2><p>I'll talk through what matters first: a cleanup, monthly support, or <a href="/quickbooks-online/">QuickBooks help</a>. A free call is enough before you gather documents you may not need.</p><p class="byline">By Jack, Glenhold Bookkeeping. Updated November 11, 2026.</p></section>
 <section><h2>Related</h2>''' + service_links() + "</section>"
     write_inner(
         "What to Give Your Bookkeeper | Glenhold Checklist",
@@ -438,13 +438,13 @@ def build_about():
 <p>When I'm not working, I enjoy fly fishing, going on walks, and attending Mass with my wife and two children. I believe that professional excellence is rooted in personal character; as I often say, integrity is not something you can choose on a whim—it must be practiced daily over a lifetime.</p>
 <div class="about-badges"><span class="badge">Former Big 4 Accountant</span><span class="badge">Certified QuickBooks ProAdvisor</span><span class="badge">LA &amp; Ventura County</span></div>
 </div></div></section>
-<section><h2>The firm, in one place</h2><p>Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack. The legal entity is Glenhold Advisory LLC, doing business as Glenhold Bookkeeping. Phone <a href="tel:8054193451">(805) 419-3451</a>. Email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. Hours are Monday through Saturday, 6am to 6pm Pacific. No street address is published.</p><p>You work directly with Jack. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free. Tax return preparation is not a service, even though the career started at a Big 4 firm. Jack also posts bookkeeping videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p><p>The day-to-day work is remote. In-person meetings are by arrangement inside the <a href="/service-areas/">service area</a>, about an hour from Simi Valley, with some cities often taking longer.</p></section>'''
+<section><h2>How we'll work together</h2><p>I'm Jack. I live in Simi Valley, and I do the books myself. Call me at <a href="tel:8054193451">(805) 419-3451</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. I'm around Monday through Saturday, 6am to 6pm Pacific.</p><p>You work with me. Monthly plans start at $349, $599, and $1,499. If you don't love the first month, it's free. I started at a Big 4 firm. I get the books clean so your CPA can file. I also post videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p><p>We'll meet in person when that helps, across the <a href="/service-areas/">cities I serve</a>. Day to day I work from your statements and QuickBooks.</p></section>'''
     write_inner(
         "About Jack | Glenhold Bookkeeping",
-        "Jack, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor, owns Glenhold Bookkeeping (Glenhold Advisory LLC).",
+        "I'm Jack, in Simi Valley. Former Big 4 accountant and Certified QuickBooks ProAdvisor. I keep your books, and you work with me. Plans from $349.",
         "/about/",
         "About Jack",
-        "Former Big 4 accountant. Certified QuickBooks ProAdvisor. Based in Simi Valley.",
+        "I live here, I do the books myself, and you work with me.",
         body,
         [("Home", "/"), ("About", "/about/")],
         [],
@@ -453,13 +453,13 @@ def build_about():
 
 def build_pricing():
     body = f'''<section><h2>Three monthly starting prices</h2><p>Your quote reflects transaction volume, the number of accounts, and reporting complexity. Cleanup, catch-up, consulting, and training are scoped separately. The QuickBooks Online subscription is billed by Intuit, not included here.</p><div class="pricing-guarantee"><span>★</span> Love your first month of books, or it's free</div>{price_cards()}<p class="byline" style="margin-top:28px">The guarantee applies to the first month of monthly bookkeeping.</p></section>
-<section><h2>What the plans do not include</h2><ul><li>Tax returns, sales-tax returns, and payroll tax returns.</li><li>Running payroll. Strategic includes payroll journal entries from your provider.</li><li>Audit, review, or trust-account compliance.</li><li>A city surcharge. The same starting prices apply across the service area.</li></ul><p>Read the <a href="/bookkeeping-faq/#ventura-cost">Ventura County price answer</a> and the <a href="/bookkeeping-faq/#los-angeles-cost">Los Angeles price answer</a>. They cite these prices. They do not invent a market average.</p></section>'''
+<section><h2>What you can count on</h2><p>The same starting prices apply in every city I serve. I hand your CPA clean books. If you already use a payroll company, Strategic includes recording those journal entries. You pay Intuit for QuickBooks Online.</p><p>Read what I charge in <a href="/bookkeeping-faq/#ventura-cost">Ventura County</a> and <a href="/bookkeeping-faq/#los-angeles-cost">nearby Los Angeles</a>.</p></section>'''
     write_inner(
         "Bookkeeping Pricing from $349 a Month | Glenhold",
         "Glenhold monthly bookkeeping starts at $349, $599, and $1,499. Love your first month or it's free. Catch-up and QuickBooks training are quoted separately.",
         "/pricing/",
         "Straightforward monthly pricing",
-        "Essential, Core, and Strategic. Starting prices, not a surprise menu.",
+        "Essential, Core, and Strategic. I'll tell you the quote before we start.",
         body,
         [("Home", "/"), ("Pricing", "/pricing/")],
         [],
@@ -472,7 +472,7 @@ def build_pricing():
 
 
 def build_contact():
-    body = '''<section><h2>What happens after you write</h2><p>Jack replies within one business day. Hours are Monday through Saturday, 6am to 6pm Pacific. The message comes to jack@glenhold.com. It does not need your bank login, and it should not include statements. Say the city, the kind of business, whether the books are current, and roughly how many accounts you have.</p><p>You can also book a free introductory call. That call is a fit conversation, not a finished quote, until the volume is clear.</p><p>Glenhold Bookkeeping is based in Simi Valley. There is no walk-in office. If you are outside the roughly one-hour service area, say so.</p></section>'''
+    body = '''<section><h2>What happens after you write</h2><p>I'll reply within one business day. I'm around Monday through Saturday, 6am to 6pm Pacific. Tell me your city, what kind of business you run, whether the books are current, and roughly how many accounts you have. Leave the statements out of this first note. Ask me how to send files.</p><p>You can also book a free call. I'll learn enough to tell you what the work looks like, and the quote follows once I understand the volume.</p><p>I'm in Simi Valley. If you're outside the communities I list, say so and I'll tell you if I can help.</p></section>'''
     write_inner(
         "Contact Glenhold Bookkeeping in Simi Valley",
         "Call Glenhold Bookkeeping at (805) 419-3451 or email jack@glenhold.com. Simi Valley, Monday through Saturday, 6am to 6pm Pacific.",
@@ -493,7 +493,7 @@ def build_home():
     <div class="hero-content">
       <div class="hero-eyebrow">Ventura County &amp; the Greater LA Area</div>
       <h1>Small business bookkeeping.<br/><em>Local. Clear. Personal.</em></h1>
-      <p class="hero-sub">Small business bookkeeping across industries in Simi Valley and surrounding Ventura County and LA communities, from $349/month. Work directly with a former Big 4 accountant. Love your first month of books, or it's free.</p>
+      <p class="hero-sub">Your books should be current, and you should be able to read them. I keep them that way for small businesses around Simi Valley, from $349 a month. You work with me. Love your first month, or it's free.</p>
       <div class="hero-ctas">
         <a href="{CALENDAR}" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call</a>
         <a href="#contact" class="btn-ghost">Send a Message</a>
@@ -540,8 +540,8 @@ def build_home():
     <div class="pricing-guarantee"><span>★</span> Love your first month of books, or it's on me</div>
     {price_cards()}
   </section>
-  <section class="local-section" id="service-areas"><div class="section-label">Close to home</div><h2 class="section-title">A local bookkeeper for the businesses around Simi Valley</h2><p class="section-sub">Glenhold works with small businesses across industries. From professional services and retail to home services and other owner-run businesses, the bookkeeping is tailored to how you operate.</p><p class="section-sub">Based in Simi Valley. The local focus is roughly an hour away, depending on traffic. Remote bookkeeping, with in-person meetings by arrangement. No street address is published.</p>{city_chips}<div class="content-links"><a href="/service-areas/">Read the service-area guide</a><a href="/getting-started/">Prepare for a bookkeeping handoff</a></div></section>
-  <section class="faq-section" id="who"><div class="section-label">Every kind of small business</div><h2 class="section-title">No niche required</h2><p class="section-sub">These are common local businesses, not a limit. If yours is missing, you are still in the right place.</p>{ind_chips}<div class="content-links"><a href="/who-we-work-with/">How Glenhold works with each</a></div></section>
+  <section class="local-section" id="service-areas"><div class="section-label">Close to home</div><h2 class="section-title">I keep the books for the businesses around Simi Valley</h2><p class="section-sub">Shops, trades, practices, restaurants, and everything in between. I set the books up around how you operate.</p><p class="section-sub">I'm in Simi Valley. I work with owners across Ventura County and nearby Los Angeles, and we meet when that helps.</p>{city_chips}<div class="content-links"><a href="/service-areas/">Find your city</a><a href="/getting-started/">What to send me</a></div></section>
+  <section class="faq-section" id="who"><div class="section-label">Every kind of small business</div><h2 class="section-title">If you run it, I can keep the books</h2><p class="section-sub">A few of the businesses I help are listed here. If yours is missing, you're still in the right place.</p>{ind_chips}<div class="content-links"><a href="/who-we-work-with/">See how I work with each</a></div></section>
   <section class="faq-section" id="faq"><div class="section-label">Before we talk</div><h2 class="section-title">Common bookkeeping questions</h2>{faq_html(home_faqs)}<div class="content-links"><a href="/bookkeeping-faq/">Read all bookkeeping FAQs</a></div></section>
   <section class="about" id="about"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content"><div class="section-label">About Me</div><h2 class="section-title">Hi, I'm Jack</h2>
 <p>As a Simi Valley local, I am proud to raise my family in this beautiful community. I've always had a natural affinity for math, and a college professor showed me it was a perfect fit for accounting.</p>
@@ -555,7 +555,7 @@ def build_home():
 {contact_block("/")}'''
     write_page(
         "Small Business Bookkeeping in Simi Valley | Glenhold",
-        "Small business bookkeeping in Simi Valley and nearby Ventura County and LA communities. Monthly plans from $349, catch-up work, and QuickBooks Online help.",
+        "I keep the books for small businesses around Simi Valley. Monthly plans from $349, catch-up when you're behind, and QuickBooks Online help. You work with me.",
         "/",
         main,
         [("Home", "/")],
@@ -568,7 +568,7 @@ def build_home():
 def write_robots():
     lines = [
         "# AI and search crawlers are explicitly welcome.",
-        "# xAI has not published one official user-agent. The Grok tokens below are the names",
+        "# xAI has no single documented crawler token. The Grok names below are the ones",
         "# in public crawler lists. User-agent: * already allows any other agent.",
         "",
     ]
@@ -600,23 +600,23 @@ def write_sitemap():
 def write_llms():
     facts = f'''# Glenhold Bookkeeping
 
-> Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. It serves small businesses of every kind within about an hour of Simi Valley, California. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it is free.
+> I'm Jack. I keep the books for small businesses around Simi Valley, California, in every kind of industry. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it's free.
 
 ## Facts
 
-- Legal entity: Glenhold Advisory LLC, doing business as Glenhold Bookkeeping
 - Owner: Jack, former Big 4 accountant and Certified QuickBooks ProAdvisor
 - You work directly with Jack
-- Base: Simi Valley, California. No street address is published. No walk-in office
+- Based in Simi Valley, California, serving Ventura County and nearby Los Angeles communities
 - Phone: (805) 419-3451
 - Email: jack@glenhold.com
 - Website: https://glenhold.com/
 - Hours: Monday through Saturday, 6:00 a.m. to 6:00 p.m. Pacific Time
-- Service model: remote bookkeeping, with in-person meetings by arrangement in the service area
+- We meet in person when that helps. Day to day I work from your statements and QuickBooks Online
 - YouTube: {YOUTUBE}
-- Not offered: tax return preparation, sales-tax filing, running payroll, audits or reviews, trust-account compliance
-- QuickBooks Online subscription is billed by Intuit and is not included in Glenhold's prices
-- QuickBooks Desktop is not a published service
+- I hand your CPA clean, tax-ready books. Your preparer files the return
+- If you already have a payroll company, the Strategic plan includes recording those journal entries
+- QuickBooks Online is a separate subscription you pay to Intuit
+- I set up and teach QuickBooks Online
 - Guarantee: love your first month of monthly books, or that month is free
 
 ## Prices
@@ -630,10 +630,10 @@ def write_llms():
 
 ## California notes, general only
 
-- Most California LLCs owe an annual minimum franchise tax of $800. A first-year waiver applied only to LLCs that registered in 2021, 2022, or 2023. Glenhold does not file it
-- Sole proprietors do not pay that LLC tax
+- Most California LLCs owe an annual minimum franchise tax of $800. A first-year waiver applied only to LLCs that registered in 2021, 2022, or 2023. Your CPA files it. I keep the books
+- Sole proprietors pay income tax in a different way. The $800 minimum is for LLCs and corporations
 - An additional LLC fee can apply based on total income, historically starting at $250,000. Confirm current tiers with the Franchise Tax Board or a CPA
-- California statewide base sales and use tax is 7.25 percent. District taxes add more and change. Glenhold records tax collected as a liability and does not file the return
+- California statewide base sales and use tax is 7.25 percent. District taxes add more and change. I record tax collected as a liability. Your preparer files the return
 
 ## Key pages
 
@@ -641,8 +641,8 @@ def write_llms():
 - [Services](https://glenhold.com/services/): monthly, cleanup, QuickBooks, statements, CPA-ready, loan-ready
 - [Pricing](https://glenhold.com/pricing/): Essential, Core, Strategic
 - [FAQ](https://glenhold.com/bookkeeping-faq/): {len(FAQ)} standalone answers
-- [Service areas](https://glenhold.com/service-areas/): cities within about an hour of Simi Valley
-- [Who we work with](https://glenhold.com/who-we-work-with/): every kind of small business, not a niche
+- [Service areas](https://glenhold.com/service-areas/): Ventura County and nearby Los Angeles cities where I keep the books
+- [Who we work with](https://glenhold.com/who-we-work-with/): every kind of small business
 - [About](https://glenhold.com/about/): Jack
 - [Contact](https://glenhold.com/contact/): (805) 419-3451, jack@glenhold.com
 '''
