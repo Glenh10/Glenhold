@@ -170,7 +170,7 @@ def portrait(source,alt):
 
 def build_about():
     body='<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content">'+BIO+'</div></div></section>'
-    body+=section('Working with me','<p>You work with me directly, from the first call through every close. I also post bookkeeping videos on <a href="'+YOUTUBE+'" target="_blank" rel="noopener noreferrer">YouTube</a>.</p>')
+    body+=section('Working with me','<p>You work with me directly, from the first call through every close. I also post bookkeeping videos on YouTube at <a href="'+YOUTUBE+'" target="_blank" rel="noopener noreferrer">@BookkeepingBizBlueprint</a>.</p>')
     write_inner('About Jack | Glenhold Bookkeeping','Meet Jack, a Simi Valley local, former Big 4 accountant, Certified QuickBooks ProAdvisor, and founder of Glenhold Bookkeeping.','/about/','Hi, I’m Jack','Local roots and a direct relationship with your bookkeeper.',body)
 
 def build_pricing():
@@ -207,7 +207,7 @@ def write_discovery():
     urls=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     urls += ['<url><loc>'+HOME+p['path']+'</loc><lastmod>'+LASTMOD+'</lastmod></url>' for p in sorted(PAGES,key=lambda p:p['path'])]
     (ROOT/'sitemap.xml').write_text('\n'.join(urls+['</urlset>'])+'\n')
-    facts='# Glenhold Bookkeeping\n\nSimi Valley-based small business bookkeeping. Work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. Glenhold Bookkeeping is the client-facing name of Glenhold Advisory LLC.\n\nPhone: (805) 419-3451\nEmail: jack@glenhold.com\n\nMonthly plans start at $349 (Essential), $599 (Core), and $1,499 (Strategic). Quotes depend on volume, accounts, and reporting complexity. Cleanup and training are quoted separately. Tax return preparation and filing are separate from the listed bookkeeping plans.\n\n## Pages\n'
+    facts='# Glenhold Bookkeeping\n\nSimi Valley-based small business bookkeeping. Work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. Glenhold Bookkeeping is the client-facing name of Glenhold Advisory LLC.\n\nPhone: (805) 419-3451\nEmail: jack@glenhold.com\nYouTube: https://www.youtube.com/@BookkeepingBizBlueprint\n\nMonthly plans start at $349 (Essential), $599 (Core), and $1,499 (Strategic). Quotes depend on volume, accounts, and reporting complexity. Cleanup and training are quoted separately. Tax return preparation and filing are separate from the listed bookkeeping plans.\n\n## Pages\n'
     short=[p for p in PAGES if p['path'] in ['/','/services/','/pricing/','/contact/','/service-areas/','/bookkeeping-faq/','/privacy/']]
     line=lambda p:'- ['+p['title']+']('+HOME+p['path']+'): '+p['description']+'\n'
     (ROOT/'llms.txt').write_text(facts+''.join(line(p) for p in short))

@@ -13,7 +13,7 @@ PHONE_DISPLAY = "(805) 419-3451"
 PHONE_TEL = "8054193451"
 EMAIL = "jack@glenhold.com"
 CALENDAR = "https://calendar.app.google/4tubkrcpmxVYzNSRA"
-YOUTUBE = "https://www.youtube.com/@BookkeepingWithJack"
+YOUTUBE = "https://www.youtube.com/@BookkeepingBizBlueprint"
 FORM_ACTION = "https://formspree.io/f/xvzwqvgv"
 INDEXNOW_KEY = "7f3c1a9e4b28d6c0a15e8f47b2d9046c"
 HEADSHOT_W, HEADSHOT_H = 1000, 1333
@@ -205,6 +205,7 @@ def footer(cities: list[dict]) -> str:
           <li><a href="mailto:{EMAIL}">jack&#64;glenhold.com</a></li>
           <li>Mon–Sat, 6am–6pm PT</li>
           <li><a href="/service-areas/">Simi Valley, CA · Service areas</a></li>
+          <li><a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingBizBlueprint</a></li>
         </ul>
       </div>
     </div>
