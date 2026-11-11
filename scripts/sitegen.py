@@ -105,7 +105,7 @@ def nav(path: str) -> str:
 
 
 def fact_bar() -> str:
-    return f'''<aside class="fact-bar"><p><strong>Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm</strong> owned by Jack Hawley and operated by Glenhold Advisory LLC. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. Hours are Monday through Saturday, 6am to 6pm Pacific. No street address is published. Day-to-day bookkeeping is remote, with in-person meetings by arrangement in the service area.</p></aside>'''
+    return f'''<aside class="fact-bar"><p><strong>Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm</strong> owned by Jack and operated by Glenhold Advisory LLC. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. Hours are Monday through Saturday, 6am to 6pm Pacific. No street address is published. Day-to-day bookkeeping is remote, with in-person meetings by arrangement in the service area.</p></aside>'''
 
 
 def cta(heading: str = "Let's talk about your books", text: str = "Start with a free call, or send a message. You work directly with Jack.") -> str:
@@ -302,7 +302,7 @@ def business_graph(area: list[dict]) -> list[dict]:
             "url": HOME + "/headshot.webp",
             "width": HEADSHOT_W,
             "height": HEADSHOT_H,
-            "caption": "Jack Hawley, founder of Glenhold Bookkeeping",
+            "caption": "Jack, founder of Glenhold Bookkeeping",
         },
         "logo": {
             "@type": "ImageObject",
@@ -313,7 +313,7 @@ def business_graph(area: list[dict]) -> list[dict]:
         "telephone": "+18054193451",
         "email": EMAIL,
         "currenciesAccepted": "USD",
-        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack Hawley and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses of every kind. Remote service, with in-person meetings by arrangement. No street address is published.",
+        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses of every kind. Remote service, with in-person meetings by arrangement. No street address is published.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Simi Valley",
@@ -352,19 +352,19 @@ def business_graph(area: list[dict]) -> list[dict]:
                 ]},
             ],
         },
-        "founder": {"@id": HOME + "/#jack-hawley"},
+        "founder": {"@id": HOME + "/#jack"},
         "sameAs": [YOUTUBE],
         "knowsAbout": ["Small business bookkeeping", "QuickBooks Online", "Bank reconciliation", "Financial statements"],
     }
     person = {
         "@type": "Person",
-        "@id": HOME + "/#jack-hawley",
-        "name": "Jack Hawley",
+        "@id": HOME + "/#jack",
+        "name": "Jack",
         "jobTitle": "Founder",
         "url": abs_url("/about/"),
         "image": HOME + "/headshot.webp",
         "worksFor": {"@id": HOME + "/#business"},
-        "description": "Jack Hawley is the founder of Glenhold Bookkeeping in Simi Valley, California. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
+        "description": "Jack is the founder of Glenhold Bookkeeping in Simi Valley, California. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
         "hasCredential": {
             "@type": "EducationalOccupationalCredential",
             "name": "Certified QuickBooks ProAdvisor",
@@ -468,7 +468,7 @@ def head(title: str, description: str, path: str, graph: list) -> str:
   <meta name="description" content="{esc(description)}" />
   <link rel="canonical" href="{url}" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="author" content="Jack Hawley" />
+  <meta name="author" content="Jack" />
   <meta name="geo.region" content="US-CA" />
   <meta name="geo.placename" content="Simi Valley" />
   <meta property="og:type" content="website" />
@@ -480,7 +480,7 @@ def head(title: str, description: str, path: str, graph: list) -> str:
   <meta property="og:image" content="{HOME}/headshot.webp" />
   <meta property="og:image:width" content="{HEADSHOT_W}" />
   <meta property="og:image:height" content="{HEADSHOT_H}" />
-  <meta property="og:image:alt" content="Jack Hawley, founder of Glenhold Bookkeeping" />
+  <meta property="og:image:alt" content="Jack, founder of Glenhold Bookkeeping" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{esc(title)}" />
   <meta name="twitter:description" content="{esc(description)}" />
