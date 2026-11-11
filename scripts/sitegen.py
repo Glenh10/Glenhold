@@ -15,7 +15,7 @@ PHONE_DISPLAY = "(805) 419-3451"
 PHONE_TEL = "8054193451"
 EMAIL = "jack@glenhold.com"
 CALENDAR = "https://calendar.app.google/4tubkrcpmxVYzNSRA"
-YOUTUBE = ""  # Set after the owner provides the verified channel URL.
+YOUTUBE = "https://www.youtube.com/@bookkeepingbizblueprint"
 FORM_ACTION = "https://formspree.io/f/xvzwqvgv"
 INDEXNOW_KEY = "7f3c1a9e4b28d6c0a15e8f47b2d9046c"
 HEADSHOT_W, HEADSHOT_H = 1000, 1333
@@ -197,6 +197,7 @@ def footer(cities: list[dict]) -> str:
           <li><a href="/bookkeeping-faq/">Bookkeeping FAQ</a></li>
           <li><a href="/resources/">Resources</a></li>
           <li><a href="/about/">About</a></li>
+          <li><a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">YouTube channel</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>

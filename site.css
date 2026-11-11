@@ -608,3 +608,13 @@ a.btn-outline-slate:visited {color:var(--slate)}
 .footer-col ul li a:hover {color:var(--sage-light)}
 
 a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color:var(--text)}
+
+/* Public YouTube channel feature; videos open on YouTube. */
+.hero-social {flex-wrap:wrap}
+.video-section {background:var(--cream-dark)}
+.video-inner {display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;max-width:1160px;margin:0 auto}
+.video-section .section-sub {margin-bottom:24px}
+.video-channel-card {background:var(--slate);color:var(--white);border-radius:6px;padding:32px}
+.video-channel-card h3 {color:var(--white);font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1.25;margin:20px 0 10px}
+.video-channel-card p {color:var(--sage-light);font-size:.95rem;margin:0;overflow-wrap:anywhere}
+@media(max-width:800px){.video-inner{grid-template-columns:1fr;gap:28px}.video-channel-card{padding:24px}}
