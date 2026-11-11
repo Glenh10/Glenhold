@@ -42,26 +42,26 @@ FAQ = [
         "cat": "About Glenhold",
         "id": "work-with-owner",
         "q": "Will I work directly with the owner?",
-        "a": "Yes. You work with me. I'm in Simi Valley. I started at a Big 4 firm, and I'm a Certified QuickBooks ProAdvisor.",
+        "a": "Yes. You work with me. I live in Simi Valley, I started my career at a Big 4 firm, and I'm a Certified QuickBooks ProAdvisor.",
     },
     {
         "cat": "Pricing",
         "id": "glenhold-cost",
         "home": True,
         "q": "How much does Glenhold bookkeeping cost?",
-        "a": "Monthly plans start at $349 for Essential, $599 for Core, and $1,499 for Strategic. Your quote depends on how much activity you have and how complex the books are. Catch-up, consulting, and training are priced on their own.",
+        "a": "Essential is $349 a month to start, Core is $599, and Strategic is $1,499. What you actually pay depends on how much activity you have and how complex the books are. Catch-up, consulting, and training are priced on their own.",
     },
     {
         "cat": "Pricing",
         "id": "ventura-cost",
         "q": "How much does bookkeeping cost in Ventura County?",
-        "a": "I'm in Simi Valley and I work across Ventura County. My monthly plans start at $349, $599, and $1,499. That's my pricing, not a county average. Catch-up and QuickBooks training are quoted separately, based on the work.",
+        "a": "I'm in Simi Valley and I work across Ventura County. Plans are $349, $599, or $1,499 a month to start. Those are my prices. Catch-up and QuickBooks training are priced from the work, on their own.",
     },
     {
         "cat": "Pricing",
         "id": "los-angeles-cost",
         "q": "How much does bookkeeping cost in the Los Angeles area near Simi Valley?",
-        "a": "Same starting prices: $349, $599, and $1,499 a month. I don't add a fee because you're in Los Angeles County. The quote still depends on your accounts and your volume.",
+        "a": "Plans are $349, $599, or $1,499 a month to start, whether you're in Los Angeles County or Ventura County. The quote still depends on your accounts and your volume.",
     },
     {
         "cat": "Pricing",
@@ -97,7 +97,7 @@ FAQ = [
         "cat": "Pricing",
         "id": "guarantee",
         "q": "What does the first-month bookkeeping guarantee cover?",
-        "a": "Love your first month of books, or it's free. That covers the first month of monthly bookkeeping. Catch-up, consulting, and training are quoted on their own. Your QuickBooks subscription is separate too.",
+        "a": "Love your first month of books, or it's free. That covers the first month of monthly bookkeeping. Catch-up, consulting, and training are priced on their own. Your QuickBooks subscription is separate too.",
     },
     {
         "cat": "Pricing",
@@ -250,7 +250,7 @@ FAQ = [
         "cat": "Bookkeeper and CPA",
         "id": "big-4",
         "q": "Why does a small-business bookkeeper mention Big 4 experience?",
-        "a": "I started at a Big 4 firm, on large company books and on audits of Fortune 500 financial services companies. For you that means a chart of accounts that fits, reconciliations that tie to the bank, and reports you can read. I don't offer audits.",
+        "a": "I started my career at a Big 4 firm, working on large company books and on audits of Fortune 500 financial services companies. For you that means a chart of accounts that fits, reconciliations that tie to the bank, and reports you can read. I don't offer audits.",
     },
     {
         "cat": "California basics",

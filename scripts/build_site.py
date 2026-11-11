@@ -31,7 +31,6 @@ from sitegen import (  # noqa: E402
     crumb_html,
     cta,
     esc,
-    fact_bar,
     faq_html,
     faq_node,
     hub_cards,
@@ -116,7 +115,7 @@ def write_inner(title, description, path, h1, lede, body, crumbs, extra, faqs=No
         faq_block = f"<section><h2>{esc(faq_heading)}</h2>{faq_html(faqs)}</section>"
         nodes.append(faq_node(faqs, path))
     main = f'''<header class="page-hero"><div class="breadcrumb">{crumb_html(crumbs)}</div><h1>{esc(h1)}</h1><p>{esc(lede)}</p><a class="btn-primary" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a></header>
-<article class="article-body">{fact_bar()}{body}{faq_block}</article>
+<article class="article-body">{body}{faq_block}</article>
 {cta()}
 {contact_block(path)}'''
     write_page(title, description, path, main, crumbs, nodes, CITIES, area())
@@ -167,9 +166,9 @@ def build_services():
             "body": '''<section><h2>Bring the backlog current</h2><p>Cleanup means the books exist and they're wrong. Catch-up means the months were never entered. A lot of projects are both. I do this for small businesses around Simi Valley. We can stop when the backlog is done, or keep going month to month.</p></section>
 <section><h2>What a project can cover</h2><ul><li>Organizing statements, exports, and the existing accounting file.</li><li>Importing missing transactions and classifying income and expenses.</li><li>Reviewing duplicates, unmatched transfers, and balances that do not tie.</li><li>Reconciling bank and credit card accounts to the statements you have.</li><li>Tidying the chart of accounts so the reports can be read.</li><li>A package your CPA can use. They file the return.</li></ul><p>If an entry is unclear, I'll ask you. I'd rather wait than guess what a transfer was for.</p></section>
 <section><h2>What to gather</h2><p>The months in question, every business bank and credit card account including accounts you closed, and statements that show opening and closing balances. Add loans, payroll reports, and owner contributions or draws when they matter. If you changed banks, include both sides. The <a href="/getting-started/">handoff checklist</a> is the longer version. Ask how to send files before you email anything sensitive.</p></section>
-<section><h2>Price and timing</h2><p>I quote cleanup from the periods, accounts, transactions, and fixes. The monthly starting prices of $349, $599, and $1,499 are for ongoing work. Tell me any tax or lender date on the first call so I can plan around it.</p><p>When the project is done you can move to <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or to <a href="/quickbooks-online/">training and check-ins</a> if you want the file back.</p></section>''',
+<section><h2>Price and timing</h2><p>I quote cleanup from the periods, accounts, transactions, and fixes. The monthly plans, $349, $599, or $1,499 to start, are for ongoing work. Tell me any tax or lender date on the first call so I can plan around it.</p><p>When the project is done you can move to <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or to <a href="/quickbooks-online/">training and check-ins</a> if you want the file back.</p></section>''',
             "faqs": [
-                ("How much does catch-up bookkeeping cost?", "It is quoted from the months, accounts, transactions, and corrections involved. It is not priced off the monthly plans. Jack scopes it before you commit."),
+                ("How much does catch-up bookkeeping cost?", "I price catch-up from the months, accounts, and fixes involved, separate from the monthly plans. I'll tell you the price before you decide."),
                 ("Will the books be ready for my CPA?", "That is the handoff: classified transactions, reconciled accounts, financial statements, and a note of anything the records could not support. Your CPA files the return."),
             ],
         },
@@ -183,7 +182,7 @@ def build_services():
             "offer": None,
             "body": '''<section><h2>I'll set QuickBooks up so it fits your business</h2><p>If the file is noisy or you want to keep doing the entry yourself, I can set it up, train you, and check your work. I'm a Certified QuickBooks ProAdvisor and a former Big 4 accountant, in Simi Valley. I work in QuickBooks Online. If you're still on Desktop, tell me on the intro call before we start.</p></section>
 <section><h2>What setup covers</h2><ul><li>A QuickBooks Online file built around how money moves through the business.</li><li>A chart of accounts for income, expenses, assets, liabilities, and equity.</li><li>A routine for reviewing activity, separating transfers from income and expenses, and reconciling.</li><li>Accuracy check-ins on a schedule you agree to, if you want a review rather than a handoff.</li></ul><p>Too many overlapping accounts make a profit and loss hard to read. Too few hide the thing you meant to see. Setup starts by asking which reports you actually use.</p></section>
-<section><h2>Training or a monthly plan</h2><p>Choose training when you want to keep the day-to-day work. Choose <a href="/monthly-bookkeeping/">monthly bookkeeping</a> when you want me to categorize, reconcile, and send the statements. You can start with one and move to the other. Training is quoted on its own. Monthly plans start at $349. You pay Intuit for the QuickBooks subscription.</p><p>An existing file does not have to be thrown out. It may need a chart review, or a <a href="/cleanup-catch-up/">cleanup</a>, before a routine makes sense.</p></section>''',
+<section><h2>Training or a monthly plan</h2><p>Choose training when you want to keep the day-to-day work. Choose <a href="/monthly-bookkeeping/">monthly bookkeeping</a> when you want me to categorize, reconcile, and send the statements. You can start with one and move to the other. I price training on its own. Monthly plans start at $349. You pay Intuit for the QuickBooks subscription.</p><p>An existing file does not have to be thrown out. It may need a chart review, or a <a href="/cleanup-catch-up/">cleanup</a>, before a routine makes sense.</p></section>''',
             "faqs": [
                 ("Is Jack a QuickBooks ProAdvisor?", "Yes. Jack is a Certified QuickBooks ProAdvisor. The setup, training, and consulting on this page are for QuickBooks Online."),
                 ("Does monthly bookkeeping include the QuickBooks subscription?", "No. Intuit bills the subscription. Glenhold's prices are for the bookkeeping work. Check Intuit for the current software price."),
@@ -230,7 +229,7 @@ def build_services():
             "lede": "Lenders ask for statements that match the bank. I'll get the books there. They still make the decision.",
             "offer": None,
             "body": '''<section><h2>Give the lender statements that tie</h2><p>Lenders usually ask for a recent profit and loss, a balance sheet, and bank statements for the same months. They want the cash on the balance sheet to match the statement. I catch the books up and reconcile them so those reports agree. You or your broker send the package. Your CPA may still provide the tax returns.</p></section>
-<section><h2>If you're on a deadline</h2><p>If the books are months behind, we start with <a href="/cleanup-catch-up/">catch-up</a> for the periods the lender named. If they're current, <a href="/financial-statements/">monthly statements</a> are already part of the plans that start at $349, $599, and $1,499. Tell me the date on the first call. I can only use the statements you actually have.</p></section>''',
+<section><h2>If you're on a deadline</h2><p>If the books are months behind, we start with <a href="/cleanup-catch-up/">catch-up</a> for the periods the lender named. If they're current, <a href="/financial-statements/">monthly statements</a> are already part of the plans at $349, $599, or $1,499 a month to start. Tell me the date on the first call. I can only use the statements you actually have.</p></section>''',
             "faqs": [
                 ("Can you guarantee my loan will be approved?", "No. Glenhold prepares reconciled financial statements. The lender decides."),
                 ("Do I still need my tax returns?", "Often yes. Lenders ask the CPA's returns as well as the bookkeeping statements. Glenhold does not file the returns."),
@@ -260,7 +259,7 @@ def build_service_hub():
         ("/cpa-ready-books/", "CPA-ready books", "Reconciled records your CPA can use at tax time."),
         ("/loan-ready-books/", "Loan-ready financials", "Statements a lender can read, prepared from reconciled books."),
     ]
-    body = f'''<section><h2>Tell me where the books stand</h2><p>Most people call because the month never quite closes, a year got away from them, or QuickBooks feels harder than it should. I do monthly bookkeeping, catch-up, and QuickBooks Online setup and training. The statements, the CPA handoff, and the lender package come out of that work. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free.</p>{hub_cards(cards)}</section>
+    body = f'''<section><h2>Tell me where the books stand</h2><p>Most people call because the month never quite closes, a year got away from them, or QuickBooks feels harder than it should. I do monthly bookkeeping, catch-up, and QuickBooks Online setup and training. The statements, the CPA handoff, and the lender package come out of that work. Plans are $349, $599, or $1,499 a month to start. Love your first month of books, or it's free.</p>{hub_cards(cards)}</section>
 <section><h2>You still keep your CPA</h2><p>I hand your CPA clean, tax-ready books. They file the return. If you already have a payroll company, the Strategic plan includes recording those journal entries. You pay Intuit for QuickBooks Online. You work with me, whatever kind of small business you run. <a href="/who-we-work-with/">See a few of them</a>.</p></section>'''
     write_inner(
         "Bookkeeping Services | Glenhold Bookkeeping",
@@ -293,7 +292,7 @@ def build_industries():
         )
     cards = [(f"/who-we-work-with/{i['slug']}/", i["name"], i["lede"]) for i in INDUSTRIES]
     body = f'''<section><h2>I work with all kinds of small businesses</h2><p>These pages show how I usually set up the books for businesses I see around Simi Valley, so you can tell if it sounds like yours. If your business is missing, call anyway. What I need to know is your accounts, your volume, and the reports you want.</p>{hub_cards(cards)}</section>
-<section><h2>The plans stay the same</h2><p>Monthly plans start at $349, $599, and $1,499. Catch-up and QuickBooks training are quoted on their own. I hand your CPA clean books, and they file the return. If you already have a payroll company, Strategic includes recording those entries. You work with me.</p>{service_links()}</section>'''
+<section><h2>The plans stay the same</h2><p>Plans are $349, $599, or $1,499 a month to start. Catch-up and QuickBooks training are priced on their own. I hand your CPA clean books, and they file the return. If you already have a payroll company, Strategic includes recording those entries. You work with me.</p>{service_links()}</section>'''
     write_inner(
         "Who I Work With | Glenhold Bookkeeping",
         "I keep books for contractors, restaurants, practices, shops, and every other small business around Simi Valley. Plans from $349.",
@@ -335,7 +334,7 @@ def build_cities():
                 f'<section id="{city["slug"]}"><h3><a href="/service-areas/{city["slug"]}/">{esc(city["name"])}</a></h3><p>{esc(city["hub"])}</p></section>'
             )
         sections.append(f"<h2>{esc(group)}</h2><div class=\"region-grid\">{''.join(blocks)}</div>")
-    body = '''<section><h2>Cities where I keep the books</h2><p>I'm in Simi Valley, and I work with small businesses across Ventura County and nearby Los Angeles. Pick your city and you'll see the kinds of local businesses I help and how a monthly close works. Oak Park, Winnetka, and Tarzana sit between cities on this list. Name your neighborhood when you write, and I'll take it from there.</p><p>We'll meet in person when that helps. The plans are the same everywhere: $349, $599, and $1,499 to start.</p></section>'''
+    body = '''<section><h2>Cities where I keep the books</h2><p>I'm in Simi Valley, and I work with small businesses across Ventura County and nearby Los Angeles. Pick your city and you'll see the kinds of local businesses I help and how a monthly close works. Oak Park, Winnetka, and Tarzana sit between cities on this list. Name your neighborhood when you write, and I'll take it from there.</p><p>We'll meet in person when that helps. Plans are $349, $599, or $1,499 a month to start, in every city.</p></section>'''
     body += "".join(sections)
     body += "<section><h2>Same services in every city</h2>" + service_links() + "</section>"
     write_inner(
@@ -438,7 +437,7 @@ def build_about():
 <p>When I'm not working, I enjoy fly fishing, going on walks, and attending Mass with my wife and two children. I believe that professional excellence is rooted in personal character; as I often say, integrity is not something you can choose on a whim—it must be practiced daily over a lifetime.</p>
 <div class="about-badges"><span class="badge">Former Big 4 Accountant</span><span class="badge">Certified QuickBooks ProAdvisor</span><span class="badge">LA &amp; Ventura County</span></div>
 </div></div></section>
-<section><h2>How we'll work together</h2><p>I'm Jack. I live in Simi Valley, and I do the books myself. Call me at <a href="tel:8054193451">(805) 419-3451</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. I'm around Monday through Saturday, 6am to 6pm Pacific.</p><p>You work with me. Monthly plans start at $349, $599, and $1,499. If you don't love the first month, it's free. I started at a Big 4 firm. I get the books clean so your CPA can file. I also post videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p><p>We'll meet in person when that helps, across the <a href="/service-areas/">cities I serve</a>. Day to day I work from your statements and QuickBooks.</p></section>'''
+<section><h2>Working with me</h2><p>You work with me directly, from the first call through every close. I also post bookkeeping videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p></section>'''
     write_inner(
         "About Jack | Glenhold Bookkeeping",
         "I'm Jack, in Simi Valley. Former Big 4 accountant and Certified QuickBooks ProAdvisor. I keep your books, and you work with me. Plans from $349.",
@@ -453,10 +452,10 @@ def build_about():
 
 def build_pricing():
     body = f'''<section><h2>Three monthly starting prices</h2><p>Your quote reflects transaction volume, the number of accounts, and reporting complexity. Cleanup, catch-up, consulting, and training are scoped separately. The QuickBooks Online subscription is billed by Intuit, not included here.</p><div class="pricing-guarantee"><span>★</span> Love your first month of books, or it's free</div>{price_cards()}<p class="byline" style="margin-top:28px">The guarantee applies to the first month of monthly bookkeeping.</p></section>
-<section><h2>What you can count on</h2><p>The same starting prices apply in every city I serve. I hand your CPA clean books. If you already use a payroll company, Strategic includes recording those journal entries. You pay Intuit for QuickBooks Online.</p><p>Read what I charge in <a href="/bookkeeping-faq/#ventura-cost">Ventura County</a> and <a href="/bookkeeping-faq/#los-angeles-cost">nearby Los Angeles</a>.</p></section>'''
+<section><h2>What you can count on</h2><p>Plans are $349, $599, or $1,499 a month to start, in every city I serve. I hand your CPA clean books. If you already use a payroll company, Strategic includes recording those journal entries. You pay Intuit for QuickBooks Online.</p><p>Read what I charge in <a href="/bookkeeping-faq/#ventura-cost">Ventura County</a> and <a href="/bookkeeping-faq/#los-angeles-cost">nearby Los Angeles</a>.</p></section>'''
     write_inner(
         "Bookkeeping Pricing from $349 a Month | Glenhold",
-        "Glenhold monthly bookkeeping starts at $349, $599, and $1,499. Love your first month or it's free. Catch-up and QuickBooks training are quoted separately.",
+        "Plans are $349, $599, or $1,499 a month to start. Love your first month or it's free. Catch-up and QuickBooks training are priced on their own.",
         "/pricing/",
         "Straightforward monthly pricing",
         "Essential, Core, and Strategic. I'll tell you the quote before we start.",
@@ -464,7 +463,7 @@ def build_pricing():
         [("Home", "/"), ("Pricing", "/pricing/")],
         [],
         [
-            ("How much does Glenhold bookkeeping cost?", "Monthly plans start at $349, $599, and $1,499. The quote depends on volume and complexity. Cleanup and training are extra."),
+            ("How much does Glenhold bookkeeping cost?", "Plans are $349, $599, or $1,499 a month to start. The quote depends on volume and complexity. Cleanup and training are extra."),
             ("What does the guarantee cover?", "Love your first month of monthly books, or that month is free. It does not price a cleanup project or the QuickBooks subscription."),
         ],
         "Pricing questions",
@@ -600,7 +599,7 @@ def write_sitemap():
 def write_llms():
     facts = f'''# Glenhold Bookkeeping
 
-> I'm Jack. I keep the books for small businesses around Simi Valley, California, in every kind of industry. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it's free.
+> I'm Jack. I keep the books for small businesses around Simi Valley, California, in every kind of industry. Plans are $349, $599, or $1,499 a month to start. Love your first month of books, or it's free.
 
 ## Facts
 
@@ -624,7 +623,7 @@ def write_llms():
 - Essential monthly bookkeeping: starting at $349 per month. Categorization, reconciliation, monthly statements, clean books for tax season
 - Core monthly bookkeeping: starting at $599 per month. Essential, plus a quarterly profit and expense summary, year-to-date comparison, and priority support
 - Strategic monthly bookkeeping: starting at $1,499 per month. Core, plus custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call
-- Cleanup, catch-up, consulting, and training are quoted separately
+- Cleanup, catch-up, consulting, and training are priced on their own
 - Quotes move with transaction volume, number of accounts, and reporting complexity
 - No city surcharge is published
 
