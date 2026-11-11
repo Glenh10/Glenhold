@@ -1,5 +1,5 @@
 # AI and search crawlers are explicitly welcome.
-# xAI has not published one official user-agent. The Grok tokens below are the names
+# xAI has no single documented crawler token. The Grok names below are the ones
 # in public crawler lists. User-agent: * already allows any other agent.
 
 User-agent: GPTBot

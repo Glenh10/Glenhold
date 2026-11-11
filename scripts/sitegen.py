@@ -18,7 +18,7 @@ FORM_ACTION = "https://formspree.io/f/xvzwqvgv"
 INDEXNOW_KEY = "7f3c1a9e4b28d6c0a15e8f47b2d9046c"
 HEADSHOT_W, HEADSHOT_H = 1000, 1333
 ABOUT_W, ABOUT_H = 1100, 1467
-GEO_LAT, GEO_LNG = 34.2694, -118.7815  # Simi Valley city centroid, not a street address
+GEO_LAT, GEO_LNG = 34.2694, -118.7815  # Simi Valley city centroid for local schema
 
 SERVICE_PATHS = {
     "/monthly-bookkeeping/",
@@ -105,7 +105,7 @@ def nav(path: str) -> str:
 
 
 def fact_bar() -> str:
-    return f'''<aside class="fact-bar"><p><strong>Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm</strong> owned by Jack and operated by Glenhold Advisory LLC. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. Hours are Monday through Saturday, 6am to 6pm Pacific. No street address is published. Day-to-day bookkeeping is remote, with in-person meetings by arrangement in the service area.</p></aside>'''
+    return f'''<aside class="fact-bar"><p>I'm Jack, in Simi Valley. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. I'm available Monday through Saturday, 6am to 6pm Pacific. I keep your books current, and we meet in person when that helps.</p></aside>'''
 
 
 def cta(heading: str = "Let's talk about your books", text: str = "Start with a free call, or send a message. You work directly with Jack.") -> str:
@@ -186,7 +186,7 @@ def footer(cities: list[dict]) -> str:
     <div class="footer-top">
       <div>
         <div class="footer-brand">Glenhold <span>Bookkeeping</span></div>
-        <p class="footer-desc">Clean books and clear financials for small businesses in Ventura County and the Greater LA Area. Based in Simi Valley. Remote bookkeeping, with in-person meetings by arrangement.</p>
+        <p class="footer-desc">I keep the books for small businesses around Simi Valley. You work with me, and we meet when that helps.</p>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -313,7 +313,7 @@ def business_graph(area: list[dict]) -> list[dict]:
         "telephone": "+18054193451",
         "email": EMAIL,
         "currenciesAccepted": "USD",
-        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses of every kind. Remote service, with in-person meetings by arrangement. No street address is published.",
+        "description": "Jack keeps the books for small businesses around Simi Valley: monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training. You work with him, and he meets in person when that helps.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Simi Valley",
@@ -364,7 +364,7 @@ def business_graph(area: list[dict]) -> list[dict]:
         "url": abs_url("/about/"),
         "image": HOME + "/headshot.webp",
         "worksFor": {"@id": HOME + "/#business"},
-        "description": "Jack is the founder of Glenhold Bookkeeping in Simi Valley, California. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
+        "description": "Jack runs Glenhold Bookkeeping in Simi Valley. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
         "hasCredential": {
             "@type": "EducationalOccupationalCredential",
             "name": "Certified QuickBooks ProAdvisor",
