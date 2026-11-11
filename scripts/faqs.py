@@ -1,357 +1,57 @@
-"""Answers in Jack's voice. The same text is shown on the page and in FAQ schema."""
+"""Client questions; the visible answers also supply FAQ structured data."""
 
-FAQ = [
-    {
-        "cat": "About Glenhold",
-        "id": "what-is-glenhold",
-        "q": "What is Glenhold Bookkeeping?",
-        "a": "I'm Jack, and Glenhold Bookkeeping is my practice in Simi Valley. I do monthly bookkeeping, catch-up when you're behind, and QuickBooks Online setup and training. I work with all kinds of small businesses. Call me at (805) 419-3451 or email jack@glenhold.com.",
-    },
-    {
-        "cat": "About Glenhold",
-        "id": "who-owns-glenhold",
-        "q": "Who owns Glenhold Bookkeeping?",
-        "a": "I do. You work with me, not a team that rotates. I'm a Simi Valley local, a former Big 4 accountant, and a Certified QuickBooks ProAdvisor.",
-    },
-    {
-        "cat": "About Glenhold",
-        "id": "where-based",
-        "q": "Where is Glenhold Bookkeeping based?",
-        "a": "I'm based in Simi Valley. I work with small businesses across Ventura County and nearby Los Angeles communities. We'll meet in person when that helps.",
-    },
-    {
-        "cat": "About Glenhold",
-        "id": "hours",
-        "q": "What are Glenhold Bookkeeping's hours?",
-        "a": "Monday through Saturday, 6am to 6pm Pacific. If you write through the site, I'll reply within one business day.",
-    },
-    {
-        "cat": "About Glenhold",
-        "id": "is-jack-a-cpa",
-        "q": "Is Jack a CPA?",
-        "a": "I'm a former Big 4 accountant and a Certified QuickBooks ProAdvisor. I don't hold myself out as your CPA, and I don't prepare your tax return. Keep your tax preparer for the filing. I'll hand them books they can use.",
-    },
-    {
-        "cat": "About Glenhold",
-        "id": "industries",
-        "home": True,
-        "q": "Do you only work with certain industries?",
-        "a": "No. I work with all kinds of small businesses. What matters is your accounts, how many transactions you have, and what you want the reports to show.",
-    },
-    {
-        "cat": "About Glenhold",
-        "id": "work-with-owner",
-        "q": "Will I work directly with the owner?",
-        "a": "Yes. You work with me. I live in Simi Valley, I started my career at a Big 4 firm, and I'm a Certified QuickBooks ProAdvisor.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "glenhold-cost",
-        "home": True,
-        "q": "How much does Glenhold bookkeeping cost?",
-        "a": "Essential is $349 a month to start, Core is $599, and Strategic is $1,499. What you actually pay depends on how much activity you have and how complex the books are. Catch-up, consulting, and training are priced on their own.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "ventura-cost",
-        "q": "How much does bookkeeping cost in Ventura County?",
-        "a": "I'm in Simi Valley and I work across Ventura County. Plans are $349, $599, or $1,499 a month to start. Those are my prices. Catch-up and QuickBooks training are priced from the work, on their own.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "los-angeles-cost",
-        "q": "How much does bookkeeping cost in the Los Angeles area near Simi Valley?",
-        "a": "Plans are $349, $599, or $1,499 a month to start, whether you're in Los Angeles County or Ventura County. The quote still depends on your accounts and your volume.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "essential",
-        "q": "What is included in Essential bookkeeping at $349 a month?",
-        "a": "Essential starts at $349 a month. I categorize expenses, reconcile your bank and credit cards, and send monthly financial statements so tax time is calmer. It's a fit when the books are fairly simple.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "core",
-        "q": "What is included in Core bookkeeping at $599 a month?",
-        "a": "Core starts at $599 a month. You get everything in Essential, plus a quarterly profit and expense summary, a year-to-date comparison, and priority support. It's for a business that wants to see how the year is going, not only a file for the CPA.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "strategic",
-        "q": "What is included in Strategic bookkeeping at $1,499 a month?",
-        "a": "Strategic starts at $1,499 a month. You get everything in Core, plus custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call where we walk through the numbers together.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "why-quotes-change",
-        "q": "Why isn't small-business bookkeeping one flat price?",
-        "a": "Two small businesses can need very different time. One checking account is not the same job as several cards, loans, and a busy sales month. My prices are starting points. I quote from your volume, your accounts, and the reports you want.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "quickbooks-subscription",
-        "q": "Does the monthly bookkeeping price include QuickBooks Online?",
-        "a": "No. You pay Intuit for QuickBooks Online. My prices are for the bookkeeping. Intuit's price changes with the version, so check it with them.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "guarantee",
-        "q": "What does the first-month bookkeeping guarantee cover?",
-        "a": "Love your first month of books, or it's free. That covers the first month of monthly bookkeeping. Catch-up, consulting, and training are priced on their own. Your QuickBooks subscription is separate too.",
-    },
-    {
-        "cat": "Pricing",
-        "id": "catch-up-cost",
-        "q": "How much does catch-up bookkeeping cost?",
-        "a": "I quote catch-up from the months, accounts, and fixes involved. It is not the $349, $599, or $1,499 monthly price. A short gap with complete statements is a smaller job than several years that were never reconciled. I'll tell you the scope before you decide.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "monthly-includes",
-        "q": "What does monthly bookkeeping include?",
-        "a": "Every monthly plan includes expense categorization, bank and credit card reconciliation, monthly financial statements, and clean books for tax season. Core adds a quarterly summary, a year-to-date comparison, and priority support. Strategic adds custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "statements-by-the-15th",
-        "q": "When are monthly financial statements ready?",
-        "a": "I aim for your profit and loss and balance sheet by the 15th of the next month. That depends on statements and answers arriving in time. If a statement is late, the close can slip. All three plans include these statements.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "what-is-a-pl",
-        "q": "What is a profit and loss statement?",
-        "a": "It shows income, expenses, and profit for a period, usually a month or a year. It does not, by itself, show the cash in the bank. I include a profit and loss with the monthly close, aimed at the 15th.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "what-is-a-balance-sheet",
-        "q": "What is a balance sheet?",
-        "a": "It's a snapshot of what the business owns, what it owes, and what's left for you. Bank balances, cards, loans, and draws all show up there. I send one with the profit and loss each month.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "what-is-reconciliation",
-        "q": "What is a bank reconciliation?",
-        "a": "I match the books to the bank or card statement. Fees, interest, and transfers have to be in there too. When it ties, that account is closed for the month. When it doesn't, something is missing, duplicated, or in the wrong place. Every monthly plan includes this.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "payroll",
-        "q": "Does Glenhold process payroll?",
-        "a": "I don't run payroll. If you already use a payroll company, the Strategic plan includes recording those payroll journal entries in your books.",
-    },
-    {
-        "cat": "Monthly bookkeeping",
-        "id": "switch-plans",
-        "q": "Can I switch between Essential, Core, and Strategic?",
-        "a": "Yes. Tell me before the next close. People usually move because the volume, the accounts, or the reports they want have changed.",
-    },
-    {
-        "cat": "Cleanup and catch-up",
-        "id": "behind",
-        "home": True,
-        "q": "Can you help if my books are months or years behind?",
-        "a": "Yes. I'll classify the transactions, pull in what we can from statements and exports, reconcile the accounts, and hand your CPA a clean package. How long it takes depends on the records you have.",
-    },
-    {
-        "cat": "Cleanup and catch-up",
-        "id": "cleanup-vs-catch-up",
-        "q": "What is the difference between bookkeeping cleanup and catch-up?",
-        "a": "Cleanup means the books exist and they're wrong: duplicates, bad categories, balances that don't match the bank. Catch-up means months that were never entered. A lot of projects are both. I'll do either, and I'll hand the result to your CPA.",
-    },
-    {
-        "cat": "Cleanup and catch-up",
-        "id": "cleanup-records",
-        "q": "What records do you need for catch-up bookkeeping?",
-        "a": "The months you want finished, every business bank and card account, including ones you closed, and statements that show the opening and closing balances. Loans, payroll reports, and money you put in or took out help too. If you changed banks, I need both. Ask me how to send files before you email anything sensitive.",
-    },
-    {
-        "cat": "Cleanup and catch-up",
-        "id": "how-long-catch-up",
-        "q": "How long does catch-up bookkeeping take?",
-        "a": "It depends on the backlog, what's missing, and how fast we can answer open questions. A short gap with full statements moves faster than years with no opening balance. Tell me the tax or lender date on the first call so I can plan around it.",
-    },
-    {
-        "cat": "Cleanup and catch-up",
-        "id": "cpa-handoff",
-        "q": "Will catch-up bookkeeping make my books ready for a CPA?",
-        "a": "That's the goal. You get classified transactions, reconciled accounts, financial statements, and a note on anything the records couldn't support. Your CPA files the return. I don't.",
-    },
-    {
-        "cat": "Cleanup and catch-up",
-        "id": "lender-books",
-        "q": "Can bookkeeping cleanup prepare numbers a lender can review?",
-        "a": "Lenders usually want a profit and loss, a balance sheet, and recent bank statements. I can catch the books up and give you those. I don't fill out the loan application, and I can't promise an approval. They may still ask your CPA for the tax returns.",
-    },
-    {
-        "cat": "QuickBooks",
-        "id": "quickbooks-help",
-        "home": True,
-        "q": "Can you help with QuickBooks Online?",
-        "a": "Yes. I'll set it up, organize the chart of accounts, train you, or check your work on a schedule we agree on. I'm a Certified QuickBooks ProAdvisor. If you later want me to keep the books, we can switch to a monthly plan.",
-    },
-    {
-        "cat": "QuickBooks",
-        "id": "qbo-setup",
-        "q": "What happens in a QuickBooks Online setup?",
-        "a": "We start with how money moves through your business and which reports you actually use. I set up the file, build a chart of accounts that fits, and show you how to review activity, tell transfers from income and expenses, and reconcile. Setup is priced on its own, not as one of the monthly plans.",
-    },
-    {
-        "cat": "QuickBooks",
-        "id": "chart-of-accounts",
-        "q": "What is a chart of accounts?",
-        "a": "It's the list of categories in your books: income, expenses, assets, liabilities, and equity. A good chart matches how you operate. Too many accounts make the profit and loss noisy. Too few hide what you wanted to see. I build or clean that list during setup, catch-up, or monthly work.",
-    },
-    {
-        "cat": "QuickBooks",
-        "id": "training",
-        "q": "Can Glenhold train me to keep my own books?",
-        "a": "Yes. If you want to keep doing the entry, I'll set you up, clean the chart of accounts, and check your work on a schedule. We focus on the tasks you actually do. Training is priced separately from monthly bookkeeping.",
-    },
-    {
-        "cat": "QuickBooks",
-        "id": "desktop",
-        "q": "Do you support QuickBooks Desktop?",
-        "a": "I set up and teach QuickBooks Online. If you're still on Desktop, tell me on the intro call before we decide how to start.",
-    },
-    {
-        "cat": "Bookkeeper and CPA",
-        "id": "bookkeeper-vs-cpa",
-        "q": "What is the difference between a bookkeeper and a CPA?",
-        "a": "I record the transactions, reconcile the accounts, and prepare the financial statements. A CPA is licensed to prepare and sign tax returns, give tax advice, and, when hired for it, do audits or reviews. I do the books. Your CPA files the return.",
-    },
-    {
-        "cat": "Bookkeeper and CPA",
-        "id": "need-both",
-        "q": "Do I need a bookkeeper if I already have a CPA?",
-        "a": "Usually, yes. If your CPA is sorting a year of transactions in March, they're doing bookkeeping under pressure. I keep the months current so they can file from reconciled statements. Hiring me doesn't replace your tax preparer.",
-    },
-    {
-        "cat": "Bookkeeper and CPA",
-        "id": "tax-return",
-        "home": True,
-        "q": "Does bookkeeping include filing my tax return?",
-        "a": "I don't prepare tax returns, but I'll hand your CPA clean, tax-ready books.",
-    },
-    {
-        "cat": "Bookkeeper and CPA",
-        "id": "clean-books",
-        "q": "What does clean books for tax season mean?",
-        "a": "The accounts are categorized, the bank and cards are reconciled, and the profit and loss and balance sheet are ready for your tax preparer. Your CPA still reviews them and files the return.",
-    },
-    {
-        "cat": "Bookkeeper and CPA",
-        "id": "tax-advice",
-        "q": "Can a bookkeeper give tax advice?",
-        "a": "I don't give tax advice or prepare the return. Questions about deductions and what a payment should be called belong with your CPA. I'll record the payment in the account the two of you agree on.",
-    },
-    {
-        "cat": "Bookkeeper and CPA",
-        "id": "big-4",
-        "q": "Why does a small-business bookkeeper mention Big 4 experience?",
-        "a": "I started my career at a Big 4 firm, working on large company books and on audits of Fortune 500 financial services companies. For you that means a chart of accounts that fits, reconciliations that tie to the bank, and reports you can read. I don't offer audits.",
-    },
-    {
-        "cat": "California basics",
-        "id": "llc-800",
-        "q": "What is the California $800 LLC franchise tax?",
-        "a": "Most California LLCs owe an annual minimum franchise tax of $800 to the Franchise Tax Board, even in a slow year. A first-year waiver applied only to LLCs that registered in 2021, 2022, or 2023. I don't file that return. Your CPA or the Franchise Tax Board can confirm what you owe and when.",
-    },
-    {
-        "cat": "California basics",
-        "id": "sole-prop-800",
-        "q": "Does every small business in California owe the $800 franchise tax?",
-        "a": "No. The $800 minimum is for California LLCs and corporations, not for a sole proprietor who hasn't formed one. You can still owe income tax, and sales tax if you sell taxable goods. Whether to form an LLC is a question for your CPA or an attorney. I can keep the books either way.",
-    },
-    {
-        "cat": "California basics",
-        "id": "llc-fee",
-        "q": "What is the California LLC fee on total income?",
-        "a": "California LLCs can also owe a fee based on total income, separate from the $800 minimum. For many years that fee has started once total income reaches $250,000. Confirm the current tiers with your CPA or the Franchise Tax Board. Clean books matter because the fee follows total income, not only profit.",
-    },
-    {
-        "cat": "California basics",
-        "id": "sales-tax-recording",
-        "q": "How should California sales tax show up in the books?",
-        "a": "Sales tax you collect is not your money. I record the sale as income and the tax as a liability until it's paid to the CDTFA. I can do that from your sales reports. Your preparer, or whoever you use, files the return.",
-    },
-    {
-        "cat": "California basics",
-        "id": "sales-tax-rate",
-        "q": "What is the California sales tax rate?",
-        "a": "The statewide base rate is 7.25 percent. Cities and counties add district taxes, and those change. Don't copy the rate from the next city over. Look up the current rate for where you sell on the CDTFA site. I'll record the tax you actually collect.",
-    },
-    {
-        "cat": "California basics",
-        "id": "sales-tax-filing",
-        "q": "Does Glenhold file California sales tax returns?",
-        "a": "I don't file the sales tax return. I keep taxable sales, tax collected, and tax paid clear in the books so the person who files has a trail.",
-    },
-    {
-        "cat": "California basics",
-        "id": "franchise-filing",
-        "q": "Does Glenhold file the California franchise tax?",
-        "a": "I don't file it. I keep the income, expenses, and reconciled balances your CPA uses for the Franchise Tax Board return.",
-    },
-    {
-        "cat": "California basics",
-        "id": "estimated-taxes",
-        "q": "How should estimated tax payments be recorded?",
-        "a": "If you pay estimates from the business account, I record the payment. Depending on your entity it may be a draw, a distribution, or a tax payment, not an expense like rent. Your CPA picks the category. I'll book it where you both want it.",
-    },
-    {
-        "cat": "Working together",
-        "id": "service-area",
-        "q": "Where does Glenhold provide bookkeeping services?",
-        "a": "I'm in Simi Valley. I work with businesses in the Conejo Valley, Camarillo, Oxnard, Ventura, the Highway 126 towns, the San Fernando Valley, Santa Clarita, Burbank, Glendale, and Malibu. Each city page says a bit about that place. Call me and we'll see how I can help.",
-    },
-    {
-        "cat": "Working together",
-        "id": "ventura-cities",
-        "q": "Which Ventura County cities does Glenhold serve?",
-        "a": "Simi Valley, Moorpark, Thousand Oaks, Newbury Park, Camarillo, Oxnard, Ventura, Port Hueneme, Santa Paula, Fillmore, and Ojai, plus nearby Oak Park. Newbury Park is part of Thousand Oaks. Ventura's official name is San Buenaventura.",
-    },
-    {
-        "cat": "Working together",
-        "id": "la-areas",
-        "q": "Which Los Angeles areas does Glenhold serve?",
-        "a": "Westlake Village, Agoura Hills, Calabasas, Chatsworth, Porter Ranch, Northridge, Granada Hills, Woodland Hills, Canoga Park, Reseda, Encino, Van Nuys, Sherman Oaks, Studio City, North Hollywood, Santa Clarita, Burbank, Glendale, and Malibu. If your neighborhood sits between two of those, tell me. I can still help.",
-    },
-    {
-        "cat": "Working together",
-        "id": "remote-or-in-person",
-        "q": "Will we meet in person?",
-        "a": "Yes, when a meeting helps. Day to day I work from your statements and QuickBooks Online, and we talk by phone or video. If sitting down together is the better way to walk through the numbers, we'll set a time.",
-    },
-    {
-        "cat": "Working together",
-        "id": "no-walk-in",
-        "q": "Is there a Glenhold office I can walk into?",
-        "a": "I don't keep a storefront. Call (805) 419-3451 or use the form, and we'll set a time if we should meet. The monthly books happen online.",
-    },
-    {
-        "cat": "Working together",
-        "id": "what-to-prepare",
-        "q": "What should I prepare for a bookkeeping assessment?",
-        "a": "A list of your business bank and card accounts, the months you need, the latest reports you have, and any deadline. Mention closed accounts, missing statements, and problems you already know about. Ask me how to send files before you share anything sensitive.",
-    },
-    {
-        "cat": "Working together",
-        "id": "how-to-start",
-        "q": "How do I get started with Glenhold?",
-        "a": "Book a free call or send a note. Tell me about the business, where the books stand, and what you need. If you start monthly bookkeeping and you don't love the first month, that month is free.",
-    },
-    {
-        "cat": "Working together",
-        "id": "new-businesses",
-        "q": "Do you work with brand-new businesses?",
-        "a": "Yes. A new business can start with QuickBooks Online setup and training, or with monthly bookkeeping once there's an account to reconcile. The price still depends on the work.",
-    },
-    {
-        "cat": "Working together",
-        "id": "outside-area",
-        "q": "Do you take businesses outside Ventura County and nearby Los Angeles?",
-        "a": "I focus on Ventura County and nearby Los Angeles communities. If you're somewhere else, say so when you write and I'll tell you if I can help.",
-    },
-]
+FAQ = [{'id': 'pricing',
+  'q': 'How much does monthly bookkeeping cost?',
+  'a': 'Monthly plans start at $349 for Essential, $599 for Core, and $1,499 for Strategic. Your quote depends on '
+       'transaction volume, the number of accounts, and reporting complexity. Cleanup, catch-up, consulting, and '
+       'training are quoted separately.'},
+ {'id': 'monthly-services',
+  'q': 'What is included in monthly bookkeeping?',
+  'a': 'All monthly plans include transaction categorization, bank and credit card reconciliation, a profit and '
+       'loss statement, and a balance sheet. Core adds a quarterly profit and expense summary, year-to-date '
+       'comparisons, and priority support. Strategic adds tailored reporting and a monthly call, along with the '
+       'services listed on the pricing page.'},
+ {'id': 'industries',
+  'q': 'Do you work with my type of business?',
+  'a': 'Glenhold works with small businesses across industries. Tell Jack how your business operates and what '
+       'help you need. The scope is based on your accounts, transactions, and reporting requirements.'},
+ {'id': 'catch-up',
+  'q': 'Can you help if my books are behind?',
+  'a': 'Yes. Cleanup and catch-up can include missing transactions, account reconciliation, chart of accounts '
+       'cleanup, and financial reports for the periods agreed. The quote and timeline depend on the records '
+       'available and the work required.'},
+ {'id': 'quickbooks',
+  'q': 'Can you help me with QuickBooks Online?',
+  'a': 'Yes. Jack is a Certified QuickBooks ProAdvisor and offers QuickBooks Online setup, chart of accounts '
+       'organization, training, and accuracy check-ins. You can get help with a specific issue or discuss ongoing '
+       'bookkeeping.'},
+ {'id': 'owner',
+  'q': 'Who will I work with?',
+  'a': 'You work directly with Jack, the founder of Glenhold Bookkeeping, a Simi Valley local and former Big 4 '
+       'accountant.'},
+ {'id': 'reports',
+  'q': 'When will I receive my monthly reports?',
+  'a': 'The target is the 15th of the following month, once the necessary statements and answers are available. '
+       'I will discuss the monthly schedule and what information is needed from you.'},
+ {'id': 'tax-preparer',
+  'q': 'Can you work with my tax preparer?',
+  'a': 'Yes. I organize the bookkeeping and prepare financial reports you can share with your CPA or tax '
+       'preparer. Tax return preparation and filing are separate from the bookkeeping services listed here.'},
+ {'id': 'service-area',
+  'q': 'Where do you provide bookkeeping services?',
+  'a': 'Glenhold is based in Simi Valley and focuses on surrounding Ventura County and Los Angeles County '
+       'communities, generally within about an hour depending on traffic. Share your city when you get in touch '
+       'so Jack can confirm the fit.'},
+ {'id': 'assessment',
+  'q': 'What do you need to prepare a quote?',
+  'a': 'Start with the type of business, the number of bank and credit card accounts, whether the books are '
+       'current, and the help you want. Mention any deadlines. There is no need to send bank statements or '
+       'sensitive records with your first message.'},
+ {'id': 'guarantee',
+  'q': 'What does the first-month guarantee cover?',
+  'a': 'Love your first month of monthly bookkeeping, or that month is free. Cleanup, catch-up, consulting, and '
+       'training are scoped separately. Discuss the details with Jack before work begins.'},
+ {'id': 'get-started',
+  'q': 'How do I get started?',
+  'a': 'Book a free introductory call or send a message through the website. Jack will reply within one business '
+       'day to discuss your needs and the next step.'}]

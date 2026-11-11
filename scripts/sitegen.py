@@ -18,7 +18,6 @@ FORM_ACTION = "https://formspree.io/f/xvzwqvgv"
 INDEXNOW_KEY = "7f3c1a9e4b28d6c0a15e8f47b2d9046c"
 HEADSHOT_W, HEADSHOT_H = 1000, 1333
 ABOUT_W, ABOUT_H = 1100, 1467
-GEO_LAT, GEO_LNG = 34.2694, -118.7815  # Simi Valley city centroid for local schema
 
 SERVICE_PATHS = {
     "/monthly-bookkeeping/",
@@ -104,6 +103,7 @@ def nav(path: str) -> str:
   </nav>'''
 
 
+
 def cta(heading: str = "Let's talk about your books", text: str = "Start with a free call, or send a message. You work directly with Jack.") -> str:
     return f'''<div class="cta-banner" id="cta-banner"><h2>{heading}</h2><p>{text}</p><div class="cta-banner-btns"><a class="btn-slate-solid" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a><a class="btn-outline-slate" href="#contact">Send a Message</a></div></div>'''
 
@@ -114,7 +114,7 @@ def contact_block(path: str) -> str:
       <div class="contact-info">
         <div class="section-label">Get In Touch</div>
         <h2>Let's talk about your books</h2>
-        <p>Fill out the form and I'll reply within one business day. Please don't attach bank statements or tax documents here. Ask how to share records before sending anything sensitive.</p>
+        <p>Tell me a little about your business and the help you need. I'll reply within one business day.</p>
         <div class="contact-details">
           <div class="contact-detail">
             <div class="contact-detail-icon">📞</div>
@@ -168,6 +168,7 @@ def contact_block(path: str) -> str:
           <textarea id="message" name="message" placeholder="Tell me a bit about your business and where things stand with your books..."></textarea>
         </div>
         <button type="submit" class="form-submit">Send Message →</button>
+        <p class="form-privacy">Please leave account numbers and sensitive financial records out of this form. <a href="/privacy/">Privacy notice</a></p>
         <p id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -182,7 +183,7 @@ def footer(cities: list[dict]) -> str:
     <div class="footer-top">
       <div>
         <div class="footer-brand">Glenhold <span>Bookkeeping</span></div>
-        <p class="footer-desc">I keep the books for small businesses around Simi Valley. You work with me, and we meet when that helps.</p>
+        <p class="footer-desc">I keep the books for small businesses around Simi Valley. You work directly with me.</p>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -216,7 +217,7 @@ def footer(cities: list[dict]) -> str:
       <a href="/loan-ready-books/">Loan-ready financials</a>
       <a href="/getting-started/">Getting started checklist</a>
     </div>
-    <div class="footer-cities" aria-label="Cities served"><span>Service area</span>{city_links}</div>
+    <div class="footer-resources"><a href="/service-areas/">View all service areas</a><a href="/privacy/">Privacy notice</a></div>
     <div style="padding-top: 8px; text-align: center;">
       <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">© 2026 Glenhold Advisory LLC · Doing business as Glenhold Bookkeeping</p>
     </div>
@@ -309,17 +310,12 @@ def business_graph(area: list[dict]) -> list[dict]:
         "telephone": "+18054193451",
         "email": EMAIL,
         "currenciesAccepted": "USD",
-        "description": "Jack keeps the books for small businesses around Simi Valley: monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training. You work with him, and he meets in person when that helps.",
+        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses across industries in Simi Valley and surrounding communities.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Simi Valley",
             "addressRegion": "CA",
             "addressCountry": "US",
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": GEO_LAT,
-            "longitude": GEO_LNG,
         },
         "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
@@ -327,7 +323,7 @@ def business_graph(area: list[dict]) -> list[dict]:
             "opens": "06:00",
             "closes": "18:00",
         }],
-        "priceRange": "$349-$1499",
+        "priceRange": "Monthly plans starting at $349; quoted by scope",
         "areaServed": area,
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -349,7 +345,7 @@ def business_graph(area: list[dict]) -> list[dict]:
             ],
         },
         "founder": {"@id": HOME + "/#jack"},
-        "sameAs": [YOUTUBE],
+        "sameAs": [YOUTUBE, "https://share.google/ZFSpIuhD39akrC2DT", "https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley"],
         "knowsAbout": ["Small business bookkeeping", "QuickBooks Online", "Bank reconciliation", "Financial statements"],
     }
     person = {
@@ -360,7 +356,7 @@ def business_graph(area: list[dict]) -> list[dict]:
         "url": abs_url("/about/"),
         "image": HOME + "/headshot.webp",
         "worksFor": {"@id": HOME + "/#business"},
-        "description": "Jack runs Glenhold Bookkeeping in Simi Valley. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
+        "description": "Jack is the founder of Glenhold Bookkeeping in Simi Valley, California. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor.",
         "hasCredential": {
             "@type": "EducationalOccupationalCredential",
             "name": "Certified QuickBooks ProAdvisor",
@@ -408,7 +404,7 @@ def webpage_node(path: str, title: str, description: str) -> dict:
         "isPartOf": {"@id": HOME + "/#website"},
         "about": {"@id": HOME + "/#business"},
         "publisher": {"@id": HOME + "/#business"},
-        "primaryImageOfPage": {"@id": HOME + "/#business"},
+        "primaryImageOfPage": {"@type": "ImageObject", "url": HOME + "/headshot.webp"},
     }
 
 

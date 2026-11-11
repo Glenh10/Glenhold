@@ -1,4 +1,11 @@
 (function () {
+  function measureGoogle() {
+    try {
+      if (typeof gtag === 'function') gtag.apply(null, arguments);
+    } catch (_) {
+      // Advertising measurement must not interrupt contact actions.
+    }
+  }
   const form = document.querySelector('.contact-form');
   const status = document.getElementById('form-status');
   const button = form && form.querySelector('button[type="submit"]');
@@ -24,12 +31,12 @@
   });
   document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
     link.addEventListener('click', function() {
-      gtag('event', 'phone_link_click', {event_category: 'engagement'});
+      measureGoogle('event', 'phone_link_click', {event_category: 'engagement'});
     });
   });
   document.querySelectorAll('a[href^="https://calendar.app.google/"]').forEach(function(link) {
     link.addEventListener('click', function() {
-      gtag('event', 'consultation_booking_click', {event_category: 'engagement'});
+      measureGoogle('event', 'consultation_booking_click', {event_category: 'engagement'});
     });
   });
   if (!form) return;
@@ -47,7 +54,7 @@
       status.textContent = 'Thank you! Your message has been sent. Jack will reply within one business day.';
       status.style.color = 'var(--slate)';
       button.textContent = 'Message sent';
-      gtag('event', 'conversion', {
+      measureGoogle('event', 'conversion', {
         send_to: 'AW-17998714201/jcT9CLryvoQcENmquoZD',
         transaction_id: window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : String(Date.now())
       });

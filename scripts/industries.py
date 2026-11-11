@@ -1,314 +1,146 @@
-"""Industry pages in Jack's voice. Ledes are the hub-card sentences."""
+"""Practical preparation notes for prospective clients across industries."""
 
-INDUSTRIES = [
-    {
-        "slug": "contractors",
-        "name": "Contractors and trades",
-        "title": "Bookkeeping for Contractors and Trades | Glenhold",
-        "description": "I help contractors separate job costs, materials, and draws so the month shows whether the work made money. Plans from $349.",
-        "h1": "Bookkeeping for contractors and trades",
-        "lede": "I help contractors and trades keep job costs, materials, and owner draws clear so you can see if the work is paying you.",
-        "paragraphs": [
-            '''<p>Materials, subs, and the money you pulled out for yourself land in the same account, and by Friday the profit is a guess. I sort those into the right places from your statements and the notes you give me, so a job's costs stay with the job.</p>''',
-            '''<p>If you already track jobs, I'll follow your labels. If you don't yet, monthly bookkeeping still reconciles the accounts and categorizes the spending. Tell me if you want costs by job. That changes the quote, and I'll say so up front. Plans are $349, $599, or $1,499 a month to start.</p>''',
-            '''<p>Busy season is when the books usually fall behind. Bring the months, the cards, and any lender date. <a href="/cleanup-catch-up/">Catch-up</a> once I see the months, the cards, and any lender date. Then we can keep the months current.</p>''',
-        ],
-        "points": [
-            "I'll separate what you paid yourself from what the jobs cost.",
-            "Materials, subcontractors, and overhead each get their own category.",
-            "I reconcile every business account, including the card in the truck.",
-            "You get a profit and loss and balance sheet your CPA can use.",
-        ],
-        "limit": "Your CPA handles worker classification and the tax return. If a payroll company already runs payroll, I can record those totals on the Strategic plan.",
-        "cities": ["simi-valley", "chatsworth", "oxnard", "santa-clarita"],
-        "related": ["home-services", "auto-repair", "real-estate"],
-        "faqs": [
-            ("Do you work with one-truck trades and bigger crews?", "Yes. A one-truck specialty trade and a multi-crew remodeler can both use the same monthly plans. Tell me how many accounts you have and what you want the reports to show."),
-            ("Can you track job costs?", "Yes, when you want the books to show costs by job and you can point me to which job a purchase belongs to. We'll include that in the quote."),
-        ],
-    },
-    {
-        "slug": "restaurants",
-        "name": "Restaurants and food businesses",
-        "title": "Bookkeeping for Restaurants | Glenhold Bookkeeping",
-        "description": "I separate restaurant sales, sales tax, tips, and card fees so the deposit in the bank matches the month. Plans from $349.",
-        "h1": "Bookkeeping for restaurants and food businesses",
-        "lede": "I help restaurants and food businesses separate sales, tax, tips, and card fees so you know what the month actually made.",
-        "paragraphs": [
-            '''<p>The amount that hits the bank is rarely your sales. Tax, tips, discounts, and processor fees are already mixed in. I use your sales reports and statements to record sales as income, tax you collected as a liability, tips in their own place, and card fees as an expense.</p>''',
-            '''<p>California's statewide base sales-tax rate is 7.25 percent, and your city's district tax is often higher. Look up the current rate on the CDTFA site for where you sell. I'll record the tax you collect. Your preparer files the return.</p>''',
-            '''<p>A stable chart of accounts is what makes food cost and labor cost useful month to month. I'll build that with you. A cafe in Ojai and a takeout counter in Reseda are both welcome, and so is every other kind of small business.</p>''',
-        ],
-        "points": [
-            "I'll split gross sales, tax collected, and processor fees.",
-            "Tips stay out of profit.",
-            "I reconcile the operating account and the cards you use for food.",
-            "Your payroll company and your CPA keep the filings. I keep the books ready for them.",
-        ],
-        "limit": "If a payroll company already runs payroll, the Strategic plan includes recording those journal entries.",
-        "cities": ["oxnard", "ventura", "northridge", "sherman-oaks"],
-        "related": ["retail", "salons", "fitness"],
-        "faqs": [
-            ("Can you help a food truck or a caterer?", "Yes. Tell me how you get paid and where sales tax is collected. I'll set the books up around that."),
-            ("Will the books show food cost?", "Yes, once purchases are categorized the same way every month. We'll set those categories up front so the report is worth reading."),
-        ],
-    },
-    {
-        "slug": "medical-dental",
-        "name": "Medical and dental practices",
-        "title": "Bookkeeping for Medical and Dental Practices | Glenhold",
-        "description": "I keep the practice books: deposits, rent, supplies, and what you take home. Plans from $349. You keep your billing system.",
-        "h1": "Bookkeeping for medical and dental practices",
-        "lede": "I help medical and dental practices keep deposits, expenses, and owner draws clear so you can see how the practice is doing.",
-        "paragraphs": [
-            '''<p>Insurance payments, patient payments, lab bills, rent, and what you take home all belong in the accounting file. Coding a visit and chasing a claim stay in the billing system you already use. I categorize what hits the bank, reconcile the accounts, and send a profit and loss and balance sheet you and your CPA can read.</p>''',
-            '''<p>A single-provider office with simple accounts often fits Essential or Core. Several providers, loans, or accrual questions may fit Strategic, which adds accrual accounting, loan tracking, and a monthly call. Plans are $349, $599, or $1,499 a month to start.</p>''',
-            '''<p>Opening a new practice? Start with <a href="/quickbooks-online/">QuickBooks Online setup</a> before the first month piles up.</p>''',
-        ],
-        "points": [
-            "I'll categorize insurance and patient deposits from the bank.",
-            "Practice expenses stay separate from what you take home.",
-            "I reconcile the operating accounts each month.",
-            "Your billing system keeps the claims. I keep the books.",
-        ],
-        "limit": "I record the money that reaches the bank and the bills that leave it. Your biller keeps the claims work.",
-        "cities": ["thousand-oaks", "porter-ranch", "encino", "santa-clarita"],
-        "related": ["professional-services", "fitness", "real-estate"],
-        "faqs": [
-            ("Do you replace my medical billing service?", "Your billing service stays in place. I book the deposits and the practice expenses so the financial statements match the bank."),
-            ("Is a dental office different from a medical office?", "The expenses differ. The way we work is the same: you and I, a monthly close, and reports you can use."),
-        ],
-    },
-    {
-        "slug": "real-estate",
-        "name": "Real estate",
-        "title": "Bookkeeping for Real Estate Businesses | Glenhold",
-        "description": "I keep operating books for agents, teams, and small brokerages: commissions, splits, and marketing. Plans from $349.",
-        "h1": "Bookkeeping for real estate businesses",
-        "lede": "I help agents, teams, and small brokerages keep commission income, splits, and marketing costs clear each month.",
-        "paragraphs": [
-            '''<p>An agent's business and a small brokerage look different. One may be a handful of commission deposits and a stack of marketing bills. The other may have splits, desk fees, and several accounts. I categorize the operating income and expenses and reconcile the operating accounts.</p>''',
-            '''<p>If a lender wants your company's own financial statements, I can catch the books up and produce them. Your CPA may still provide the tax returns. See <a href="/loan-ready-books/">loan-ready financials</a> for how that handoff works.</p>''',
-            '''<p>I work with real estate businesses and with every other kind of small business. If you sell houses in Calabasas or run a shop in Simi Valley, call me.</p>''',
-        ],
-        "points": [
-            "I'll record commission income and the cost of earning it.",
-            "Owner draws stay out of the expense list.",
-            "I reconcile the operating accounts to the statements.",
-            "You and your broker keep client trust funds in your own process. I keep the operating books.",
-        ],
-        "limit": "I focus on the company's operating accounts. Your broker or compliance process keeps client trust funds.",
-        "cities": ["calabasas", "encino", "woodland-hills", "malibu"],
-        "related": ["professional-services", "contractors", "ecommerce"],
-        "faqs": [
-            ("Can you get my books ready for a lender?", "I can produce reconciled financial statements. You or your broker send them. Your CPA may still provide the tax returns."),
-            ("Do you work with agents and with small brokerages?", "Yes. Tell me how commissions and splits hit the bank, and I'll set the categories around that."),
-        ],
-    },
-    {
-        "slug": "ecommerce",
-        "name": "Ecommerce and online sellers",
-        "title": "Bookkeeping for Ecommerce Sellers | Glenhold",
-        "description": "I split marketplace payouts into sales, fees, and refunds so your profit is real. Plans from $349.",
-        "h1": "Bookkeeping for ecommerce and online sellers",
-        "lede": "I help online sellers split payouts into sales, fees, and refunds so the deposit in the bank is no longer a mystery.",
-        "paragraphs": [
-            '''<p>A Shopify, Amazon, or Etsy payout usually arrives after fees and refunds. If you record only the deposit, profit is wrong. I use the payout reports, when you can export them, to split gross sales, fees, and refunds.</p>''',
-            '''<p>Many marketplaces collect sales tax on marketplace orders. Your own site may be different. Confirm which sales are covered with the CDTFA or your tax preparer, and I'll record it the way they direct.</p>''',
-            '''<p>A simple seller can run monthly books that categorize purchases. If you need inventory on the balance sheet, say so. Strategic is the plan that includes accrual accounting. Plans are $349, $599, or $1,499 a month to start.</p>''',
-        ],
-        "points": [
-            "I'll split payouts into sales, fees, and refunds.",
-            "Sales tax the platform is holding stays out of income.",
-            "I reconcile the bank to the payout reports.",
-            "We'll talk about inventory before I treat it as part of the monthly close.",
-        ],
-        "limit": "You pay Intuit for QuickBooks Online. I do the bookkeeping on top of the reports your store already exports.",
-        "cities": ["simi-valley", "burbank", "westlake-village", "santa-clarita"],
-        "related": ["retail", "professional-services", "contractors"],
-        "faqs": [
-            ("Do you book from Shopify or Amazon reports?", "Yes. I work from the reports those platforms export and from the bank deposits. If a report is missing, tell me. The deposit alone hides the fees."),
-            ("I also invoice clients. Is that ok?", "Yes. A consultant who invoices and a seller who ships boxes can both work with me. The accounts decide the quote."),
-        ],
-    },
-    {
-        "slug": "nonprofits",
-        "name": "Nonprofits",
-        "title": "Bookkeeping for Small Nonprofits | Glenhold",
-        "description": "I keep small-nonprofit books organized for your board and your CPA, including by program when you want that. Plans from $349.",
-        "h1": "Bookkeeping for small nonprofits",
-        "lede": "I help small nonprofits keep donations and program expenses organized so the board and the CPA can see the year clearly.",
-        "paragraphs": [
-            '''<p>Donations, program costs, and overhead are hard to explain when they share one bank account and no categories. I'll set up a chart of accounts that separates programs when that's how the board wants to read the reports. You tell me which gifts are restricted. I won't guess.</p>''',
-            '''<p>Your CPA files the Form 990. I hand over reconciled accounts, statements, and a list of open questions. Plans are $349, $599, or $1,499 a month to start. A backlog is <a href="/cleanup-catch-up/">catch-up</a>, quoted on its own.</p>''',
-            '''<p>Nonprofits are welcome here, and so is every other small organization. If yours is a for-profit company, you're in the right place too.</p>''',
-        ],
-        "points": [
-            "I'll categorize donations and program expenses the same way each month.",
-            "I reconcile the operating account.",
-            "Restricted gifts stay identified when you tell me which ones they are.",
-            "Your CPA gets statements they can use for the Form 990.",
-        ],
-        "limit": "Your CPA prepares the Form 990. I keep the books they file from.",
-        "cities": ["simi-valley", "ventura", "north-hollywood", "thousand-oaks"],
-        "related": ["professional-services", "medical-dental", "retail"],
-        "faqs": [
-            ("Can our board see results by program?", "Yes. We'll build the chart of accounts around the programs you want to see, and the monthly reports will follow that."),
-            ("We also run a small shop. Can you do both?", "Yes. Tell me how the shop and the programs share the bank account, and I'll keep them readable."),
-        ],
-    },
-    {
-        "slug": "professional-services",
-        "name": "Professional services",
-        "title": "Bookkeeping for Professional Services | Glenhold",
-        "description": "I keep operating books for consultants, agencies, and small firms: retainers, invoices, and draws. Plans from $349.",
-        "h1": "Bookkeeping for professional services",
-        "lede": "I help consultants, agencies, and small firms keep retainers, invoices, and owner draws clear so profit is obvious.",
-        "paragraphs": [
-            '''<p>A retainer feels like income the day it lands. Sometimes you've earned it, and sometimes you haven't. On Essential and Core I keep cash-basis books: categorize, reconcile, and send statements. Strategic adds accrual accounting when unearned fees should sit on the balance sheet. Ask me which one fits before we start. Plans are $349, $599, or $1,499 a month to start.</p>''',
-            '''<p>I keep the operating books: fees, expenses, and what you take home. If a payroll company runs payroll, Strategic includes the journal entries. Client trust accounts stay with your firm's own process.</p>''',
-            '''<p>If you'd rather keep the data entry and want a cleaner file, start with <a href="/quickbooks-online/">consulting and training</a>.</p>''',
-        ],
-        "points": [
-            "I'll separate earned fees, retainers, and what you take home.",
-            "I reconcile the operating account and the cards.",
-            "On Strategic, I record payroll journals from your payroll provider.",
-            "Your CPA keeps the tax return. I keep the books ready for them.",
-        ],
-        "limit": "I keep the operating accounts. Your firm keeps any client trust process it already has.",
-        "cities": ["encino", "westlake-village", "woodland-hills", "simi-valley"],
-        "related": ["real-estate", "medical-dental", "ecommerce"],
-        "faqs": [
-            ("Is a one-person consultancy a fit?", "Yes. Simple accounts are what Essential is for, starting at $349 a month."),
-            ("We hold client funds in a trust account. What do you book?", "I book the operating account: fees, expenses, and draws. Your trust process stays with the firm."),
-        ],
-    },
-    {
-        "slug": "retail",
-        "name": "Retail shops",
-        "title": "Bookkeeping for Retail Shops | Glenhold Bookkeeping",
-        "description": "I match the register to the bank and keep sales tax in its own place for shops around Simi Valley. Plans from $349.",
-        "h1": "Bookkeeping for retail shops",
-        "lede": "I help shop owners match the register to the bank so sales, fees, and sales tax each have a home.",
-        "paragraphs": [
-            '''<p>Daily sales, returns, and the batch that hits the bank the next day will disagree if you only look at the deposit. I record sales from your reports, fees as expenses, and the sales tax you collected as a liability until it's paid.</p>''',
-            '''<p>California's statewide base rate is 7.25 percent. Your city's add-on is often higher, and it changes. Use the CDTFA lookup for the place of sale. Simi Valley, Oxnard, and Glendale are different districts. I'll record the tax you collect.</p>''',
-            '''<p>A simple shop can categorize purchases each month. If you need inventory on the balance sheet, tell me on the intro call and we'll see whether Strategic, which includes accrual accounting, is the right plan.</p>''',
-        ],
-        "points": [
-            "I'll match register reports to deposits.",
-            "Card fees and returns get their own categories.",
-            "Sales tax you collect sits as a liability until you pay it.",
-            "Your preparer files the sales-tax return. I keep the trail clean.",
-        ],
-        "limit": "Bring the register reports and the bank statements. I'll turn them into a monthly close you can read.",
-        "cities": ["camarillo", "oxnard", "ventura", "canoga-park"],
-        "related": ["restaurants", "ecommerce", "salons"],
-        "faqs": [
-            ("We sell in the shop and online. Can you do both?", "Yes, when the reports exist for each channel. I'll keep in-store sales and online payouts in one set of books."),
-            ("Which sales-tax rate should I charge?", "Use the CDTFA lookup for where you sell, or ask your tax preparer. I'll record the tax you collect."),
-        ],
-    },
-    {
-        "slug": "home-services",
-        "name": "Home services",
-        "title": "Bookkeeping for Home Service Businesses | Glenhold",
-        "description": "I separate business spending from personal spending for cleaners, landscapers, and other home-service owners. Plans from $349.",
-        "h1": "Bookkeeping for home service businesses",
-        "lede": "I help home-service owners separate business spending from personal spending so the month shows a real profit.",
-        "paragraphs": [
-            '''<p>Deposits taken before the work, materials from the yard, fuel, and a personal charge on the same card are the usual tangle. I categorize what you can identify and reconcile the accounts to the statements. Keep your own mileage log. Your CPA decides the vehicle deduction from that log.</p>''',
-            '''<p>A weekly route of houses usually needs clean categories and a reconciliation. A licensed remodeler with subs and job costs may want the <a href="/who-we-work-with/contractors/">contractor</a> setup instead. Tell me which one you are. Plans are still $349, $599, or $1,499 a month to start.</p>''',
-        ],
-        "points": [
-            "I'll separate your personal spending from the business.",
-            "Materials, fuel, and subcontractors each get a category.",
-            "Deposits are recorded so you can see what you've already collected.",
-            "I reconcile every account the route actually uses.",
-        ],
-        "limit": "You keep the mileage log. I categorize the expenses that show up in the accounts, and your CPA handles the vehicle deduction.",
-        "cities": ["simi-valley", "moorpark", "agoura-hills", "santa-paula"],
-        "related": ["contractors", "auto-repair", "retail"],
-        "faqs": [
-            ("Is a one-truck business big enough?", "Yes. Simple accounts are what Essential is for, starting at $349 a month. The quote still follows your volume."),
-            ("I paid for supplies on a personal card. Can you record that?", "Yes. Flag those charges and I'll book them as business spending."),
-        ],
-    },
-    {
-        "slug": "salons",
-        "name": "Salons and personal care",
-        "title": "Bookkeeping for Salons and Personal Care | Glenhold",
-        "description": "I keep service income, retail product, tips, and booth rent in separate categories for salons. Plans from $349.",
-        "h1": "Bookkeeping for salons and personal care",
-        "lede": "I help salons keep service income, retail sales, tips, and booth rent in their own places so the month is readable.",
-        "paragraphs": [
-            '''<p>A salon can collect for services, sell shampoo, take booth rent, and pass tips through in the same week. Retail product often carries California sales tax when the service does something different. I record retail sales and the tax you collect from your reports. Your preparer files the return.</p>''',
-            '''<p>Tips stay out of profit. Booth-rent receipts stay separate from service income. Whether a stylist is a renter or an employee is a question for your CPA. I'll record the payments in the accounts you and your CPA choose.</p>''',
-            '''<p>Barbers, nail studios, and spas in Granada Hills, Ventura, or Simi Valley all work the same way with me: a monthly close, or catch-up if the year got away from you.</p>''',
-        ],
-        "points": [
-            "I'll separate service income from retail product sales.",
-            "Sales tax on retail product sits as a liability.",
-            "Tips and booth rent stay out of one blended sales number.",
-            "I reconcile the operating account to the statement.",
-        ],
-        "limit": "Your CPA decides how stylists should be classified. I record rent and payroll in the accounts you agree on.",
-        "cities": ["simi-valley", "granada-hills", "ventura", "reseda"],
-        "related": ["retail", "fitness", "restaurants"],
-        "faqs": [
-            ("Can you separate booth rent from service sales?", "Yes. That's one of the first categories I set up, so rent you collect is visible on its own."),
-            ("We sell back-bar product. What about sales tax?", "I'll record the tax you collect on that product as a liability. Your preparer files the return."),
-        ],
-    },
-    {
-        "slug": "fitness",
-        "name": "Fitness and wellness studios",
-        "title": "Bookkeeping for Fitness and Wellness Studios | Glenhold",
-        "description": "I help studios see membership dues and class packs clearly each month. Plans from $349.",
-        "h1": "Bookkeeping for fitness and wellness studios",
-        "lede": "I help studios keep membership dues, class packs, and everyday expenses clear so you can see the month.",
-        "paragraphs": [
-            '''<p>You might collect dues in January for classes in February, sell a ten-class pack, and pay rent and instructors from the same account. If cash-basis books are what you and your CPA want, Essential or Core is usually enough. If unused packs should sit as a liability until the class happens, that's accrual accounting, on the Strategic plan starting at $1,499.</p>''',
-            '''<p>Studios in Ojai, Studio City, and Simi Valley are all welcome, and so are businesses that have nothing to do with fitness. Tell me how members pay you and I'll build the categories around that.</p>''',
-        ],
-        "points": [
-            "I'll categorize dues, class packs, and retail separately.",
-            "Processor deposits get reconciled to the bank.",
-            "Cash-basis statements are the usual Essential and Core close.",
-            "Accrual accounting is available on Strategic when you and your CPA want it.",
-        ],
-        "limit": "Your CPA and your payroll company handle instructor classification and the filings. I keep the books they rely on.",
-        "cities": ["simi-valley", "ojai", "studio-city", "thousand-oaks"],
-        "related": ["salons", "retail", "professional-services"],
-        "faqs": [
-            ("Should memberships be accrued?", "Only if you and your CPA want unused packs on the balance sheet. Otherwise I'll keep cash-basis books and you'll see the cash as it comes in."),
-            ("Is a yoga studio different from a gym?", "The details differ. You still get a monthly close and reports you can read."),
-        ],
-    },
-    {
-        "slug": "auto-repair",
-        "name": "Auto repair and service",
-        "title": "Bookkeeping for Auto Repair Shops | Glenhold",
-        "description": "I separate parts, labor, and sales tax for repair shops so the deposit matches the repair orders. Plans from $349.",
-        "h1": "Bookkeeping for auto repair shops",
-        "lede": "I help repair shops separate parts, labor, and sales tax so the bank deposit finally matches the repair orders.",
-        "paragraphs": [
-            '''<p>A repair order mixes labor, parts, shop supplies, and tax. The card deposit the next day flattens all of that. I use your shop reports and the bank to record labor, parts, fees, and the sales tax you collected.</p>''',
-            '''<p>California's base rate is 7.25 percent before district add-ons. Your rate comes from the CDTFA lookup. I'll record the tax you collect, and your preparer files the return.</p>''',
-            '''<p>Shops in Canoga Park, Van Nuys, Chatsworth, Oxnard, and Simi Valley are all a natural fit. If the repair orders and the bank haven't met all year, start with <a href="/cleanup-catch-up/">catch-up</a>.</p>''',
-        ],
-        "points": [
-            "I'll separate parts, labor, and sales tax.",
-            "Processor fees and shop-supply income come from your reports.",
-            "I reconcile the operating account and the parts cards.",
-            "If you want parts on the balance sheet, we'll include that in the quote.",
-        ],
-        "limit": "Bring the shop reports you can export. I'll turn them into a monthly close. Your preparer files the sales-tax return.",
-        "cities": ["canoga-park", "chatsworth", "van-nuys", "oxnard"],
-        "related": ["contractors", "retail", "home-services"],
-        "faqs": [
-            ("Can you work from my shop reports?", "Yes. Export the reports and I'll tie them to the bank. If a report is missing, tell me and we'll work from what you have."),
-            ("How should sales tax on parts show up?", "I record the tax you collect as a liability until it's paid. Ask your preparer or the CDTFA which jobs are taxable. I'll follow that."),
-        ],
-    },
-]
+INDUSTRIES = [{'slug': 'contractors',
+  'name': 'Contractors and trades',
+  'intro': 'Keep project spending, business expenses, and owner transactions organized.',
+  'paragraphs': ['Materials, subcontractor payments, fuel, and customer deposits can move through several '
+                 'accounts during a busy month. Clear categories help you see what the business earned and where '
+                 'the money went.',
+                 'Glenhold reconciles your bank and credit card accounts and prepares monthly financial reports. '
+                 'If you want reporting by project, bring an example of the report you need to the first call so '
+                 'we can discuss whether the work is a fit.'],
+  'points': ['Provide a list of all business accounts, including cards used for materials.',
+             'Flag transfers and money the owner put into or took out of the business.',
+             'Share any reporting requests from your tax preparer.']},
+ {'slug': 'restaurants',
+  'name': 'Restaurants and food businesses',
+  'intro': 'Make sense of sales reports, card deposits, and the costs of running your business.',
+  'paragraphs': ['A bank deposit may combine sales, refunds, tips, and processing fees. Your point-of-sale '
+                 'reports provide the detail behind that deposit. Keeping those reports with your statements '
+                 'makes reconciliation more reliable.',
+                 'Glenhold can help organize the bookkeeping and produce a profit and loss statement and balance '
+                 'sheet. During the first call, explain how you collect payments, which reports you can export, '
+                 'and whether you need help with the current month or a backlog.'],
+  'points': ['Identify your point-of-sale system and payment processors.',
+             'Gather operating account and credit card statements.',
+             'Discuss which expense categories you want to see in your reports.']},
+ {'slug': 'medical-dental',
+  'name': 'Medical and dental practices',
+  'intro': 'Understand the business finances behind your practice.',
+  'paragraphs': ['Rent, supplies, equipment payments, insurance deposits, and owner transactions all affect the '
+                 'practice’s financial reports. Organized books give you and your tax preparer a clearer view of '
+                 'those finances.',
+                 'Glenhold’s work focuses on business bookkeeping: categorizing transactions, reconciling '
+                 'accounts, and preparing financial statements. Tell Jack which accounting and payment systems '
+                 'you use. Please keep patient records and other sensitive information out of the introductory '
+                 'contact form.'],
+  'points': ['List the practice’s bank, credit card, and financing accounts.',
+             'Identify the financial reports available from your existing systems.',
+             'Discuss the bookkeeping information you need without sending patient records.']},
+ {'slug': 'real-estate',
+  'name': 'Real estate businesses',
+  'intro': 'Keep your operating income, expenses, and account balances organized.',
+  'paragraphs': ['Commission income, marketing, dues, software, and property-related expenses can make it '
+                 'difficult to see the performance of the business. A consistent chart of accounts and regular '
+                 'reconciliation help keep the records useful.',
+                 'Explain whether you work as an agent, own rental property, or operate another real estate '
+                 'business. If client funds or trust accounts are involved, mention that during the first '
+                 'conversation so the requirements can be assessed before a scope is agreed.'],
+  'points': ['Describe the business and the accounts you need help with.',
+             'Separate the company’s operating activity from owner transactions.',
+             'Bring any property-level reporting requirements to the first call.']},
+ {'slug': 'ecommerce',
+  'name': 'Ecommerce and online sellers',
+  'intro': 'Connect marketplace payouts with the sales and fees behind them.',
+  'paragraphs': ['Marketplace and payment-processor payouts often arrive after fees and refunds have been '
+                 'deducted. Looking only at the bank deposit can hide the detail of your revenue and expenses. '
+                 'Platform reports help explain the amounts received.',
+                 'Tell Jack which platforms you sell through, the reports you can export, and whether you hold '
+                 'inventory. Those details help establish the bookkeeping work and reporting you need before a '
+                 'quote is prepared.'],
+  'points': ['List your stores, marketplaces, and payment processors.',
+             'Have payout summaries and bank statements available.',
+             'Discuss inventory and reporting needs before agreeing on scope.']},
+ {'slug': 'nonprofits',
+  'name': 'Small nonprofits',
+  'intro': 'Give your board and tax preparer a clearer view of the organization’s finances.',
+  'paragraphs': ['A nonprofit needs organized records of money received and spent, along with reconciled '
+                 'accounts. Reports should be easy for the people overseeing the organization to understand.',
+                 'Explain your reporting requirements before work begins, including any program categories, '
+                 'restricted contributions, or requests from a grant provider. Jack can assess the bookkeeping '
+                 'scope and whether Glenhold is the right fit.'],
+  'points': ['Identify who reviews and approves the bookkeeping.',
+             'Gather account statements and existing financial reports.',
+             'Share board, grant, and tax-preparer reporting requirements up front.']},
+ {'slug': 'professional-services',
+  'name': 'Professional services',
+  'intro': 'Spend less time sorting transactions and more time running your business.',
+  'paragraphs': ['Consultants, agencies, designers, and other service firms often have a mix of client payments, '
+                 'software subscriptions, professional fees, and owner transactions. Consistent bookkeeping makes '
+                 'it easier to understand income, expenses, and profit over time.',
+                 'Glenhold provides monthly bookkeeping, cleanup, and QuickBooks Online support. Tell Jack how '
+                 'you bill clients and which reports you need. Retainers, client funds, or other special '
+                 'accounting requirements should be discussed before the scope is agreed.'],
+  'points': ['Identify your business bank and credit card accounts.',
+             'Share the reports you already use to review performance.',
+             'Mention retainers or other transactions that need particular attention.']},
+ {'slug': 'retail',
+  'name': 'Retail shops',
+  'intro': 'Get clear financial reports from your sales activity and operating expenses.',
+  'paragraphs': ['Register totals, card deposits, refunds, and processing fees do not always line up on the same '
+                 'day. Sales reports and bank statements help explain those differences and support a reliable '
+                 'monthly reconciliation.',
+                 'Tell Jack about your point-of-sale system, payment processors, and inventory records. The '
+                 'bookkeeping scope should reflect the information you have and the reports you need to run the '
+                 'shop.'],
+  'points': ['Identify your sales and payment systems.',
+             'Keep sales summaries alongside bank and credit card statements.',
+             'Discuss inventory reporting before choosing a monthly plan.']},
+ {'slug': 'home-services',
+  'name': 'Home service businesses',
+  'intro': 'Organize the bookkeeping while you focus on your customers.',
+  'paragraphs': ['Cleaning companies, landscapers, pool services, and other local service businesses may use '
+                 'several payment methods and cards. Keeping receipts, customer deposits, and owner transactions '
+                 'organized helps prevent gaps in the books.',
+                 'Glenhold helps with transaction categorization, reconciliation, monthly reports, and catch-up '
+                 'work. The first conversation is a chance to explain how you get paid, which accounts you use, '
+                 'and what you want to hand off.'],
+  'points': ['List every account used for the business.',
+             'Flag business expenses paid personally.',
+             'Describe any seasonal changes in your transaction volume.']},
+ {'slug': 'salons',
+  'name': 'Salons and personal care businesses',
+  'intro': 'See your business income and expenses more clearly each month.',
+  'paragraphs': ['Services, product sales, tips, and rental arrangements can create different streams of activity '
+                 'in a salon’s records. Reports from your existing systems help explain what reached the bank and '
+                 'how it should be organized.',
+                 'Tell Jack how your business operates, whether you work independently or manage a location, and '
+                 'what bookkeeping you already have in place. The work can then be scoped around your accounts '
+                 'and reporting needs.'],
+  'points': ['Identify the booking and payment systems you use.',
+             'Gather bank and card statements and available sales reports.',
+             'Explain any rental arrangements or other special transactions.']},
+ {'slug': 'fitness',
+  'name': 'Fitness and wellness businesses',
+  'intro': 'Keep memberships, business expenses, and financial reports organized.',
+  'paragraphs': ['Memberships, class packages, individual sessions, and retail sales can all appear in the same '
+                 'payment account. Consistent records help connect those receipts with your operating costs and '
+                 'account balances.',
+                 'Bring your reporting goals to the first call. If advance payments or class packages need '
+                 'special treatment, discuss that with Jack and your tax preparer before choosing the bookkeeping '
+                 'scope.'],
+  'points': ['Identify membership, booking, and payment systems.',
+             'List operating accounts, cards, and equipment loans.',
+             'Describe the reports you need to review the business.']},
+ {'slug': 'auto-repair',
+  'name': 'Auto repair and service businesses',
+  'intro': 'Keep operating expenses and sales activity connected to your financial reports.',
+  'paragraphs': ['Shop reports can contain details about labor, parts, refunds, and fees that a bank deposit does '
+                 'not show. Keeping those reports with account statements helps support accurate categorization '
+                 'and reconciliation.',
+                 'Tell Jack which shop-management and payment systems you use, whether inventory reporting is '
+                 'needed, and how current the books are. Glenhold can assess the work before proposing a monthly '
+                 'plan or cleanup project.'],
+  'points': ['Identify the reports available from your shop system.',
+             'Gather statements for the business bank and credit card accounts.',
+             'Discuss inventory and financing records during the assessment.']}]

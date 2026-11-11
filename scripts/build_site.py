@@ -1,749 +1,224 @@
 #!/usr/bin/env python3
-"""Generate the static Glenhold site. Run from anywhere: python3 scripts/build_site.py
-
-GitHub Pages serves the HTML this writes. Re-running overwrites those pages.
-"""
-
+"""Generate the static site with python3 scripts/build_site.py."""
 from __future__ import annotations
-
+import json
 import re
 import sys
-from collections import OrderedDict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-
 from cities import CITIES
-from faqs import FAQ
 from industries import INDUSTRIES
-from sitegen import (  # noqa: E402
-    CALENDAR,
-    EMAIL,
-    INDEXNOW_KEY,
-    LASTMOD,
-    PAGES,
-    ROOT,
-    YOUTUBE,
-    abs_url,
-    area_nodes,
-    chips,
-    contact_block,
-    crumb_html,
-    cta,
-    esc,
-    faq_html,
-    faq_node,
-    hub_cards,
-    offer,
-    related_links,
-    service_node,
-    write_page,
-)
+from faqs import FAQ
+from sitegen import (ROOT, HOME, LASTMOD, PAGES, CALENDAR, EMAIL, YOUTUBE,
+    INDEXNOW_KEY, area_nodes, write_page, faq_node, faq_html, service_node,
+    offer, esc, crumb_html, contact_block, chips, hub_cards, related_links, cta)
 
-EXTRAS = [
-    {"schema_type": "Place", "schema_name": "Oak Park", "contained": "Ventura County, California"},
-    {"schema_type": "Place", "schema_name": "Winnetka, Los Angeles", "contained": "Los Angeles, California"},
-    {"schema_type": "Place", "schema_name": "Tarzana, Los Angeles", "contained": "Los Angeles, California"},
+CORE_CITIES = ['simi-valley','moorpark','thousand-oaks','westlake-village','camarillo','santa-clarita']
+EXTRAS = [dict(schema_type='Place',schema_name=n,contained=c) for n,c in [
+    ('Oak Park','Ventura County, California'),('Winnetka, Los Angeles','Los Angeles, California'),
+    ('Tarzana, Los Angeles','Los Angeles, California')]]
+AREA = area_nodes(CITIES, EXTRAS)
+
+def customer_voice(text):
+    changes = [
+        ("Glenhold Bookkeeping helps", "I help"),
+        ("Glenhold can help", "I can help"),
+        ("Glenhold can assess", "I can assess"),
+        ("Glenhold provides", "I provide"),
+        ("Glenhold helps", "I help"),
+        ("Glenhold offers", "I offer"),
+        ("Glenhold serves", "I serve"),
+        ("Glenhold works", "I work"),
+        ("Glenhold reconciles", "I reconcile"),
+        ("and prepares monthly", "and prepare monthly"),
+        ("Glenhold’s work focuses", "My work focuses"),
+        ("Tell Jack", "Tell me"),
+        ("tell Jack", "tell me"),
+        ("with Jack", "with me"),
+        ("to Jack", "to me"),
+        ("Jack can", "I can"),
+        ("Jack will", "I will"),
+        ("Jack works directly with you", "I work directly with you"),
+    ]
+    for before, after in changes:
+        text = text.replace(before, after)
+    return text
+
+for item in FAQ:
+    item["a"] = customer_voice(item["a"])
+
+def section(title, body):
+    return '<section><h2>'+title+'</h2>'+body+'</section>'
+
+def price_cards():
+    plans=[('Essential','349','For straightforward books and reliable monthly reports',[
+        'Expense categorization','Monthly bank &amp; card reconciliation','Monthly financial statements','Clean books for tax season']),
+        ('Core','599','For owners who want a clearer picture of business performance',[
+        'Everything in Essential','Quarterly profit and expense summary','Year-to-date performance comparison','Priority support']),
+        ('Strategic','1,499','For businesses that need tailored reporting and a monthly walkthrough',[
+        'Everything in Core','Custom financial reports for your business','Accrual accounting, payroll journal entries, and loan tracking','Monthly call to walk through your numbers'])]
+    return '<div class="pricing-grid">'+''.join(
+        '<div class="pricing-card'+(' featured' if name=='Core' else '')+'"><h3>'+name+'</h3><p class="pricing-tagline">'+tagline+'</p><div class="pricing-price"><span class="pricing-prefix">Starting at</span>$'+price+' <span>/ mo</span></div><hr class="pricing-divider"><ul class="pricing-list">'+''.join('<li>'+p+'</li>' for p in points)+'</ul><a class="'+('btn-sage' if name=='Core' else 'btn-slate')+'" href="#contact">Get Started</a></div>' for name,price,tagline,points in plans)+'</div>'
+
+def write_inner(title,description,path,h1,lede,body,crumbs=None,extra=None,faqs=None,contact=True):
+    crumbs=crumbs or [('Home','/'),(h1,path)]
+    nodes=list(extra or [])
+    if faqs:
+        faqs = [(customer_voice(q), customer_voice(a)) for q, a in faqs]
+        body+=section('Common questions',faq_html(faqs));nodes.append(faq_node(faqs,path))
+    body = customer_voice(body)
+    lede = customer_voice(lede)
+    header='<header class="page-hero"><div class="breadcrumb">'+crumb_html(crumbs)+'</div><h1>'+esc(h1)+'</h1><p>'+esc(lede)+'</p>'
+    if contact:header+='<a class="btn-primary" href="'+CALENDAR+'" target="_blank" rel="noopener noreferrer">Book a Free Call</a>'
+    main=header+'</header><article class="article-body">'+body+'</article>'
+    if contact:main+=contact_block(path)
+    write_page(title,description,path,main,crumbs,nodes,CITIES,AREA)
+
+SERVICES=[
+    dict(slug='monthly-bookkeeping',name='Monthly bookkeeping',description='Monthly bookkeeping from $349 for small businesses near Simi Valley. Transaction categorization, reconciliation, and clear financial reports.',lede='Keep your books current and understand how your business is doing.',body=
+        section('A monthly routine you can rely on','<p>Glenhold Bookkeeping helps small business owners keep their records organized throughout the year. You work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor based in Simi Valley.</p><p>The work starts with your accounts, how you get paid, and the reports you need. We agree on the scope and a monthly schedule before getting started.</p>')+
+        section('What is included','<ul><li><strong>Transaction categorization:</strong> organize income and expenses in accounts suited to your business.</li><li><strong>Bank and credit card reconciliation:</strong> check the books against statements and resolve differences.</li><li><strong>Monthly financial reports:</strong> receive a profit and loss statement and balance sheet.</li><li><strong>Email support:</strong> get answers to bookkeeping questions between closes.</li></ul><p>The target is to deliver reports by the 15th of the following month, once the necessary statements and answers are available.</p>')+
+        section('Choose your level of support','<p>Essential starts at $349 per month. Core starts at $599 and adds quarterly profit and expense summaries, year-to-date comparisons, and priority support. Strategic starts at $1,499 and includes tailored reporting and a monthly call to walk through your numbers.</p><p>Your quote reflects transaction volume, the number of accounts, and reporting complexity. <a href="/pricing/">Compare the monthly plans</a>.</p>')+
+        section('Need to catch up first?','<p>If previous months are unfinished, <a href="/cleanup-catch-up/">cleanup and catch-up</a> can establish a reliable starting point. If you prefer to maintain the books yourself, ask about <a href="/quickbooks-online/">QuickBooks Online training</a>.</p>')),
+    dict(slug='cleanup-catch-up',name='Cleanup and catch-up bookkeeping',description='Catch up on unfinished bookkeeping, reconcile accounts, and prepare clear financial reports. Simi Valley-based Glenhold quotes each cleanup by scope.',lede='Get unfinished bookkeeping back on track.',body=
+        section('Start with a clear picture of the work','<p>Whether you are a few months behind or need to sort through older records, Glenhold can help assess what needs attention. Cleanup corrects existing records; catch-up completes periods that have not been finished. A project may involve both.</p>')+
+        section('What a project can include','<ul><li>Organizing available statements and transaction exports.</li><li>Recording missing transactions and reviewing duplicates.</li><li>Resolving unmatched transfers and unclear entries with you.</li><li>Reconciling bank and credit card accounts.</li><li>Organizing the chart of accounts and preparing financial reports.</li><li>Identifying open questions for you or your tax preparer.</li></ul>')+
+        section('Pricing and timing','<p>Each project is quoted based on the number of periods, accounts, transactions, and corrections involved. Monthly plan starting prices are separate from historical cleanup work. Mention any deadlines during the first conversation so we can discuss a realistic schedule.</p>')+
+        section('What to prepare','<p>Start with an account list, the periods you need help with, and a note of any missing records. Include accounts closed during the period. See the <a href="/getting-started/">handoff checklist</a> before gathering documents, or book a call to find out what is needed.</p>')),
+    dict(slug='quickbooks-online',name='QuickBooks Online setup and training',description='QuickBooks Online setup, chart of accounts organization, training, and accuracy check-ins from a Certified QuickBooks ProAdvisor in Simi Valley.',lede='Build a system you understand and a routine you can maintain.',body=
+        section('Help with your QuickBooks Online file','<p>Jack is a Certified QuickBooks ProAdvisor who can help you set up QuickBooks Online, organize your chart of accounts, or work through an existing bookkeeping issue.</p><p>Tell him what you want to do yourself and where you would like support. Training can focus on the tasks you handle rather than features you do not need.</p>')+
+        section('Setup and training can cover','<ul><li>A chart of accounts that fits your business.</li><li>A routine for reviewing and categorizing transactions.</li><li>Understanding transfers and reconciling accounts.</li><li>Reading your profit and loss statement and balance sheet.</li><li>Accuracy check-ins on an agreed schedule.</li></ul>')+
+        section('A specific question or ongoing support','<p>You can ask for help with a particular issue, discuss a cleanup, or move to <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. Consulting and training are quoted separately. Software arrangements and the work included will be discussed as part of your quote.</p>')),
+    dict(slug='financial-statements',name='Financial statements',description='Understand your profit and loss statement and balance sheet. Monthly financial reports are included in Glenhold bookkeeping plans from $349.',lede='Clear reports that help you understand your business.',body=
+        section('What you receive each month','<p>All monthly bookkeeping plans include a profit and loss statement and a balance sheet, prepared from the bookkeeping records. The target is the 15th of the following month when the necessary information is available.</p>')+
+        section('What the reports tell you','<p><strong>A profit and loss statement</strong> shows income, expenses, and profit over a period. <strong>A balance sheet</strong> shows assets, liabilities, and equity at a particular date. Together, they give you a fuller view than the bank balance alone.</p>')+
+        section('More context as your business grows','<p>Core adds a quarterly profit and expense summary and year-to-date comparisons. Strategic adds reports tailored to your business and a monthly call to discuss them. <a href="/pricing/">Compare the plans</a>.</p><p>These are bookkeeping reports for management use and sharing with your tax preparer. If a lender or another recipient requires a specific report or assurance engagement, share that request before work begins.</p>')),
+    dict(slug='cpa-ready-books',name='Books for your tax preparer',description='Organized transactions, reconciled accounts, and year-end financial reports for your CPA or tax preparer. Glenhold Bookkeeping is based in Simi Valley.',lede='Make the year-end handoff easier.',body=
+        section('Give your tax preparer organized records','<p>Glenhold helps categorize transactions, reconcile bank and credit card accounts, and prepare financial reports. Keeping this work current means fewer loose ends when it is time to share the books with your CPA or tax preparer.</p>')+
+        section('What the handoff can include','<ul><li>A year-to-date profit and loss statement and year-end balance sheet.</li><li>Reconciled bank and credit card accounts for the agreed periods.</li><li>Relevant loan and owner-transaction records, when provided.</li><li>A list of unresolved items or questions that need review.</li></ul><p>Tax return preparation and filing are separate from the bookkeeping services described here.</p>')+
+        section('If the deadline is approaching','<p>Let Jack know which periods are unfinished and when your preparer needs the records. A <a href="/cleanup-catch-up/">cleanup assessment</a> can help establish the scope and timeline.</p>')),
+    dict(slug='loan-ready-books',name='Bookkeeping for financing requests',description='Organize your books and financial statements for a financing request. Share your lender’s reporting requirements with Glenhold before work begins.',lede='Have organized financial records ready when they are requested.',body=
+        section('Start with the lender’s request','<p>If you are applying for financing, ask the lender which reports and periods it needs. Share that list with Jack so the bookkeeping work can be scoped around the actual request.</p>')+
+        section('How Glenhold can help','<p>Monthly bookkeeping and cleanup can help organize transactions, reconcile accounts, and prepare a profit and loss statement and balance sheet. If historical periods need work, the timeline will depend on the records available and the size of the backlog.</p><p>Lender requirements vary. Bookkeeping reports do not guarantee approval or replace any tax returns, assurance reports, or other documents the lender may require.</p>')+
+        section('Discuss the timeline early','<p>Bring the reporting request and deadline to a free introductory call. <a href="/cleanup-catch-up/">Learn about cleanup</a> or <a href="/monthly-bookkeeping/">ongoing bookkeeping</a>.</p>')),
 ]
 
-CITY_BY = {c["slug"]: c for c in CITIES}
-IND_BY = {i["slug"]: i for i in INDUSTRIES}
-
-
-def area():
-    return area_nodes(CITIES, EXTRAS)
-
-
-def price_cards() -> str:
-    return '''<div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Essential</h3>
-        <p class="pricing-tagline">For small businesses with simple accounting needs who want clean books at tax time</p>
-        <div class="pricing-price"><span class="pricing-prefix">Starting at</span>$349 <span>/ mo</span></div>
-        <hr class="pricing-divider" />
-        <ul class="pricing-list">
-          <li>Expense categorization</li>
-          <li>Monthly bank &amp; card reconciliation</li>
-          <li>Monthly financial statements</li>
-          <li>Clean books for tax season</li>
-        </ul>
-        <a href="#contact" class="btn-slate">Get Started</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <h3>Core</h3>
-        <p class="pricing-tagline">For growing businesses that want clean books and a clearer picture of performance</p>
-        <div class="pricing-price"><span class="pricing-prefix">Starting at</span>$599 <span>/ mo</span></div>
-        <hr class="pricing-divider" />
-        <ul class="pricing-list">
-          <li>Expense categorization</li>
-          <li>Monthly bank &amp; card reconciliation</li>
-          <li>Monthly financial statements</li>
-          <li>Clean books for tax season</li>
-          <li>Quarterly profit and expense summary</li>
-          <li>Year-to-date performance comparison</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="#contact" class="btn-sage">Get Started</a>
-      </div>
-      <div class="pricing-card">
-        <h3>Strategic</h3>
-        <p class="pricing-tagline">For established businesses that want tailored reports and a monthly financial walkthrough</p>
-        <div class="pricing-price"><span class="pricing-prefix">Starting at</span>$1499 <span>/ mo</span></div>
-        <hr class="pricing-divider" />
-        <ul class="pricing-list">
-          <li>Expense categorization</li>
-          <li>Monthly bank &amp; card reconciliation</li>
-          <li>Monthly financial statements</li>
-          <li>Clean books for tax season</li>
-          <li>Quarterly profit and expense summary</li>
-          <li>Year-to-date performance comparison</li>
-          <li>Priority support</li>
-          <li>Custom financial reports for your business</li>
-          <li>Accrual accounting, payroll journal entries, and loan tracking</li>
-          <li>Monthly call to walk through your numbers</li>
-        </ul>
-        <a href="#contact" class="btn-slate">Get Started</a>
-      </div>
-    </div>'''
-
-
-def write_inner(title, description, path, h1, lede, body, crumbs, extra, faqs=None, faq_heading="Questions"):
-    nodes = list(extra)
-    faq_block = ""
-    if faqs:
-        faq_block = f"<section><h2>{esc(faq_heading)}</h2>{faq_html(faqs)}</section>"
-        nodes.append(faq_node(faqs, path))
-    main = f'''<header class="page-hero"><div class="breadcrumb">{crumb_html(crumbs)}</div><h1>{esc(h1)}</h1><p>{esc(lede)}</p><a class="btn-primary" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a></header>
-<article class="article-body">{body}{faq_block}</article>
-{cta()}
-{contact_block(path)}'''
-    write_page(title, description, path, main, crumbs, nodes, CITIES, area())
-
-
-def service_links():
-    return related_links([
-        ("/monthly-bookkeeping/", "Monthly bookkeeping"),
-        ("/cleanup-catch-up/", "Cleanup &amp; catch-up"),
-        ("/quickbooks-online/", "QuickBooks setup &amp; training"),
-        ("/financial-statements/", "Financial statements"),
-        ("/cpa-ready-books/", "CPA-ready books"),
-        ("/loan-ready-books/", "Loan-ready financials"),
-        ("/pricing/", "Pricing"),
-        ("/service-areas/", "Service areas"),
-        ("/who-we-work-with/", "Who we work with"),
-        ("/bookkeeping-faq/", "Bookkeeping FAQ"),
-    ])
-
-
 def build_services():
-    pages = [
-        {
-            "path": "/monthly-bookkeeping/",
-            "name": "Monthly bookkeeping",
-            "title": "Monthly Bookkeeping in Simi Valley & Nearby | Glenhold",
-            "description": "Monthly bookkeeping from $349 for small businesses near Simi Valley. Reconciliation, a P&L and balance sheet by the 15th, and three plans.",
-            "h1": "Monthly bookkeeping for small businesses",
-            "lede": "Keep the month current. Know where the business stands.",
-            "offer": offer("Essential monthly bookkeeping", "349", "Starting at $349 per month. Love your first month of books, or it is free."),
-            "body": '''<section><h2>I'll close the month for you</h2><p>If the books are always a week behind, you can't tell whether the business made money. I keep them current for small businesses around Simi Valley. You work with me. I'm a former Big 4 accountant and a Certified QuickBooks ProAdvisor. Any kind of small business is welcome. I price the work from your accounts, your volume, and the reports you want.</p></section>
-<section><h2>What is included</h2><ul><li><strong>Transaction categorization</strong> against a chart of accounts built for how you operate.</li><li><strong>Bank and credit card reconciliation</strong> so missing entries, duplicates, and transfers can be seen.</li><li><strong>Monthly financial statements:</strong> a profit and loss and a balance sheet.</li><li><strong>Email between closes</strong> for the questions that hold a month up.</li></ul><p>The target is a P&amp;L and balance sheet by the 15th. That date depends on statements and answers arriving in time.</p></section>
-<section><h2>Essential, Core, and Strategic</h2><div class="table-wrap"><table><thead><tr><th scope="col">Plan</th><th scope="col">Starting price</th><th scope="col">What changes</th></tr></thead><tbody><tr><th scope="row">Essential</th><td>$349 / month</td><td>Categorization, reconciliation, monthly statements, clean books for tax season.</td></tr><tr><th scope="row">Core</th><td>$599 / month</td><td>Essential, plus a quarterly profit and expense summary, a year-to-date comparison, and priority support.</td></tr><tr><th scope="row">Strategic</th><td>$1,499 / month</td><td>Core, plus custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call.</td></tr></tbody></table></div><p>These are starting prices. The quote depends on transaction volume, the number of accounts, and reporting complexity. Love your first month of books, or it's free. See <a href="/pricing/">the full comparison</a>.</p></section>
-<section><h2>If the past is not current</h2><p>Start with <a href="/cleanup-catch-up/">cleanup and catch-up</a> when months are unfinished. Stay on <a href="/quickbooks-online/">QuickBooks training</a> if you want to keep doing the entry. Monthly bookkeeping is for handing the close to Jack.</p></section>''',
-            "faqs": [
-                ("What does monthly bookkeeping include?", "Expense categorization, monthly bank and credit card reconciliation, a profit and loss, a balance sheet, and clean books for tax season. Core and Strategic add the reporting listed on the pricing page."),
-                ("Does the monthly price include tax filing or payroll?", "No. Tax returns stay with your CPA. Glenhold does not run payroll. Strategic can record payroll journal entries from your payroll provider."),
-            ],
-        },
-        {
-            "path": "/cleanup-catch-up/",
-            "name": "Cleanup and catch-up bookkeeping",
-            "title": "Bookkeeping Cleanup & Catch-Up | Glenhold Bookkeeping",
-            "description": "Catch up months or years of books for Simi Valley-area businesses. Reconciled records and a CPA handoff. Quoted separately from monthly plans.",
-            "h1": "Cleanup and catch-up bookkeeping",
-            "lede": "Behind on the books? I'll tell you what it will take before we start.",
-            "offer": None,
-            "body": '''<section><h2>Bring the backlog current</h2><p>Cleanup means the books exist and they're wrong. Catch-up means the months were never entered. A lot of projects are both. I do this for small businesses around Simi Valley. We can stop when the backlog is done, or keep going month to month.</p></section>
-<section><h2>What a project can cover</h2><ul><li>Organizing statements, exports, and the existing accounting file.</li><li>Importing missing transactions and classifying income and expenses.</li><li>Reviewing duplicates, unmatched transfers, and balances that do not tie.</li><li>Reconciling bank and credit card accounts to the statements you have.</li><li>Tidying the chart of accounts so the reports can be read.</li><li>A package your CPA can use. They file the return.</li></ul><p>If an entry is unclear, I'll ask you. I'd rather wait than guess what a transfer was for.</p></section>
-<section><h2>What to gather</h2><p>The months in question, every business bank and credit card account including accounts you closed, and statements that show opening and closing balances. Add loans, payroll reports, and owner contributions or draws when they matter. If you changed banks, include both sides. The <a href="/getting-started/">handoff checklist</a> is the longer version. Ask how to send files before you email anything sensitive.</p></section>
-<section><h2>Price and timing</h2><p>I quote cleanup from the periods, accounts, transactions, and fixes. The monthly plans, $349, $599, or $1,499 to start, are for ongoing work. Tell me any tax or lender date on the first call so I can plan around it.</p><p>When the project is done you can move to <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or to <a href="/quickbooks-online/">training and check-ins</a> if you want the file back.</p></section>''',
-            "faqs": [
-                ("How much does catch-up bookkeeping cost?", "I price catch-up from the months, accounts, and fixes involved, separate from the monthly plans. I'll tell you the price before you decide."),
-                ("Will the books be ready for my CPA?", "That is the handoff: classified transactions, reconciled accounts, financial statements, and a note of anything the records could not support. Your CPA files the return."),
-            ],
-        },
-        {
-            "path": "/quickbooks-online/",
-            "name": "QuickBooks Online setup and training",
-            "title": "QuickBooks Online Setup & Training | Glenhold Bookkeeping",
-            "description": "QuickBooks Online setup, chart of accounts, and training from a Certified ProAdvisor in Simi Valley. Scoped separately from monthly plans.",
-            "h1": "QuickBooks Online setup and training",
-            "lede": "A file that matches the business, and a routine you can actually follow.",
-            "offer": None,
-            "body": '''<section><h2>I'll set QuickBooks up so it fits your business</h2><p>If the file is noisy or you want to keep doing the entry yourself, I can set it up, train you, and check your work. I'm a Certified QuickBooks ProAdvisor and a former Big 4 accountant, in Simi Valley. I work in QuickBooks Online. If you're still on Desktop, tell me on the intro call before we start.</p></section>
-<section><h2>What setup covers</h2><ul><li>A QuickBooks Online file built around how money moves through the business.</li><li>A chart of accounts for income, expenses, assets, liabilities, and equity.</li><li>A routine for reviewing activity, separating transfers from income and expenses, and reconciling.</li><li>Accuracy check-ins on a schedule you agree to, if you want a review rather than a handoff.</li></ul><p>Too many overlapping accounts make a profit and loss hard to read. Too few hide the thing you meant to see. Setup starts by asking which reports you actually use.</p></section>
-<section><h2>Training or a monthly plan</h2><p>Choose training when you want to keep the day-to-day work. Choose <a href="/monthly-bookkeeping/">monthly bookkeeping</a> when you want me to categorize, reconcile, and send the statements. You can start with one and move to the other. I price training on its own. Monthly plans start at $349. You pay Intuit for the QuickBooks subscription.</p><p>An existing file does not have to be thrown out. It may need a chart review, or a <a href="/cleanup-catch-up/">cleanup</a>, before a routine makes sense.</p></section>''',
-            "faqs": [
-                ("Is Jack a QuickBooks ProAdvisor?", "Yes. Jack is a Certified QuickBooks ProAdvisor. The setup, training, and consulting on this page are for QuickBooks Online."),
-                ("Does monthly bookkeeping include the QuickBooks subscription?", "No. Intuit bills the subscription. Glenhold's prices are for the bookkeeping work. Check Intuit for the current software price."),
-            ],
-        },
-        {
-            "path": "/financial-statements/",
-            "name": "Financial statements",
-            "title": "Monthly Financial Statements | Glenhold Bookkeeping",
-            "description": "Profit and loss and balance sheet by the 15th for Simi Valley-area small businesses. Included in monthly plans from $349. Not a separate product.",
-            "h1": "Financial statements for small businesses",
-            "lede": "A profit and loss and a balance sheet, on a schedule, from reconciled accounts.",
-            "offer": None,
-            "body": '''<section><h2>What you actually get each month</h2><p>Every monthly plan includes a profit and loss and a balance sheet. I aim for the 15th of the following month, once your statements and answers are in. These reports come with the bookkeeping. Your CPA still files the return.</p><p>A profit and loss shows income, expenses, and profit for a stretch of time. It does not, by itself, show the cash in the bank. A balance sheet shows what the business owns, what it owes, and the owner's equity on one date. You usually need both.</p></section>
-<section><h2>What Core and Strategic add</h2><ul><li><strong>Essential, from $349:</strong> the monthly statements and the reconciliation behind them.</li><li><strong>Core, from $599:</strong> those statements, plus a quarterly profit and expense summary and a year-to-date performance comparison.</li><li><strong>Strategic, from $1,499:</strong> Core, plus custom financial reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call to walk through the numbers.</li></ul><p>Accrual accounting is part of Strategic. If unearned deposits or unpaid bills should sit on the balance sheet, tell me before you pick a plan. Your CPA can confirm which basis the return expects. They file it.</p></section>
-<section><h2>Who the statements are for</h2><p>You use them to see the month. Your CPA uses them at tax time. A lender may ask for them when you apply for financing. I prepare the bookkeeping reports. If the history is incomplete, <a href="/cleanup-catch-up/">we'll catch the books up</a> before you lean on a statement.</p></section>''',
-            "faqs": [
-                ("Are financial statements included in the monthly price?", "Yes. A profit and loss and a balance sheet are part of Essential, Core, and Strategic. They are not billed as an extra report fee on this site."),
-                ("Is this an audit or a review?", "No. Glenhold does bookkeeping and management statements from the reconciled accounts. Audits and reviews are attestation services this firm does not offer."),
-            ],
-        },
-        {
-            "path": "/cpa-ready-books/",
-            "name": "CPA-ready books",
-            "title": "CPA-Ready Books for Tax Season | Glenhold Bookkeeping",
-            "description": "I reconcile the year and hand your CPA financial statements they can file from. I'm in Simi Valley. Plans support the monthly work from $349.",
-            "h1": "Books your CPA can actually use",
-            "lede": "Tax season goes faster when the year is reconciled before the CPA opens the file.",
-            "offer": None,
-            "body": '''<section><h2>Clean books for your CPA</h2><p>I categorize the accounts, reconcile the bank and cards, and send a profit and loss and balance sheet your preparer can use. That's what I mean by clean books for tax season. Your CPA still reviews them and files. I'm a former Big 4 accountant. I keep the books. They file the return.</p></section>
-<section><h2>What usually goes in the package</h2><ul><li>A profit and loss for the year, and a balance sheet at year end.</li><li>Accounts reconciled to statements, including accounts closed during the year.</li><li>A chart of accounts that did not change meaning halfway through the year.</li><li>A short list of items the records could not support, so the CPA is not left to discover them in March.</li><li>Loan balances and owner draws identified, when those records were provided.</li></ul><p>California LLC owners often ask about the $800 minimum franchise tax at the same time. That tax is filed with the Franchise Tax Board, not paid to Glenhold. The <a href="/bookkeeping-faq/#llc-800">FAQ states the general rule</a> and tells you to confirm it with your preparer.</p></section>
-<section><h2>When the year is already a mess</h2><p>If months were never closed, start with <a href="/cleanup-catch-up/">cleanup and catch-up</a>. The monthly plans assume a current rhythm. Name the filing deadline on the first call. Do not email source documents until Jack tells you how to share them.</p></section>''',
-            "faqs": [
-                ("Does Glenhold file my tax return?", "No. The service is the books and the statements. Your CPA or tax preparer files the return."),
-                ("What if I do not have a CPA yet?", "You can still get the books current. You will need a preparer, or another arrangement you choose, to file. Glenhold does not shop that role for you on this site."),
-            ],
-        },
-        {
-            "path": "/loan-ready-books/",
-            "name": "Loan-ready financials",
-            "title": "Loan-Ready Bookkeeping | Glenhold Bookkeeping",
-            "description": "I reconcile the books and prepare the statements lenders ask to see. You send the package. Plans from $349 support the monthly work.",
-            "h1": "Books a lender can read",
-            "lede": "Lenders ask for statements that match the bank. I'll get the books there. They still make the decision.",
-            "offer": None,
-            "body": '''<section><h2>Give the lender statements that tie</h2><p>Lenders usually ask for a recent profit and loss, a balance sheet, and bank statements for the same months. They want the cash on the balance sheet to match the statement. I catch the books up and reconcile them so those reports agree. You or your broker send the package. Your CPA may still provide the tax returns.</p></section>
-<section><h2>If you're on a deadline</h2><p>If the books are months behind, we start with <a href="/cleanup-catch-up/">catch-up</a> for the periods the lender named. If they're current, <a href="/financial-statements/">monthly statements</a> are already part of the plans at $349, $599, or $1,499 a month to start. Tell me the date on the first call. I can only use the statements you actually have.</p></section>''',
-            "faqs": [
-                ("Can you guarantee my loan will be approved?", "No. Glenhold prepares reconciled financial statements. The lender decides."),
-                ("Do I still need my tax returns?", "Often yes. Lenders ask the CPA's returns as well as the bookkeeping statements. Glenhold does not file the returns."),
-            ],
-        },
-    ]
-    for page in pages:
-        body = page["body"] + "<section><h2>Keep going</h2>" + service_links() + "</section>"
-        extra = []
-        if page["offer"]:
-            extra.append(service_node(page["name"], page["path"], page["description"], area(), page["offer"]))
-        else:
-            extra.append(service_node(page["name"], page["path"], page["description"], area()))
-        write_inner(
-            page["title"], page["description"], page["path"], page["h1"], page["lede"], body,
-            [("Home", "/"), ("Services", "/services/"), (page["name"], page["path"])],
-            extra, page["faqs"], "Questions about this work",
-        )
-
-
-def build_service_hub():
-    cards = [
-        ("/monthly-bookkeeping/", "Monthly bookkeeping", "Categorize, reconcile, and issue statements every month. From $349."),
-        ("/cleanup-catch-up/", "Cleanup and catch-up", "Months or years behind. A quoted project, then a handoff to your CPA."),
-        ("/quickbooks-online/", "QuickBooks Online", "Setup, chart of accounts, training, and check-ins from a ProAdvisor."),
-        ("/financial-statements/", "Financial statements", "Profit and loss and balance sheet by the 15th, included in the monthly plans."),
-        ("/cpa-ready-books/", "CPA-ready books", "Reconciled records your CPA can use at tax time."),
-        ("/loan-ready-books/", "Loan-ready financials", "Statements a lender can read, prepared from reconciled books."),
-    ]
-    body = f'''<section><h2>Tell me where the books stand</h2><p>Most people call because the month never quite closes, a year got away from them, or QuickBooks feels harder than it should. I do monthly bookkeeping, catch-up, and QuickBooks Online setup and training. The statements, the CPA handoff, and the lender package come out of that work. Plans are $349, $599, or $1,499 a month to start. Love your first month of books, or it's free.</p>{hub_cards(cards)}</section>
-<section><h2>You still keep your CPA</h2><p>I hand your CPA clean, tax-ready books. They file the return. If you already have a payroll company, the Strategic plan includes recording those journal entries. You pay Intuit for QuickBooks Online. You work with me, whatever kind of small business you run. <a href="/who-we-work-with/">See a few of them</a>.</p></section>'''
-    write_inner(
-        "Bookkeeping Services | Glenhold Bookkeeping",
-        "I do monthly bookkeeping, catch-up, and QuickBooks Online setup for small businesses around Simi Valley. Plans from $349. You work with me.",
-        "/services/",
-        "Bookkeeping services",
-        "Monthly books, a cleanup, or QuickBooks help. You work with me.",
-        body,
-        [("Home", "/"), ("Services", "/services/")],
-        [],
-    )
-
+    for p in SERVICES:
+        path='/'+p['slug']+'/'
+        extra=[service_node(p['name'],path,p['description'],AREA)]
+        write_inner(p['name']+' | Glenhold Bookkeeping',p['description'],path,p['name'],p['lede'],p['body'],
+            [('Home','/'),('Services','/services/'),(p['name'],path)],extra)
+    cards=[('/'+p['slug']+'/',p['name'],p['lede']) for p in SERVICES]
+    body=section('Support for the stage you are in','<p>Hand off your monthly bookkeeping, catch up on unfinished records, or get help using QuickBooks Online. You work directly with Jack, who will discuss your needs and prepare a quote before work begins.</p>'+hub_cards(cards))
+    body+=section('A clear scope from the start','<p>Monthly plans start at $349. Cleanup and training are quoted separately. Tell Jack about any special reporting, software, or filing requirements so the proposal accurately reflects what you need.</p><p><a href="/pricing/">View pricing</a> or <a href="/getting-started/">see what to prepare</a>.</p>')
+    write_inner('Bookkeeping Services | Glenhold Bookkeeping','Monthly bookkeeping, cleanup, and QuickBooks Online support for small businesses around Simi Valley. Work directly with Jack. Plans from $349.','/services/','Bookkeeping services','Practical help with your books, from setup to the monthly close.',body)
 
 def build_industries():
-    for ind in INDUSTRIES:
-        points = "<ul>" + "".join(f"<li>{esc(p)}</li>" for p in ind["points"]) + "</ul>"
-        city_links = related_links([(f"/service-areas/{s}/", CITY_BY[s]["name"]) for s in ind["cities"]])
-        rel = related_links([(f"/who-we-work-with/{s}/", IND_BY[s]["name"]) for s in ind["related"]])
-        body = "".join(ind["paragraphs"])
-        body += f"<section><h2>What the books usually need</h2>{points}<p>{esc(ind['limit'])}</p></section>"
-        body += f"<section><h2>Where I see this work</h2><p>These are a few of the cities where this kind of business is common. I work with you wherever you are in the area, and with plenty of other businesses too.</p>{city_links}</section>"
-        body += f"<section><h2>Other businesses I help</h2><p>Your business might look like one of these, or like something else entirely. Call me either way.</p>{rel}<p><a href=\"/who-we-work-with/\">All the business types</a></p></section>"
-        body += "<section><h2>Services that apply</h2>" + service_links() + "</section>"
-        write_inner(
-            ind["title"], ind["description"], f"/who-we-work-with/{ind['slug']}/",
-            ind["h1"], ind["lede"], body,
-            [("Home", "/"), ("Who we work with", "/who-we-work-with/"), (ind["name"], f"/who-we-work-with/{ind['slug']}/")],
-            [service_node(ind["name"] + " bookkeeping", f"/who-we-work-with/{ind['slug']}/", ind["description"], area())],
-            ind["faqs"], "Questions",
-        )
-    cards = [(f"/who-we-work-with/{i['slug']}/", i["name"], i["lede"]) for i in INDUSTRIES]
-    body = f'''<section><h2>I work with all kinds of small businesses</h2><p>These pages show how I usually set up the books for businesses I see around Simi Valley, so you can tell if it sounds like yours. If your business is missing, call anyway. What I need to know is your accounts, your volume, and the reports you want.</p>{hub_cards(cards)}</section>
-<section><h2>The plans stay the same</h2><p>Plans are $349, $599, or $1,499 a month to start. Catch-up and QuickBooks training are priced on their own. I hand your CPA clean books, and they file the return. If you already have a payroll company, Strategic includes recording those entries. You work with me.</p>{service_links()}</section>'''
-    write_inner(
-        "Who I Work With | Glenhold Bookkeeping",
-        "I keep books for contractors, restaurants, practices, shops, and every other small business around Simi Valley. Plans from $349.",
-        "/who-we-work-with/",
-        "Who I work with",
-        "Find a business that sounds like yours. If it isn't listed, call me anyway.",
-        body,
-        [("Home", "/"), ("Who we work with", "/who-we-work-with/")],
-        [],
-    )
+    for i in INDUSTRIES:
+        path='/who-we-work-with/'+i['slug']+'/'
+        body=section('Bookkeeping that fits how you operate',''.join('<p>'+esc(p)+'</p>' for p in i['paragraphs']))
+        body+=section('Useful details for the first call','<ul>'+''.join('<li>'+esc(p)+'</li>' for p in i['points'])+'</ul>')
+        body+=section('Choose the help you need','<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> keeps the records current. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> address unfinished periods. <a href="/quickbooks-online/">QuickBooks Online support</a> helps with setup, training, or specific questions.</p><p>Glenhold is based in Simi Valley and works with small businesses across <a href="/service-areas/">surrounding communities</a>. Monthly plans start at $349, with the scope and final quote based on your needs.</p>')
+        write_inner('Bookkeeping for '+i['name']+' | Glenhold','Bookkeeping for '+i['name'].lower()+' in Simi Valley and surrounding communities. Monthly support, cleanup, and QuickBooks Online help.',path,'Bookkeeping for '+i['name'].lower(),i['intro'],body,
+            [('Home','/'),('Who we work with','/who-we-work-with/'),(i['name'],path)])
+    cards=[('/who-we-work-with/'+i['slug']+'/',i['name'],i['intro']) for i in INDUSTRIES]
+    write_inner('Small Businesses We Work With | Glenhold Bookkeeping','Glenhold works with small businesses across industries around Simi Valley. Explore bookkeeping for service firms, shops, trades, practices, and more.','/who-we-work-with/','Bookkeeping for local small businesses','Different businesses. The same care with your books.',
+        section('Find the help your business needs','<p>Glenhold works with small businesses across industries. These examples show the information that may be useful when discussing your bookkeeping. If your business is not listed, get in touch—we can still discuss whether it is a fit.</p>'+hub_cards(cards)))
 
 
 def build_cities():
     for city in CITIES:
-        neighbors = related_links([(f"/service-areas/{s}/", CITY_BY[s]["name"]) for s in city["neighbors"]])
-        inds = related_links([(f"/who-we-work-with/{s}/", IND_BY[s]["name"]) for s in city["industries"]])
-        body = "".join(city["paragraphs"])
-        body += f"<section><h2>Businesses in {esc(city['name'])}</h2><p>These are a few of the businesses I help here. If yours is different, I still want to hear about it.</p>{inds}</section>"
-        body += f"<section><h2>Nearby</h2>{neighbors}<p><a href=\"/service-areas/\">The full service area</a></p></section>"
-        body += "<section><h2>How to start</h2>" + service_links() + "</section>"
-        write_inner(
-            city["title"], city["description"], f"/service-areas/{city['slug']}/",
-            city["h1"], city["lede"], body,
-            [("Home", "/"), ("Service areas", "/service-areas/"), (city["name"], f"/service-areas/{city['slug']}/")],
-            [service_node(f"Bookkeeping in {city['name']}", f"/service-areas/{city['slug']}/", city["description"], area())],
-            city["faqs"], f"Questions about {city['name']}",
-        )
-
-    groups = []
+        path = '/service-areas/' + city['slug'] + '/'
+        body = section('How I can help in ' + esc(city['name']), ''.join(city['paragraphs']))
+        body += section('Choose the help you need', '<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> keeps the records current. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> address unfinished periods. <a href="/quickbooks-online/">QuickBooks Online support</a> helps with setup, training, and specific questions.</p><p><a href="/pricing/">Compare the monthly plans</a> or <a href="/getting-started/">see what to prepare</a> for a handoff.</p>')
+        write_inner(city['title'], city['description'], path, city['h1'], city['lede'], body,
+            [('Home','/'),('Service areas','/service-areas/'),(city['name'],path)],
+            faqs=city['faqs'])
+    groups = {}
     for city in CITIES:
-        if city["group"] not in [g for g, _ in groups]:
-            groups.append((city["group"], []))
-        groups[[g for g, _ in groups].index(city["group"])][1].append(city)
-    sections = []
-    for group, members in groups:
-        blocks = []
-        for city in members:
-            blocks.append(
-                f'<section id="{city["slug"]}"><h3><a href="/service-areas/{city["slug"]}/">{esc(city["name"])}</a></h3><p>{esc(city["hub"])}</p></section>'
-            )
-        sections.append(f"<h2>{esc(group)}</h2><div class=\"region-grid\">{''.join(blocks)}</div>")
-    body = '''<section><h2>Cities where I keep the books</h2><p>I'm in Simi Valley, and I work with small businesses across Ventura County and nearby Los Angeles. Pick your city and you'll see the kinds of local businesses I help and how a monthly close works. Oak Park, Winnetka, and Tarzana sit between cities on this list. Name your neighborhood when you write, and I'll take it from there.</p><p>We'll meet in person when that helps. Plans are $349, $599, or $1,499 a month to start, in every city.</p></section>'''
-    body += "".join(sections)
-    body += "<section><h2>Same services in every city</h2>" + service_links() + "</section>"
-    write_inner(
-        "Bookkeeping Service Area | Simi Valley and Nearby",
-        "I keep books for small businesses across Ventura County and nearby Los Angeles, from Simi Valley outward. Plans from $349. You work with me.",
-        "/service-areas/",
-        "Bookkeeping around Simi Valley",
-        "Find your city. I'll show you how I help local owners keep the month clear.",
-        body,
-        [("Home", "/"), ("Service areas", "/service-areas/")],
-        [],
-    )
+        groups.setdefault(city['group'], []).append(city)
+    body = section('Based in Simi Valley, serving the surrounding region', '<p>I work with small businesses across nearby Ventura County and Los Angeles County communities. My local focus is generally within about an hour of Simi Valley, depending on traffic. Share your city when you get in touch so we can discuss the help you need and how we would work together.</p>')
+    for name, places in groups.items():
+        body += section(esc(name), '<ul class="area-list">' + ''.join('<li id="' + city['slug'] + '"><a href="/service-areas/' + city['slug'] + '/">' + esc(city['name']) + '</a><p class="area-description">' + esc(city['hub']) + '</p></li>' for city in places) + '</ul>')
+    body += section('Nearby communities', '<p>Oak Park, Winnetka, and Tarzana are also within the surrounding region. If your community is not listed, get in touch with your location and the help you need.</p>')
+    write_inner('Bookkeeping Service Areas | Simi Valley & Nearby', 'Simi Valley-based bookkeeping for Ventura County and nearby Los Angeles communities. Find your city and learn about working directly with Jack.', '/service-areas/', 'Bookkeeping around Simi Valley', 'Local support for businesses across our surrounding communities.', body)
 
 
 def build_faq():
-    groups = OrderedDict()
-    for item in FAQ:
-        groups.setdefault(item["cat"], []).append(item)
-    toc = '<div class="toc">' + "".join(
-        f'<a href="#{cat.lower().replace(" ", "-")}">{esc(cat)}</a>' for cat in groups
-    ) + "</div>"
-    parts = ["<section><h2>Straight answers before we talk</h2><p>These are my prices and the way I work. Tax answers are general. Confirm anything that touches a return with your CPA or the agency named.</p>" + toc + "</section>"]
-    for cat, items in groups.items():
-        cid = cat.lower().replace(" ", "-")
-        blocks = []
-        for item in items:
-            blocks.append(f'<details id="{esc(item["id"])}"><summary>{esc(item["q"])}</summary><p>{esc(item["a"])}</p></details>')
-        parts.append(f'<section id="{cid}"><h2>{esc(cat)}</h2>{"".join(blocks)}</section>')
-    parts.append("<section><h2>Go deeper</h2>" + service_links() + related_links([
-        ("/resources/", "Resource hub"),
-        ("/getting-started/", "What to give your bookkeeper"),
-    ]) + "</section>")
-    faqs = [(item["q"], item["a"]) for item in FAQ]
-    write_inner(
-        "Small Business Bookkeeping FAQ | Glenhold Bookkeeping",
-        "Answers on Glenhold's prices, catch-up, QuickBooks, bookkeeper vs CPA, and California basics such as the $800 LLC tax and sales tax.",
-        "/bookkeeping-faq/",
-        "Small business bookkeeping FAQ",
-        "What I charge, how catch-up works, and the California questions people ask me first.",
-        "".join(parts),
-        [("Home", "/"), ("Bookkeeping FAQ", "/bookkeeping-faq/")],
-        [faq_node(faqs, "/bookkeeping-faq/")],
-    )
-
+    body=section('Before we get started','<p>Here are answers to common questions about pricing, services, and working with Jack. If your situation needs a closer look, book a free call or send a message.</p>')
+    body+='<section>'+''.join('<details id="'+i['id']+'"><summary>'+esc(i['q'])+'</summary><p>'+esc(i['a'])+'</p></details>' for i in FAQ)+'</section>'
+    write_inner('Bookkeeping FAQ | Glenhold Bookkeeping','Answers about bookkeeping pricing, monthly reports, catch-up, QuickBooks Online, service areas, and getting started with Glenhold.','/bookkeeping-faq/','Your bookkeeping questions, answered','What to expect from the services and the first conversation.',body,extra=[faq_node([(i['q'],i['a']) for i in FAQ],'/bookkeeping-faq/')])
 
 def build_resources():
-    body = '''<section><h2>A few places to start</h2><p>If you want the price, the handoff list, or a plain answer on the California $800 tax or sales tax, start here. I keep the books. Your CPA files the return.</p></section>
-<section><h2>Start here</h2><ul>
-<li><a href="/bookkeeping-faq/#pricing">What I charge</a> in Ventura County and nearby Los Angeles.</li>
-<li><a href="/bookkeeping-faq/#bookkeeper-and-cpa">Bookkeeper and CPA</a>, and how we work together.</li>
-<li><a href="/bookkeeping-faq/#california-basics">The $800 LLC tax and sales tax</a>, in plain language.</li>
-<li><a href="/getting-started/">What to send me</a> before a cleanup or a monthly start.</li>
-<li><a href="/pricing/">Essential, Core, and Strategic</a> side by side.</li>
-</ul></section>
-<section><h2>Services behind the answers</h2>''' + service_links() + "</section>"
-    write_inner(
-        "Bookkeeping Resources | Glenhold Bookkeeping",
-        "A short index of Glenhold's bookkeeping answers: pricing, catch-up, QuickBooks, the $800 California LLC tax, and what to send a bookkeeper.",
-        "/resources/",
-        "Bookkeeping resources",
-        "The answers, the checklist, and the services they point to.",
-        body,
-        [("Home", "/"), ("Resources", "/resources/")],
-        [],
-    )
-
+    cards=[('/getting-started/','What to give your bookkeeper','An account and records checklist for a smoother handoff.'),('/bookkeeping-faq/','Common questions','Pricing, monthly reports, cleanup, and getting started.'),('/financial-statements/','Understand your reports','What a profit and loss statement and balance sheet tell you.'),('/pricing/','Compare monthly plans','Choose the level of reporting and support you need.')]
+    write_inner('Bookkeeping Resources | Glenhold Bookkeeping','Practical bookkeeping resources: preparing records, understanding financial reports, choosing a plan, and getting started.','/resources/','Bookkeeping resources','Useful information for choosing support and preparing your records.',section('Start here',hub_cards(cards)))
 
 def build_getting_started():
-    body = '''<section><h2>What should you give a new bookkeeper?</h2><p>Start with a complete list of business accounts, statements for the periods being worked on, and access to the books you already have. A clear picture of what is available helps identify gaps. This checklist is for <a href="/monthly-bookkeeping/">ongoing bookkeeping</a> or a <a href="/cleanup-catch-up/">cleanup</a>. Not every line will apply. Ask how to share records before you send anything sensitive.</p></section>
-<section><h2>Handoff checklist</h2><ol>
-<li><strong>Business and contact details.</strong> The name you operate under, and who can explain a transaction.</li>
-<li><strong>Every account.</strong> Checking, savings, cards, loans, and payment processors. Include accounts you closed or replaced.</li>
-<li><strong>Statements.</strong> Every statement for the period, including opening and closing balances. Exports help. They do not replace the statement.</li>
-<li><strong>The existing file.</strong> Your QuickBooks Online company, the last month that was finished, the last month that was reconciled, and any known problems. Those two months are often different.</li>
-<li><strong>Loans.</strong> Statements or schedules that separate principal, interest, and the balance, when you have them.</li>
-<li><strong>Payroll reports.</strong> If I need to record payroll journals, name the payroll provider and the reports it gives you. Your payroll company keeps running payroll.</li>
-<li><strong>Owner transactions.</strong> Money you put in, money you took out, and business costs you paid personally.</li>
-<li><strong>Deadlines and the CPA.</strong> Tax-preparer requests, lender dates, and who should receive the finished reports.</li>
-</ol></section>
-<section><h2>Three details that keep a handoff from stalling</h2><h3>Both sides of a transfer</h3><p>If cash moved between accounts, the records for both accounts need to be in the pile. One withdrawal does not explain the destination.</p><h3>The last reconciled month</h3><p>The last month with transactions typed in may not be the last month tied to a statement. Share both if you know them. If you do not, say that.</p><h3>What you cannot find</h3><p>A missing statement is useful information. Keep a short list of gaps so the work can be planned around them.</p></section>
-<section><h2>After the handoff</h2><p>I'll talk through what matters first: a cleanup, monthly support, or <a href="/quickbooks-online/">QuickBooks help</a>. A free call is enough before you gather documents you may not need.</p><p class="byline">By Jack, Glenhold Bookkeeping. Updated November 11, 2026.</p></section>
-<section><h2>Related</h2>''' + service_links() + "</section>"
-    write_inner(
-        "What to Give Your Bookkeeper | Glenhold Checklist",
-        "A handoff checklist for small businesses: accounts, statements, loans, payroll reports, owner draws, and the questions to settle before files are sent.",
-        "/getting-started/",
-        "What to give your bookkeeper",
-        "A shorter cleanup starts with a complete pile, including the gaps.",
-        body,
-        [("Home", "/"), ("Getting started", "/getting-started/")],
-        [],
-    )
+    body=section('Start with the basics','<p>For an introductory call, tell Jack about your business, the number of accounts, whether your books are current, and the help you need. You do not need to gather every record before that conversation.</p><p>Once the work is scoped, this checklist can help prepare for a handoff. Ask how to share sensitive documents before sending them.</p>')
+    records=[('Account list','Include checking, savings, credit cards, loans, and payment processors. Mention accounts closed or replaced during the period.'),('Statements','Gather statements for the agreed periods, including opening and closing balances. Transaction exports can be useful alongside them.'),('Existing bookkeeping','Identify the QuickBooks Online file, last completed month, last reconciled month, and any known issues.'),('Loan and payroll records','If relevant to the work, identify available statements, schedules, and reports from your payroll provider.'),('Owner transactions','Flag contributions, withdrawals, and business costs paid personally.'),('Deadlines and report requests','Share requests from your tax preparer, lender, or other recipient.')]
+    body+=section('Handoff checklist','<ol>'+''.join('<li><strong>'+t+'.</strong> '+b+'</li>' for t,b in records)+'</ol>')
+    body+=section('Missing something?','<p>A short list of missing records helps plan the work. Include both accounts involved in transfers whenever possible. If you are unsure which months have been reconciled, Jack can discuss how to establish a starting point.</p>')
+    write_inner('What to Give Your Bookkeeper | Glenhold Checklist','Prepare for a bookkeeping handoff with a practical checklist of accounts, statements, existing records, and deadlines.','/getting-started/','What to give your bookkeeper','A straightforward checklist for a smoother handoff.',body)
 
+BIO='<p>I’m Jack, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor. I started Glenhold to help small business owners keep reliable books and understand their financial reports.</p><p>You work directly with me. We’ll discuss what you need, agree on the scope, and set up a routine for your records and questions.</p><p>Outside work, I enjoy fly fishing, walks, and attending Mass with my wife and two children.</p>'
+
+def portrait(source,alt):
+    width,height=('1000','1333') if source=='headshot' else ('1100','1467')
+    return '<picture><source srcset="/'+source+'.webp" type="image/webp"><img src="/'+source+'.jpg" width="'+width+'" height="'+height+'" alt="'+alt+'" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></picture>'
 
 def build_about():
-    body = f'''<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content">
-<p>As a Simi Valley local, I am proud to raise my family in this beautiful community. I've always had a natural affinity for math, and a college professor showed me it was a perfect fit for accounting.</p>
-<p>After earning my Accounting degree, I began my career at a Big 4 firm, handling high-level accounting and bookkeeping work for multi-million dollar enterprises and auditing Fortune 500 financial services companies.</p>
-<p>I founded Glenhold to bring that high-level expertise and insight to the local businesses that serve as the backbone of our country.</p>
-<p>When I'm not working, I enjoy fly fishing, going on walks, and attending Mass with my wife and two children. I believe that professional excellence is rooted in personal character; as I often say, integrity is not something you can choose on a whim—it must be practiced daily over a lifetime.</p>
-<div class="about-badges"><span class="badge">Former Big 4 Accountant</span><span class="badge">Certified QuickBooks ProAdvisor</span><span class="badge">LA &amp; Ventura County</span></div>
-</div></div></section>
-<section><h2>Working with me</h2><p>You work with me directly, from the first call through every close. I also post bookkeeping videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p></section>'''
-    write_inner(
-        "About Jack | Glenhold Bookkeeping",
-        "I'm Jack, in Simi Valley. Former Big 4 accountant and Certified QuickBooks ProAdvisor. I keep your books, and you work with me. Plans from $349.",
-        "/about/",
-        "About Jack",
-        "I live here, I do the books myself, and you work with me.",
-        body,
-        [("Home", "/"), ("About", "/about/")],
-        [],
-    )
-
+    body='<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content">'+BIO+'</div></div></section>'
+    body+=section('Working with me','<p>You work with me directly, from the first call through every close. I also post bookkeeping videos on <a href="'+YOUTUBE+'" target="_blank" rel="noopener noreferrer">YouTube</a>.</p>')
+    write_inner('About Jack | Glenhold Bookkeeping','Meet Jack, a Simi Valley local, former Big 4 accountant, Certified QuickBooks ProAdvisor, and founder of Glenhold Bookkeeping.','/about/','Hi, I’m Jack','Local roots and a direct relationship with your bookkeeper.',body)
 
 def build_pricing():
-    body = f'''<section><h2>Three monthly starting prices</h2><p>Your quote reflects transaction volume, the number of accounts, and reporting complexity. Cleanup, catch-up, consulting, and training are scoped separately. The QuickBooks Online subscription is billed by Intuit, not included here.</p><div class="pricing-guarantee"><span>★</span> Love your first month of books, or it's free</div>{price_cards()}<p class="byline" style="margin-top:28px">The guarantee applies to the first month of monthly bookkeeping.</p></section>
-<section><h2>What you can count on</h2><p>Plans are $349, $599, or $1,499 a month to start, in every city I serve. I hand your CPA clean books. If you already use a payroll company, Strategic includes recording those journal entries. You pay Intuit for QuickBooks Online.</p><p>Read what I charge in <a href="/bookkeeping-faq/#ventura-cost">Ventura County</a> and <a href="/bookkeeping-faq/#los-angeles-cost">nearby Los Angeles</a>.</p></section>'''
-    write_inner(
-        "Bookkeeping Pricing from $349 a Month | Glenhold",
-        "Plans are $349, $599, or $1,499 a month to start. Love your first month or it's free. Catch-up and QuickBooks training are priced on their own.",
-        "/pricing/",
-        "Straightforward monthly pricing",
-        "Essential, Core, and Strategic. I'll tell you the quote before we start.",
-        body,
-        [("Home", "/"), ("Pricing", "/pricing/")],
-        [],
-        [
-            ("How much does Glenhold bookkeeping cost?", "Plans are $349, $599, or $1,499 a month to start. The quote depends on volume and complexity. Cleanup and training are extra."),
-            ("What does the guarantee cover?", "Love your first month of monthly books, or that month is free. It does not price a cleanup project or the QuickBooks subscription."),
-        ],
-        "Pricing questions",
-    )
-
+    body=section('Choose the support you need','<p>Your quote reflects transaction volume, the number of accounts, and reporting complexity. The plans below are starting prices. Cleanup, catch-up, consulting, and training are quoted separately.</p><div class="pricing-guarantee">Love your first month of books, or it’s free</div>'+price_cards())
+    body+=section('What changes between plans','<p>Essential keeps your records current. Core adds a regular view of performance through quarterly summaries and year-to-date comparisons. Strategic adds tailored reporting and time each month to walk through the numbers together.</p><p>Before work begins, we’ll agree on the services, software arrangements, timing, and price. Tax return preparation and filing are separate from the bookkeeping plans listed here.</p><p>The first-month guarantee applies to monthly bookkeeping. Discuss the details with Jack when agreeing on your scope.</p>')
+    write_inner('Bookkeeping Pricing from $349 per Month | Glenhold','Compare Glenhold monthly bookkeeping plans: Essential from $349, Core from $599, and Strategic from $1,499. Cleanup and training quoted separately.','/pricing/','Straightforward monthly pricing','Choose reliable books, added reporting, or a monthly walkthrough.',body)
 
 def build_contact():
-    body = '''<section><h2>What happens after you write</h2><p>I'll reply within one business day. I'm around Monday through Saturday, 6am to 6pm Pacific. Tell me your city, what kind of business you run, whether the books are current, and roughly how many accounts you have. Leave the statements out of this first note. Ask me how to send files.</p><p>You can also book a free call. I'll learn enough to tell you what the work looks like, and the quote follows once I understand the volume.</p><p>I'm in Simi Valley. If you're outside the communities I list, say so and I'll tell you if I can help.</p></section>'''
-    write_inner(
-        "Contact Glenhold Bookkeeping in Simi Valley",
-        "Call Glenhold Bookkeeping at (805) 419-3451 or email jack@glenhold.com. Simi Valley, Monday through Saturday, 6am to 6pm Pacific.",
-        "/contact/",
-        "Contact Glenhold Bookkeeping",
-        "Call, email, or send a note. A reply within one business day.",
-        body,
-        [("Home", "/"), ("Contact", "/contact/")],
-        [],
-    )
+    body=section('Tell me what you need','<p>Share your city, the kind of business you run, whether your books are current, and the help you want. I’ll reply within one business day to discuss the next step.</p><p>You can also call <a href="tel:8054193451">(805) 419-3451</a>, email <a href="mailto:jack@glenhold.com">jack@glenhold.com</a>, or book a free introductory call. Please leave bank logins, account numbers, and financial documents out of the contact form.</p>')
+    write_inner('Contact Glenhold Bookkeeping | Simi Valley','Contact Jack at Glenhold Bookkeeping in Simi Valley. Call (805) 419-3451, email jack@glenhold.com, or book a free introductory call.','/contact/','Let’s talk about your books','A short conversation is a good place to start.',body)
 
+def build_privacy():
+    body=section('Information you send','<p>The inquiry form asks for your name, email address, optional phone number, the service you are interested in, and a message. Glenhold uses this information to respond to your inquiry and discuss services. Please do not send bank logins, account numbers, tax documents, or other sensitive financial records through this form.</p><p>Form submissions are processed through Formspree. Booking a call takes you to Google’s scheduling service. The website also loads fonts from Google Fonts. These providers process information according to their own policies.</p>')
+    body+=section('Website measurement','<p>This website loads Google Ads and OpenAI Ads measurement tags to help measure visits and actions, including inquiry submissions and clicks on booking or telephone links. The website’s form-submission code does not include the name, email address, phone number, or message fields in the conversion events sent to those tags.</p><p>Third-party services may process technical information, such as browser, device, network, or advertising identifiers, under their own policies and applicable settings. This website also stores campaign parameters in browser session storage to help identify the source of an inquiry.</p>')
+    body+=section('Questions about your information','<p>Contact <a href="mailto:jack@glenhold.com">jack@glenhold.com</a> with questions about this website’s information handling or requests concerning information you have provided.</p><p>Website forms and advertising measurement are separate from any arrangements for exchanging client bookkeeping records.</p>')
+    write_inner('Website Privacy Notice | Glenhold Bookkeeping','How Glenhold’s website uses inquiry information, form processing, booking services, and advertising measurement.','/privacy/','Website privacy notice','Information about inquiries and website measurement.',body,contact=False)
 
 def build_home():
-    home_faqs = [(item["q"], item["a"]) for item in FAQ if item.get("home")]
-    city_chips = chips([(f"/service-areas/{c['slug']}/", c["name"]) for c in CITIES])
-    ind_chips = chips([(f"/who-we-work-with/{i['slug']}/", i["name"]) for i in INDUSTRIES])
-    main = f'''<section class="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">Ventura County &amp; the Greater LA Area</div>
-      <h1>Small business bookkeeping.<br/><em>Local. Clear. Personal.</em></h1>
-      <p class="hero-sub">Your books should be current, and you should be able to read them. I keep them that way for small businesses around Simi Valley, from $349 a month. You work with me. Love your first month, or it's free.</p>
-      <div class="hero-ctas">
-        <a href="{CALENDAR}" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call</a>
-        <a href="#contact" class="btn-ghost">Send a Message</a>
-      </div>
-      <div class="hero-photo-mobile">
-        <picture>
-          <source srcset="/headshot.webp" type="image/webp" />
-          <img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" style="width:80%;display:block;border-radius:6px;margin:0 auto;" />
-        </picture>
-      </div>
-      <div class="hero-social">
-        <a href="https://share.google/ZFSpIuhD39akrC2DT" target="_blank" rel="noopener noreferrer">★★★★★ &nbsp;Google Reviews</a>
-        <a href="https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley" target="_blank" rel="noopener noreferrer">★★★★★ &nbsp;Yelp Reviews</a>
-      </div>
-      <div class="hero-credentials" style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
-        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--sage); font-size: 1rem; font-weight: 700;">✓</span><span style="color: rgba(255,255,255,0.55); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Former Big 4 Accountant</span></div>
-        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--sage); font-size: 1rem; font-weight: 700;">✓</span><span style="color: rgba(255,255,255,0.55); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Certified QuickBooks ProAdvisor</span></div>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <div class="hero-photo-box">
-        <picture>
-          <source srcset="/headshot.webp" type="image/webp" />
-          <img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center -10%;display:block;" />
-        </picture>
-      </div>
-    </div>
-  </section>
-  <section class="services" id="services">
-    <div class="section-label">What I Do</div>
-    <h2 class="section-title">Bookkeeping services</h2>
-    <p class="section-sub">Choose the level of support that fits where your business is right now. You can always adjust as you grow.</p>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon">📅</div><h3>Monthly Bookkeeping</h3><p>Books closed on schedule every month, with real numbers when you need them.</p><ul class="service-list"><li>P&amp;L and balance sheet by the 15th</li><li>Categorization rules built for your business</li><li>Monthly bank and credit card reconciliation</li><li>Email support between closes</li><li>Optional monthly video call (Strategic tier)</li></ul><a class="text-link" href="/monthly-bookkeeping/">Explore monthly bookkeeping →</a></div>
-      <div class="service-card"><div class="service-icon">🧹</div><h3>Cleanup &amp; Catch-Up</h3><p>Months or years behind? I'll sort it out and hand back records ready for filing or financing.</p><ul class="service-list"><li>Rebuild books for any time period</li><li>Every transaction classified and matched</li><li>Bulk import from statements and exports</li><li>Clean handoff to your CPA</li></ul><a class="text-link" href="/cleanup-catch-up/">Explore cleanup &amp; catch-up →</a></div>
-      <div class="service-card"><div class="service-icon">🎓</div><h3>Consulting &amp; Training</h3><p>Doing your own books but want it done right? I'll set up your system and review your work on your schedule.</p><ul class="service-list"><li>QuickBooks Online setup for your business</li><li>Chart of accounts built for how you operate</li><li>Accuracy check-ins on your schedule</li><li>Easy to move to full monthly service later</li></ul><a class="text-link" href="/quickbooks-online/">Explore QuickBooks support →</a></div>
-    </div>
-    <div class="content-links" style="margin-top:28px"><a href="/services/">All services</a><a href="/financial-statements/">Financial statements</a><a href="/cpa-ready-books/">CPA-ready books</a><a href="/loan-ready-books/">Loan-ready financials</a></div>
-  </section>
-  <section class="pricing" id="pricing">
-    <div class="section-label">Pricing</div>
-    <h2 class="section-title">Straightforward monthly pricing</h2>
-    <p class="section-sub">Choose clean books, clearer insights, or a monthly walkthrough. Your final quote reflects transaction volume, number of accounts, and reporting complexity.</p>
-    <div class="pricing-guarantee"><span>★</span> Love your first month of books, or it's on me</div>
-    {price_cards()}
-  </section>
-  <section class="local-section" id="service-areas"><div class="section-label">Close to home</div><h2 class="section-title">I keep the books for the businesses around Simi Valley</h2><p class="section-sub">Shops, trades, practices, restaurants, and everything in between. I set the books up around how you operate.</p><p class="section-sub">I'm in Simi Valley. I work with owners across Ventura County and nearby Los Angeles, and we meet when that helps.</p>{city_chips}<div class="content-links"><a href="/service-areas/">Find your city</a><a href="/getting-started/">What to send me</a></div></section>
-  <section class="faq-section" id="who"><div class="section-label">Every kind of small business</div><h2 class="section-title">If you run it, I can keep the books</h2><p class="section-sub">A few of the businesses I help are listed here. If yours is missing, you're still in the right place.</p>{ind_chips}<div class="content-links"><a href="/who-we-work-with/">See how I work with each</a></div></section>
-  <section class="faq-section" id="faq"><div class="section-label">Before we talk</div><h2 class="section-title">Common bookkeeping questions</h2>{faq_html(home_faqs)}<div class="content-links"><a href="/bookkeeping-faq/">Read all bookkeeping FAQs</a></div></section>
-  <section class="about" id="about"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content"><div class="section-label">About Me</div><h2 class="section-title">Hi, I'm Jack</h2>
-<p>As a Simi Valley local, I am proud to raise my family in this beautiful community. I've always had a natural affinity for math, and a college professor showed me it was a perfect fit for accounting.</p>
-<p>After earning my Accounting degree, I began my career at a Big 4 firm, handling high-level accounting and bookkeeping work for multi-million dollar enterprises and auditing Fortune 500 financial services companies.</p>
-<p>I founded Glenhold to bring that high-level expertise and insight to the local businesses that serve as the backbone of our country.</p>
-<p>When I'm not working, I enjoy fly fishing, going on walks, and attending Mass with my wife and two children. I believe that professional excellence is rooted in personal character; as I often say, integrity is not something you can choose on a whim—it must be practiced daily over a lifetime.</p>
-<div class="about-badges"><span class="badge">Former Big 4 Accountant</span><span class="badge">Certified QuickBooks ProAdvisor</span><span class="badge">LA &amp; Ventura County</span></div>
-<p style="margin-top:18px"><a href="/about/">More about Jack</a></p>
-</div></div></section>
-{cta("Every month you wait costs you clarity", "One free call today could save you hours of stress this year.")}
-{contact_block("/")}'''
-    write_page(
-        "Small Business Bookkeeping in Simi Valley | Glenhold",
-        "I keep the books for small businesses around Simi Valley. Monthly plans from $349, catch-up when you're behind, and QuickBooks Online help. You work with me.",
-        "/",
-        main,
-        [("Home", "/")],
-        [faq_node(home_faqs, "/")],
-        CITIES,
-        area(),
-    )
+    photo='<picture><source srcset="/headshot.webp" type="image/webp"><img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center -10%"></picture>'
+    main='<section class="hero"><div class="hero-content"><div class="hero-eyebrow">Simi Valley &amp; surrounding communities</div><h1>Small business bookkeeping.<br><em>Local. Clear. Personal.</em></h1><p class="hero-sub">Your books should be current, and you should be able to read them. I keep them that way for small businesses around Simi Valley, from $349 a month. You work with me. Love your first month, or it’s free.</p><div class="hero-ctas"><a class="btn-primary" href="'+CALENDAR+'" target="_blank" rel="noopener noreferrer">Book a Free Call</a><a class="btn-ghost" href="#contact">Send a Message</a></div><div class="hero-photo-mobile"><img src="/headshot.webp" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" style="width:75%;height:auto;display:block;border-radius:6px;margin:0 auto"></div><div class="hero-social"><a href="https://share.google/ZFSpIuhD39akrC2DT" target="_blank" rel="noopener noreferrer">Find us on Google</a><a href="https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley" target="_blank" rel="noopener noreferrer">Yelp profile</a></div><p class="hero-proof">Former Big 4 Accountant · Certified QuickBooks ProAdvisor</p></div><div class="hero-photo"><div class="hero-photo-box">'+photo+'</div></div></section>'
+    cards=[('/monthly-bookkeeping/','Monthly bookkeeping','Keep transactions organized, accounts reconciled, and reports current.'),('/cleanup-catch-up/','Cleanup & catch-up','Get unfinished periods in order and establish a reliable starting point.'),('/quickbooks-online/','QuickBooks Online help','Set up your file, improve your routine, or get help with specific questions.')]
+    main+='<section class="services" id="services"><div class="section-label">How I can help</div><h2 class="section-title">How I can help with your books</h2><p class="section-sub">Hand off the monthly work, catch up on a backlog, or get help doing it yourself.</p>'+hub_cards(cards)+'</section>'
+    main+='<section class="pricing" id="pricing"><div class="section-label">Pricing</div><h2 class="section-title">Straightforward monthly plans</h2><p class="section-sub">Your final quote depends on transaction volume, accounts, and reporting complexity.</p><div class="pricing-guarantee">Love your first month of books, or it’s free</div>'+price_cards()+'<div class="content-links"><a href="/pricing/">Compare plans and scope</a></div></section>'
+    main+='<section class="local-section" id="service-areas"><div class="section-label">Close to home</div><h2 class="section-title">Based in Simi Valley. Here for local businesses.</h2><p class="section-sub">I work with owners in Simi Valley, Moorpark, Thousand Oaks, Westlake Village, Camarillo, Santa Clarita, and surrounding Ventura County and Los Angeles communities.</p><div class="content-links"><a href="/service-areas/">View the service area</a></div></section>'
+    main+='<section class="services" id="who"><div class="section-label">Who I work with</div><h2 class="section-title">Small businesses across industries</h2><p class="section-sub">Service firms, shops, trades, practices, and other local businesses are welcome. We’ll build the scope around how your business operates.</p><div class="content-links"><a href="/who-we-work-with/">Explore business types</a></div></section>'
+    homefaq=[(i['q'],i['a']) for i in FAQ if i['id'] in ['industries','catch-up','owner','tax-preparer']]
+    main+='<section class="faq-section" id="faq"><h2 class="section-title">Before we talk</h2>'+faq_html(homefaq)+'<div class="content-links"><a href="/bookkeeping-faq/">Read all questions</a></div></section>'
+    main+='<section class="about" id="about"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content"><div class="section-label">Meet your bookkeeper</div><h2 class="section-title">Hi, I’m Jack</h2>'+BIO+'<p><a href="/about/">More about Glenhold</a></p></div></div></section>'
+    main+=cta('Ready to get your books in order?','Start with a free call to discuss the help you need.')+contact_block('/')
+    write_page('Small Business Bookkeeping in Simi Valley | Glenhold','Monthly bookkeeping, catch-up, and QuickBooks Online help for Simi Valley and nearby small businesses. Work directly with Jack. Plans from $349.','/',main,[('Home','/')],[faq_node(homefaq,'/')],CITIES,AREA)
 
-
-def write_robots():
-    lines = [
-        "# AI and search crawlers are explicitly welcome.",
-        "# xAI has no single documented crawler token. The Grok names below are the ones",
-        "# in public crawler lists. User-agent: * already allows any other agent.",
-        "",
-    ]
-    for bot in [
-        "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Web",
-        "Claude-SearchBot", "anthropic-ai", "PerplexityBot", "Perplexity-User",
-        "Google-Extended", "Googlebot", "Bingbot", "Applebot", "Applebot-Extended",
-        "GrokBot", "xAI-Grok", "Grok-DeepSearch", "xAI-SearchBot",
-    ]:
-        lines.append(f"User-agent: {bot}")
-        lines.append("Allow: /")
-        lines.append("")
-    lines.append("User-agent: *")
-    lines.append("Allow: /")
-    lines.append("")
-    lines.append("Sitemap: https://glenhold.com/sitemap.xml")
-    lines.append("")
-    (ROOT / "robots.txt").write_text("\n".join(lines), encoding="utf-8")
-
-
-def write_sitemap():
-    urls = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for page in sorted(PAGES, key=lambda p: (p["path"] != "/", p["path"])):
-        urls.append(f"  <url><loc>{abs_url(page['path'])}</loc><lastmod>{LASTMOD}</lastmod></url>")
-    urls.append("</urlset>")
-    (ROOT / "sitemap.xml").write_text("\n".join(urls) + "\n", encoding="utf-8")
-
-
-def write_llms():
-    facts = f'''# Glenhold Bookkeeping
-
-> I'm Jack. I keep the books for small businesses around Simi Valley, California, in every kind of industry. Plans are $349, $599, or $1,499 a month to start. Love your first month of books, or it's free.
-
-## Facts
-
-- Owner: Jack, former Big 4 accountant and Certified QuickBooks ProAdvisor
-- You work directly with Jack
-- Based in Simi Valley, California, serving Ventura County and nearby Los Angeles communities
-- Phone: (805) 419-3451
-- Email: jack@glenhold.com
-- Website: https://glenhold.com/
-- Hours: Monday through Saturday, 6:00 a.m. to 6:00 p.m. Pacific Time
-- We meet in person when that helps. Day to day I work from your statements and QuickBooks Online
-- YouTube: {YOUTUBE}
-- I hand your CPA clean, tax-ready books. Your preparer files the return
-- If you already have a payroll company, the Strategic plan includes recording those journal entries
-- QuickBooks Online is a separate subscription you pay to Intuit
-- I set up and teach QuickBooks Online
-- Guarantee: love your first month of monthly books, or that month is free
-
-## Prices
-
-- Essential monthly bookkeeping: starting at $349 per month. Categorization, reconciliation, monthly statements, clean books for tax season
-- Core monthly bookkeeping: starting at $599 per month. Essential, plus a quarterly profit and expense summary, year-to-date comparison, and priority support
-- Strategic monthly bookkeeping: starting at $1,499 per month. Core, plus custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call
-- Cleanup, catch-up, consulting, and training are priced on their own
-- Quotes move with transaction volume, number of accounts, and reporting complexity
-- No city surcharge is published
-
-## California notes, general only
-
-- Most California LLCs owe an annual minimum franchise tax of $800. A first-year waiver applied only to LLCs that registered in 2021, 2022, or 2023. Your CPA files it. I keep the books
-- Sole proprietors pay income tax in a different way. The $800 minimum is for LLCs and corporations
-- An additional LLC fee can apply based on total income, historically starting at $250,000. Confirm current tiers with the Franchise Tax Board or a CPA
-- California statewide base sales and use tax is 7.25 percent. District taxes add more and change. I record tax collected as a liability. Your preparer files the return
-
-## Key pages
-
-- [Home](https://glenhold.com/): landing page, services, pricing, contact form
-- [Services](https://glenhold.com/services/): monthly, cleanup, QuickBooks, statements, CPA-ready, loan-ready
-- [Pricing](https://glenhold.com/pricing/): Essential, Core, Strategic
-- [FAQ](https://glenhold.com/bookkeeping-faq/): {len(FAQ)} standalone answers
-- [Service areas](https://glenhold.com/service-areas/): Ventura County and nearby Los Angeles cities where I keep the books
-- [Who we work with](https://glenhold.com/who-we-work-with/): every kind of small business
-- [About](https://glenhold.com/about/): Jack
-- [Contact](https://glenhold.com/contact/): (805) 419-3451, jack@glenhold.com
-'''
-    (ROOT / "llms.txt").write_text(facts, encoding="utf-8")
-    full = [facts, "\n## Every page\n"]
-    for page in sorted(PAGES, key=lambda p: p["path"]):
-        full.append(f"- [{page['title']}]({abs_url(page['path'])}): {page['description']}")
-    full.append("\n## FAQ answers\n")
-    for item in FAQ:
-        full.append(f"### {item['q']}\n\n{item['a']}\n")
-    (ROOT / "llms-full.txt").write_text("\n".join(full), encoding="utf-8")
-
-
-def write_indexnow():
-    (ROOT / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY + "\n", encoding="utf-8")
-
-
-def validate():
-    errors = []
-    html_files = list(ROOT.glob("index.html")) + list(ROOT.glob("*/index.html")) + list(ROOT.glob("*/*/index.html"))
-    titles, descriptions = {}, {}
-    required = [
-        "AW-17998714201",
-        "CFtmLaAKWainpP7irzAdWa",
-        "allow_enhanced_conversions: false",
-        "xvzwqvgv",
-        "oaiq(",
-        'src="/site.js"',
-    ]
-    for path in html_files:
-        text = path.read_text(encoding="utf-8")
-        rel = "/" + str(path.relative_to(ROOT))
-        for token in required:
-            if token not in text:
-                errors.append(f"{rel} missing {token}")
-        if "AggregateRating" in text or '"@type":"Review"' in text or '"@type": "Review"' in text:
-            errors.append(f"{rel} has review schema")
-        if len(re.findall(r"<h1[\s>]", text)) != 1:
-            errors.append(f"{rel} h1 count {len(re.findall(r'<h1[\\s>]', text))}")
-        for blob in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text):
-            try:
-                import json
-                json.loads(blob)
-            except Exception as exc:
-                errors.append(f"{rel} json-ld {exc}")
-        title = re.search(r"<title>(.*?)</title>", text)
-        desc = re.search(r'<meta name="description" content="(.*?)"', text)
-        if not title or not desc:
-            errors.append(f"{rel} missing title or description")
-        else:
-            titles.setdefault(title.group(1), []).append(rel)
-            descriptions.setdefault(desc.group(1), []).append(rel)
-        for href in re.findall(r'href="(/[^"#?]*)', text):
-            target = href
-            if target.endswith("/"):
-                file = ROOT / "index.html" if target == "/" else ROOT / target.strip("/") / "index.html"
-            else:
-                file = ROOT / target.lstrip("/")
-            if not file.exists():
-                errors.append(f"{rel} broken {href}")
-        if "our clients" in text.lower() or "we have served" in text.lower():
-            errors.append(f"{rel} invented client claim")
-    for title, paths in titles.items():
-        if len(paths) > 1:
-            errors.append(f"duplicate title {title}: {paths}")
-    for desc, paths in descriptions.items():
-        if len(paths) > 1:
-            errors.append(f"duplicate description: {paths}")
-    if not (40 <= len(FAQ) <= 60):
-        errors.append(f"FAQ count {len(FAQ)}")
-    for slug in {s for c in CITIES for s in c["neighbors"]}:
-        if slug not in CITY_BY:
-            errors.append(f"bad neighbor {slug}")
-    for slug in {s for c in CITIES for s in c["industries"]} | {s for i in INDUSTRIES for s in i["related"]}:
-        if slug not in IND_BY:
-            errors.append(f"bad industry {slug}")
-    if errors:
-        print("\n".join(errors))
-        raise SystemExit(1)
-    print(f"OK pages={len(html_files)} faqs={len(FAQ)} cities={len(CITIES)} industries={len(INDUSTRIES)}")
-
+def write_discovery():
+    (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: https://glenhold.com/sitemap.xml\n')
+    urls=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    urls += ['<url><loc>'+HOME+p['path']+'</loc><lastmod>'+LASTMOD+'</lastmod></url>' for p in sorted(PAGES,key=lambda p:p['path'])]
+    (ROOT/'sitemap.xml').write_text('\n'.join(urls+['</urlset>'])+'\n')
+    facts='# Glenhold Bookkeeping\n\nSimi Valley-based small business bookkeeping. Work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. Glenhold Bookkeeping is the client-facing name of Glenhold Advisory LLC.\n\nPhone: (805) 419-3451\nEmail: jack@glenhold.com\n\nMonthly plans start at $349 (Essential), $599 (Core), and $1,499 (Strategic). Quotes depend on volume, accounts, and reporting complexity. Cleanup and training are quoted separately. Tax return preparation and filing are separate from the listed bookkeeping plans.\n\n## Pages\n'
+    short=[p for p in PAGES if p['path'] in ['/','/services/','/pricing/','/contact/','/service-areas/','/bookkeeping-faq/','/privacy/']]
+    line=lambda p:'- ['+p['title']+']('+HOME+p['path']+'): '+p['description']+'\n'
+    (ROOT/'llms.txt').write_text(facts+''.join(line(p) for p in short))
+    (ROOT/'llms-full.txt').write_text(facts+''.join(line(p) for p in PAGES)+'\n## Questions\n'+''.join('### '+i['q']+'\n\n'+i['a']+'\n\n' for i in FAQ))
+    (ROOT/(INDEXNOW_KEY+'.txt')).write_text(INDEXNOW_KEY+'\n')
+    (ROOT/'.nojekyll').write_text('')
 
 def main():
     PAGES.clear()
-    build_home()
-    build_services()
-    build_service_hub()
-    build_industries()
-    build_cities()
-    build_faq()
-    build_resources()
-    build_getting_started()
-    build_about()
-    build_pricing()
-    build_contact()
-    write_robots()
-    write_sitemap()
-    write_llms()
-    write_indexnow()
-    (ROOT / ".nojekyll").write_text("", encoding="utf-8")
-    validate()
+    for build in [build_home,build_services,build_industries,build_cities,build_faq,build_resources,build_getting_started,build_about,build_pricing,build_contact,build_privacy]:build()
+    write_discovery()
+    print('Generated',len(PAGES),'pages, including',len(CITIES),'location pages and a privacy notice.')
 
-
-if __name__ == "__main__":
-    main()
+if __name__=='__main__':main()
