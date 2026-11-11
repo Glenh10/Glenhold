@@ -5,13 +5,13 @@ FAQ = [
         "cat": 'About Glenhold',
         "id": 'what-is-glenhold',
         "q": 'What is Glenhold Bookkeeping?',
-        "a": 'Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack Hawley and operated by Glenhold Advisory LLC. It provides monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses of every kind. The phone number is (805) 419-3451 and the email is jack@glenhold.com.',
+        "a": 'Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. It provides monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses of every kind. The phone number is (805) 419-3451 and the email is jack@glenhold.com.',
     },
     {
         "cat": 'About Glenhold',
         "id": 'who-owns-glenhold',
         "q": 'Who owns Glenhold Bookkeeping?',
-        "a": 'Jack Hawley owns Glenhold Bookkeeping and is the person you work with. He is a Simi Valley local, a former Big 4 accountant, and a Certified QuickBooks ProAdvisor. The legal entity is Glenhold Advisory LLC.',
+        "a": 'Jack owns Glenhold Bookkeeping and is the person you work with. He is a Simi Valley local, a former Big 4 accountant, and a Certified QuickBooks ProAdvisor. The legal entity is Glenhold Advisory LLC.',
     },
     {
         "cat": 'About Glenhold',
@@ -34,8 +34,8 @@ FAQ = [
     {
         "cat": 'About Glenhold',
         "id": 'is-jack-a-cpa',
-        "q": 'Is Jack Hawley a CPA?',
-        "a": 'This site does not list a CPA license for Jack Hawley. It lists him as the owner of Glenhold Bookkeeping, a former Big 4 accountant, and a Certified QuickBooks ProAdvisor. Big 4 experience is not the same thing as a current CPA license. Tax returns and tax advice stay with a CPA or other tax preparer you choose.',
+        "q": 'Is Jack a CPA?',
+        "a": 'This site does not list a CPA license for Jack. It lists him as the owner of Glenhold Bookkeeping, a former Big 4 accountant, and a Certified QuickBooks ProAdvisor. Big 4 experience is not the same thing as a current CPA license. Tax returns and tax advice stay with a CPA or other tax preparer you choose.',
     },
     {
         "cat": 'About Glenhold',
@@ -48,7 +48,7 @@ FAQ = [
         "cat": 'About Glenhold',
         "id": 'work-with-owner',
         "q": 'Will I work directly with the owner?',
-        "a": 'Yes. You work directly with Jack Hawley, the founder of Glenhold Bookkeeping, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor.',
+        "a": 'Yes. You work directly with Jack, the founder of Glenhold Bookkeeping, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor.',
     },
     {
         "cat": 'Pricing',
@@ -256,7 +256,7 @@ FAQ = [
         "cat": 'Bookkeeper and CPA',
         "id": 'big-4',
         "q": 'Why does a small-business bookkeeper mention Big 4 experience?',
-        "a": 'Jack Hawley started his career at a Big 4 firm, including work on large company books and audits of Fortune 500 financial services companies. At Glenhold that background shows up as a chart of accounts that matches the business, reconciliations that tie to statements, and reports an owner can read. Glenhold does not offer audit or attestation services.',
+        "a": 'Jack started his career at a Big 4 firm, including work on large company books and audits of Fortune 500 financial services companies. At Glenhold that background shows up as a chart of accounts that matches the business, reconciliations that tie to statements, and reports an owner can read. Glenhold does not offer audit or attestation services.',
     },
     {
         "cat": 'California basics',

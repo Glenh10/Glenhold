@@ -1,11 +1,11 @@
 # Glenhold Bookkeeping
 
-> Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack Hawley and operated by Glenhold Advisory LLC. It serves small businesses of every kind within about an hour of Simi Valley, California. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it is free.
+> Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. It serves small businesses of every kind within about an hour of Simi Valley, California. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it is free.
 
 ## Facts
 
 - Legal entity: Glenhold Advisory LLC, doing business as Glenhold Bookkeeping
-- Owner: Jack Hawley, former Big 4 accountant and Certified QuickBooks ProAdvisor
+- Owner: Jack, former Big 4 accountant and Certified QuickBooks ProAdvisor
 - You work directly with Jack
 - Base: Simi Valley, California. No street address is published. No walk-in office
 - Phone: (805) 419-3451
@@ -43,5 +43,5 @@
 - [FAQ](https://glenhold.com/bookkeeping-faq/): 59 standalone answers
 - [Service areas](https://glenhold.com/service-areas/): cities within about an hour of Simi Valley
 - [Who we work with](https://glenhold.com/who-we-work-with/): every kind of small business, not a niche
-- [About](https://glenhold.com/about/): Jack Hawley
+- [About](https://glenhold.com/about/): Jack
 - [Contact](https://glenhold.com/contact/): (805) 419-3451, jack@glenhold.com

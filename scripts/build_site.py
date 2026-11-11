@@ -147,7 +147,7 @@ def build_services():
             "h1": "Monthly bookkeeping for small businesses",
             "lede": "Keep the month current. Know where the business stands.",
             "offer": offer("Essential monthly bookkeeping", "349", "Starting at $349 per month. Love your first month of books, or it is free."),
-            "body": '''<section><h2>Monthly bookkeeping for every kind of small business</h2><p>Glenhold Bookkeeping provides ongoing bookkeeping for small businesses in Simi Valley and nearby Ventura County and Los Angeles communities. You work directly with Jack Hawley, a former Big 4 accountant and Certified QuickBooks ProAdvisor. You do not need to fit a particular industry. The scope is your accounts, your volume, and the reports you want.</p></section>
+            "body": '''<section><h2>Monthly bookkeeping for every kind of small business</h2><p>Glenhold Bookkeeping provides ongoing bookkeeping for small businesses in Simi Valley and nearby Ventura County and Los Angeles communities. You work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. You do not need to fit a particular industry. The scope is your accounts, your volume, and the reports you want.</p></section>
 <section><h2>What is included</h2><ul><li><strong>Transaction categorization</strong> against a chart of accounts built for how you operate.</li><li><strong>Bank and credit card reconciliation</strong> so missing entries, duplicates, and transfers can be seen.</li><li><strong>Monthly financial statements:</strong> a profit and loss and a balance sheet.</li><li><strong>Email between closes</strong> for the questions that hold a month up.</li></ul><p>The target is a P&amp;L and balance sheet by the 15th. That date depends on statements and answers arriving in time.</p></section>
 <section><h2>Essential, Core, and Strategic</h2><div class="table-wrap"><table><thead><tr><th scope="col">Plan</th><th scope="col">Starting price</th><th scope="col">What changes</th></tr></thead><tbody><tr><th scope="row">Essential</th><td>$349 / month</td><td>Categorization, reconciliation, monthly statements, clean books for tax season.</td></tr><tr><th scope="row">Core</th><td>$599 / month</td><td>Essential, plus a quarterly profit and expense summary, a year-to-date comparison, and priority support.</td></tr><tr><th scope="row">Strategic</th><td>$1,499 / month</td><td>Core, plus custom reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call.</td></tr></tbody></table></div><p>These are starting prices. The quote depends on transaction volume, the number of accounts, and reporting complexity. Love your first month of books, or it's free. See <a href="/pricing/">the full comparison</a>.</p></section>
 <section><h2>If the past is not current</h2><p>Start with <a href="/cleanup-catch-up/">cleanup and catch-up</a> when months are unfinished. Stay on <a href="/quickbooks-online/">QuickBooks training</a> if you want to keep doing the entry. Monthly bookkeeping is for handing the close to Jack.</p></section>''',
@@ -181,11 +181,11 @@ def build_services():
             "h1": "QuickBooks Online setup and training",
             "lede": "A file that matches the business, and a routine you can actually follow.",
             "offer": None,
-            "body": '''<section><h2>QuickBooks Online help from a Certified ProAdvisor</h2><p>Glenhold offers QuickBooks Online setup, consulting, and training for owners who want a clearer system or who want to keep doing the books themselves. Jack Hawley is a Certified QuickBooks ProAdvisor and a former Big 4 accountant, based in Simi Valley. The published offer is QuickBooks Online. QuickBooks Desktop is not a listed service. Say so on the intro call if your file is still on Desktop.</p></section>
+            "body": '''<section><h2>QuickBooks Online help from a Certified ProAdvisor</h2><p>Glenhold offers QuickBooks Online setup, consulting, and training for owners who want a clearer system or who want to keep doing the books themselves. Jack is a Certified QuickBooks ProAdvisor and a former Big 4 accountant, based in Simi Valley. The published offer is QuickBooks Online. QuickBooks Desktop is not a listed service. Say so on the intro call if your file is still on Desktop.</p></section>
 <section><h2>What setup covers</h2><ul><li>A QuickBooks Online file built around how money moves through the business.</li><li>A chart of accounts for income, expenses, assets, liabilities, and equity.</li><li>A routine for reviewing activity, separating transfers from income and expenses, and reconciling.</li><li>Accuracy check-ins on a schedule you agree to, if you want a review rather than a handoff.</li></ul><p>Too many overlapping accounts make a profit and loss hard to read. Too few hide the thing you meant to see. Setup starts by asking which reports you actually use.</p></section>
 <section><h2>Training or a monthly plan</h2><p>Choose training when you want to keep the day-to-day work. Choose <a href="/monthly-bookkeeping/">monthly bookkeeping</a> when you want categorization, reconciliation, and statements handled for you. You can start with one and move to the other. Consulting and training are scoped separately. The monthly plans start at $349. That number is not a training quote and it does not include the QuickBooks subscription, which you pay to Intuit.</p><p>An existing file does not have to be thrown out. It may need a chart review, or a <a href="/cleanup-catch-up/">cleanup</a>, before a routine makes sense.</p></section>''',
             "faqs": [
-                ("Is Jack a QuickBooks ProAdvisor?", "Yes. Jack Hawley is a Certified QuickBooks ProAdvisor. The setup, training, and consulting on this page are for QuickBooks Online."),
+                ("Is Jack a QuickBooks ProAdvisor?", "Yes. Jack is a Certified QuickBooks ProAdvisor. The setup, training, and consulting on this page are for QuickBooks Online."),
                 ("Does monthly bookkeeping include the QuickBooks subscription?", "No. Intuit bills the subscription. Glenhold's prices are for the bookkeeping work. Check Intuit for the current software price."),
             ],
         },
@@ -213,7 +213,7 @@ def build_services():
             "h1": "Books your CPA can actually use",
             "lede": "Tax season goes faster when the year is reconciled before the CPA opens the file.",
             "offer": None,
-            "body": '''<section><h2>A handoff, not a tax return</h2><p>Glenhold Bookkeeping gets the accounts categorized, the bank and cards reconciled, and the profit and loss and balance sheet ready to send. That is what "clean books for tax season" means on this site. It does not mean the return has been prepared. Your CPA or other tax preparer still reviews the books and files. Jack Hawley is a former Big 4 accountant. This site does not list him as your CPA, and Big 4 experience is not a license to file your return.</p></section>
+            "body": '''<section><h2>A handoff, not a tax return</h2><p>Glenhold Bookkeeping gets the accounts categorized, the bank and cards reconciled, and the profit and loss and balance sheet ready to send. That is what "clean books for tax season" means on this site. It does not mean the return has been prepared. Your CPA or other tax preparer still reviews the books and files. Jack is a former Big 4 accountant. This site does not list him as your CPA, and Big 4 experience is not a license to file your return.</p></section>
 <section><h2>What usually goes in the package</h2><ul><li>A profit and loss for the year, and a balance sheet at year end.</li><li>Accounts reconciled to statements, including accounts closed during the year.</li><li>A chart of accounts that did not change meaning halfway through the year.</li><li>A short list of items the records could not support, so the CPA is not left to discover them in March.</li><li>Loan balances and owner draws identified, when those records were provided.</li></ul><p>California LLC owners often ask about the $800 minimum franchise tax at the same time. That tax is filed with the Franchise Tax Board, not paid to Glenhold. The <a href="/bookkeeping-faq/#llc-800">FAQ states the general rule</a> and tells you to confirm it with your preparer.</p></section>
 <section><h2>When the year is already a mess</h2><p>If months were never closed, start with <a href="/cleanup-catch-up/">cleanup and catch-up</a>. The monthly plans assume a current rhythm. Name the filing deadline on the first call. Do not email source documents until Jack tells you how to share them.</p></section>''',
             "faqs": [
@@ -261,7 +261,7 @@ def build_service_hub():
         ("/loan-ready-books/", "Loan-ready financials", "Statements a lender can read. Not a loan application and not an approval."),
     ]
     body = f'''<section><h2>Three ways to start, and the reports they produce</h2><p>The offers on the current Glenhold site are monthly bookkeeping, cleanup and catch-up, and QuickBooks Online consulting and training. Financial statements, a CPA handoff, and lender-ready reports are what that work produces. They are not extra brands with extra prices. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free. Cleanup and training are quoted on their own.</p>{hub_cards(cards)}</section>
-<section><h2>Not included, on purpose</h2><ul><li>Tax return preparation and filing.</li><li>Sales-tax return filing.</li><li>Running payroll. Strategic can record payroll journal entries from your payroll provider.</li><li>A QuickBooks Online subscription. That is billed by Intuit.</li><li>Audits, reviews, or trust-account compliance.</li></ul><p>Jack Hawley does the work. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor. The firm does not niche by industry. <a href="/who-we-work-with/">See the kinds of businesses</a> the books often come from, then call even if yours is not on the list.</p></section>'''
+<section><h2>Not included, on purpose</h2><ul><li>Tax return preparation and filing.</li><li>Sales-tax return filing.</li><li>Running payroll. Strategic can record payroll journal entries from your payroll provider.</li><li>A QuickBooks Online subscription. That is billed by Intuit.</li><li>Audits, reviews, or trust-account compliance.</li></ul><p>Jack does the work. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor. The firm does not niche by industry. <a href="/who-we-work-with/">See the kinds of businesses</a> the books often come from, then call even if yours is not on the list.</p></section>'''
     write_inner(
         "Bookkeeping Services | Glenhold Bookkeeping",
         "Monthly bookkeeping, catch-up, and QuickBooks Online setup from Glenhold in Simi Valley. Plans from $349. Tax filing is separate.",
@@ -293,7 +293,7 @@ def build_industries():
         )
     cards = [(f"/who-we-work-with/{i['slug']}/", i["name"], i["lede"]) for i in INDUSTRIES]
     body = f'''<section><h2>Every kind of small business, listed so you can find yourself</h2><p>Glenhold Bookkeeping does not niche. The pages below describe how the books usually work in businesses that are common around Simi Valley. They are not a gate. A business that is missing from the list is still invited. Scope comes from your accounts, your volume, and the reports you need.</p>{hub_cards(cards)}</section>
-<section><h2>What does not change by industry</h2><p>Monthly plans still start at $349, $599, and $1,499. Cleanup and QuickBooks training are still quoted separately. Tax returns, sales-tax filings, and payroll processing are still outside the bookkeeping. Trust accounts for attorneys, brokers, and property managers are still not a service. Jack Hawley still does the work.</p>{service_links()}</section>'''
+<section><h2>What does not change by industry</h2><p>Monthly plans still start at $349, $599, and $1,499. Cleanup and QuickBooks training are still quoted separately. Tax returns, sales-tax filings, and payroll processing are still outside the bookkeeping. Trust accounts for attorneys, brokers, and property managers are still not a service. Jack still does the work.</p>{service_links()}</section>'''
     write_inner(
         "Who Glenhold Works With | Small Businesses of Every Kind",
         "Glenhold does not niche. Bookkeeping for contractors, restaurants, practices, shops, and every other small business near Simi Valley.",
@@ -416,7 +416,7 @@ def build_getting_started():
 <li><strong>Deadlines and the CPA.</strong> Tax-preparer requests, lender dates, and who should receive the finished reports.</li>
 </ol></section>
 <section><h2>Three details that keep a handoff from stalling</h2><h3>Both sides of a transfer</h3><p>If cash moved between accounts, the records for both accounts need to be in the pile. One withdrawal does not explain the destination.</p><h3>The last reconciled month</h3><p>The last month with transactions typed in may not be the last month tied to a statement. Share both if you know them. If you do not, say that.</p><h3>What you cannot find</h3><p>A missing statement is useful information. Keep a short list of gaps so the work can be planned around them.</p></section>
-<section><h2>After the handoff</h2><p>Jack will talk through priorities and whether the next step is cleanup, monthly support, or <a href="/quickbooks-online/">QuickBooks consulting</a>. A free introductory call is enough before you gather documents you may not need.</p><p class="byline">By Jack Hawley, founder of Glenhold Bookkeeping. Updated November 11, 2026.</p></section>
+<section><h2>After the handoff</h2><p>Jack will talk through priorities and whether the next step is cleanup, monthly support, or <a href="/quickbooks-online/">QuickBooks consulting</a>. A free introductory call is enough before you gather documents you may not need.</p><p class="byline">By Jack, founder of Glenhold Bookkeeping. Updated November 11, 2026.</p></section>
 <section><h2>Related</h2>''' + service_links() + "</section>"
     write_inner(
         "What to Give Your Bookkeeper | Glenhold Checklist",
@@ -431,19 +431,19 @@ def build_getting_started():
 
 
 def build_about():
-    body = f'''<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack Hawley standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content">
+    body = f'''<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content">
 <p>As a Simi Valley local, I am proud to raise my family in this beautiful community. I've always had a natural affinity for math, and a college professor showed me it was a perfect fit for accounting.</p>
 <p>After earning my Accounting degree, I began my career at a Big 4 firm, handling high-level accounting and bookkeeping work for multi-million dollar enterprises and auditing Fortune 500 financial services companies.</p>
 <p>I founded Glenhold to bring that high-level expertise and insight to the local businesses that serve as the backbone of our country.</p>
 <p>When I'm not working, I enjoy fly fishing, going on walks, and attending Mass with my wife and two children. I believe that professional excellence is rooted in personal character; as I often say, integrity is not something you can choose on a whim—it must be practiced daily over a lifetime.</p>
 <div class="about-badges"><span class="badge">Former Big 4 Accountant</span><span class="badge">Certified QuickBooks ProAdvisor</span><span class="badge">LA &amp; Ventura County</span></div>
 </div></div></section>
-<section><h2>The firm, in one place</h2><p>Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack Hawley. The legal entity is Glenhold Advisory LLC, doing business as Glenhold Bookkeeping. Phone <a href="tel:8054193451">(805) 419-3451</a>. Email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. Hours are Monday through Saturday, 6am to 6pm Pacific. No street address is published.</p><p>You work directly with Jack. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free. Tax return preparation is not a service, even though the career started at a Big 4 firm. Jack also posts bookkeeping videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p><p>The day-to-day work is remote. In-person meetings are by arrangement inside the <a href="/service-areas/">service area</a>, about an hour from Simi Valley, with some cities often taking longer.</p></section>'''
+<section><h2>The firm, in one place</h2><p>Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack. The legal entity is Glenhold Advisory LLC, doing business as Glenhold Bookkeeping. Phone <a href="tel:8054193451">(805) 419-3451</a>. Email <a href="mailto:{EMAIL}">jack&#64;glenhold.com</a>. Hours are Monday through Saturday, 6am to 6pm Pacific. No street address is published.</p><p>You work directly with Jack. Monthly plans start at $349, $599, and $1,499. Love your first month of books, or it's free. Tax return preparation is not a service, even though the career started at a Big 4 firm. Jack also posts bookkeeping videos on YouTube at <a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">@BookkeepingWithJack</a>.</p><p>The day-to-day work is remote. In-person meetings are by arrangement inside the <a href="/service-areas/">service area</a>, about an hour from Simi Valley, with some cities often taking longer.</p></section>'''
     write_inner(
-        "About Jack Hawley | Glenhold Bookkeeping",
-        "Jack Hawley, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor, owns Glenhold Bookkeeping (Glenhold Advisory LLC).",
+        "About Jack | Glenhold Bookkeeping",
+        "Jack, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor, owns Glenhold Bookkeeping (Glenhold Advisory LLC).",
         "/about/",
-        "About Jack Hawley",
+        "About Jack",
         "Former Big 4 accountant. Certified QuickBooks ProAdvisor. Based in Simi Valley.",
         body,
         [("Home", "/"), ("About", "/about/")],
@@ -501,7 +501,7 @@ def build_home():
       <div class="hero-photo-mobile">
         <picture>
           <source srcset="/headshot.webp" type="image/webp" />
-          <img src="/headshot.jpg" width="1000" height="1333" alt="Jack Hawley, founder of Glenhold Bookkeeping" decoding="async" style="width:80%;display:block;border-radius:6px;margin:0 auto;" />
+          <img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" style="width:80%;display:block;border-radius:6px;margin:0 auto;" />
         </picture>
       </div>
       <div class="hero-social">
@@ -517,7 +517,7 @@ def build_home():
       <div class="hero-photo-box">
         <picture>
           <source srcset="/headshot.webp" type="image/webp" />
-          <img src="/headshot.jpg" width="1000" height="1333" alt="Jack Hawley, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center -10%;display:block;" />
+          <img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center -10%;display:block;" />
         </picture>
       </div>
     </div>
@@ -543,7 +543,7 @@ def build_home():
   <section class="local-section" id="service-areas"><div class="section-label">Close to home</div><h2 class="section-title">A local bookkeeper for the businesses around Simi Valley</h2><p class="section-sub">Glenhold works with small businesses across industries. From professional services and retail to home services and other owner-run businesses, the bookkeeping is tailored to how you operate.</p><p class="section-sub">Based in Simi Valley. The local focus is roughly an hour away, depending on traffic. Remote bookkeeping, with in-person meetings by arrangement. No street address is published.</p>{city_chips}<div class="content-links"><a href="/service-areas/">Read the service-area guide</a><a href="/getting-started/">Prepare for a bookkeeping handoff</a></div></section>
   <section class="faq-section" id="who"><div class="section-label">Every kind of small business</div><h2 class="section-title">No niche required</h2><p class="section-sub">These are common local businesses, not a limit. If yours is missing, you are still in the right place.</p>{ind_chips}<div class="content-links"><a href="/who-we-work-with/">How Glenhold works with each</a></div></section>
   <section class="faq-section" id="faq"><div class="section-label">Before we talk</div><h2 class="section-title">Common bookkeeping questions</h2>{faq_html(home_faqs)}<div class="content-links"><a href="/bookkeeping-faq/">Read all bookkeeping FAQs</a></div></section>
-  <section class="about" id="about"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack Hawley standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content"><div class="section-label">About Me</div><h2 class="section-title">Hi, I'm Jack</h2>
+  <section class="about" id="about"><div class="about-inner"><div class="about-photo-box"><picture><source srcset="/aboutme.webp" type="image/webp" /><img src="/aboutme.jpg" width="1100" height="1467" alt="Jack standing on coastal rocks holding a fishing rod" loading="lazy" decoding="async" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" /></picture></div><div class="about-content"><div class="section-label">About Me</div><h2 class="section-title">Hi, I'm Jack</h2>
 <p>As a Simi Valley local, I am proud to raise my family in this beautiful community. I've always had a natural affinity for math, and a college professor showed me it was a perfect fit for accounting.</p>
 <p>After earning my Accounting degree, I began my career at a Big 4 firm, handling high-level accounting and bookkeeping work for multi-million dollar enterprises and auditing Fortune 500 financial services companies.</p>
 <p>I founded Glenhold to bring that high-level expertise and insight to the local businesses that serve as the backbone of our country.</p>
@@ -600,12 +600,12 @@ def write_sitemap():
 def write_llms():
     facts = f'''# Glenhold Bookkeeping
 
-> Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack Hawley and operated by Glenhold Advisory LLC. It serves small businesses of every kind within about an hour of Simi Valley, California. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it is free.
+> Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. It serves small businesses of every kind within about an hour of Simi Valley, California. Monthly bookkeeping starts at $349, $599, and $1,499. Love your first month of books, or it is free.
 
 ## Facts
 
 - Legal entity: Glenhold Advisory LLC, doing business as Glenhold Bookkeeping
-- Owner: Jack Hawley, former Big 4 accountant and Certified QuickBooks ProAdvisor
+- Owner: Jack, former Big 4 accountant and Certified QuickBooks ProAdvisor
 - You work directly with Jack
 - Base: Simi Valley, California. No street address is published. No walk-in office
 - Phone: (805) 419-3451
@@ -643,7 +643,7 @@ def write_llms():
 - [FAQ](https://glenhold.com/bookkeeping-faq/): {len(FAQ)} standalone answers
 - [Service areas](https://glenhold.com/service-areas/): cities within about an hour of Simi Valley
 - [Who we work with](https://glenhold.com/who-we-work-with/): every kind of small business, not a niche
-- [About](https://glenhold.com/about/): Jack Hawley
+- [About](https://glenhold.com/about/): Jack
 - [Contact](https://glenhold.com/contact/): (805) 419-3451, jack@glenhold.com
 '''
     (ROOT / "llms.txt").write_text(facts, encoding="utf-8")
