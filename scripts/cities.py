@@ -1,819 +1,131 @@
-"""Community pages and local introductions. Keep copy and FAQ data together."""
+"""Eight city pages, three regional pages, hub lines, and retired-slug redirects.
 
-CITIES = [{'slug': 'simi-valley',
-  'name': 'Simi Valley',
-  'schema_type': 'City',
-  'schema_name': 'Simi Valley',
-  'contained': 'Ventura County, California',
-  'group': 'Simi Valley and the east county',
-  'title': 'Bookkeeping in Simi Valley, CA | Glenhold',
-  'description': "I'm in Simi Valley. I help local owners close the month, catch up, or set up QuickBooks. Plans "
-                 'from $349. You work with me.',
-  'h1': 'Small business bookkeeping in Simi Valley',
-  'lede': 'If your shop, practice, or crew is in Simi Valley, you can hand me the month and get books you can '
-          'read.',
-  'paragraphs': ['<p>Los Angeles Avenue, Tapo Street, Cochran Street, and First Street are full of owner-run '
-                 'businesses: trades, offices, clinics, restaurants, and shops. I set the books up around how you '
-                 'actually get paid and what you spend, so the profit and loss matches the way you work.</p>',
-                 "<p>I live here. When a meeting helps, we'll sit down in Simi Valley. Plans are $349, $599, or "
-                 "$1,499 a month to start. Love your first month of books, or it's free. <a "
-                 'href="/monthly-bookkeeping/">Monthly bookkeeping</a> aims for a profit and loss and balance '
-                 'sheet by the 15th.</p>'],
-  'hub': 'From shops on Los Angeles Avenue to crews along Tapo and Cochran, I help Simi Valley owners close each '
-         'month with books they can read.',
-  'neighbors': ['moorpark', 'chatsworth', 'thousand-oaks'],
-  'industries': ['contractors', 'home-services', 'professional-services', 'medical-dental'],
-  'faqs': [('My shop is on Los Angeles Avenue and the books live in a shared inbox. Is that enough to start?',
-            "Yes. Tell me which accounts are yours and who can explain an unclear transaction. We'll sort the "
-            'access on the first call.'),
-           ('What if my books are a few months behind?',
-            "That's a catch-up project. Tell me the months and the accounts, and I'll quote it before we start. "
-            'After that, we can keep each month current.')]},
- {'slug': 'thousand-oaks',
-  'name': 'Thousand Oaks',
-  'schema_type': 'City',
-  'schema_name': 'Thousand Oaks',
-  'contained': 'Ventura County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Thousand Oaks, CA | Glenhold',
-  'description': 'I help Thousand Oaks practices, restaurants, and Boulevard businesses keep monthly books they '
-                 'can use. Plans from $349.',
-  'h1': 'Bookkeeping for Thousand Oaks small businesses',
-  'lede': "Whether you're on Thousand Oaks Boulevard or covering the whole Conejo, the month should be closed "
-          'before you have to wonder where it went.',
-  'paragraphs': ['<p>Thousand Oaks Boulevard, the Civic Arts Plaza area, and The Oaks sit among professional '
-                 'offices, clinics, restaurants, and shops. I categorize the month, reconcile the accounts, and '
-                 'send statements you can hand to your CPA or use to run the business.</p>',
-                 '<p>Newbury Park is part of Thousand Oaks and is also served by Glenhold. Westlake Village, next '
-                 'door, is its own city. Plans are <a href="/pricing/">$349, $599, or $1,499 a month</a> to '
-                 'start.</p>'],
-  'hub': 'I help Thousand Oaks practices, restaurants, and Boulevard businesses keep the month closed and the '
-         'numbers clear.',
-  'neighbors': ['newbury-park', 'westlake-village', 'simi-valley', 'moorpark'],
-  'industries': ['professional-services', 'medical-dental', 'restaurants', 'retail'],
-  'faqs': [('We already have a CPA in Thousand Oaks. Where do you fit?',
-            'Keep your CPA. I keep the months closed so they get reconciled statements instead of a year of '
-            'unsorted activity.'),
-           ('Is Newbury Park included?',
-            'Newbury Park is part of the City of Thousand Oaks. I serve Newbury Park as well as the rest of '
-            'Thousand Oaks.')]},
- {'slug': 'newbury-park',
-  'name': 'Newbury Park',
-  'schema_type': 'Place',
-  'schema_name': 'Newbury Park',
-  'contained': 'Thousand Oaks, Ventura County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Newbury Park, CA | Glenhold',
-  'description': 'I help Newbury Park owners on Wendy, Borchard, and in Dos Vientos keep clean monthly books. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping in Newbury Park',
-  'lede': 'Newbury Park is the west end of Thousand Oaks, closer in feel to Camarillo than to Westlake, and the '
-          'books should match that local mix of trades, clinics, and shops.',
-  'paragraphs': ['<p>Wendy, Borchard, and Dos Vientos are home to local services, trades, clinics, restaurants, '
-                 'and shops. I build the chart of accounts around how you collect money and what you spend, then '
-                 'close the month so you can see it.</p>',
-                 '<p>If the file is behind, start with <a href="/cleanup-catch-up/">cleanup and catch-up</a>. If '
-                 'you want to keep doing the entry yourself, start with <a href="/quickbooks-online/">QuickBooks '
-                 'Online training</a>.</p>'],
-  'hub': 'Whether your shop is near Wendy and Borchard or you serve Dos Vientos, I help Newbury Park owners keep '
-         'clean books and a steady monthly close.',
-  'neighbors': ['thousand-oaks', 'camarillo', 'westlake-village'],
-  'industries': ['home-services', 'medical-dental', 'restaurants', 'contractors'],
-  'faqs': [('Is Newbury Park its own city?',
-            "It's a community in the City of Thousand Oaks. I list it on its own because that's the name you "
-            'use.'),
-           ('I work in Newbury Park and Camarillo. Can you still help?',
-            'Yes. Tell me where the accounts live and what you want the reports to show.')]},
- {'slug': 'moorpark',
-  'name': 'Moorpark',
-  'schema_type': 'City',
-  'schema_name': 'Moorpark',
-  'contained': 'Ventura County, California',
-  'group': 'Simi Valley and the east county',
-  'title': 'Bookkeeping in Moorpark, CA | Glenhold',
-  'description': "I help Moorpark shops, trades, and home services keep current books. I'm next door in Simi "
-                 'Valley. Plans from $349.',
-  'h1': 'Bookkeeping for Moorpark small businesses',
-  'lede': "Moorpark owners shouldn't have to guess at the month. I'll close it and show you the numbers.",
-  'paragraphs': ['<p>High Street is the downtown people picture, and Moorpark College sits on the south side of '
-                 'town. Around them are trades, offices, food, retail, and home-service companies, with '
-                 'agriculture still on the edges. I tailor the categories to how your business runs.</p>',
-                 "<p>I'm in neighboring Simi Valley, so meeting here is easy when you want it. Hours are Monday "
-                 'through Saturday, 6am to 6pm Pacific. Call <a href="tel:8054193451">(805) 419-3451</a>.</p>'],
-  'hub': 'From High Street shops to local trades and home services, I help Moorpark owners see where the month '
-         'landed.',
-  'neighbors': ['simi-valley', 'thousand-oaks', 'camarillo'],
-  'industries': ['contractors', 'home-services', 'professional-services', 'retail'],
-  'faqs': [('Part of our year is still tied to the fields, and part is a shop on High Street. Can one set of '
-            'books cover both?',
-            "Yes, if it's one company. I'll separate the field costs from the shop so you can see each side of "
-            'the year.'),
-           ('Do you work with farms and with shops?',
-            'Yes. A roadside stand and a High Street office can both work with me. Tell me what you need the '
-            'numbers to show.')]},
- {'slug': 'westlake-village',
-  'name': 'Westlake Village',
-  'schema_type': 'City',
-  'schema_name': 'Westlake Village',
-  'contained': 'Los Angeles County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Westlake Village, CA | Glenhold',
-  'description': 'I help Westlake Village offices, clinics, and small firms keep current books. Same plans as '
-                 'everywhere I work, from $349.',
-  'h1': 'Bookkeeping in Westlake Village',
-  'lede': 'Westlake Village is its own city, on the county line, and I keep books for the firms and practices '
-          'here.',
-  'paragraphs': ['<p>Westlake Boulevard and the offices along the 101 hold professional firms, medical practices, '
-                 'and small companies that sell across the Conejo. The village retail is the other face of the '
-                 'city. I reconcile the accounts and send statements you can use with your CPA or your '
-                 'partners.</p>',
-                 '<p>The City of Westlake Village is in Los Angeles County. Thousand Oaks, next door, is in '
-                 'Ventura County. I work on both sides of that line. Plans are <a href="/pricing/">$349, $599, or '
-                 '$1,499 a month</a> to start.</p>'],
-  'hub': 'I help Westlake Village professional offices, clinics, and small firms keep current books and a clear '
-         'monthly picture.',
-  'neighbors': ['thousand-oaks', 'agoura-hills', 'newbury-park'],
-  'industries': ['professional-services', 'medical-dental', 'real-estate', 'ecommerce'],
-  'faqs': [('Is Westlake Village in Ventura County?',
-            'The city is in Los Angeles County. Thousand Oaks, next door, is in Ventura County. I work with '
-            'businesses in both.'),
-           ('We have a couple of professional entities. Can you keep them straight?',
-            "Yes. Tell me which accounts belong to which company, and I'll keep the books separate so each one is "
-            'readable on its own.')]},
- {'slug': 'agoura-hills',
-  'name': 'Agoura Hills',
-  'schema_type': 'City',
-  'schema_name': 'Agoura Hills',
-  'contained': 'Los Angeles County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Agoura Hills, CA | Glenhold',
-  'description': 'I help Agoura Hills restaurants, shops, and home-service businesses keep monthly books in '
-                 'order. Plans from $349.',
-  'h1': 'Bookkeeping for Agoura Hills businesses',
-  'lede': 'Agoura Road and Kanan are full of restaurants, shops, and home-service companies that outgrow a '
-          'shoebox of receipts.',
-  'paragraphs': ['<p>Agoura Road and Kanan Road serve local retail, restaurants, offices, and home-service '
-                 'companies. Reyes Adobe is the landmark people use for directions. I close the month the same '
-                 'way I do in Simi Valley: categorize, reconcile, and send statements you can read.</p>',
-                 '<p>If the file is already tangled, start with <a href="/cleanup-catch-up/">cleanup</a>. If you '
-                 'want to keep the data entry, start with <a href="/quickbooks-online/">QuickBooks Online '
-                 'training</a>.</p>'],
-  'hub': 'I help Agoura Hills restaurants, shops, and home-service businesses keep their books tidy and useful '
-         'every month.',
-  'neighbors': ['westlake-village', 'calabasas', 'malibu', 'thousand-oaks'],
-  'industries': ['home-services', 'professional-services', 'restaurants', 'retail'],
-  'faqs': [('We invoice some clients and also sell at the counter. Can you keep both straight?',
-            "Yes. I'll split service income from counter sales, including sales tax on the retail piece, so the "
-            "month isn't one blended number."),
-           ('My crews also work in Malibu. Is that a problem?',
-            "Tell me how deposits, materials, and draws move through the accounts. I'll set the books up around "
-            'that.')]},
- {'slug': 'calabasas',
-  'name': 'Calabasas',
-  'schema_type': 'City',
-  'schema_name': 'Calabasas',
-  'contained': 'Los Angeles County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Calabasas, CA | Glenhold',
-  'description': 'I help Calabasas offices, clinics, and Commons businesses keep clean monthly books. Plans from '
-                 '$349. You work with me.',
-  'h1': 'Bookkeeping in Calabasas',
-  'lede': 'The Commons and the offices along Calabasas Road look buttoned-up from the sidewalk. The books ought '
-          'to match.',
-  'paragraphs': ['<p>The Commons and Calabasas Road are the retail and restaurant core, with professional and '
-                 'medical offices along the same streets. Malibu Canyon Road heads toward the coast. I keep the '
-                 'monthly plans simple: Essential from $349, Core from $599, Strategic from $1,499. Your volume '
-                 'and your reporting needs set the quote.</p>',
-                 "<p>I'm a Certified QuickBooks ProAdvisor. Setup and training are on the <a "
-                 'href="/quickbooks-online/">QuickBooks page</a>. Your CPA files the return. I hand them books '
-                 'they can use.</p>'],
-  'hub': 'From The Commons to the offices along Calabasas Road, I help local owners keep books that are ready '
-         'when they need them.',
-  'neighbors': ['agoura-hills', 'woodland-hills', 'malibu'],
-  'industries': ['professional-services', 'real-estate', 'medical-dental', 'restaurants'],
-  'faqs': [('Our office has several cards and a loan. Which plan is that?',
-            "Tell me the accounts and how much activity runs through them. That's what moves a quote between "
-            'Essential, Core, and Strategic.'),
-           ('Our practice wants a monthly walkthrough of the numbers. Is that Core or Strategic?',
-            "That's Strategic. It includes a monthly call to walk through the numbers, along with custom reports "
-            'if you need them.')]},
- {'slug': 'camarillo',
-  'name': 'Camarillo',
-  'schema_type': 'City',
-  'schema_name': 'Camarillo',
-  'contained': 'Ventura County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Camarillo, CA | Glenhold',
-  'description': 'I help Camarillo shops, restaurants, and Old Town businesses keep the books current. Plans from '
-                 '$349.',
-  'h1': 'Bookkeeping for Camarillo small businesses',
-  'lede': 'Old Town, the outlets, and the businesses by the airport all take in money. The reports should show '
-          'which part of Camarillo earned it.',
-  'paragraphs': ['<p>Old Town runs along Ventura Boulevard. The Premium Outlets pull people off the 101. '
-                 'Camarillo Airport sits on the west side, and the agricultural plain opens toward Oxnard. Shops, '
-                 'restaurants, trades, and offices share the city and need different charts of accounts. I build '
-                 'yours around how you operate.</p>',
-                 '<p>If tax season is why you\'re calling, read <a href="/cpa-ready-books/">CPA-ready books</a>. '
-                 'If a lender asked for statements, read <a href="/loan-ready-books/">loan-ready '
-                 'financials</a>.</p>'],
-  'hub': 'I help Camarillo shops, restaurants, and Old Town businesses keep the books current from one month to '
-         'the next.',
-  'neighbors': ['newbury-park', 'oxnard', 'thousand-oaks'],
-  'industries': ['retail', 'restaurants', 'contractors', 'professional-services'],
-  'faqs': [('Do you work with shops and with farm-adjacent businesses?',
-            'Yes. A storefront and a company tied to the plain can both work with me. The accounts and the '
-            'reports set the scope.'),
-           ('Old Town sales and the airport-side business share a bank account. Will the reports still make '
-            'sense?',
-            "Yes. I'll tag the income and costs so you can see each side, even when the cash lands in one "
-            'account.')]},
- {'slug': 'oxnard',
-  'name': 'Oxnard',
-  'schema_type': 'City',
-  'schema_name': 'Oxnard',
-  'contained': 'Ventura County, California',
-  'group': 'Coast, Oxnard plain, and Highway 126',
-  'title': 'Bookkeeping in Oxnard, CA | Glenhold',
-  'description': 'I help Oxnard owners on the Boulevard, at the harbor, and across the plain keep clean monthly '
-                 'books. Plans from $349.',
-  'h1': 'Bookkeeping for Oxnard small businesses',
-  'lede': 'Oxnard is the largest city in Ventura County: a harbor, a farm plain, and a long commercial boulevard, '
-          'each with its own way of making money.',
-  'paragraphs': ['<p>Oxnard Boulevard carries the everyday commercial strip. Channel Islands Harbor is a '
-                 'different set of marine and visitor businesses. The plain around the city is still strawberry '
-                 'and row-crop country, so packing, field services, and equipment sit beside retail and '
-                 'restaurants. I set the categories up for the business you actually run.</p>'],
-  'hub': 'I help Oxnard owners, from Boulevard storefronts to harbor businesses, keep clean books and a monthly '
-         'close they can trust.',
-  'neighbors': ['port-hueneme', 'ventura', 'camarillo'],
-  'industries': ['restaurants', 'retail', 'contractors', 'auto-repair'],
-  'faqs': [('Do you work with harbor businesses and with shops on the Boulevard?',
-            "Yes. Tell me how you get paid and which accounts you use. I'll build the close around that."),
-           ("We're behind a whole season. Can you start there?",
-            "Yes. I'll price the catch-up once I see the months and the accounts. After that, we can keep each "
-            'month current.')]},
- {'slug': 'ventura',
-  'name': 'Ventura',
-  'schema_type': 'City',
-  'schema_name': 'Ventura',
-  'contained': 'Ventura County, California',
-  'group': 'Coast, Oxnard plain, and Highway 126',
-  'title': 'Bookkeeping in Ventura, CA | Glenhold',
-  'description': "I help Ventura restaurants, shops, and harbor businesses keep tax-ready books. The city's "
-                 'official name is San Buenaventura. Plans from $349.',
-  'h1': 'Bookkeeping in Ventura',
-  'lede': 'Downtown, the harbor, and the rest of Ventura all need the same thing from their books: a month that '
-          'ties out.',
-  'paragraphs': ["<p>The city's official name is San Buenaventura. Everyone says Ventura. Main Street, the "
-                 'harbor, and the 101 frontage hold restaurants, retail, professional services, marine '
-                 'businesses, and trades. I close the month and give you statements your CPA can use. Ventura is '
-                 'the county seat. I work with the local businesses that make the city run.</p>'],
-  'hub': 'I help Ventura restaurants, shops, and Main Street businesses keep their numbers current and easy to '
-         'hand to a CPA.',
-  'neighbors': ['oxnard', 'ojai', 'santa-paula'],
-  'industries': ['restaurants', 'retail', 'professional-services', 'home-services'],
-  'faqs': [('Is Ventura the same as Ventura County?',
-            'Ventura, officially San Buenaventura, is the county seat and one city. I also work across the rest '
-            'of the county, including Simi Valley, where I live.'),
-           ('Can the books be ready before my CPA appointment?',
-            "Yes. Tell me the date on the first call. I'll aim the catch-up or the monthly close at that handoff. "
-            'Your CPA files the return.')]},
- {'slug': 'port-hueneme',
-  'name': 'Port Hueneme',
-  'schema_type': 'City',
-  'schema_name': 'Port Hueneme',
-  'contained': 'Ventura County, California',
-  'group': 'Coast, Oxnard plain, and Highway 126',
-  'title': 'Bookkeeping in Port Hueneme, CA | Glenhold',
-  'description': 'I help Port Hueneme shops, trades, and service businesses keep simple, current books. Plans '
-                 'from $349.',
-  'h1': 'Bookkeeping in Port Hueneme',
-  'lede': 'Port Hueneme is its own beach city, just south of Oxnard, and the shops and trades here need a close '
-          'that fits a small local business.',
-  'paragraphs': ['<p>Port Hueneme sits south of Oxnard, beside the port and Naval Base Ventura County. The '
-                 'businesses I help here are the local ones: shops, trades, food, marine services, and offices. I '
-                 'categorize, reconcile, and send you a monthly picture you can use.</p>',
-                 '<p>The city line with Oxnard matters when you look up a sales-tax rate. Use the CDTFA lookup '
-                 "for where you sell. I'll record the tax you collect. If your shop is actually in Oxnard, the <a "
-                 'href="/service-areas/oxnard/">Oxnard page</a> is the one to read.</p>'],
-  'hub': "I help Port Hueneme's local shops, trades, and service businesses keep simple, current books.",
-  'neighbors': ['oxnard', 'ventura', 'camarillo'],
-  'industries': ['retail', 'restaurants', 'contractors', 'home-services'],
-  'faqs': [('Is Port Hueneme part of Oxnard?',
-            'Port Hueneme is its own city. Oxnard is next door. I work with businesses in both.'),
-           ("We're a neighborhood shop by the port. Is that the kind of business you keep books for?",
-            'Yes. Local shops, trades, and service businesses are exactly the work. Tell me how you get paid and '
-            "I'll set the categories up around that.")]},
- {'slug': 'santa-paula',
-  'name': 'Santa Paula',
-  'schema_type': 'City',
-  'schema_name': 'Santa Paula',
-  'contained': 'Ventura County, California',
-  'group': 'Coast, Oxnard plain, and Highway 126',
-  'title': 'Bookkeeping in Santa Paula, CA | Glenhold',
-  'description': "I help Santa Paula's Main Street shops, cafes, and trades keep monthly books in order. Plans "
-                 'from $349.',
-  'h1': 'Bookkeeping in Santa Paula',
-  'lede': "Santa Paula's Main Street still works as a downtown, and a valley year gets lumpy if the books only "
-          'get touched in March.',
-  'paragraphs': ['<p>Main Street functions as a downtown, on Highway 126 in the Santa Clara River valley. Around '
-                 "it are trades, food, retail, clinics, and businesses tied to the valley's citrus and "
-                 'agriculture. I build the chart of accounts around your operation and close the month so you can '
-                 'see it.</p>',
-                 '<p>Fillmore is the next town east. Monthly statements are a profit and loss and a balance '
-                 'sheet, aimed at the 15th. Details are on the <a href="/financial-statements/">financial '
-                 'statements</a> page.</p>'],
-  'hub': "I help Santa Paula's Main Street shops, cafes, and local trades close the month with books that make "
-         'sense.',
-  'neighbors': ['fillmore', 'ventura', 'oxnard'],
-  'industries': ['retail', 'restaurants', 'contractors', 'home-services'],
-  'faqs': [('Harvest season blows up the transaction count. Does the monthly price jump every fall?',
-            'The quote follows a normal year of volume, so a busy season is part of the conversation up front '
-            'rather than a surprise in October.'),
-           ('Do you work with farms and with downtown shops?',
-            'Yes. The chart of accounts follows how you operate. A cafe and a valley business can both call.')]},
- {'slug': 'fillmore',
-  'name': 'Fillmore',
-  'schema_type': 'City',
-  'schema_name': 'Fillmore',
-  'contained': 'Ventura County, California',
-  'group': 'Coast, Oxnard plain, and Highway 126',
-  'title': 'Bookkeeping in Fillmore, CA | Glenhold',
-  'description': "I help Fillmore's downtown businesses and valley trades keep the books caught up. Plans from "
-                 '$349.',
-  'h1': 'Bookkeeping in Fillmore',
-  'lede': 'Fillmore is the smaller Highway 126 town east of Santa Paula, and a folder of bank statements is often '
-          'the whole accounting system.',
-  'paragraphs': ['<p>Central Avenue and the downtown grid are the local core, east of Santa Paula on Highway 126. '
-                 'Around them are trades, food, shops, services, and companies tied to the orchards and fields. I '
-                 'offer monthly bookkeeping, catch-up, and QuickBooks Online help, at the same starting prices I '
-                 'use everywhere.</p>',
-                 "<p>Piru, just east, shares this valley. If that's where you are, say so on the form. The first "
-                 'month of monthly books is free if you don\'t love it. <a href="/cleanup-catch-up/">Catch-up is '
-                 'quoted on its own</a>.</p>'],
-  'hub': "I help Fillmore's downtown businesses and valley trades keep the books caught up and clear.",
-  'neighbors': ['santa-paula', 'santa-clarita', 'ventura'],
-  'industries': ['contractors', 'retail', 'restaurants', 'home-services'],
-  'faqs': [("We're a two-person trade shop and the books are a folder of bank statements. Can you start from "
-            'that?',
-            "Yes. Statements with opening and closing balances are enough to scope the catch-up. I'll tell you "
-            'the price before we begin.'),
-           ('My business is in Piru. Can you help?',
-            "Piru is just east on Highway 126. Mention it when you write, and I'll tell you how we can work "
-            'together.')]},
- {'slug': 'ojai',
-  'name': 'Ojai',
-  'schema_type': 'City',
-  'schema_name': 'Ojai',
-  'contained': 'Ventura County, California',
-  'group': 'Coast, Oxnard plain, and Highway 126',
-  'title': 'Bookkeeping in Ojai, CA | Glenhold',
-  'description': 'I help Ojai shops, studios, and Arcade businesses keep books that match a seasonal year. Plans '
-                 'from $349.',
-  'h1': 'Bookkeeping for Ojai small businesses',
-  'lede': 'The Arcade and the side streets do a quiet winter and a busy spring. You should be able to see that, '
-          'month by month.',
-  'paragraphs': ['<p>The Arcade on Ojai Avenue, Libbey Park, and the side streets hold shops, restaurants, '
-                 'studios, and offices that serve the valley and the people who visit. I set the categories up '
-                 'for how you actually sell, and I close the month so a seasonal swing is visible instead of '
-                 'confusing.</p>'],
-  'hub': "I help Ojai's shops, studios, and Arcade businesses keep books that match a seasonal year.",
-  'neighbors': ['ventura', 'santa-paula', 'oxnard'],
-  'industries': ['retail', 'restaurants', 'fitness', 'professional-services'],
-  'faqs': [('Winter is quiet and spring is slammed. Should the books look different those months?',
-            'The categories stay the same so you can compare. The monthly reports will show the swing instead of '
-            'hiding it.'),
-           ('My year is very seasonal. Does that change the books?',
-            "Tell me when you're busy and when you're quiet. The categories stay steady, and the monthly reports "
-            'will show the swing.')]},
- {'slug': 'santa-clarita',
-  'name': 'Santa Clarita',
-  'schema_type': 'City',
-  'schema_name': 'Santa Clarita',
-  'contained': 'Los Angeles County, California',
-  'group': 'San Fernando Valley along the 118',
-  'title': 'Bookkeeping in Santa Clarita and Valencia | Glenhold',
-  'description': 'I help Santa Clarita and Valencia owners keep monthly books they can use. Valencia is part of '
-                 'the city. Plans from $349.',
-  'h1': 'Bookkeeping in Santa Clarita and Valencia',
-  'lede': 'Santa Clarita includes Valencia, Newhall, Saugus, and Canyon Country. I keep books for small '
-          'businesses across that whole city.',
-  'paragraphs': ["<p>Valencia's Town Center, Old Town Newhall, Canyon Country, and Saugus each have their own "
-                 'streets and the same need: books that close. Trades, clinics, restaurants, offices, retail, and '
-                 'home services are all part of the city. I work with all of them.</p>',
-                 '<p>Valencia is a community inside Santa Clarita, along with Newhall, Saugus, and Canyon '
-                 'Country. The starting prices are the same as in Simi Valley. Read <a href="/pricing/">the three '
-                 'plans</a>. Catch-up is scoped from the backlog.</p>'],
-  'hub': 'From Valencia and Newhall to Canyon Country, I help Santa Clarita owners keep monthly books they can '
-         'use.',
-  'neighbors': ['chatsworth', 'porter-ranch', 'fillmore'],
-  'industries': ['medical-dental', 'contractors', 'restaurants', 'professional-services'],
-  'faqs': [('Is Valencia a separate city?',
-            'Valencia is a community inside Santa Clarita, along with Newhall, Saugus, and Canyon Country. This '
-            'page covers the whole city.'),
-           ('We have locations in Valencia and Canyon Country. One set of books?',
-            "Often yes, if it's one company. If they're separate entities, I'll keep the books apart. Tell me how "
-            'the bank accounts are set up.')]},
- {'slug': 'chatsworth',
-  'name': 'Chatsworth',
-  'schema_type': 'Place',
-  'schema_name': 'Chatsworth, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'San Fernando Valley along the 118',
-  'title': 'Bookkeeping in Chatsworth, CA | Glenhold',
-  'description': "I help Chatsworth shops and business-park companies keep reconciled, readable books. I'm just "
-                 'over the pass in Simi Valley. Plans from $349.',
-  'h1': 'Bookkeeping in Chatsworth',
-  'lede': 'The business parks along Plummer, Mason, and De Soto run on parts, cards, and payroll, and those '
-          'accounts should tie every month.',
-  'paragraphs': ['<p>Chatsworth has business parks along streets such as Plummer, Mason, and De Soto, plus '
-                 'neighborhood retail and the horse properties near the hills. I reconcile the accounts and '
-                 'categorize the spending so the reports match the company you run.</p>',
-                 "<p>I'm on the Simi Valley side of Santa Susana Pass, so meeting in Chatsworth is "
-                 'straightforward when you want it. Trades and shops can look at <a '
-                 'href="/who-we-work-with/contractors/">contractors</a> and <a '
-                 'href="/who-we-work-with/auto-repair/">auto repair</a> for how I usually set those books '
-                 'up.</p>'],
-  'hub': 'I help Chatsworth shop owners and business-park companies keep their accounts reconciled and readable.',
-  'neighbors': ['simi-valley', 'porter-ranch', 'canoga-park', 'northridge'],
-  'industries': ['contractors', 'auto-repair', 'home-services'],
-  'faqs': [('Is Chatsworth part of Los Angeles?',
-            'Yes. Chatsworth is a neighborhood in the City of Los Angeles. Simi Valley, where I live, is the next '
-            'city west.'),
-           ('Do you work with industrial businesses and with storefronts?',
-            "Yes. Tell me how many accounts you have and roughly how many transactions. That's what sets the "
-            'scope.')]},
- {'slug': 'porter-ranch',
-  'name': 'Porter Ranch',
-  'schema_type': 'Place',
-  'schema_name': 'Porter Ranch, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'San Fernando Valley along the 118',
-  'title': 'Bookkeeping in Porter Ranch, CA | Glenhold',
-  'description': 'I help Porter Ranch clinics, restaurants, and local services keep a clean monthly close. Plans '
-                 'from $349.',
-  'h1': 'Bookkeeping in Porter Ranch',
-  'lede': 'Town Center clinics and the restaurants around them bill in different ways, and each one still has to '
-          'tie to the bank.',
-  'paragraphs': ['<p>Porter Ranch Town Center is the retail anchor, with medical and dental offices, restaurants, '
-                 'and home-service companies around it. Essential, Core, and Strategic are $349, $599, or $1,499 '
-                 'a month to start, same as everywhere else I work.</p>',
-                 '<p>Granada Hills is the next community over. A new practice that needs a clean file should '
-                 'start with <a href="/quickbooks-online/">QuickBooks Online setup</a>, then decide whether '
-                 'monthly bookkeeping or check-ins fit better. Your CPA files the return.</p>'],
-  'hub': 'I help Porter Ranch clinics, restaurants, and local services keep a clean close every month.',
-  'neighbors': ['chatsworth', 'granada-hills', 'northridge'],
-  'industries': ['medical-dental', 'professional-services', 'restaurants', 'home-services'],
-  'faqs': [('Is Porter Ranch its own city?',
-            "Porter Ranch is a neighborhood in the City of Los Angeles. I list it because that's the name you "
-            'use.'),
-           ("We're opening a second provider. Do we need a new QuickBooks file?",
-            "Usually no. I'll add the accounts and categories the new provider needs. If the entity itself is "
-            "new, we'll set that file up cleanly.")]},
- {'slug': 'northridge',
-  'name': 'Northridge',
-  'schema_type': 'Place',
-  'schema_name': 'Northridge, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'San Fernando Valley along the 118',
-  'title': 'Bookkeeping in Northridge, CA | Glenhold',
-  'description': 'I help Northridge restaurants, clinics, and local businesses keep the books current. Plans from '
-                 '$349.',
-  'h1': 'Bookkeeping in Northridge',
-  'lede': 'Between CSUN and Reseda Boulevard, restaurants and clinics turn over a lot of small transactions. That '
-          'belongs in a monthly close.',
-  'paragraphs': ['<p>Reseda Boulevard, Nordhoff Street, and Devonshire Street frame California State University, '
-                 'Northridge. Restaurants, retail, medical offices, tutors, trades, and professional services '
-                 'fill those corridors. I categorize, reconcile, and send the statements.</p>',
-                 '<p>QuickBooks training can be a screen share. Tips, sales tax, and food cost are common '
-                 'restaurant questions. The <a href="/who-we-work-with/restaurants/">restaurant page</a> says how '
-                 'I record them.</p>'],
-  'hub': 'I help Northridge restaurants, clinics, and Reseda Boulevard businesses keep the books current.',
-  'neighbors': ['granada-hills', 'reseda', 'chatsworth', 'porter-ranch'],
-  'industries': ['restaurants', 'retail', 'medical-dental', 'professional-services'],
-  'faqs': [('Do you only work near CSUN?',
-            'I work with small businesses across Northridge. The campus explains the map. Your accounts explain '
-            'the quote.'),
-           ('Can training happen on a video call?',
-            "Yes. QuickBooks Online training works well that way. We can also meet in person when that's "
-            'better.')]},
- {'slug': 'granada-hills',
-  'name': 'Granada Hills',
-  'schema_type': 'Place',
-  'schema_name': 'Granada Hills, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'San Fernando Valley along the 118',
-  'title': 'Bookkeeping in Granada Hills, CA | Glenhold',
-  'description': 'I help Granada Hills dentists, salons, and neighborhood shops know where they stand each month. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping in Granada Hills',
-  'lede': 'Granada Hills sits between Porter Ranch and Northridge, with dentists, salons, and corner shops that '
-          'each need their own clean month.',
-  'paragraphs': ['<p>Balboa Boulevard and Chatsworth Street are how people describe where a shop is. Dental and '
-                 'medical offices, restaurants, salons, and trades fill the corners. I set the books up around '
-                 'your accounts and the reports you want.</p>'],
-  'hub': 'I help Granada Hills dentists, salons, and neighborhood shops know where they stand each month.',
-  'neighbors': ['porter-ranch', 'northridge', 'chatsworth'],
-  'industries': ['medical-dental', 'salons', 'restaurants', 'professional-services'],
-  'faqs': [('Is Granada Hills the same area as Porter Ranch?',
-            "They're neighbors, and I work in both. The offer is the same. The pages are separate because you "
-            'search for the name you use.'),
-           ('The salon sells product and the dentist next door is a separate company. Can you do both?',
-            "Yes, as two sets of books. Product sales and a practice don't belong in one profit and loss.")]},
- {'slug': 'woodland-hills',
-  'name': 'Woodland Hills',
-  'schema_type': 'Place',
-  'schema_name': 'Woodland Hills, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southwest and central San Fernando Valley',
-  'title': 'Bookkeeping in Woodland Hills, CA | Glenhold',
-  'description': 'I help Woodland Hills offices and Ventura Boulevard businesses keep clear operating books. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping in Woodland Hills',
-  'lede': 'Warner Center firms and Ventura Boulevard practices need operating books their CPA can trust.',
-  'paragraphs': ['<p>Warner Center is the office end of Woodland Hills. Ventura Boulevard is the '
-                 'professional-services end: medical, legal, financial, real estate, and the restaurants between '
-                 'them. I keep the operating books current and reconciled.</p>',
-                 '<p>If your firm holds client funds, that trust process stays with you. I book the operating '
-                 'account: fees, expenses, and draws. Read the <a '
-                 'href="/who-we-work-with/professional-services/">professional services page</a> for how that '
-                 'works.</p>'],
-  'hub': 'I help Woodland Hills professional offices and Ventura Boulevard businesses keep operating books that '
-         'are clear and current.',
-  'neighbors': ['canoga-park', 'calabasas', 'encino'],
-  'industries': ['professional-services', 'medical-dental', 'real-estate', 'restaurants'],
-  'faqs': [('What do you book for a professional firm?',
-            'The operating account: fees, expenses, and what the owners take home. Your trust process stays with '
-            'the firm.'),
-           ('Is Warner Center included with Ventura Boulevard?',
-            "Yes. Both are Woodland Hills for this page. Tell me about the accounts, and I'll quote the work.")]},
- {'slug': 'canoga-park',
-  'name': 'Canoga Park',
-  'schema_type': 'Place',
-  'schema_name': 'Canoga Park, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southwest and central San Fernando Valley',
-  'title': 'Bookkeeping in Canoga Park, CA | Glenhold',
-  'description': "I help Canoga Park's owner-run shops, restaurants, and repair businesses get the books in "
-                 'order. Plans from $349.',
-  'h1': 'Bookkeeping in Canoga Park',
-  'lede': 'Canoga Park is full of owner-run businesses, and those books usually need a patient cleanup and then a '
-          'steady month.',
-  'paragraphs': ['<p>Sherman Way and Topanga Canyon Boulevard hold auto repair, trades, restaurants, markets, '
-                 'salons, and small offices. I reconcile the accounts and categorize the spending so you can see '
-                 "the month. If the books have been in a box since spring, that's catch-up, priced from the work "
-                 'ahead of us.</p>',
-                 "<p>Winnetka, next door, shares these streets. If that's your neighborhood, say so on the form. "
-                 "I'm in Simi Valley, and I'm glad to meet in Canoga Park when a conversation helps.</p>"],
-  'hub': "I help Canoga Park's owner-run shops, restaurants, and repair businesses get the books in order and "
-         'keep them there.',
-  'neighbors': ['woodland-hills', 'chatsworth', 'reseda'],
-  'industries': ['auto-repair', 'restaurants', 'contractors', 'retail'],
-  'faqs': [('Is Winnetka covered too?',
-            'Winnetka sits between Canoga Park and Reseda. Name it when you write. I work with businesses there '
-            'too.'),
-           ('What if the books are a year behind?',
-            "That's catch-up. The price depends on the months, the accounts, and any missing statements. Monthly "
-            'service can start once the backlog is done.')]},
- {'slug': 'reseda',
-  'name': 'Reseda',
-  'schema_type': 'Place',
-  'schema_name': 'Reseda, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southwest and central San Fernando Valley',
-  'title': 'Bookkeeping in Reseda, CA | Glenhold',
-  'description': 'I help Reseda Boulevard businesses keep sales, fees, and everyday expenses sorted. Plans from '
-                 '$349.',
-  'h1': 'Bookkeeping in Reseda',
-  'lede': 'Reseda Boulevard businesses need someone to untangle the deposit, the fees, and the everyday expenses.',
-  'paragraphs': ['<p>The boulevard is miles of independent businesses: repair shops, restaurants, clinics, '
-                 'retailers, and services. Northridge is to the north. Encino and Tarzana are toward Ventura '
-                 'Boulevard. I categorize the month and reconcile the bank so sales, fees, and owner draws each '
-                 'have a place.</p>',
-                 '<p>A card-processor deposit is often sales minus fees. I separate those when the reports are '
-                 "available. If your business is a kind I haven't named, you're still welcome. Start at <a "
-                 'href="/who-we-work-with/">who I work with</a>.</p>'],
-  'hub': 'I help Reseda Boulevard businesses keep sales, fees, and everyday expenses sorted so the month is '
-         'clear.',
-  'neighbors': ['northridge', 'encino', 'canoga-park', 'van-nuys'],
-  'industries': ['auto-repair', 'restaurants', 'medical-dental', 'retail'],
-  'faqs': [('Is Tarzana included?',
-            "Tarzana is the next community south, toward Ventura Boulevard. Mention it if that's where you are. I "
-            'work with businesses there too.'),
-           ('Do card deposits count as my full sales?',
-            'Often the deposit is sales minus fees. I split those when you can give me the processor report.')]},
- {'slug': 'encino',
-  'name': 'Encino',
-  'schema_type': 'Place',
-  'schema_name': 'Encino, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southwest and central San Fernando Valley',
-  'title': 'Bookkeeping in Encino, CA | Glenhold',
-  'description': 'I help Encino practices and Ventura Boulevard offices keep operating books their CPA can use. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping in Encino',
-  'lede': "Encino's Ventura Boulevard offices need operating books that are ready for a CPA, a partner, or a "
-          'lender.',
-  'paragraphs': ['<p>Ventura Boulevard in Encino is medical and dental, real estate, attorneys, accountants, and '
-                 'the restaurants between them. North of the boulevard, home-service and retail businesses serve '
-                 'the neighborhood and the Sepulveda Basin. I keep the operating books reconciled.</p>',
-                 '<p>If you already have a CPA on the boulevard, keep them. I prepare the books and the '
-                 'statements. They file the return. Hiring me is how the two of us make tax season calmer.</p>'],
-  'hub': 'I help Encino practices and Ventura Boulevard offices keep operating books their CPA can use.',
-  'neighbors': ['woodland-hills', 'sherman-oaks', 'van-nuys', 'reseda'],
-  'industries': ['professional-services', 'medical-dental', 'real-estate', 'restaurants'],
-  'faqs': [('Will you replace my CPA?',
-            'Keep your CPA. I prepare the books and the statements. They prepare and file the return.'),
-           ('Partners want a quarterly look, and I just want to know the cash is right. Can the reports do both?',
-            'Yes. Core adds a quarterly summary and a year-to-date comparison on top of the monthly close, so '
-            "you're not waiting until tax time to see the year.")]},
- {'slug': 'van-nuys',
-  'name': 'Van Nuys',
-  'schema_type': 'Place',
-  'schema_name': 'Van Nuys, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southwest and central San Fernando Valley',
-  'title': 'Bookkeeping in Van Nuys, CA | Glenhold',
-  'description': 'I help Van Nuys shops, trades, and civic-center businesses keep a monthly close they can rely '
-                 'on. Plans from $349.',
-  'h1': 'Bookkeeping in Van Nuys',
-  'lede': 'Van Nuys Boulevard, the civic center, and the airport are three different kinds of business on one '
-          'map.',
-  'paragraphs': ['<p>Van Nuys is the central San Fernando Valley. The civic center, Van Nuys Boulevard, and Van '
-                 'Nuys Airport are the landmarks. The boulevard is a long street of independent businesses. I '
-                 'reconcile the accounts and send statements you can use.</p>',
-                 '<p>Sherman Oaks begins to the south and has its own page. If a closed bank account is part of '
-                 'the backlog, include it. Closed accounts belong in the catch-up, so the year still ties.</p>'],
-  'hub': 'I help Van Nuys shops, trades, and Boulevard businesses keep a monthly close they can rely on.',
-  'neighbors': ['sherman-oaks', 'reseda', 'north-hollywood', 'encino'],
-  'industries': ['auto-repair', 'professional-services', 'restaurants', 'contractors'],
-  'faqs': [('Is Van Nuys the same as Sherman Oaks?',
-            "They're neighbors. Sherman Oaks is to the south, along Ventura Boulevard. I have a page for each."),
-           ('Do you work with businesses near Van Nuys Airport?',
-            'Yes, and with the shops and offices everywhere else in Van Nuys. Tell me about the accounts.')]},
- {'slug': 'sherman-oaks',
-  'name': 'Sherman Oaks',
-  'schema_type': 'Place',
-  'schema_name': 'Sherman Oaks, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southeast Valley and nearby cities',
-  'title': 'Bookkeeping in Sherman Oaks, CA | Glenhold',
-  'description': 'I help Sherman Oaks restaurants, practices, and Ventura Boulevard firms keep current books. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping in Sherman Oaks',
-  'lede': 'Ventura Boulevard and Fashion Square pack restaurants, practices, and firms into a few dense blocks.',
-  'paragraphs': ['<p>Ventura Boulevard here is restaurants, medical offices, professional services, real estate, '
-                 'and retail. Fashion Square is a few blocks north. A home-service company in the hills is the '
-                 'same conversation: what hit the bank, what left, and what the month earned.</p>',
-                 '<p>Strategic includes a monthly call to walk through the numbers. That call can be on the phone '
-                 'or on video, and we can also meet in person. Your payroll company runs payroll. On Strategic I '
-                 'can record the journal entries. Your CPA files the return.</p>'],
-  'hub': 'I help Sherman Oaks restaurants, practices, and Ventura Boulevard firms keep the books current and '
-         'understandable.',
-  'neighbors': ['studio-city', 'encino', 'van-nuys'],
-  'industries': ['restaurants', 'professional-services', 'medical-dental', 'real-estate'],
-  'faqs': [('Does the Strategic plan include a call?',
-            'Yes. Strategic includes a monthly call to walk through your numbers. We can do it by phone, video, '
-            'or in person.'),
-           ('Fashion Square rent and the Boulevard practice are different businesses. Will you mix them?',
-            'Separate companies get their own books, even when you own both.')]},
- {'slug': 'studio-city',
-  'name': 'Studio City',
-  'schema_type': 'Place',
-  'schema_name': 'Studio City, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southeast Valley and nearby cities',
-  'title': 'Bookkeeping in Studio City, CA | Glenhold',
-  'description': 'I help Studio City restaurants, shops, and small studios keep clean books behind a busy month. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping in Studio City',
-  'lede': 'Restaurants, small studios, and shops share this stretch of Ventura Boulevard, and each one still '
-          'needs its own readable month.',
-  'paragraphs': ['<p>Ventura Boulevard east of Sherman Oaks is restaurants, creative shops, fitness studios, '
-                 'offices, and retail. I keep the books for those small businesses: categorized, reconciled, and '
-                 "ready for your CPA. If a tax deadline is why you're calling, bring the date. Wait to send "
-                 'documents until I tell you how.</p>',
-                 '<p>The 101 and the 170 are the freeways people use to describe the neighborhood. What I need is '
-                 'simpler: your accounts, your reports, and what you want to understand about the month.</p>'],
-  'hub': 'I help Studio City restaurants, studios, and small shops keep clean books behind a busy month.',
-  'neighbors': ['sherman-oaks', 'north-hollywood', 'burbank'],
-  'industries': ['restaurants', 'fitness', 'professional-services', 'retail'],
-  'faqs': [('Do you work with creative businesses and with restaurants?',
-            'Yes. A small studio, a restaurant, and a therapist can all work with me. Tell me how you get paid.'),
-           ("A project paid me in January for work I'll finish in March. How should that show up?",
-            'Tell me and your CPA whether you want that on a cash basis or held until you earn it. Strategic is '
-            'the plan that includes accrual accounting when you need the second version.')]},
- {'slug': 'north-hollywood',
-  'name': 'North Hollywood',
-  'schema_type': 'Place',
-  'schema_name': 'North Hollywood, Los Angeles',
-  'contained': 'Los Angeles, California',
-  'group': 'Southeast Valley and nearby cities',
-  'title': 'Bookkeeping in North Hollywood, CA | Glenhold',
-  'description': 'I help North Hollywood and NoHo owners keep current books, from arts-district shops to '
-                 'neighborhood businesses. Plans from $349.',
-  'h1': 'Bookkeeping in North Hollywood',
-  'lede': 'The NoHo Arts District and the wider North Hollywood grid are different kinds of businesses, and both '
-          'still need a month that closes.',
-  'paragraphs': ['<p>Lankershim and Magnolia frame the arts district: small theaters, restaurants, shops, and '
-                 'studios. The rest of North Hollywood is a wide grid of trades, retail, and offices near the B '
-                 'Line and G Line. I help both keep the books current.</p>',
-                 '<p>A theater company or other nonprofit can read the <a '
-                 'href="/who-we-work-with/nonprofits/">nonprofit page</a> to see how I organize income and '
-                 'expenses for a board. Your CPA files the Form 990. Burbank, next door, is its own city and has '
-                 'its own page.</p>'],
-  'hub': 'From the NoHo Arts District to neighborhood shops, I help North Hollywood owners keep current books and '
-         'a clear monthly picture.',
-  'neighbors': ['studio-city', 'burbank', 'van-nuys'],
-  'industries': ['restaurants', 'retail', 'nonprofits', 'professional-services'],
-  'faqs': [('Is North Hollywood part of Burbank?',
-            'North Hollywood is a Los Angeles neighborhood. Burbank is a separate city next door. I have a page '
-            'for each.'),
-           ('Can you keep books for a small nonprofit here?',
-            "Yes. I'll organize income and expenses, including by program when you want that. Your CPA files the "
-            'Form 990.')]},
- {'slug': 'burbank',
-  'name': 'Burbank',
-  'schema_type': 'City',
-  'schema_name': 'Burbank',
-  'contained': 'Los Angeles County, California',
-  'group': 'Southeast Valley and nearby cities',
-  'title': 'Bookkeeping in Burbank, CA | Glenhold',
-  'description': "I help Burbank's downtown shops, Magnolia Park businesses, and local offices keep clean books. "
-                 'Plans from $349.',
-  'h1': 'Bookkeeping for Burbank small businesses',
-  'lede': 'Downtown Burbank and Magnolia Park are full of independent restaurants, shops, and offices that need a '
-          'month they can actually read.',
-  'paragraphs': ['<p>Downtown Burbank, San Fernando Boulevard, and Magnolia Park are full of independent '
-                 'restaurants, shops, offices, and trades. Hollywood Burbank Airport sits at the north end. I '
-                 'help the small businesses that make those streets work: monthly books, catch-up, or QuickBooks '
-                 'Online.</p>',
-                 '<p>If a payroll company already runs payroll, the Strategic plan includes recording those '
-                 'journal entries. Glendale is the next city east and has its own page. Your CPA files the '
-                 'return. I hand them clean books.</p>'],
-  'hub': "I help Burbank's downtown shops, Magnolia Park businesses, and local offices keep clean books and know "
-         'where they stand.',
-  'neighbors': ['glendale', 'north-hollywood', 'studio-city'],
-  'industries': ['restaurants', 'retail', 'professional-services', 'ecommerce'],
-  'faqs': [('Do you work with Burbank shops and with small offices?',
-            "Yes. Tell me how money comes in and how many accounts you have. That's the start of the quote."),
-           ('We have a shop in Magnolia Park and an office downtown. One close or two?',
-            "If they're one company, one close with categories that show each location. If they're separate "
-            'companies, two sets of books.')]},
- {'slug': 'glendale',
-  'name': 'Glendale',
-  'schema_type': 'City',
-  'schema_name': 'Glendale',
-  'contained': 'Los Angeles County, California',
-  'group': 'Southeast Valley and nearby cities',
-  'title': 'Bookkeeping in Glendale, CA | Glenhold',
-  'description': 'I help Glendale shops, restaurants, and family businesses keep clean, current books. Plans from '
-                 '$349. You work with me.',
-  'h1': 'Bookkeeping in Glendale',
-  'lede': 'Glendale owners, from Brand Boulevard to neighborhood restaurants, deserve a clear picture of every '
-          'month.',
-  'paragraphs': ['<p>Brand Boulevard, the Galleria, and The Americana sit in a city full of professional '
-                 'services, medical offices, restaurants, retail, and family businesses. I keep the books the '
-                 'same way I do in Simi Valley: categorize, reconcile, and show you where you stand.</p>',
-                 '<p>If you want custom reports and a monthly call, Strategic is $1,499 a month to start if you '
-                 'want custom reports and a monthly call. Essential is $349 and Core is $599, also to start. Tell '
-                 "me about the accounts and I'll quote the work.</p>"],
-  'hub': 'From Brand Boulevard shops to family-run restaurants, I help Glendale owners keep clean, current books '
-         'and know exactly where they stand each month.',
-  'neighbors': ['burbank', 'north-hollywood'],
-  'industries': ['professional-services', 'medical-dental', 'restaurants', 'retail'],
-  'faqs': [("Our family restaurant and the retail shop next door share a bookkeeper's inbox. Can you tell them "
-            'apart?',
-            "Yes. I'll keep each company's income and expenses in its own file so Brand Boulevard rent doesn't "
-            "land on the restaurant's profit."),
-           ('Are the prices the same in Glendale?',
-            'Yes. Plans are $349, $599, or $1,499 a month to start. Your accounts and your volume set the '
-            'quote.')]},
- {'slug': 'malibu',
-  'name': 'Malibu',
-  'schema_type': 'City',
-  'schema_name': 'Malibu',
-  'contained': 'Los Angeles County, California',
-  'group': 'Conejo Valley and the 101',
-  'title': 'Bookkeeping in Malibu, CA | Glenhold',
-  'description': 'I help Malibu restaurants, shops, and home-service businesses keep current, readable books. '
-                 'Plans from $349.',
-  'h1': 'Bookkeeping for Malibu small businesses',
-  'lede': 'PCH restaurants, canyon shops, and the crews that look after houses all collect money in different '
-          'ways.',
-  'paragraphs': ['<p>Businesses along Pacific Coast Highway, in the canyons, and serving Malibu houses each '
-                 'collect money differently. Restaurants, retail, professional services, and trades all show up. '
-                 'I set the chart of accounts around how you operate and close the month so you can see it.</p>',
-                 '<p>Real estate operating books are described on the <a '
-                 'href="/who-we-work-with/real-estate/">real estate page</a>. I keep the company\'s operating '
-                 "accounts in order. Your own trust process stays with you. We'll meet in person when that helps "
-                 'you walk through the numbers.</p>'],
-  'hub': 'I help Malibu restaurants, shops, and home-service businesses keep their books current and easy to read '
-         'each month.',
-  'neighbors': ['agoura-hills', 'calabasas', 'westlake-village'],
-  'industries': ['real-estate', 'restaurants', 'home-services', 'professional-services'],
-  'faqs': [('Summer is the busy season and winter is thin. Will the categories still work both ways?',
-            "Yes. I'll keep the categories steady so you can compare a packed August with a quiet January."),
-           ('Do you keep books for property businesses in Malibu?',
-            "I keep the company's operating books: income, expenses, and reconciled accounts. Your trust process "
-            'stays with you.')]}]
+Open question for Jack, not for the page: whether these eight cities and three
+regions match how he actually works.
+"""
+
+from bits import checklist, help_table, paras, plans, section, steps
+from city_rest import MORE_CITIES
+from city_regions import HUB, INDUSTRY_REDIRECTS, REDIRECTS, REGIONS
+
+PWC = (
+    "I've been in accounting since 2021, including audit work at PwC, "
+    "and I'm a Certified QuickBooks ProAdvisor."
+)
+
+
+def _steps(title, items):
+    return steps(title, items)
+
+
+def _ready(title, items):
+    return checklist(title, items)
+
+
+CITIES = [
+    dict(
+        slug="simi-valley",
+        name="Simi Valley",
+        schema_type="City",
+        schema_name="Simi Valley",
+        contained="Ventura County, California",
+        title="Bookkeeping in Simi Valley, CA | Glenhold",
+        description="I'm in Simi Valley. I categorize the month, reconcile your accounts, and send reports you can read. Plans from $349. You work with me.",
+        h1="Small business bookkeeping in Simi Valley",
+        lede="I live in Simi Valley, and I keep the books for small businesses here. I categorize the month, reconcile your bank and credit cards, and send a profit and loss and a balance sheet, usually by the 15th. Plans start at $349 a month. You work with me.",
+        hub="I live here, and I close the month for shops, trades, clinics, and offices along Los Angeles Avenue, Tapo, Cochran, and First.",
+        faqs=[
+            ("Can I start if the books live in a shared inbox?", "Yes. Tell me which accounts are the business and who can name a transaction that needs a look. On the first call I will show you how to share files."),
+            ("What if I am a few months behind?", "That is a catch-up. Tell me the months and the accounts and I will quote it before I start. After those months are closed, the new ones can stay on a monthly rhythm."),
+            ("I already have a CPA in town. Where do you fit?", "Keep your CPA. I hand them clean, reconciled books. They file the return."),
+            ("Can you and I meet in Simi Valley?", "Yes. I live here. A call is usually enough, and when the reports help on paper, you and I can meet in town."),
+            ("When will I see the month?", "I aim for the 15th of the next month. If a statement or an answer is still out, I tell you and send the reports as soon as I have them."),
+        ],
+        body=(
+            "<!-- VIDEO -->"
+            + paras(
+                "Los Angeles Avenue, Tapo Street, Cochran Street, and First Street are where a lot of the owner-run businesses sit: trades, clinics, offices, restaurants, and shops. I set the categories up around how you get paid and what you spend, so a materials run, a payroll transfer, and a personal draw each land where you expect them. Then I reconcile the bank and the cards and send the profit and loss and the balance sheet.",
+                "The first conversation covers the accounts, the months you care about, and the question you want the reports to answer. I quote the work before I start. If the file is current, the next step is a monthly close. If a stack of months is still open, I price that catch-up from the records you have, finish those months, and then keep the new ones current. When a meeting helps, you and I can sit down here in town.",
+                "Simi businesses often collect money in more than one way. A shop may have a card processor and a handful of checks. A contractor may have deposits in the account until the job is finished. A clinic may see insurance deposits that cover more than one day's appointments. I want the deposit and the report that explains it. Once those agree, the profit and loss is useful on an ordinary Tuesday and useful again when your CPA starts the return.",
+                "I aim to send reports by the 15th of the next month, once the statements and your answers are in. If a card statement is late or a transfer needs a name, I tell you what is missing and send the reports as soon as I have it. You are talking to me on that close. " + PWC + " Now I bring that same care to businesses in this town.",
+                "Sales tax is part of the close when you collect it. I record the sale as income and the tax you collected as a liability, the amount that goes to the state. The statewide base rate is 7.25 percent, and district taxes can make Simi Valley's rate higher. I look up the rate for your location. Your preparer files the return.",
+            )
+            + _steps(
+                "How a month goes for a Simi Valley business",
+                [
+                    ("List the accounts", "Checking, savings, cards, loans, and the processor. A shop on Tapo and a crew working from a Cochran yard can start from that same short list."),
+                    ("Choose the first month", "If last month is already closed, I start with the new one. If the file stops in the spring, the first job is the open months, quoted before I begin."),
+                    ("Mark the odd transactions", "Owner draws, money you put back in, transfers between your own accounts, and the card that sometimes buys groceries. Name them once and later months move faster."),
+                    ("I categorize the activity", "Income, job costs, rent, fuel, supplies, and the rest, in names that match how you talk about the work."),
+                    ("I reconcile the balances", "The bank and each card tie to the books. A difference gets a note you can see."),
+                    ("You get the reports", "A profit and loss and a balance sheet, aimed at the 15th. Core adds a quarterly summary and a year-to-date comparison. Strategic adds a monthly call."),
+                ],
+            )
+            + _ready(
+                "What helps me close your month",
+                [
+                    "The account list, including a card that lives in a truck or a kitchen drawer",
+                    "Statements for the months in scope, or bank feeds inside QuickBooks Online",
+                    "Processor or point-of-sale reports when a deposit bundles sales, tips, and fees",
+                    "A note on anything you already know is personal",
+                    "The date your CPA or a lender asked for, if there is one",
+                ],
+            )
+            + plans("Essential starts at $349 a month, Core at $599, and Strategic at $1,499. The price moves with transaction volume, the number of accounts, and the reporting you want. Love your first month of books, or it's free. Details sit on the <a href=\"/pricing/\">pricing page</a>.")
+            + paras('The monthly routine is <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. A backlog starts as <a href="/cleanup-catch-up/">cleanup and catch-up</a>. Trades and <a href="/who-we-work-with/home-services/">home-service businesses</a> call from this side of town often, and so do <a href="/who-we-work-with/professional-services/">professional offices</a>.')
+        ),
+    ),
+    dict(
+        slug="moorpark",
+        name="Moorpark",
+        schema_type="City",
+        schema_name="Moorpark",
+        contained="Ventura County, California",
+        title="Bookkeeping in Moorpark, CA | Glenhold",
+        description="I keep monthly books for Moorpark owners along High Street, Tierra Rejada, and the college side of town. Plans from $349.",
+        h1="Bookkeeping for Moorpark small businesses",
+        lede="If your business is in Moorpark, I can keep the month closed for you. I categorize transactions, reconcile the bank and the cards, and send a profit and loss and a balance sheet, usually by the 15th. You work with me, from Simi Valley, a short way down the road.",
+        hub="High Street, the college, and Tierra Rejada are full of owner-run shops and services, and I close their months the same careful way.",
+        faqs=[
+            ("My High Street shop deposits a mix of cards and a few invoices. Can you sort that?", "Yes. Send the processor report with the bank deposit. I match them so sales, fees, and the money in the account tell the same story."),
+            ("I am a one-person trade. Is monthly bookkeeping too much?", "Essential starts at $349 a month for straightforward books. If the volume is light, that is the plan I quote from."),
+            ("The file at home stops in the summer. What happens first?", "I look at the last closed month and the accounts, then I quote the open stretch. After that, the new months can stay current."),
+            ("Do I need QuickBooks Online already?", "It helps, and it is the file I work in. If you are starting fresh, setup and training can come first."),
+            ("Who answers when I have a question about a number?", "I do. You work with me on the close and on the email afterward."),
+        ],
+        body=(
+            "<!-- VIDEO -->"
+            + paras(
+                "Moorpark feels like its own town: High Street, the college, and the businesses scattered along Tierra Rejada. I work with owners there the same way I work in Simi Valley. You tell me how money comes in. I build the categories around that, reconcile the accounts, and send reports you can read without a translation.",
+                "A High Street shop and a service business near the college collect money differently, and the books should show that. Retail deposits need the processor report beside them. A tutor, a therapist, or a consultant may have a few larger payments and a simple card for supplies. A crew working along Tierra Rejada all week needs fuel, materials, and the owner's draws named clearly so the profit is the profit.",
+                "On the first call I ask which months are finished, which accounts are in play, and whether a CPA or a lender is waiting. I quote before I start. Catch-up is its own price, based on the pile of records. Monthly bookkeeping after that is one of the three plans. Love your first month of books, or it's free.",
+                "I live in Simi Valley, so Moorpark is an easy place to meet when you want to look at a report together. Plenty of months never need a meeting. I send the profit and loss and the balance sheet, you reply with the one transaction that looks strange, and I fix the label. The aim is the 15th of the next month.",
+                PWC + " The Moorpark owners I talk with want the same thing the Simi owners want: a month they can trust, and a person they can reach.",
+            )
+            + _steps(
+                "How I take on a Moorpark month",
+                [
+                    ("Map the money", "Where deposits come from, which card pays for materials, and whether High Street sales run through a processor, invoices, or both."),
+                    ("Set the starting month", "The last month you trust is the handoff. Everything after it is either a catch-up quote or the first monthly close."),
+                    ("Separate the owner from the business", "Draws, contributions, and the grocery run on the business card get their own lines."),
+                    ("Categorize and reconcile", "I code the month and tie the bank and the cards to the books."),
+                    ("Send reports you can use", "Profit and loss, balance sheet, and a note if something still needs you. Core and Strategic add the comparisons and the call described on the pricing page."),
+                ],
+            )
+            + _ready(
+                "Bring these to the first Moorpark close",
+                [
+                    "Bank and card names for the business",
+                    "The last month you believe is finished",
+                    "Processor totals if deposits mix sales and fees",
+                    "Any loan or vehicle payment you want tracked",
+                    "Your CPA's deadline, if the return is the reason for the call",
+                ],
+            )
+            + plans('Plans start at $349, $599, and $1,499 a month. Moorpark shops with a single account often land on Essential. A busier crew, or an owner who wants a monthly walkthrough, is a Core or Strategic conversation. See <a href="/pricing/">pricing</a>.')
+            + paras('Read the monthly routine on <a href="/monthly-bookkeeping/">monthly bookkeeping</a>, or the backlog path on <a href="/cleanup-catch-up/">cleanup and catch-up</a>. If the work is a trade, the <a href="/who-we-work-with/contractors/">contractors</a> page is the closer description.')
+        ),
+    ),
+]
+
+CITIES.extend(MORE_CITIES)
