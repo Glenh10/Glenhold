@@ -24,21 +24,21 @@ MORE_CITIES = [
         schema_name="Thousand Oaks",
         contained="Ventura County, California",
         title="Bookkeeping in Thousand Oaks, CA | Glenhold",
-        description="I keep monthly books for Thousand Oaks practices, restaurants, and Boulevard businesses, including Newbury Park. Plans from $349.",
+        description="I keep monthly books for Thousand Oaks practices, shops, and Boulevard businesses, including Newbury Park. Plans from $349.",
         h1="Bookkeeping for Thousand Oaks small businesses",
         lede="Thousand Oaks bookkeeping, for me, means a month you can read: categorized transactions, reconciled accounts, and a profit and loss and balance sheet, usually by the 15th. I work with owners on the Boulevard and in Newbury Park. Plans start at $349. You work with me.",
-        hub="I close the month for Thousand Oaks practices, restaurants, and Boulevard businesses, and Newbury Park is part of that same city.",
+        hub="I close the month for Thousand Oaks practices, shops, and Boulevard businesses, and Newbury Park is part of that same city.",
         faqs=[
             ("Is Newbury Park included?", "Yes. Newbury Park is part of the City of Thousand Oaks. Wendy, Borchard, and Dos Vientos are on this page with the rest of the city."),
             ("I have a CPA on the Boulevard. What do you send them?", "Reconciled books, a profit and loss, and a balance sheet. They file the return. I keep the months closed so the year is ready."),
-            ("Our restaurant deposits never match the sales report. Can you still close the month?", "That match is the job. I reconcile the point-of-sale report to the deposit, including fees, refunds, and tips."),
+            ("A practice on the Boulevard and a shop in Newbury Park share one owner. Can one file hold both?", "Yes. I keep the income lines separate when you want to see each location, and the balance sheet still shows one company."),
             ("What does a straightforward practice pay to start?", "Essential starts at $349 a month. A busier practice, or one that wants a quarterly view, is often Core at $599."),
             ("Can the first month be a trial of the working relationship?", "Love your first month of books, or it's free. That covers monthly bookkeeping."),
         ],
         body=(
             "<!-- VIDEO -->"
             + paras(
-                "Thousand Oaks Boulevard, the streets around Civic Arts Plaza, and The Oaks sit among professional offices, clinics, restaurants, and shops. I categorize the month around how each of those businesses actually gets paid. A practice's insurance deposits, a restaurant's card batches, and a consultant's invoices are three different puzzles, and each one can be reconciled.",
+                "Thousand Oaks Boulevard, the streets around Civic Arts Plaza, and The Oaks sit among professional offices, clinics, and shops. I categorize the month around how each of those businesses actually gets paid. A practice's insurance deposits, a shop's card batches, and a consultant's invoices are three different puzzles, and each one can be reconciled.",
                 "Newbury Park is the west end of the same city. Wendy, Borchard, and Dos Vientos hold local services, trades, clinics, and shops with a rhythm closer to Camarillo than to the east end of the Boulevard. I cover Newbury Park on this page. If your books are there, you are in the right place.",
             )
             + section(
@@ -57,7 +57,7 @@ MORE_CITIES = [
                 [
                     ("Name the location and the accounts", "Boulevard office, Newbury Park shop, or a practice that sees people in both. The accounts matter more than the suite number."),
                     ("Match deposits to the report that explains them", "Processor batches, insurance remits, or invoices. The bank line is the total. The report is the detail."),
-                    ("Code the month in your language", "Patient revenue, food, professional fees, rent, payroll transfers, owner draws."),
+                    ("Code the month in your language", "Patient revenue, supplies, professional fees, rent, payroll transfers, owner draws."),
                     ("Reconcile bank and cards", "Each balance ties out. Leftover items stay on a list until you and I name them."),
                     ("Send the 15th package", "Profit and loss and balance sheet. Core adds the quarterly and year-to-date view. Strategic adds the monthly call."),
                 ],
@@ -72,7 +72,7 @@ MORE_CITIES = [
                 ],
             )
             + plans('Starting prices are $349, $599, and $1,499 a month. Love your first month of books, or it\'s free. The plan comparison is on <a href="/pricing/">pricing</a>.')
-            + paras('The full monthly routine is <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. Restaurants on this side of the Conejo can read <a href="/who-we-work-with/restaurants/">restaurants and food businesses</a>, and practices can read <a href="/who-we-work-with/medical-dental/">medical and dental</a>.')
+            + paras('The full monthly routine is <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. Practices can read <a href="/who-we-work-with/medical-dental/">medical and dental</a>, and offices can read <a href="/who-we-work-with/professional-services/">professional services</a>.')
         ),
     ),
     dict(
@@ -172,7 +172,7 @@ MORE_CITIES = [
                 ],
             )
             + plans('Essential is $349 a month to start, Core is $599, and Strategic is $1,499. Love your first month of books, or it\'s free. See <a href="/pricing/">pricing</a> for what changes between them.')
-            + paras('Start with <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or <a href="/cleanup-catch-up/">cleanup and catch-up</a>. Shops with a counter can also read <a href="/who-we-work-with/restaurants/">restaurants and food businesses</a> if that is the closer fit, and trades can read <a href="/who-we-work-with/contractors/">contractors</a>.')
+            + paras('Start with <a href="/monthly-bookkeeping/">monthly bookkeeping</a> or <a href="/cleanup-catch-up/">cleanup and catch-up</a>. Shops with a counter can also read <a href="/who-we-work-with/professional-services/">professional services</a> if that is the closer fit, and trades can read <a href="/who-we-work-with/contractors/">contractors</a>.')
         ),
     ),
     dict(
@@ -197,7 +197,7 @@ MORE_CITIES = [
             "<!-- VIDEO -->"
             + paras(
                 "Santa Clarita is one city with four names people still use. Valencia, Newhall, Saugus, and Canyon Country show up in addresses, and the books can say Santa Clarita while you keep calling the neighborhood what you have always called it. I work with owners across that whole city from Simi Valley.",
-                "The mix I see is trades, medical and dental offices, restaurants, professional firms, and online sellers who happen to live and warehouse here. A Newhall shop, a Valencia practice, and a Canyon Country contractor each need categories that match their deposits. I ask about the deposits first. The chart of accounts follows.",
+                "The mix I see is trades, medical and dental offices, shops, professional firms, and online sellers who happen to live and warehouse here. A Newhall shop, a Valencia practice, and a Canyon Country contractor each need categories that match their deposits. I ask about the deposits first. The chart of accounts follows.",
                 "If the file is current, the next step is a monthly close. If several months are open, I quote the catch-up from those months and start the plan when they are finished. Reports are aimed at the 15th. You are working with me. "
                 + PWC,
                 "Bring the account list and the question you want answered. Some owners want to know if payroll is the whole margin. Some want a lender package. Some want the year to be quiet for their CPA. I can aim the close at that question. Strategic includes a monthly call for the walkthrough. Essential and Core send the reports in writing, and you can always write back.",
@@ -247,8 +247,8 @@ MORE_CITIES = [
         body=(
             "<!-- VIDEO -->"
             + paras(
-                "Ventura is the county seat, officially San Buenaventura. On Main Street and around the harbor I hear from shops, restaurants, professional offices, and owner-run firms that live with a seasonal year. I keep their books from Simi Valley. The close is monthly, so a busy August and a quiet January both end with a profit and loss you can compare.",
-                "Harbor businesses and Main Street businesses collect money differently enough that the categories should say so. A restaurant batch includes food, drink, tips, and fees. A gallery or a shop may have daily card sales and a few invoices. A harbor-side service may have deposits that sit until a job is done. I ask which pattern is yours and I reconcile the report that explains the deposit.",
+                "Ventura is the county seat, officially San Buenaventura. On Main Street and around the harbor I hear from shops, professional offices, and owner-run firms that live with a seasonal year. I keep their books from Simi Valley. The close is monthly, so a busy August and a quiet January both end with a profit and loss you can compare.",
+                "Harbor businesses and Main Street businesses collect money differently enough that the categories should say so. A shop's card batch includes sales, refunds, and fees. A gallery or a shop may have daily card sales and a few invoices. A harbor-side service may have deposits that sit until a job is done. I ask which pattern is yours and I reconcile the report that explains the deposit.",
                 "The first call covers accounts, open months, and any deadline. I quote catch-up from the records and monthly work from the three plans. Reports are aimed at the 15th. You work with me on the close. " + PWC,
                 "A harbor month and a Main Street month can share a file when they are the same company. I keep the sales channels visible so you can see which part of Ventura carried the month. Tell me if one location should stay visible on its own line.",
                 "Other coast and Highway 126 towns, including Port Hueneme, Santa Paula, Fillmore, and Ojai, are gathered on one regional page. Oxnard, the largest city in the county, has its own page. If you work in Ventura and live in one of those towns, tell me. The books follow the business.",
@@ -267,13 +267,13 @@ MORE_CITIES = [
                 "Helpful for a Ventura close",
                 [
                     "Account list and last closed month",
-                    "Point-of-sale exports for restaurant or shop deposits",
+                    "Point-of-sale exports for shop deposits",
                     "A note on seasonal months you already expect to look different",
                     "Your CPA's timing",
                 ],
             )
             + plans('Starting prices are $349, $599, and $1,499 a month. Love your first month of books, or it\'s free. <a href="/pricing/">Pricing</a> has the comparison.')
-            + paras('The monthly path is <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. Food businesses can read <a href="/who-we-work-with/restaurants/">restaurants</a>. The rest of the coast is on <a href="/service-areas/ventura-county-coast/">Ventura County coast</a>.')
+            + paras('The monthly path is <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. Main Street shops can read <a href="/who-we-work-with/professional-services/">professional services</a>. The rest of the coast is on <a href="/service-areas/ventura-county-coast/">Ventura County coast</a>.')
         ),
     ),
     dict(
@@ -289,7 +289,7 @@ MORE_CITIES = [
         hub="Oxnard is the largest city in Ventura County, and I close the month for owners on the Boulevard, at the harbor, and on the agricultural plain.",
         faqs=[
             ("I farm and I also sell at a stand. Can both live in one file?", "Yes. I split crop or wholesale receipts from stand sales so you can see each one, and the balance sheet still shows one business."),
-            ("The harbor shop's deposits include tips. How do you treat them?", "Tips, fees, and sales each get a line. The deposit in the bank is the sum, and the report explains the sum."),
+            ("A harbor shop and a farm stand share one company. Can the books show both?", "Yes. I keep the channels on separate lines so you can see each one, and the balance sheet still shows one business."),
             ("Do you work with Oxnard businesses?", "Yes. I keep the books from Simi Valley, and you work with me directly."),
             ("What do you need for a loan conversation?", "The reports the lender asked for, built from reconciled months. Start with the loan-ready page if that is the deadline."),
             ("When are the monthly reports ready?", "I aim for the 15th of the next month. I tell you if a statement is still missing."),
@@ -297,18 +297,18 @@ MORE_CITIES = [
         body=(
             "<!-- VIDEO -->"
             + paras(
-                "Oxnard is the largest city in Ventura County, and the books I keep here have to cover more than one kind of main street. Oxnard Boulevard has shops and services. The harbor has restaurants and visitor businesses. The plain around the city has agriculture, packing, and the owners who sell what they grow. I ask which of those is the center of your month, then I categorize around it.",
-                "A Boulevard service business may be straightforward: invoices, a card for parts, and payroll through a payroll company. A harbor restaurant needs the point-of-sale report beside every batch. An agricultural owner may have seasonal receipts, equipment loans, and a stand or a wholesale account that should stay visible on the profit and loss. Those are different charts of accounts. They get the same monthly reconcile.",
+                "Oxnard is the largest city in Ventura County, and the books I keep here have to cover more than one kind of main street. Oxnard Boulevard has shops and services. The harbor has shops and visitor businesses. The plain around the city has agriculture, packing, and the owners who sell what they grow. I ask which of those is the center of your month, then I categorize around it.",
+                "A Boulevard service business may be straightforward: invoices, a card for parts, and payroll through a payroll company. A harbor shop with card batches needs the processor report beside every deposit. An agricultural owner may have seasonal receipts, equipment loans, and a stand or a wholesale account that should stay visible on the profit and loss. Those are different charts of accounts. They get the same monthly reconcile.",
                 "Tell me how far behind the file is. I quote catch-up from the months and the accounts, then the monthly plan carries the business forward. Reports are aimed at the 15th. You work with me. " + PWC + " That is the care I bring to Oxnard.",
                 "Port Hueneme is its own city next door, with the port and the naval base, and it lives on the coast page. I am glad to keep books for an Oxnard business that also works there. The books follow your company.",
             )
             + S(
                 "How I close an Oxnard month",
                 [
-                    ("Name the center of the business", "Boulevard service, harbor food, agriculture, or a mix. The categories follow that answer."),
+                    ("Name the center of the business", "Boulevard service, harbor shops, agriculture, or a mix. The categories follow that answer."),
                     ("Put seasonal income on its own lines", "So a harvest month and a harbor summer can be read on purpose."),
                     ("Track equipment and loans", "Payments split between interest and principal when you want the balance sheet to show the debt."),
-                    ("Reconcile bank, cards, and batches", "Including processor fees and tips when the deposit is a bundle."),
+                    ("Reconcile bank, cards, and batches", "Including processor fees when the deposit is a bundle."),
                     ("Send the reports", "Profit and loss and balance sheet by the 15th, with Core and Strategic extras on those plans."),
                 ],
             )
@@ -317,13 +317,13 @@ MORE_CITIES = [
                 [
                     "Every account, including the one that holds tax you have collected",
                     "Crop, wholesale, or stand reports if you sell in more than one way",
-                    "Point-of-sale exports for a food business",
+                    "Processor exports when a deposit bundles sales and fees",
                     "Loan statements if you want balances tracked",
                     "The deadline, if a CPA or a lender set one",
                 ],
             )
             + plans('Plans start at $349, $599, and $1,499 a month. Love your first month of books, or it\'s free. Read the differences on <a href="/pricing/">pricing</a>.')
-            + paras('See <a href="/monthly-bookkeeping/">monthly bookkeeping</a>, <a href="/who-we-work-with/restaurants/">restaurants</a> for harbor food businesses, and <a href="/service-areas/ventura/">Ventura</a> if that city is part of your week too.')
+            + paras('See <a href="/monthly-bookkeeping/">monthly bookkeeping</a>, <a href="/who-we-work-with/professional-services/">professional services</a> for offices along the Boulevard, and <a href="/service-areas/ventura/">Ventura</a> if that city is part of your week too.')
         ),
     ),
 ]

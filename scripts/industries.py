@@ -1,4 +1,4 @@
-"""Six industry pages, written in first person.
+"""Five industry pages, written in first person.
 
 Open question for Jack: whether these six, with the others named on the hub,
 match how he actually works. The pages stay open to every local business.
@@ -63,54 +63,6 @@ INDUSTRIES = [
             + help_table("A current crew starts with monthly bookkeeping. A shoebox of statements starts with catch-up. A file you want to run yourself starts with QuickBooks Online setup and training.")
             + plans('Plans start at $349, $599, and $1,499 a month. Your price follows volume, accounts, and whether you want job-level reports. See <a href="/pricing/">pricing</a>.')
             + paras('Read <a href="/monthly-bookkeeping/">monthly bookkeeping</a> and <a href="/cleanup-catch-up/">cleanup and catch-up</a>. Home-service companies with a similar rhythm are on <a href="/who-we-work-with/home-services/">home services</a>.')
-        ),
-    ),
-    ind(
-        slug="restaurants",
-        name="Restaurants and food businesses",
-        title="Bookkeeping for restaurants and food businesses | Glenhold",
-        description="I reconcile restaurant deposits to the point-of-sale report and send a monthly profit and loss. Tips, fees, and food costs stay visible. Plans from $349.",
-        h1="Bookkeeping for restaurants and food businesses",
-        lede="A restaurant deposit is rarely just sales. It can mix food, drink, refunds, tips, and processor fees, and the point-of-sale report is what explains that deposit. I reconcile those reports to your bank and card accounts and send a monthly profit and loss and balance sheet you can use.",
-        hub="I match the deposit to the point-of-sale report so food, fees, and tips each have a line you can read.",
-        faqs=[
-            ("Why does the bank deposit differ from my sales?", "The deposit is often sales minus fees, plus or minus tips and refunds. I use the point-of-sale report to split that total."),
-            ("How do you record tips?", "Tips that pass through to staff are recorded so they are visible and so they stay off food sales. Tell me how your shop handles them."),
-            ("Can you split food and beverage?", "Yes, when your report already splits them. I follow that split on the profit and loss."),
-            ("What if I am behind a whole season?", "I quote the open months from the reports you can still export. The monthly plan starts after that stretch is closed."),
-            ("Does the first month include a guarantee?", "Love your first month of books, or it's free. That covers monthly bookkeeping."),
-        ],
-        body=(
-            "<!-- VIDEO -->"
-            + paras(
-                "The number that hits the bank is the end of the story, and the point-of-sale report is the beginning. I want both. Food, drink, tax, tips, refunds, and the processor's fee can all hide inside one deposit. Once they are split, you can see whether the month was food cost, labor, or a fee you had stopped noticing.",
-                "I ask which system you use and which report you can export for a week. Toast, Square, Clover, or a house system: the brand matters less than a report that ties to the deposit. If the report and the bank disagree, that disagreement is the first thing I clear, because every later month depends on it.",
-                "Food purchases on a card, a vendor that drafts the account, and the Saturday market run you paid in cash all need a category. I would rather have a note that says 'Saturday produce, paid cash' than a month that pretends the food appeared for free. Owner meals and personal charges on the shop card become draws.",
-                "Payroll for the floor stays with your payroll company. On the Strategic plan I record those payroll journal entries so labor shows on the profit and loss. Sales tax you collected is a liability. The statewide base rate is 7.25 percent, and your city's district rate can be higher. I look it up. Your preparer files the return. " + PWC,
-            )
-            + steps(
-                "A food-business month",
-                [
-                    ("Name the systems", "Point of sale, processor, delivery apps, and the bank account that receives them."),
-                    ("Export the report that matches the deposit", "A week is enough to prove the tie-out. Then I do it for the month."),
-                    ("Split sales, tax, tips, and fees", "So the profit and loss shows food and drink, and the balance sheet shows tax and tips still to pay out."),
-                    ("Code purchases", "Food, beverage, paper, rent, utilities, and the personal charges that belong to the owner."),
-                    ("Reconcile and send", "Bank and cards by the 15th, with a profit and loss and a balance sheet."),
-                ],
-            )
-            + checklist(
-                "Have these ready",
-                [
-                    "Point-of-sale name and a sample weekly report",
-                    "Processor and delivery-app accounts",
-                    "The operating account and the card used at vendors",
-                    "How tips are paid out",
-                    "The last month you trust",
-                ],
-            )
-            + help_table("A restaurant that is current starts on a monthly plan. A season of unclosed months starts as catch-up. A new shop that wants the file built first starts with QuickBooks Online.")
-            + plans('Plans start at $349, $599, and $1,499 a month. A single-location shop with clear reports often starts on Essential or Core. See <a href="/pricing/">pricing</a>. Love your first month of books, or it\'s free.')
-            + paras('The monthly steps live on <a href="/monthly-bookkeeping/">monthly bookkeeping</a>. If the stack of weeks is the problem, start with <a href="/cleanup-catch-up/">cleanup and catch-up</a>. Shops in Ventura and Oxnard can also see those <a href="/service-areas/ventura/">city pages</a>.')
         ),
     ),
     ind(

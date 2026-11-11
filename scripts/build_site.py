@@ -542,6 +542,15 @@ def build_redirects():
             )
         write_redirect(f"service-areas/{slug}", name, dest, canonical, sentence)
     for slug, name in INDUSTRY_REDIRECTS:
+        if slug == "restaurants":
+            write_redirect(
+                f"who-we-work-with/{slug}",
+                "Local businesses",
+                "/who-we-work-with/",
+                "/who-we-work-with/",
+                'I keep the books for local small businesses. This page now lives with <a href="/who-we-work-with/">who I work with</a>.',
+            )
+            continue
         sentence = (
             f'I still work with {esc(name)}. That conversation now lives on the page about '
             f'<a href="/who-we-work-with/#{slug}">who I work with</a>.'
@@ -621,6 +630,7 @@ def lint() -> None:
         "started my career at pwc",
         "features you do not need",
         "if your business is not listed",
+        "restaurant",
     ]
     we_pattern = re.compile(r"\b(we|we'll|we're|we've|we’ll|we’re|we’ve)\b", re.I)
     errors = []

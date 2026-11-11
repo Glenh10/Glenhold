@@ -40,7 +40,7 @@ REGIONS = [
             + town(
                 "agoura-hills",
                 "Agoura Hills",
-                "Agoura Hills businesses cluster around Kanan Road and Reyes Adobe Road: professional offices, medical practices, restaurants, and owner-run shops. I want the deposit and the report behind it, whether that is a card batch or an invoice. Owner draws and the card that mixes personal spending get their own lines, so the profit and loss matches the practice or the shop you actually run. A current file becomes a monthly plan. Open months become a catch-up quote first.",
+                "Agoura Hills businesses cluster around Kanan Road and Reyes Adobe Road: professional offices, medical practices, and owner-run shops. I want the deposit and the report behind it, whether that is a card batch or an invoice. Owner draws and the card that mixes personal spending get their own lines, so the profit and loss matches the practice or the shop you actually run. A current file becomes a monthly plan. Open months become a catch-up quote first.",
             )
             + town(
                 "calabasas",
@@ -50,7 +50,7 @@ REGIONS = [
             + town(
                 "malibu",
                 "Malibu",
-                "Malibu owners call about shops, restaurants, design practices, and property-related businesses along the coast and up the canyon. I ask how money arrives and which accounts it lands in. Card batches, retainers, and deposits held until a job is finished each get a treatment that matches the timing. Sales tax you collect sits as a liability. The statewide base rate is 7.25 percent, and the district rate for your Malibu location can be higher. I look it up. Your preparer files the return.",
+                "Malibu owners call about shops, design practices, and property-related businesses along the coast and up the canyon. I ask how money arrives and which accounts it lands in. Card batches, retainers, and deposits held until a job is finished each get a treatment that matches the timing. Sales tax you collect sits as a liability. The statewide base rate is 7.25 percent, and the district rate for your Malibu location can be higher. I look it up. Your preparer files the return.",
             )
             + town(
                 "oak-park",
@@ -110,12 +110,12 @@ REGIONS = [
             + town(
                 "fillmore",
                 "Fillmore",
-                "Fillmore is the next city east on the 126. The businesses are local services, trades, food, and shops that know their customers by name. A monthly close here is often a short account list and a clear question: what did the month earn after fuel, materials, and the owner's draw? I answer that with a profit and loss and a balance sheet.",
+                "Fillmore is the next city east on the 126. The businesses are local services, trades, and shops that know their customers by name. A monthly close here is often a short account list and a clear question: what did the month earn after fuel, materials, and the owner's draw? I answer that with a profit and loss and a balance sheet.",
             )
             + town(
                 "ojai",
                 "Ojai",
-                "Ojai is reached on Highway 33, with the Arcade, Libbey Park, and a year that swells in certain seasons. Shops, inns, restaurants, and studios all feel that calendar. I close every month, including the quiet ones, so the seasonal months can be read against a real baseline. Card batches and appointment deposits get reconciled to the report that explains them.",
+                "Ojai is reached on Highway 33, with the Arcade, Libbey Park, and a year that swells in certain seasons. Shops, inns, and studios all feel that calendar. I close every month, including the quiet ones, so the seasonal months can be read against a real baseline. Card batches and appointment deposits get reconciled to the report that explains them.",
             )
             + section(
                 "Other coast and 126 towns",
@@ -131,12 +131,12 @@ REGIONS = [
                 [
                     "Town, accounts, and the last finished month",
                     "Seasonal notes, if some months are expected to look different",
-                    "Processor reports when a deposit bundles sales, tips, and fees",
+                    "Processor reports when a deposit bundles sales, fees, and refunds",
                     "Your CPA's deadline",
                 ],
             )
             + plans('Plans start at $349, $599, and $1,499 a month. Love your first month of books, or it\'s free. See <a href="/pricing/">pricing</a>.')
-            + paras('Read <a href="/monthly-bookkeeping/">monthly bookkeeping</a> for the routine, and <a href="/who-we-work-with/restaurants/">restaurants</a> or <a href="/who-we-work-with/home-services/">home services</a> if that is the work.')
+            + paras('Read <a href="/monthly-bookkeeping/">monthly bookkeeping</a> for the routine, and <a href="/who-we-work-with/home-services/">home services</a> if that is the work.')
         ),
     ),
     dict(
@@ -165,20 +165,20 @@ REGIONS = [
             )
             + town("chatsworth", "Chatsworth", "Chatsworth, along Plummer, Mason, and De Soto, is the neighborhood closest to Simi Valley. Trades, warehouses, and owner-run shops are common. I categorize job costs, fuel, and materials, then reconcile the accounts you actually spend from.")
             + town("porter-ranch", "Porter Ranch", "Porter Ranch Town Center and the offices around it mix medical practices, services, and family businesses. Insurance deposits and card batches get matched to the report behind them, and owner draws stay visible.")
-            + town("northridge", "Northridge", "Northridge, around CSUN and the Reseda, Nordhoff, and Devonshire corridors, has restaurants, shops, and professional offices. I close the month from the processor report and the bank, including the weeks when the campus calendar changes how busy the door is.")
+            + town("northridge", "Northridge", "Northridge, around CSUN and the Reseda, Nordhoff, and Devonshire corridors, has shops and professional offices. I close the month from the processor report and the bank, including the weeks when the campus calendar changes how busy the door is.")
             + town("granada-hills", "Granada Hills", "Granada Hills, along Balboa and Chatsworth Street, is home to practices, shops, and service firms. A straightforward account list often fits Essential. A practice that wants a quarterly view fits Core.")
-            + town("canoga-park", "Canoga Park", "Canoga Park runs along Sherman Way and Topanga. Shops, restaurants, and trades share the month with me when they want the deposit explained and the cards reconciled.")
-            + town("reseda", "Reseda", "Reseda Boulevard is a working street of services, food, and small professional offices. I set the categories in the language you use at the counter, then I send the profit and loss and the balance sheet.")
-            + town("woodland-hills", "Woodland Hills", "Woodland Hills covers Warner Center and Ventura Boulevard: larger offices, medical practices, and restaurants. Payroll stays with your payroll company. On Strategic I record the payroll journal entries. On every plan I label owner activity.")
+            + town("canoga-park", "Canoga Park", "Canoga Park runs along Sherman Way and Topanga. Shops and trades share the month with me when they want the deposit explained and the cards reconciled.")
+            + town("reseda", "Reseda", "Reseda Boulevard is a working street of services, shops, and small professional offices. I set the categories in the language you use at the counter, then I send the profit and loss and the balance sheet.")
+            + town("woodland-hills", "Woodland Hills", "Woodland Hills covers Warner Center and Ventura Boulevard: larger offices, medical practices, and professional firms. Payroll stays with your payroll company. On Strategic I record the payroll journal entries. On every plan I label owner activity.")
             + town("encino", "Encino", "Encino along Ventura Boulevard is full of professional firms and medical offices. Retainers, insurance deposits, and rent are the usual puzzle. I reconcile them and send reports your CPA can use.")
             + town("tarzana", "Tarzana", "Tarzana sits on the Boulevard between Woodland Hills and Encino. I am glad to keep books for the practices, shops, and firms there. Bring the account list and the last month you trust.")
             + town("winnetka", "Winnetka", "Winnetka is a neighborhood of shops, trades, and home-service businesses. The close is the same personal one: categories that match the work, reconciled balances, and a report by the 15th.")
             + town("van-nuys", "Van Nuys", "Van Nuys Boulevard, the civic center, and the airport area hold a wide mix of owner-run firms. Tell me which accounts are the business. I will quote the open months and start the rhythm from there.")
-            + town("sherman-oaks", "Sherman Oaks", "Sherman Oaks, along Ventura Boulevard and near Fashion Square, mixes restaurants, professional services, and shops. Card batches and invoices can live in one file if the categories keep them apart.")
-            + town("studio-city", "Studio City", "Studio City along Ventura Boulevard has restaurants, creative firms, and professional offices. I record the month you had, including project deposits that belong to a later month, so the profit and loss stays honest.")
-            + town("north-hollywood", "North Hollywood", "North Hollywood, around Lankershim and Magnolia and the Metro B and G lines, has shops, food, and firms that serve the neighborhood. I reconcile the accounts and send a month you can read.")
+            + town("sherman-oaks", "Sherman Oaks", "Sherman Oaks, along Ventura Boulevard and near Fashion Square, mixes professional services and shops. Card batches and invoices can live in one file if the categories keep them apart.")
+            + town("studio-city", "Studio City", "Studio City along Ventura Boulevard has creative firms and professional offices. I record the month you had, including project deposits that belong to a later month, so the profit and loss stays honest.")
+            + town("north-hollywood", "North Hollywood", "North Hollywood, around Lankershim and Magnolia and the Metro B and G lines, has shops, services, and firms that serve the neighborhood. I reconcile the accounts and send a month you can read.")
             + town("burbank", "Burbank", "Burbank's downtown, Magnolia Park, and the area around Hollywood Burbank Airport are full of owner-run businesses. I keep their company books: sales, rent, payroll through your payroll company, and the monthly reports. Bring the accounts you use.")
-            + town("glendale", "Glendale", "Glendale, along Brand Boulevard, the Galleria, and the Americana, has professional offices, medical practices, restaurants, and shops. I close the month and send the profit and loss and balance sheet, aimed at the 15th.")
+            + town("glendale", "Glendale", "Glendale, along Brand Boulevard, the Galleria, and the Americana, has professional offices, medical practices, and shops. I close the month and send the profit and loss and balance sheet, aimed at the 15th.")
             + checklist(
                 "Before the first Valley close",
                 [
@@ -228,6 +228,7 @@ INDUSTRY_REDIRECTS = [
     ("salons", "salons"),
     ("fitness", "fitness studios"),
     ("auto-repair", "auto repair shops"),
+    ("restaurants", "local businesses"),
 ]
 
 
@@ -238,7 +239,7 @@ def _hub(name, href, line):
 HUB = [
     _hub("Simi Valley", "/service-areas/simi-valley/", "I live here, and I close the month for shops, trades, clinics, and offices on Los Angeles Avenue, Tapo, Cochran, and First."),
     _hub("Moorpark", "/service-areas/moorpark/", "High Street, the college, and Tierra Rejada are full of owner-run businesses, and I keep their months current."),
-    _hub("Thousand Oaks", "/service-areas/thousand-oaks/", "Boulevard practices, restaurants, and shops get a monthly close and reports they can hand to a CPA."),
+    _hub("Thousand Oaks", "/service-areas/thousand-oaks/", "Boulevard practices, shops, and offices get a monthly close and reports they can hand to a CPA."),
     _hub("Newbury Park", "/service-areas/thousand-oaks/#newbury-park", "Newbury Park is part of Thousand Oaks, and Wendy, Borchard, and Dos Vientos are covered on that page."),
     _hub("Westlake Village", "/service-areas/westlake-village/", "Westlake Village is its own city in Los Angeles County, and I keep the books for owners who work there."),
     _hub("Agoura Hills", "/service-areas/conejo-and-101/#agoura-hills", "Kanan and Reyes Adobe hold offices, practices, and shops, and I reconcile their months."),
@@ -257,15 +258,15 @@ HUB = [
     _hub("Porter Ranch", "/service-areas/san-fernando-valley/#porter-ranch", "Town Center practices and family businesses, reconciled every month."),
     _hub("Northridge", "/service-areas/san-fernando-valley/#northridge", "CSUN and the Reseda, Nordhoff, and Devonshire corridors."),
     _hub("Granada Hills", "/service-areas/san-fernando-valley/#granada-hills", "Balboa and Chatsworth Street, with a close sized to the practice or the shop."),
-    _hub("Woodland Hills", "/service-areas/san-fernando-valley/#woodland-hills", "Warner Center and Ventura Boulevard offices, practices, and restaurants."),
-    _hub("Canoga Park", "/service-areas/san-fernando-valley/#canoga-park", "Sherman Way and Topanga shops, food, and trades."),
+    _hub("Woodland Hills", "/service-areas/san-fernando-valley/#woodland-hills", "Warner Center and Ventura Boulevard offices, practices, and professional firms."),
+    _hub("Canoga Park", "/service-areas/san-fernando-valley/#canoga-park", "Sherman Way and Topanga shops, services, and trades."),
     _hub("Reseda", "/service-areas/san-fernando-valley/#reseda", "Reseda Boulevard services and shops, categorized in plain language."),
     _hub("Winnetka", "/service-areas/san-fernando-valley/#winnetka", "Neighborhood shops, trades, and home services, on the Valley page with everyone else."),
     _hub("Tarzana", "/service-areas/san-fernando-valley/#tarzana", "Boulevard practices and firms between Woodland Hills and Encino."),
     _hub("Encino", "/service-areas/san-fernando-valley/#encino", "Ventura Boulevard firms and medical offices, ready for your CPA."),
     _hub("Van Nuys", "/service-areas/san-fernando-valley/#van-nuys", "Van Nuys Boulevard, the civic center, and the airport area."),
-    _hub("Sherman Oaks", "/service-areas/san-fernando-valley/#sherman-oaks", "Ventura Boulevard and Fashion Square restaurants, shops, and offices."),
-    _hub("Studio City", "/service-areas/san-fernando-valley/#studio-city", "Ventura Boulevard restaurants and creative firms, with project deposits timed correctly."),
+    _hub("Sherman Oaks", "/service-areas/san-fernando-valley/#sherman-oaks", "Ventura Boulevard and Fashion Square shops, services, and offices."),
+    _hub("Studio City", "/service-areas/san-fernando-valley/#studio-city", "Ventura Boulevard creative firms, with project deposits timed correctly."),
     _hub("North Hollywood", "/service-areas/san-fernando-valley/#north-hollywood", "Lankershim and Magnolia, near the Metro lines, closed like every other month."),
     _hub("Burbank", "/service-areas/san-fernando-valley/#burbank", "Downtown, Magnolia Park, and the airport-area businesses, with company books kept monthly."),
     _hub("Glendale", "/service-areas/san-fernando-valley/#glendale", "Brand Boulevard, the Galleria, and the Americana, on a monthly close."),

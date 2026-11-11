@@ -44,7 +44,7 @@ CITIES = [
         body=(
             "<!-- VIDEO -->"
             + paras(
-                "Los Angeles Avenue, Tapo Street, Cochran Street, and First Street are where a lot of the owner-run businesses sit: trades, clinics, offices, restaurants, and shops. I set the categories up around how you get paid and what you spend, so a materials run, a payroll transfer, and a personal draw each land where you expect them. Then I reconcile the bank and the cards and send the profit and loss and the balance sheet.",
+                "Los Angeles Avenue, Tapo Street, Cochran Street, and First Street are where a lot of the owner-run businesses sit: trades, clinics, offices, and shops. I set the categories up around how you get paid and what you spend, so a materials run, a payroll transfer, and a personal draw each land where you expect them. Then I reconcile the bank and the cards and send the profit and loss and the balance sheet.",
                 "The first conversation covers the accounts, the months you care about, and the question you want the reports to answer. I quote the work before I start. If the file is current, the next step is a monthly close. If a stack of months is still open, I price that catch-up from the records you have, finish those months, and then keep the new ones current. When a meeting helps, you and I can sit down here in town.",
                 "Simi businesses often collect money in more than one way. A shop may have a card processor and a handful of checks. A contractor may have deposits in the account until the job is finished. A clinic may see insurance deposits that cover more than one day's appointments. I want the deposit and the report that explains it. Once those agree, the profit and loss is useful on an ordinary Tuesday and useful again when your CPA starts the return.",
                 "I aim to send reports by the 15th of the next month, once the statements and your answers are in. If a card statement is late or a transfer needs a name, I tell you what is missing and send the reports as soon as I have it. You are talking to me on that close. " + PWC + " Now I bring that same care to businesses in this town.",
@@ -66,7 +66,7 @@ CITIES = [
                 [
                     "The account list, including a card that lives in a truck or a kitchen drawer",
                     "Statements for the months in scope, or bank feeds inside QuickBooks Online",
-                    "Processor or point-of-sale reports when a deposit bundles sales, tips, and fees",
+                    "Processor or point-of-sale reports when a deposit bundles sales, fees, and refunds",
                     "A note on anything you already know is personal",
                     "The date your CPA or a lender asked for, if there is one",
                 ],
