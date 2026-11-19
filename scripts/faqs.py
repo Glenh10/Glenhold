@@ -2,18 +2,16 @@
 
 FAQ = [{'id': 'pricing',
   'q': 'How much does monthly bookkeeping cost?',
-  'a': 'Monthly plans start at $349 for Essential, $599 for Core, and $1,499 for Strategic. Your quote depends on '
-       'transaction volume, the number of accounts, and reporting complexity. Cleanup, catch-up, consulting, and '
-       'training are quoted separately.'},
+  'a': 'Monthly starting prices are $350 for Essential, $450 for Core, and $700 for Strategic. Your quote depends on transaction volume, the number of accounts, '
+       'and reporting complexity. Cleanup, catch-up, consulting, and training are quoted separately.'},
  {'id': 'monthly-services',
   'q': 'What is included in monthly bookkeeping?',
-  'a': 'All monthly plans include transaction categorization, bank and credit card reconciliation, a profit and '
-       'loss statement, and a balance sheet. Core adds a quarterly profit and expense summary, year-to-date '
-       'comparisons, and priority support. Strategic adds tailored reporting and a monthly call, along with the '
-       'services listed on the pricing page.'},
+  'a': 'Monthly bookkeeping includes transaction categorization, bank and credit card reconciliation, a profit and '
+       'loss statement, and a balance sheet. Additional reporting and monthly walkthroughs can be included in '
+       'your quote based on what you need.'},
  {'id': 'industries',
   'q': 'Do you work with my type of business?',
-  'a': 'Glenhold works with small businesses across industries. Tell Jack how your business operates and what '
+  'a': 'Glenhold works with businesses across industries. Tell Jack how your business operates and what '
        'help you need. The scope is based on your accounts, transactions, and reporting requirements.'},
  {'id': 'catch-up',
   'q': 'Can you help if my books are behind?',
@@ -27,7 +25,7 @@ FAQ = [{'id': 'pricing',
        'bookkeeping.'},
  {'id': 'owner',
   'q': 'Who will I work with?',
-  'a': 'You work directly with Jack, the founder of Glenhold Bookkeeping, a Simi Valley local and former Big 4 '
+  'a': 'You work directly with Jack, the founder of Glenhold Bookkeeping and a former Big 4 '
        'accountant.'},
  {'id': 'reports',
   'q': 'When will I receive my monthly reports?',

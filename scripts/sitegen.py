@@ -39,6 +39,7 @@ NAV = [
     ("/service-areas/", "Areas"),
     ("/bookkeeping-faq/", "FAQ"),
     ("/about/", "About"),
+    ("/mission/", "Mission"),
     ("/contact/", "Contact"),
 ]
 
@@ -111,6 +112,14 @@ def cta(heading: str = "Let's talk about your books", text: str = "Start with a 
 
 
 def contact_block(path: str) -> str:
+    location = '''          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              Simi Valley, CA
+              <small>Serving Ventura County &amp; the Greater LA Area</small>
+            </div>
+          </div>
+''' if path not in ("/", "/service-areas/") else ""
     return f'''<section class="contact" id="contact">
     <div class="contact-inner">
       <div class="contact-info">
@@ -132,14 +141,7 @@ def contact_block(path: str) -> str:
               <small>Reply within one business day</small>
             </div>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📍</div>
-            <div class="contact-detail-text">
-              Simi Valley, CA
-              <small>Serving Ventura County &amp; the Greater LA Area</small>
-            </div>
-          </div>
-        </div>
+{location}        </div>
       </div>
       <form class="contact-form" action="{FORM_ACTION}" method="POST">
         <input type="hidden" name="page" value="{esc(path)}" />
@@ -177,7 +179,9 @@ def contact_block(path: str) -> str:
   </section>'''
 
 
-def footer(cities: list[dict]) -> str:
+def footer(cities: list[dict], path: str) -> str:
+    description = "I’ll keep your bookkeeping current and help you understand your financial reports. You work directly with me." if path in ("/", "/service-areas/") else "I keep the books for small businesses around Simi Valley. You work directly with me."
+    areas_label = "Service areas" if path == "/" else "Simi Valley, CA · Service areas"
     city_links = "".join(
         f'<a href="/service-areas/{c["slug"]}/">{esc(c["name"])}</a>' for c in cities
     )
@@ -185,7 +189,7 @@ def footer(cities: list[dict]) -> str:
     <div class="footer-top">
       <div>
         <div class="footer-brand">Glenhold <span>Bookkeeping</span></div>
-        <p class="footer-desc">I keep the books for small businesses around Simi Valley. You work directly with me.</p>
+        <p class="footer-desc">{description}</p>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -197,6 +201,7 @@ def footer(cities: list[dict]) -> str:
           <li><a href="/bookkeeping-faq/">Bookkeeping FAQ</a></li>
           <li><a href="/resources/">Resources</a></li>
           <li><a href="/about/">About</a></li>
+          <li><a href="/mission/">Mission</a></li>
           <li><a href="{YOUTUBE}" target="_blank" rel="noopener noreferrer">YouTube channel</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
@@ -207,7 +212,7 @@ def footer(cities: list[dict]) -> str:
           <li><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></li>
           <li><a href="mailto:{EMAIL}">jack&#64;glenhold.com</a></li>
           <li>Mon–Sat, 6am–6pm PT</li>
-          <li><a href="/service-areas/">Simi Valley, CA · Service areas</a></li>
+          <li><a href="/service-areas/">{areas_label}</a></li>
         </ul>
       </div>
     </div>
@@ -272,25 +277,43 @@ def area_nodes(cities: list[dict], extras: list[dict]) -> list[dict]:
     return nodes
 
 
-def offer(name: str, price: str, description: str) -> dict:
+MONTHLY_BOOKKEEPING_TIERS = (
+    ("Essential", 350, (
+        "A few bank or credit card accounts",
+        "Straightforward income and expenses",
+        "Monthly reconciliations and financial statements",
+    )),
+    ("Core", 450, (
+        "More transactions across several accounts",
+        "Payroll entries, loan activity, or payment processor deposits",
+        "Additional balances to track and reconcile",
+    )),
+    ("Strategic", 700, (
+        "High transaction volume or multiple sales channels",
+        "Project or class tracking, accrual accounting, or more involved reporting",
+        "More receivables, payables, or clearing accounts to reconcile",
+    )),
+)
+
+
+def offer(name: str, minimum: int, description: str) -> dict:
+    specification = {
+        "@type": "UnitPriceSpecification",
+        "minPrice": minimum,
+        "priceCurrency": "USD",
+        "unitText": "month",
+    }
     return {
         "@type": "Offer",
         "name": name,
         "url": abs_url("/pricing/"),
         "priceCurrency": "USD",
         "description": description,
-        "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": price,
-            "minPrice": price,
-            "priceCurrency": "USD",
-            "unitText": "month",
-            "description": "Starting monthly price before adjustment for transaction volume, number of accounts, and reporting complexity.",
-        },
+        "priceSpecification": specification,
     }
 
 
-def business_graph(area: list[dict]) -> list[dict]:
+def business_graph(area: list[dict], *, homepage: bool = False) -> list[dict]:
     business = {
         "@type": ["AccountingService", "LocalBusiness"],
         "@id": HOME + "/#business",
@@ -326,11 +349,11 @@ def business_graph(area: list[dict]) -> list[dict]:
             "opens": "06:00",
             "closes": "18:00",
         }],
-        "priceRange": "Monthly plans starting at $349; quoted by scope",
+        "priceRange": "Monthly bookkeeping starting at $350; quoted by scope",
         "areaServed": area,
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Bookkeeping services and monthly plans",
+            "name": "Bookkeeping services and monthly estimates",
             "itemListElement": [
                 {"@type": "OfferCatalog", "name": "Services", "itemListElement": [
                     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Monthly bookkeeping", "url": abs_url("/monthly-bookkeeping/")}},
@@ -340,10 +363,9 @@ def business_graph(area: list[dict]) -> list[dict]:
                     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CPA-ready books", "url": abs_url("/cpa-ready-books/")}},
                     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Loan-ready financials", "url": abs_url("/loan-ready-books/")}},
                 ]},
-                {"@type": "OfferCatalog", "name": "Monthly plans", "itemListElement": [
-                    offer("Essential monthly bookkeeping", "349", "Starting at $349 per month. Expense categorization, monthly bank and credit card reconciliation, monthly financial statements, and clean books for tax season. Love your first month of books, or it is free."),
-                    offer("Core monthly bookkeeping", "599", "Starting at $599 per month. Essential services plus a quarterly profit and expense summary, a year-to-date performance comparison, and priority support."),
-                    offer("Strategic monthly bookkeeping", "1499", "Starting at $1,499 per month. Core services plus custom financial reports, accrual accounting, payroll journal entries, loan tracking, and a monthly call to walk through your numbers."),
+                {"@type": "OfferCatalog", "name": "Monthly bookkeeping estimates", "itemListElement": [
+                    offer(f"{name} monthly bookkeeping", minimum, f"Starting at ${minimum:,} per month. Final price quoted by scope.")
+                    for name, minimum, _ in MONTHLY_BOOKKEEPING_TIERS
                 ]},
             ],
         },
@@ -377,6 +399,14 @@ def business_graph(area: list[dict]) -> list[dict]:
         "publisher": {"@id": HOME + "/#business"},
         "inLanguage": "en-US",
     }
+    if homepage:
+        business["@type"] = "AccountingService"
+        del business["address"]
+        del business["areaServed"]
+        business["description"] = "Monthly bookkeeping, catch-up, and QuickBooks Online support from Glenhold Bookkeeping."
+        business["knowsAbout"][0] = "Bookkeeping"
+        person["description"] = "Jack founded Glenhold Bookkeeping. He is a former Big 4 accountant and a Certified QuickBooks ProAdvisor."
+        website["description"] = "Bookkeeping and financial reporting for businesses."
     return [business, person, website]
 
 
@@ -453,6 +483,9 @@ def service_node(name: str, path: str, description: str, area: list[dict], offer
 
 def head(title: str, description: str, path: str, graph: list) -> str:
     url = abs_url(path)
+    geography = '''  <meta name="geo.region" content="US-CA" />
+  <meta name="geo.placename" content="Simi Valley" />
+''' if path != "/" else ""
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -464,9 +497,7 @@ def head(title: str, description: str, path: str, graph: list) -> str:
   <link rel="canonical" href="{url}" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Jack" />
-  <meta name="geo.region" content="US-CA" />
-  <meta name="geo.placename" content="Simi Valley" />
-  <meta property="og:type" content="website" />
+{geography}  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Glenhold Bookkeeping" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="{esc(title)}" />
@@ -490,7 +521,9 @@ def head(title: str, description: str, path: str, graph: list) -> str:
 
 
 def layout(title, description, path, main_html, crumbs, extra_nodes, cities, area) -> str:
-    graph = business_graph(area) + [webpage_node(path, title, description), breadcrumb_node(crumbs)] + extra_nodes
+    if path == "/service-areas/":
+        area = [{"@type": "Country", "name": "United States"}, *area]
+    graph = business_graph(area, homepage=path == "/") + [webpage_node(path, title, description), breadcrumb_node(crumbs)] + extra_nodes
     doc = f'''{head(title, description, path, graph)}
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -498,7 +531,7 @@ def layout(title, description, path, main_html, crumbs, extra_nodes, cities, are
 <main id="main-content">
 {main_html}
 </main>
-{footer(cities)}
+{footer(cities, path)}
 <script src="/site.js" defer></script>
 </body>
 </html>
