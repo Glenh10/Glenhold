@@ -425,14 +425,14 @@ def breadcrumb_node(crumbs: list[tuple[str, str]]) -> dict:
     }
 
 
-def webpage_node(path: str, title: str, description: str) -> dict:
+def webpage_node(path: str, title: str, description: str, modified: str = LASTMOD) -> dict:
     return {
         "@type": "WebPage",
         "@id": abs_url(path) + "#page",
         "url": abs_url(path),
         "name": title,
         "description": description,
-        "dateModified": LASTMOD,
+        "dateModified": modified,
         "inLanguage": "en-US",
         "isPartOf": {"@id": HOME + "/#website"},
         "about": {"@id": HOME + "/#business"},
@@ -481,7 +481,7 @@ def service_node(name: str, path: str, description: str, area: list[dict], offer
     return node
 
 
-def head(title: str, description: str, path: str, graph: list) -> str:
+def head(title: str, description: str, path: str, graph: list, robots: str = "index, follow, max-image-preview:large") -> str:
     url = abs_url(path)
     geography = '''  <meta name="geo.region" content="US-CA" />
   <meta name="geo.placename" content="Simi Valley" />
@@ -495,7 +495,7 @@ def head(title: str, description: str, path: str, graph: list) -> str:
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}" />
   <link rel="canonical" href="{url}" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="robots" content="{robots}" />
   <meta name="author" content="Jack" />
 {geography}  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Glenhold Bookkeeping" />
@@ -520,18 +520,23 @@ def head(title: str, description: str, path: str, graph: list) -> str:
 </head>'''
 
 
-def layout(title, description, path, main_html, crumbs, extra_nodes, cities, area) -> str:
+def layout(title, description, path, main_html, crumbs, extra_nodes, cities, area, robots="index, follow, max-image-preview:large", body_class="", nav_html=None, footer_html=None, include_business=True, modified=None) -> str:
     if path == "/service-areas/":
         area = [{"@type": "Country", "name": "United States"}, *area]
-    graph = business_graph(area, homepage=path == "/") + [webpage_node(path, title, description), breadcrumb_node(crumbs)] + extra_nodes
-    doc = f'''{head(title, description, path, graph)}
-<body>
+    graph = [webpage_node(path, title, description, modified or LASTMOD), breadcrumb_node(crumbs)] + list(extra_nodes)
+    if include_business:
+        graph = business_graph(area, homepage=path == "/") + graph
+    body_attr = f' class="{esc(body_class)}"' if body_class else ""
+    navigation = nav(path) if nav_html is None else nav_html
+    foot = footer(cities, path) if footer_html is None else footer_html
+    doc = f'''{head(title, description, path, graph, robots)}
+<body{body_attr}>
 <a class="skip-link" href="#main-content">Skip to content</a>
-{nav(path)}
+{navigation}
 <main id="main-content">
 {main_html}
 </main>
-{footer(cities, path)}
+{foot}
 <script src="/site.js" defer></script>
 </body>
 </html>
@@ -539,13 +544,14 @@ def layout(title, description, path, main_html, crumbs, extra_nodes, cities, are
     return doc
 
 
-def write_page(title, description, path, main_html, crumbs, extra_nodes, cities, area) -> None:
-    html = layout(title, description, path, main_html, crumbs, extra_nodes, cities, area)
+def write_page(title, description, path, main_html, crumbs, extra_nodes, cities, area, robots="index, follow, max-image-preview:large", body_class="", nav_html=None, footer_html=None, include_business=True, indexable=True, modified=None) -> None:
+    html = layout(title, description, path, main_html, crumbs, extra_nodes, cities, area, robots, body_class, nav_html, footer_html, include_business, modified)
     rel = "" if path == "/" else path.strip("/")
     dest = ROOT / "index.html" if path == "/" else ROOT / rel / "index.html"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(html, encoding="utf-8")
-    PAGES.append({"path": path, "title": title, "description": description})
+    if indexable:
+        PAGES.append({"path": path, "title": title, "description": description})
 
 
 def chips(items: list[tuple[str, str]]) -> str:
