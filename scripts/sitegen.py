@@ -87,7 +87,7 @@ NAV = [
     ("/pricing/", "Pricing"),
     ("/who-we-work-with/", "Who we serve"),
     ("/service-areas/", "Areas"),
-    ("/bookkeeping-faq/", "FAQ"),
+    ("/resources/", "Resources"),
     ("/about/", "About"),
     ("/mission/", "Mission"),
     ("/contact/", "Contact"),
@@ -137,7 +137,7 @@ def active(path: str, href: str) -> bool:
         return True
     if href == "/services/" and (path.startswith("/services") or path in SERVICE_PATHS):
         return True
-    if href == "/bookkeeping-faq/" and path.startswith("/bookkeeping-faq"):
+    if href == "/resources/" and (path == "/resources/" or path in {guide["path"] for guide in GUIDES}):
         return True
     return path == href
 
