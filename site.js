@@ -6,6 +6,17 @@
       // Advertising measurement must not interrupt contact actions.
     }
   }
+  measureGoogle('config', 'AW-17998714201/TCSwCP-Tk74dENmquoZD', {
+    phone_conversion_number: '(805) 419-3451',
+    phone_conversion_callback: function(formattedNumber, mobileNumber) {
+      document.querySelectorAll('a[href="tel:8054193451"]').forEach(function(link) {
+        link.href = 'tel:' + mobileNumber;
+        if (link.textContent.includes('(805) 419-3451')) {
+          link.textContent = link.textContent.replace('(805) 419-3451', formattedNumber);
+        }
+      });
+    }
+  });
   const form = document.querySelector('.contact-form');
   const status = document.getElementById('form-status');
   const button = form && form.querySelector('button[type="submit"]');
