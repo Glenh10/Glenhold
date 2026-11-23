@@ -11,7 +11,7 @@ from cities import CITIES
 from industries import INDUSTRIES
 from faqs import FAQ
 from sitegen import (ROOT, HOME, LASTMOD, PAGES, CALENDAR, EMAIL, YOUTUBE,
-    INDEXNOW_KEY, area_nodes, write_page, faq_node, faq_html, service_node,
+    INDEXNOW_KEY, PHONE_DISPLAY, PHONE_TEL, area_nodes, write_page, faq_node, faq_html, service_node,
     MONTHLY_BOOKKEEPING_TIERS, esc, crumb_html, contact_block, chips, hub_cards, related_links, cta)
 
 CORE_CITIES = ['simi-valley','moorpark','thousand-oaks','westlake-village','camarillo','santa-clarita']
@@ -265,6 +265,240 @@ def build_home():
     main+=cta('Ready to get your books in order?','Start with a free call to discuss the help you need.')+contact_block('/')
     write_page('Bookkeeping & Financial Reporting | Glenhold','Monthly bookkeeping, catch-up, and QuickBooks Online support. Work directly with Jack. Monthly bookkeeping starts at $350.','/',main,[('Home','/')],[faq_node(homefaq,'/')],CITIES,AREA)
 
+def say(text):
+    return text.replace("'", "\u2019")
+
+
+def faq_pair(fid):
+    for item in FAQ:
+        if item['id'] == fid:
+            return item['q'], item['a']
+    raise KeyError(fid)
+
+
+def build_year_end():
+    """Paid-search landing page. Kept out of the nav, sitemap, and llms files.
+
+    noindex, follow: Google Ads can fetch the page, and the offer should not
+    compete with the homepage in organic search. robots.txt still allows the URL.
+    """
+    path = '/year-end-bookkeeping/'
+    credentials = say("I've been in accounting since 2021, including audit work at PwC, and I'm a Certified QuickBooks ProAdvisor.")
+    short_guarantee = say("Love your first month of books, or it's free")
+    price_depends = "Your monthly price depends on transaction volume, the accounts I\u2019ll reconcile, and the reporting you need."
+    if price_depends not in PRICING_INTRO:
+        raise SystemExit('pricing intro changed; update the landing page quote sentence')
+    behind_q, behind_a = faq_pair('catch-up')
+    guarantee_q, guarantee_a = faq_pair('guarantee')
+    pricing_html = (ROOT / 'pricing' / 'index.html').read_text(encoding='utf-8')
+    faq_html_page = (ROOT / 'bookkeeping-faq' / 'index.html').read_text(encoding='utf-8')
+    if short_guarantee not in pricing_html:
+        raise SystemExit('short guarantee no longer matches the pricing page')
+    if guarantee_a not in faq_html_page or behind_a not in faq_html_page:
+        raise SystemExit('reused FAQ answers no longer match the bookkeeping FAQ page')
+
+    faqs = [
+        (say("What is Year-End Clean Books?"),
+         say("I catch up messy books, then keep them current with monthly bookkeeping from $400 a month. Sign up through December 31, 2026, and I waive the setup fee. ") + guarantee_a),
+        (behind_q, behind_a),
+        (guarantee_q, guarantee_a),
+        (say("Is the work remote?"),
+         say("The work is remote. I'm based in Simi Valley, and I work with trades and home-service businesses in Simi Valley, Ventura County, and the San Fernando Valley. Share your city when you get in touch so I can confirm the fit.")),
+    ]
+    photo = '<picture><source srcset="/headshot.webp" type="image/webp"><img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center -10%"></picture>'
+    book = f'<a class="btn-primary" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a>'
+    book_slate = f'<a class="btn-slate-solid" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a>'
+    book_sage = f'<a class="btn-sage" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a>'
+    call = f'<a class="btn-ghost" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a>'
+    call_outline = f'<a class="btn-outline-slate" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a>'
+    styles = '''<style>
+body.lp .lp-nav-actions { display: flex; align-items: center; gap: 14px; }
+body.lp .lp-hero { min-height: 0; padding-top: 48px; padding-bottom: 56px; }
+body.lp .lp-hero .hero-content { padding-bottom: 0; }
+body.lp .lp-hero .hero-sub { margin-bottom: 16px; }
+body.lp .lp-for { color: rgba(255,255,255,.88); font-size: 1rem; max-width: 540px; margin: 0 0 28px; line-height: 1.6; }
+body.lp .lp-hero .hero-proof { margin-top: 22px; }
+body.lp .lp-hero .hero-photo { margin-top: 0; align-items: center; }
+body.lp .lp-hero .hero-photo-box { height: 460px; }
+body.lp section { padding-top: 56px; padding-bottom: 56px; }
+body.lp .section-sub { max-width: 720px; }
+body.lp .lp-offer { max-width: 640px; background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 32px 28px; }
+body.lp .lp-offer .pricing-guarantee { margin-bottom: 20px; }
+body.lp .lp-price-label { color: var(--text-muted); font-size: .85rem; font-weight: 500; margin: 0 0 4px; }
+body.lp .lp-price { padding-top: 0; }
+body.lp .lp-offer-note { margin: 8px 0 22px; color: var(--text-muted); font-size: .95rem; }
+body.lp .lp-offer-call { margin: 14px 0 0; text-align: center; }
+body.lp .lp-offer-call a { color: var(--slate); font-weight: 700; }
+body.lp .lp-steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: none; }
+body.lp .lp-steps li { background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 22px; margin: 0; }
+body.lp .lp-steps h3 { font-family: "DM Serif Display", serif; color: var(--slate); font-size: 1.35rem; line-height: 1.25; margin: 0 0 8px; }
+body.lp .lp-steps h3::before { counter-increment: step; content: counter(step) ". "; }
+body.lp .lp-steps p { color: var(--text-muted); margin: 0; }
+body.lp .lp-footer .footer-desc { max-width: 540px; }
+body.lp .lp-footer ul { list-style: none; padding: 0; margin: 18px 0; display: flex; flex-wrap: wrap; gap: 10px 20px; }
+body.lp .lp-footer li, body.lp .lp-footer a { color: #e0e9e7; font-size: .95rem; }
+body.lp .lp-bar { display: none; }
+@media (max-width: 900px) {
+  body.lp .lp-for, body.lp .lp-hero .hero-proof { margin-left: auto; margin-right: auto; }
+  body.lp .lp-steps { grid-template-columns: 1fr; }
+  body.lp .nav-wordmark { max-width: none; }
+}
+@media (max-width: 700px) {
+  body.lp { padding-bottom: 84px; }
+  body.lp .lp-nav-book { display: none; }
+  body.lp .lp-bar {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 120;
+    background: var(--slate); padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  }
+  body.lp .lp-bar a { text-align: center; }
+}
+@media (max-width: 480px) {
+  body.lp .hero-ctas { flex-direction: column; align-items: stretch; }
+  body.lp .hero-ctas a { text-align: center; }
+}
+@media print {
+  body.lp { padding-bottom: 0; }
+  body.lp .lp-bar { display: none; }
+}
+</style>'''
+    main = styles
+    main += '<section class="hero lp-hero"><div class="hero-content">'
+    main += '<div class="hero-eyebrow">Year-End Clean Books</div>'
+    main += '<h1>' + say("I'll get your books caught up before year-end.") + '</h1>'
+    main += '<p class="hero-sub">' + say("I catch up the months that fell behind, then keep them current. Monthly bookkeeping from $400 a month. Sign up through December 31, 2026, and I waive the setup fee.") + '</p>'
+    main += '<p class="lp-for">' + say("Remote bookkeeping for HVAC, plumbing, electrical, contracting, landscaping, and cleaning businesses in Simi Valley, Ventura County, and the San Fernando Valley.") + '</p>'
+    main += '<div class="hero-ctas">' + book + call + '<a class="btn-ghost" href="#contact">Send a Message</a></div>'
+    main += '<p class="hero-proof">' + say("I'm Jack. ") + credentials + '</p>'
+    main += '<div class="hero-photo-mobile"><img src="/headshot.webp" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" style="width:75%;height:auto;display:block;border-radius:6px;margin:0 auto"></div>'
+    main += '</div><div class="hero-photo"><div class="hero-photo-box">' + photo + '</div></div></section>'
+    main += '<section class="services" id="problem"><div class="section-label">The timing</div>'
+    main += '<h2 class="section-title">' + say("I'll get the unfinished months ready for year-end.") + '</h2>'
+    main += '<p class="section-sub">' + say("You've been running the jobs. Tax time comes next, and your preparer needs a clean set of records. I'll get the unfinished months in order and keep a monthly close, so you can see where the business stands.") + '</p>'
+    main += '<div class="services-grid">'
+    main += '<div class="service-card"><h3>Catch-up</h3><p>' + say("I put the unfinished months in order: missing transactions, reconciled accounts, and reports for the periods we agree on.") + '</p></div>'
+    main += '<div class="service-card"><h3>Monthly books</h3><p>' + say("Then I keep them current. That means categorization, bank and card reconciliation, and a profit and loss statement and balance sheet. The target is reports by the 15th of the following month, once the necessary statements and answers are available.") + '</p></div>'
+    main += '<div class="service-card"><h3>' + say("You work with me") + '</h3><p>' + say("The work is remote. You work directly with me, and I'll reply within one business day.") + '</p></div>'
+    main += '</div></section>'
+    main += '<section class="pricing" id="offer"><div class="section-label">The offer</div>'
+    main += '<h2 class="section-title">' + say("Catch up messy books, then keep them current.") + '</h2>'
+    main += '<div class="lp-offer"><div class="pricing-guarantee">' + short_guarantee + '</div>'
+    main += '<p class="lp-price-label">Monthly bookkeeping from</p>'
+    main += '<div class="pricing-price lp-price">$400 <span>/ mo</span></div>'
+    main += '<hr class="pricing-divider"><ul class="pricing-list">'
+    main += '<li>' + say("Catch-up on messy books, then monthly bookkeeping") + '</li>'
+    main += '<li>' + say("Setup fee waived when you sign up through December 31, 2026") + '</li>'
+    main += '<li>' + say("You work directly with me, remotely") + '</li>'
+    main += '</ul><p class="lp-offer-note">' + price_depends + ' ' + guarantee_a + '</p>'
+    main += book_sage
+    main += '<p class="lp-offer-call"><a href="tel:' + PHONE_TEL + '">' + say("Or call ") + PHONE_DISPLAY + '</a></p>'
+    main += '</div></section>'
+    main += '<section class="services" id="how"><div class="section-label">How it works</div>'
+    main += '<h2 class="section-title">' + say("Three steps, then the books stay caught up.") + '</h2>'
+    main += '<ol class="lp-steps">'
+    main += '<li><h3>' + say("Tell me where things stand") + '</h3><p>' + say("Book a call, call me, or send the form. Tell me the kind of work you do, how far behind the books are, and when your tax preparer needs them.") + '</p></li>'
+    main += '<li><h3>' + say("We agree on the scope") + '</h3><p>' + say("I look at the accounts and the backlog. We settle the catch-up and the monthly plan before I start.") + '</p></li>'
+    main += '<li><h3>' + say("I catch the books up, then close each month") + '</h3><p>' + say("You get the reports, and you work with me the whole way. I prepare the books. Your tax preparer files the return.") + '</p></li>'
+    main += '</ol></section>'
+    main += '<section class="faq-section" id="faq"><h2 class="section-title">Common questions</h2>' + faq_html(faqs) + '</section>'
+    main += '<div class="cta-banner" id="cta-banner"><h2>' + say("Ready for clean books before year-end?") + '</h2>'
+    main += '<p>' + say("Book a free call, send the short form, or call me.") + '</p>'
+    main += '<div class="cta-banner-btns">' + book_slate + '<a class="btn-outline-slate" href="#contact">Send a Message</a>' + call_outline + '</div></div>'
+    form = contact_block(path)
+    hidden = f'<input type="hidden" name="page" value="{path}" />'
+    if hidden not in form:
+        raise SystemExit('contact form is missing the page field')
+    form = form.replace(hidden, hidden + '\n        <input type="hidden" name="offer" value="Year-End Clean Books" />', 1)
+    form = form.replace('<option>Cleanup / Catch-Up</option>', '<option selected>Year-End Clean Books</option>\n            <option>Cleanup / Catch-Up</option>', 1)
+    main += form
+    main += '<div class="lp-bar" role="region" aria-label="Call or book"><a class="btn-ghost" href="tel:' + PHONE_TEL + '">Call</a>' + book + '</div>'
+    nav_html = f'''<nav class="lp-nav" aria-label="Main navigation">
+    <a class="nav-logo" id="top" href="#top" style="display:flex;align-items:center;gap:10px;"><img src="/logo.png" alt="Glenhold Bookkeeping" width="28" height="38" style="height:38px;width:auto;display:block;" /><span class="nav-wordmark" style="color:white;font-family:'DM Serif Display',serif;font-size:1.25rem;letter-spacing:0.02em;line-height:1.1;">Glenhold <span style="color:var(--white);">Bookkeeping</span></span></a>
+    <div class="lp-nav-actions">
+      <a class="nav-phone" href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>
+      <a class="btn-primary lp-nav-book" href="{CALENDAR}" target="_blank" rel="noopener noreferrer">Book a Free Call</a>
+    </div>
+  </nav>'''
+    footer_html = f'''<footer>
+    <div class="lp-footer">
+      <div class="footer-brand">Glenhold <span>Bookkeeping</span></div>
+      <p class="footer-desc">Remote bookkeeping for trades and home-service businesses around Simi Valley. You work directly with me.</p>
+      <ul>
+        <li><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></li>
+        <li><a href="mailto:{EMAIL}">jack&#64;glenhold.com</a></li>
+        <li>Mon\u2013Sat, 6am\u20136pm PT</li>
+        <li><a href="/privacy/">Privacy notice</a></li>
+      </ul>
+      <p class="footer-copy">\u00a9 2026 Glenhold Advisory LLC \u00b7 Doing business as Glenhold Bookkeeping</p>
+    </div>
+  </footer>'''
+    description = say("I'll catch up messy books, then keep monthly bookkeeping current from $400 a month. Setup fee waived through December 31, 2026. Remote bookkeeping for trades and home services around Simi Valley.")
+    offer = {
+        "@type": "Offer",
+        "name": "Year-End Clean Books",
+        "url": HOME + path,
+        "priceCurrency": "USD",
+        "description": say("Catch-up on messy books, then monthly bookkeeping from $400 a month. Setup fee waived for sign-ups through December 31, 2026. Love your first month of monthly bookkeeping, or that month is free."),
+        "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "minPrice": 400,
+            "priceCurrency": "USD",
+            "unitText": "month",
+            "description": "Starting monthly price. Final price quoted by transaction volume, accounts, and reporting.",
+        },
+    }
+    service = {
+        "@type": "Service",
+        "@id": HOME + path + "#service",
+        "name": "Year-End Clean Books",
+        "serviceType": "Bookkeeping",
+        "description": description,
+        "provider": {"@id": HOME + "/#business"},
+        "url": HOME + path,
+        "areaServed": [
+            {"@type": "City", "name": "Simi Valley", "containedInPlace": {"@type": "AdministrativeArea", "name": "Ventura County, California"}},
+            {"@type": "AdministrativeArea", "name": "Ventura County, California"},
+            {"@type": "AdministrativeArea", "name": "San Fernando Valley, California"},
+        ],
+        "offers": offer,
+    }
+    write_page(
+        'Year-End Clean Books | Glenhold Bookkeeping',
+        description,
+        path,
+        main,
+        [('Home', '/'), ('Year-End Clean Books', path)],
+        [service, faq_node(faqs, path)],
+        CITIES,
+        AREA,
+        robots='noindex, follow',
+        body_class='lp',
+        nav_html=nav_html,
+        footer_html=footer_html,
+        include_business=False,
+        indexable=False,
+        modified='2026-11-20',
+    )
+    written = (ROOT / 'year-end-bookkeeping' / 'index.html').read_text(encoding='utf-8')
+    lowered = written.lower()
+    banned = ['hawley', 'restaurant', 'caf\u00e9', 'cafe', 'diner', 'bakery', 'food', 'big 4', 'former big', 'years of experience', 'started my career', 'started at pwc', 'i started at']
+    for word in banned:
+        if word in lowered:
+            raise SystemExit('landing page contains banned copy: ' + word)
+    if written.count(credentials) != 1:
+        raise SystemExit('credentials line must appear once')
+    if 'noindex, follow' not in written:
+        raise SystemExit('landing page must be noindex')
+    if '$400' not in written or any(price in written for price in ('$350', '$450', '$700', '$349', '$599')):
+        raise SystemExit('landing page price copy is wrong')
+    if CALENDAR not in written or f'tel:{PHONE_TEL}' not in written or 'https://formspree.io/f/xvzwqvgv' not in written:
+        raise SystemExit('landing page is missing the existing contact paths')
+    if short_guarantee not in written or guarantee_a not in written:
+        raise SystemExit('landing page is missing the existing guarantee wording')
+    if 'year-end-bookkeeping' in (ROOT / 'index.html').read_text(encoding='utf-8'):
+        raise SystemExit('landing page leaked into the homepage')
+
+
 def write_discovery():
     (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: https://glenhold.com/sitemap.xml\n')
     urls=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -281,7 +515,14 @@ def write_discovery():
 def main():
     PAGES.clear()
     for build in [build_home,build_services,build_industries,build_cities,build_faq,build_resources,build_getting_started,build_about,build_mission,build_pricing,build_contact,build_privacy]:build()
+    build_year_end()
     write_discovery()
+    sitemap = (ROOT / 'sitemap.xml').read_text(encoding='utf-8')
+    robots = (ROOT / 'robots.txt').read_text(encoding='utf-8')
+    if '/year-end-bookkeeping/' in sitemap:
+        raise SystemExit('ad landing page must stay out of the sitemap')
+    if 'Disallow: /year-end-bookkeeping' in robots:
+        raise SystemExit('ad landing page must stay crawlable for Google Ads')
     print('Generated',len(PAGES),'indexable pages and 24 legacy location redirects.')
 
 if __name__=='__main__':main()

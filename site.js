@@ -40,14 +40,35 @@
     input.type = 'hidden'; input.name = key; input.value = attribution[key];
     if (form) form.appendChild(input);
   });
+  // /year-end-bookkeeping/ only. Paste each full send_to value
+  // (AW-17998714201/LABEL) from Google Ads. A blank value does not send.
+  // Form submissions use the sitewide form label unless form is set here.
+  var yearEndPage = /^\/year-end-bookkeeping\/?$/.test(window.location.pathname);
+  var yearEndSendTo = {
+    form: '',
+    phone: '',
+    booking: ''
+  };
+  function adsSendTo(value) {
+    return typeof value === 'string' && value.indexOf('AW-17998714201/') === 0 && value.length > 'AW-17998714201/'.length;
+  }
+  function adsConversion(sendTo) {
+    if (!adsSendTo(sendTo)) return;
+    measureGoogle('event', 'conversion', {
+      send_to: sendTo,
+      transaction_id: window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : String(Date.now())
+    });
+  }
   document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
     link.addEventListener('click', function() {
       measureGoogle('event', 'phone_link_click', {event_category: 'engagement'});
+      if (yearEndPage) adsConversion(yearEndSendTo.phone);
     });
   });
   document.querySelectorAll('a[href^="https://calendar.app.google/"]').forEach(function(link) {
     link.addEventListener('click', function() {
       measureGoogle('event', 'consultation_booking_click', {event_category: 'engagement'});
+      if (yearEndPage) adsConversion(yearEndSendTo.booking);
     });
   });
   if (!form) return;
@@ -65,8 +86,10 @@
       status.textContent = 'Thank you! Your message has been sent. Jack will reply within one business day.';
       status.style.color = 'var(--slate)';
       button.textContent = 'Message sent';
+      var formLabel = 'AW-17998714201/jcT9CLryvoQcENmquoZD';
+      if (yearEndPage && adsSendTo(yearEndSendTo.form)) formLabel = yearEndSendTo.form;
       measureGoogle('event', 'conversion', {
-        send_to: 'AW-17998714201/jcT9CLryvoQcENmquoZD',
+        send_to: formLabel,
         transaction_id: window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : String(Date.now())
       });
       try {
