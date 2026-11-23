@@ -620,3 +620,45 @@ a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color
 .video-channel-card h3 {color:var(--white);font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1.25;margin:20px 0 10px}
 .video-channel-card p {color:var(--sage-light);font-size:.95rem;margin:0;overflow-wrap:anywhere}
 @media(max-width:800px){.video-inner{grid-template-columns:1fr;gap:28px}.video-channel-card{padding:24px}}
+
+/* Pricing-page cards use component spacing rather than article defaults. */
+.article-body.pricing-page {width:90%;max-width:1160px;padding:40px 0 64px}
+.pricing-page .pricing-grid {margin-top:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.pricing-page .pricing-card {padding:28px 24px;min-width:0}
+.pricing-page .pricing-card h3 {font-size:1.3rem;margin:0 0 16px}
+.pricing-page .pricing-price {font-size:2.25rem;line-height:1.25;margin:0 0 24px;padding-top:1.5rem;max-width:none}
+.pricing-page .pricing-divider {margin:0 0 24px}
+.pricing-page .pricing-list {padding:0;margin:0 0 28px;max-width:none;gap:14px}
+.pricing-page .pricing-list li {margin:0;font-size:1rem;line-height:1.5}
+.pricing-page .pricing-card .btn-slate {margin-top:auto}
+.pricing-page .pricing-guarantee {display:flex;width:fit-content;max-width:100%;margin:24px auto 0;text-align:center;justify-content:center}
+@media(max-width:960px){.pricing-page .pricing-grid {grid-template-columns:1fr}.pricing-page .pricing-card {padding:24px}}
+
+/* About-page composition. */
+.article-body.about-page {width:90%;max-width:1160px;padding:56px 0 64px}
+.about-page section.about {padding:0;background:transparent}
+.about-page .about-inner {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:center}
+.about-page .about-photo-box {height:auto;aspect-ratio:1100 / 1467;width:100%;max-width:380px}
+.about-page .about-content {max-width:600px}
+.about-page .about-content h2 {font-size:1.5rem;margin:28px 0 12px}
+.about-page .about-content p {color:var(--text);line-height:1.75}
+.about-page .about-content p:last-child {margin-bottom:0}
+.about-page section.video-section {padding:36px;margin-top:48px;border-radius:6px}
+.about-page .video-inner {grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px}
+.about-page .video-section h2 {font-size:1.65rem}
+.about-page .video-channel-card h3 {margin-top:20px;color:var(--white)}
+.about-page .video-channel-card p {margin:0}
+@media(max-width:800px){
+ .article-body.about-page {padding:32px 0 48px}
+ .about-page .about-inner,.about-page .video-inner {grid-template-columns:1fr;gap:28px}
+ .about-page .about-photo-box {max-width:340px;margin:0 auto}
+ .about-page section.video-section {padding:24px;margin-top:36px}
+}
+
+/* The mission reads as a signed note, with the invitation at the end. */
+.mission-note .page-hero {padding:40px max(5%,calc((100% - 760px)/2))}
+.mission-note .page-hero h1 {font-size:clamp(2rem,4vw,2.8rem);margin-bottom:0}
+.mission-note .article-body {width:90%;max-width:760px;padding:40px 0 64px}
+.mission-note .article-body p {font-size:1.05rem;line-height:1.8;margin-bottom:24px}
+.mission-note .article-body section {padding:12px 0 0}
+.mission-note .article-body .mission-signature {margin:8px 0 28px}

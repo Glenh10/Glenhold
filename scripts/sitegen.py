@@ -180,7 +180,7 @@ def contact_block(path: str) -> str:
 
 
 def footer(cities: list[dict], path: str) -> str:
-    description = "I’ll keep your bookkeeping current and help you understand your financial reports. You work directly with me." if path in ("/", "/service-areas/") else "I keep the books for small businesses around Simi Valley. You work directly with me."
+    description = "I’ll keep your bookkeeping current and help you understand your financial reports. You work directly with me." if path in ("/", "/service-areas/") else "I keep the books for businesses around Simi Valley. You work directly with me."
     areas_label = "Service areas" if path == "/" else "Simi Valley, CA · Service areas"
     city_links = "".join(
         f'<a href="/service-areas/{c["slug"]}/">{esc(c["name"])}</a>' for c in cities
@@ -336,7 +336,7 @@ def business_graph(area: list[dict], *, homepage: bool = False) -> list[dict]:
         "telephone": "+18054193451",
         "email": EMAIL,
         "currenciesAccepted": "USD",
-        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for small businesses across industries in Simi Valley and surrounding communities.",
+        "description": "Glenhold Bookkeeping is a Simi Valley-based bookkeeping firm owned by Jack and operated by Glenhold Advisory LLC. Monthly bookkeeping, cleanup and catch-up, and QuickBooks Online setup and training for businesses across industries in Simi Valley and surrounding communities.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Simi Valley",
@@ -371,7 +371,7 @@ def business_graph(area: list[dict], *, homepage: bool = False) -> list[dict]:
         },
         "founder": {"@id": HOME + "/#jack"},
         "sameAs": ([YOUTUBE] if YOUTUBE else []) + ["https://share.google/ZFSpIuhD39akrC2DT", "https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley"],
-        "knowsAbout": ["Small business bookkeeping", "QuickBooks Online", "Bank reconciliation", "Financial statements"],
+        "knowsAbout": ["Business bookkeeping", "QuickBooks Online", "Bank reconciliation", "Financial statements"],
     }
     person = {
         "@type": "Person",
@@ -395,7 +395,7 @@ def business_graph(area: list[dict], *, homepage: bool = False) -> list[dict]:
         "@id": HOME + "/#website",
         "url": HOME + "/",
         "name": "Glenhold Bookkeeping",
-        "description": "Small business bookkeeping in Simi Valley and nearby Ventura County and Los Angeles communities.",
+        "description": "Business bookkeeping in Simi Valley and nearby Ventura County and Los Angeles communities.",
         "publisher": {"@id": HOME + "/#business"},
         "inLanguage": "en-US",
     }

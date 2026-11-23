@@ -77,13 +77,14 @@ def write_inner(title,description,path,h1,lede,body,crumbs=None,extra=None,faqs=
     lede = customer_voice(lede)
     header='<header class="page-hero"><div class="breadcrumb">'+crumb_html(crumbs)+'</div><h1>'+esc(h1)+'</h1><p>'+esc(lede)+'</p>'
     if contact:header+='<a class="btn-primary" href="'+CALENDAR+'" target="_blank" rel="noopener noreferrer">Book a Free Call</a>'
-    main=header+'</header><article class="article-body">'+body+'</article>'
+    article_class = {"/pricing/": "article-body pricing-page", "/about/": "article-body about-page"}.get(path, "article-body")
+    main=header+'</header><article class="'+article_class+'">'+body+'</article>'
     if contact:main+=contact_block(path)
     write_page(title,description,path,main,crumbs,nodes,CITIES,AREA)
 
 SERVICES=[
-    dict(slug='monthly-bookkeeping',name='Monthly bookkeeping',description='Monthly bookkeeping from $350 for small businesses near Simi Valley. Transaction categorization, reconciliation, and clear financial reports.',lede='Keep your books current and understand how your business is doing.',body=
-        section('A monthly routine you can rely on','<p>Glenhold Bookkeeping helps small business owners keep their records organized throughout the year. You work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor based in Simi Valley.</p><p>The work starts with your accounts, how you get paid, and the reports you need. We agree on the scope and a monthly schedule before getting started.</p>')+
+    dict(slug='monthly-bookkeeping',name='Monthly bookkeeping',description='Monthly bookkeeping from $350 for businesses near Simi Valley. Transaction categorization, reconciliation, and clear financial reports.',lede='Keep your books current and understand how your business is doing.',body=
+        section('A monthly routine you can rely on','<p>Glenhold Bookkeeping helps business owners keep their records organized throughout the year. You work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor based in Simi Valley.</p><p>The work starts with your accounts, how you get paid, and the reports you need. We agree on the scope and a monthly schedule before getting started.</p>')+
         section('What is included','<ul><li><strong>Transaction categorization:</strong> organize income and expenses in accounts suited to your business.</li><li><strong>Bank and credit card reconciliation:</strong> check the books against statements and resolve differences.</li><li><strong>Monthly financial reports:</strong> receive a profit and loss statement and balance sheet.</li><li><strong>Email support:</strong> get answers to bookkeeping questions between closes.</li></ul><p>The target is to deliver reports by the 15th of the following month, once the necessary statements and answers are available.</p>')+
         section('How monthly pricing works','<p>Monthly bookkeeping starts at $350. I quote after reviewing your books and the reporting you need. <a href="/pricing/">See monthly pricing estimates</a>.</p>')+
         section('Need to catch up first?','<p>If previous months are unfinished, <a href="/cleanup-catch-up/">cleanup and catch-up</a> can establish a reliable starting point. If you prefer to maintain the books yourself, ask about <a href="/quickbooks-online/">QuickBooks Online training</a>.</p>')),
@@ -119,27 +120,27 @@ def build_services():
     cards=[('/'+p['slug']+'/',p['name'],p['lede']) for p in SERVICES]
     body=section('Support for the stage you are in','<p>Hand off your monthly bookkeeping, catch up on unfinished records, or get help using QuickBooks Online. You work directly with Jack, who will discuss your needs and prepare a quote before work begins.</p>'+hub_cards(cards))
     body+=section('A clear scope from the start','<p>Monthly bookkeeping starts at $350. Cleanup and training are quoted separately. Tell Jack about any special reporting, software, or filing requirements so the proposal accurately reflects what you need.</p><p><a href="/pricing/">View pricing</a> or <a href="/getting-started/">see what to prepare</a>.</p>')
-    write_inner('Bookkeeping Services | Glenhold Bookkeeping','Monthly bookkeeping, cleanup, and QuickBooks Online support for small businesses around Simi Valley. Work directly with Jack. Monthly bookkeeping from $350.','/services/','Bookkeeping services','Practical help with your books, from setup to the monthly close.',body)
+    write_inner('Bookkeeping Services | Glenhold Bookkeeping','Monthly bookkeeping, cleanup, and QuickBooks Online support for businesses around Simi Valley. Work directly with Jack. Monthly bookkeeping from $350.','/services/','Bookkeeping services','Practical help with your books, from setup to the monthly close.',body)
 
 def build_industries():
     for i in INDUSTRIES:
         path='/who-we-work-with/'+i['slug']+'/'
         body=section('Bookkeeping that fits how you operate',''.join('<p>'+esc(p)+'</p>' for p in i['paragraphs']))
         body+=section('Useful details for the first call','<ul>'+''.join('<li>'+esc(p)+'</li>' for p in i['points'])+'</ul>')
-        body+=section('Choose the help you need','<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> keeps the records current. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> address unfinished periods. <a href="/quickbooks-online/">QuickBooks Online support</a> helps with setup, training, or specific questions.</p><p>Glenhold is based in Simi Valley and works with small businesses across <a href="/service-areas/">surrounding communities</a>. Monthly bookkeeping starts at $350, with the scope and final quote based on your needs.</p>')
+        body+=section('Choose the help you need','<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> keeps the records current. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> address unfinished periods. <a href="/quickbooks-online/">QuickBooks Online support</a> helps with setup, training, or specific questions.</p><p>Glenhold is based in Simi Valley and works with businesses across <a href="/service-areas/">surrounding communities</a>. Monthly bookkeeping starts at $350, with the scope and final quote based on your needs.</p>')
         write_inner('Bookkeeping for '+i['name']+' | Glenhold','Bookkeeping for '+i['name'].lower()+' in Simi Valley and surrounding communities. Monthly support, cleanup, and QuickBooks Online help.',path,'Bookkeeping for '+i['name'].lower(),i['intro'],body,
             [('Home','/'),('Who we work with','/who-we-work-with/'),(i['name'],path)])
-    cards=[('/who-we-work-with/'+i['slug']+'/',i['name'],i['intro']) for i in INDUSTRIES]
-    write_inner('Small Businesses We Work With | Glenhold Bookkeeping','Glenhold works with small businesses across industries around Simi Valley. Explore bookkeeping for service firms, shops, trades, practices, and more.','/who-we-work-with/','Bookkeeping for local small businesses','Different businesses. The same care with your books.',
-        section('Find the help your business needs','<p>Glenhold works with small businesses across industries. These examples show the information that may be useful when discussing your bookkeeping. If your business is not listed, get in touch—we can still discuss whether it is a fit.</p>'+hub_cards(cards)))
+    cards=[('/who-we-work-with/'+i['slug']+'/',i['name'],i['intro']) for i in INDUSTRIES if i['slug'] != 'restaurants']
+    write_inner('Businesses We Work With | Glenhold Bookkeeping','Glenhold works with businesses across industries around Simi Valley. Explore bookkeeping for service firms, shops, trades, practices, and more.','/who-we-work-with/','Bookkeeping for local businesses','Different businesses. The same care with your books.',
+        section('Find the help your business needs','<p>Glenhold works with businesses across industries. These examples show the information that may be useful when discussing your bookkeeping. If your business is not listed, get in touch—we can still discuss whether it is a fit.</p>'+hub_cards(cards)))
 
 
 LOCAL_PAGE_CONTENT = {
-    'simi-valley': ('Based here in Simi Valley.', 'I’m Jack, a Simi Valley local and the founder of Glenhold Bookkeeping. I offer monthly bookkeeping, catch-up work, and QuickBooks Online support for small businesses across industries.', 'If bookkeeping keeps slipping behind the day-to-day work, we can discuss which tasks you want to hand off and the reports you need. You work directly with me throughout the engagement.'),
-    'moorpark': ('Bookkeeping support from neighboring Simi Valley.', 'I offer monthly bookkeeping, cleanup, and QuickBooks Online support for Moorpark small businesses. The scope is based on your accounts, transaction volume, and reporting needs.', 'You can hand off the monthly work or ask for help improving the routine you manage yourself. During the first call, tell me which periods are complete and where you need support.'),
-    'thousand-oaks': ('Monthly bookkeeping, catch-up, and QuickBooks Online help.', 'Glenhold offers bookkeeping for small businesses in Thousand Oaks, including Newbury Park. I’m based in Simi Valley, and you work directly with me.', 'If your CPA or tax preparer has asked for financial reports, bring that request to the first conversation. We can discuss the work needed to provide organized records and an agreed reporting schedule.'),
-    'westlake-village': ('Work directly with your bookkeeper.', 'I offer bookkeeping support for small businesses in Westlake Village. Choose monthly bookkeeping, cleanup for unfinished periods, or help using QuickBooks Online.', 'Tell me which reports you use today and what you need to understand better. Reporting and support can be tailored, with the final scope agreed before work begins.'),
-    'camarillo': ('Bookkeeping for your Camarillo business.', 'Glenhold offers monthly bookkeeping, cleanup, and QuickBooks Online support for small businesses in Camarillo. I work from Simi Valley and handle your bookkeeping directly.', 'If you use several bank accounts, cards, or payment processors, mention them during the first conversation. A complete account list helps establish the work and an appropriate quote.'),
+    'simi-valley': ('Based here in Simi Valley.', 'I’m Jack, a Simi Valley local and the founder of Glenhold Bookkeeping. I offer monthly bookkeeping, catch-up work, and QuickBooks Online support for businesses across industries.', 'If bookkeeping keeps slipping behind the day-to-day work, we can discuss which tasks you want to hand off and the reports you need. You work directly with me throughout the engagement.'),
+    'moorpark': ('Bookkeeping support from neighboring Simi Valley.', 'I offer monthly bookkeeping, cleanup, and QuickBooks Online support for Moorpark businesses. The scope is based on your accounts, transaction volume, and reporting needs.', 'You can hand off the monthly work or ask for help improving the routine you manage yourself. During the first call, tell me which periods are complete and where you need support.'),
+    'thousand-oaks': ('Monthly bookkeeping, catch-up, and QuickBooks Online help.', 'Glenhold offers bookkeeping for businesses in Thousand Oaks, including Newbury Park. I’m based in Simi Valley, and you work directly with me.', 'If your CPA or tax preparer has asked for financial reports, bring that request to the first conversation. We can discuss the work needed to provide organized records and an agreed reporting schedule.'),
+    'westlake-village': ('Work directly with your bookkeeper.', 'I offer bookkeeping support for businesses in Westlake Village. Choose monthly bookkeeping, cleanup for unfinished periods, or help using QuickBooks Online.', 'Tell me which reports you use today and what you need to understand better. Reporting and support can be tailored, with the final scope agreed before work begins.'),
+    'camarillo': ('Bookkeeping for your Camarillo business.', 'Glenhold offers monthly bookkeeping, cleanup, and QuickBooks Online support for businesses in Camarillo. I work from Simi Valley and handle your bookkeeping directly.', 'If you use several bank accounts, cards, or payment processors, mention them during the first conversation. A complete account list helps establish the work and an appropriate quote.'),
     'santa-clarita': ('Clear records and a consistent monthly routine.', 'I offer bookkeeping support for businesses in Santa Clarita, including Valencia, Newhall, Saugus, and Canyon Country. Monthly bookkeeping, cleanup, and QuickBooks Online help can be scoped around your needs.', 'If the books are behind, tell me the last completed month and any accounts closed or replaced during the period. That helps establish a starting point before an ongoing monthly routine begins.'),
 }
 
@@ -157,7 +158,7 @@ def build_cities():
         lede, first, second = LOCAL_PAGE_CONTENT[city['slug']]
         body = section('How I can help', '<p>' + esc(first) + '</p><p>' + esc(second) + '</p>')
         body += section('Services and pricing', '<p><a href="/monthly-bookkeeping/">Monthly bookkeeping</a> starts at $350. <a href="/cleanup-catch-up/">Cleanup and catch-up</a> and <a href="/quickbooks-online/">QuickBooks Online support</a> are quoted separately.</p><p>Monthly bookkeeping includes transaction categorization, bank and credit card reconciliation, and financial statements. Additional reporting is quoted based on what you need.</p><p><a href="/pricing/">See monthly pricing</a> or <a href="/getting-started/">see what to prepare</a> for a handoff.</p>')
-        write_inner('Bookkeeping in ' + city['name'] + ' | Glenhold', 'Monthly bookkeeping, cleanup, and QuickBooks Online help for small businesses in ' + city['name'] + '. Work directly with Jack. Monthly bookkeeping from $350.', path, 'Bookkeeping for ' + city['name'] + ' small businesses', lede, body, [('Home','/'),('Service areas','/service-areas/'),(city['name'],path)])
+        write_inner('Bookkeeping in ' + city['name'] + ' | Glenhold', 'Monthly bookkeeping, cleanup, and QuickBooks Online help for businesses in ' + city['name'] + '. Work directly with Jack. Monthly bookkeeping from $350.', path, 'Bookkeeping for ' + city['name'] + ' businesses', lede, body, [('Home','/'),('Service areas','/service-areas/'),(city['name'],path)])
     body = section('Southern California service areas', '<p>Glenhold is based in Simi Valley, California. Explore the Ventura County and Los Angeles County communities below for local bookkeeping information.</p>')
     for county in ['Ventura County', 'Los Angeles County']:
         members = [c for c in CITIES if c['group'] == county]
@@ -192,7 +193,7 @@ def bio(*, homepage=False):
     if homepage:
         introduction = '<p>I’m Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. I started Glenhold to help business owners keep reliable books and understand their financial reports.</p>'
     else:
-        introduction = '<p>I’m Jack, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor. I started Glenhold to help small business owners keep reliable books and understand their financial reports.</p>'
+        introduction = '<p>I’m Jack, a Simi Valley local, former Big 4 accountant, and Certified QuickBooks ProAdvisor. I started Glenhold to help business owners keep reliable books and understand their financial reports.</p>'
     return introduction + '<p>You work directly with me. We’ll discuss what you need, agree on the scope, and set up a routine for your records and questions.</p><p>Outside work, I enjoy fly fishing, walks, and attending Mass with my wife and two children.</p>'
 
 def portrait(source,alt):
@@ -206,35 +207,32 @@ def youtube_section():
 
 
 def build_about():
-    body='<section class="about" style="padding-top:0"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content">'+bio()+'</div></div></section>'
+    about_bio = bio().replace('<p>You work directly with me.', '<h2>Working with me</h2><p>You work directly with me.')
+    body='<section class="about"><div class="about-inner"><div class="about-photo-box">'+portrait('aboutme','Jack fly fishing on the coast')+'</div><div class="about-content">'+about_bio+'</div></div></section>'
     body+=youtube_section()
-    body+=section('Working with me','<p>You work with me directly, from the first call through every close. </p>')
     write_inner('About Jack | Glenhold Bookkeeping','Meet Jack, a Simi Valley local, former Big 4 accountant, Certified QuickBooks ProAdvisor, and founder of Glenhold Bookkeeping.','/about/','Hi, I’m Jack','Local roots and a direct relationship with your bookkeeper.',body)
 
 def build_mission():
-    body = section(
-        'How I got here',
-        '<p>I was raised Catholic, and the faith I grew up with is still central to my life. Today, my wife and I are raising two boys, and we go to Mass together as a family.</p>'
-        '<p>My career took me into Big Four accounting and then into leading accounting work for businesses. I started Glenhold because I wanted to work directly with business owners and help them understand where they stand financially.</p>',
+    title = 'Why I speak openly about my faith at Glenhold'
+    description = 'Jack shares why he speaks openly about his Catholic faith, how it shapes his bookkeeping work, and the Christian economy he wants to help build.'
+    body = (
+        '<p>I hesitated before putting my Catholic faith on Glenhold’s website. I take seriously the difference between sharing my faith and using it to win business. I also know how easy it is to call a business Christian and how much harder it is to live up to that word.</p>'
+        '<p>I decided to speak openly because I want to share the Gospel in every part of my life. My wife and I take our two boys to Mass, and we’re raising them to understand that what we believe on Sunday has a claim on how we spend Monday. That includes the hours I spend at my desk.</p>'
+        '<p>I believe God can use ordinary work to make us holy. For me, that often comes down to what I do when a client would never know the difference. Do I take the time to find out why an account is off? If I’ve made a mistake, do I pick up the phone and own it? Those decisions are part of what it means for me to practice my faith as a bookkeeper.</p>'
+        '<section><h2>The Christian economy I want to help build</h2>'
+        '<p>I’d like it to be easier for Christians to find one another, hire one another, and send work each other’s way. I think of what it means for a family when a contractor has enough steady work to bring on an apprentice, or for a parish when a local business owner can afford to be generous year after year. That’s what I have in mind when I talk about a stronger Christian economy.</p>'
+        '<p>My trade is accounting. After working at PwC and going on to lead accounting work for businesses, I started Glenhold so I could work directly with owners. When someone asks, “Can I afford to put another person on payroll?” I want them to have books they can trust and a person they can call who knows their business. That’s the contribution I can make.</p></section>'
+        '<p class="mission-signature"><strong>Jack</strong><br>Owner, Glenhold Bookkeeping</p>'
+        '<a class="btn-primary" href="' + CALENDAR + '" target="_blank" rel="noopener noreferrer">Book a call with Jack</a>'
     )
-    body += section(
-        'What I mean by a stronger Catholic economy',
-        '<p>I want to see more Catholic-owned businesses thrive, and I want to work alongside Catholic and other Christian business owners who share that goal. When those businesses do well, they can support families, provide steady work, and give more generously to their parishes, churches, and communities.</p>',
+    main = (
+        '<div class="mission-note"><header class="page-hero"><div class="breadcrumb">'
+        + crumb_html([('Home', '/'), ('Mission', '/mission/')])
+        + '</div><h1>' + esc(title) + '</h1></header>'
+        + '<article class="article-body">' + body + '</article></div>'
     )
-    body += section(
-        'The part I can play',
-        '<p>My part is to keep your books current and give you numbers you can use. When you know what’s coming in, what you owe, and what you can afford, it’s easier to decide when to hire, where to invest, and how much you can give.</p>'
-        '<p>If that’s the kind of business you’re building, I’d like to hear from you.</p>',
-    )
-    write_inner(
-        'Mission | Glenhold Bookkeeping',
-        'Jack Hawley’s mission for Glenhold Bookkeeping is to help Catholic and other Christian business owners build a stronger Catholic economy.',
-        '/mission/',
-        'Building a stronger Catholic economy',
-        'I started Glenhold to help business owners keep good books. I see that work as a way to put my Catholic faith into practice.',
-        body,
-        crumbs=[('Home', '/'), ('Mission', '/mission/')],
-    )
+    write_page(title + ' | Glenhold Bookkeeping', description, '/mission/', main,
+               [('Home', '/'), ('Mission', '/mission/')], [], CITIES, AREA)
 
 
 def build_pricing():
@@ -254,8 +252,8 @@ def build_privacy():
     write_inner('Website Privacy Notice | Glenhold Bookkeeping','How Glenhold’s website uses inquiry information, form processing, booking services, and advertising measurement.','/privacy/','Website privacy notice','Information about inquiries and website measurement.',body,contact=False)
 
 def build_home():
-    photo='<picture><source srcset="/headshot.webp" type="image/webp"><img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center -10%"></picture>'
-    main='<section class="hero"><div class="hero-content"><h1>Books you can trust</h1><p class="hero-sub">I’ll keep your bookkeeping current and walk you through your financial reports, so you know where things stand. You’ll work directly with me from our first call.</p><div class="hero-ctas"><a class="btn-primary" href="'+CALENDAR+'" target="_blank" rel="noopener noreferrer">Book a Free Call</a><a class="btn-ghost" href="#contact">Send a Message</a></div><div class="hero-photo-mobile"><img src="/headshot.webp" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" style="width:75%;height:auto;display:block;border-radius:6px;margin:0 auto"></div><div class="hero-social"><a href="https://share.google/ZFSpIuhD39akrC2DT" target="_blank" rel="noopener noreferrer">Find us on Google</a><a href="https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley" target="_blank" rel="noopener noreferrer">Yelp profile</a><a href="https://www.youtube.com/@bookkeepingbizblueprint" target="_blank" rel="noopener noreferrer">YouTube</a></div><p class="hero-proof">Former Big 4 Accountant · Certified QuickBooks ProAdvisor</p></div><div class="hero-photo"><div class="hero-photo-box">'+photo+'</div></div></section>'
+    photo='<picture><img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center -10%"></picture>'
+    main='<section class="hero"><div class="hero-content"><h1>Books you can trust</h1><p class="hero-sub">I’ll keep your bookkeeping current and walk you through your financial reports, so you know where things stand. You’ll work directly with me from our first call.</p><div class="hero-ctas"><a class="btn-primary" href="'+CALENDAR+'" target="_blank" rel="noopener noreferrer">Book a Free Call</a><a class="btn-ghost" href="#contact">Send a Message</a></div><div class="hero-photo-mobile"><img src="/headshot.jpg" width="1000" height="1333" alt="Jack, founder of Glenhold Bookkeeping" style="width:75%;height:auto;display:block;border-radius:6px;margin:0 auto"></div><div class="hero-social"><a href="https://share.google/ZFSpIuhD39akrC2DT" target="_blank" rel="noopener noreferrer">Find us on Google</a><a href="https://www.yelp.com/biz/glenhold-bookkeeping-simi-valley" target="_blank" rel="noopener noreferrer">Yelp profile</a><a href="https://www.youtube.com/@bookkeepingbizblueprint" target="_blank" rel="noopener noreferrer">YouTube</a></div><p class="hero-proof">Former Big 4 Accountant · Certified QuickBooks ProAdvisor</p></div><div class="hero-photo"><div class="hero-photo-box">'+photo+'</div></div></section>'
     cards=[('/monthly-bookkeeping/','Monthly bookkeeping','Keep transactions organized, accounts reconciled, and reports current.'),('/cleanup-catch-up/','Cleanup & catch-up','Get unfinished periods in order and establish a reliable starting point.'),('/quickbooks-online/','QuickBooks Online help','Set up your file, improve your routine, or get help with specific questions.')]
     main+='<section class="services" id="services"><div class="section-label">Services</div><h2 class="section-title">How I can help with your accounting</h2><p class="section-sub">Hand off the monthly work, catch up on a backlog, or get help doing it yourself.</p>'+hub_cards(cards)+'</section>'
     main+='<section class="pricing" id="pricing"><div class="section-label">Pricing</div><h2 class="section-title">Monthly bookkeeping pricing</h2><p class="section-sub">'+esc(PRICING_INTRO)+'</p><div class="pricing-guarantee">Love your first month of books, or it’s free</div>'+price_cards()+'<div class="content-links"><a href="/pricing/">See how pricing works</a></div></section>'
@@ -272,7 +270,7 @@ def write_discovery():
     urls=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     urls += ['<url><loc>'+HOME+p['path']+'</loc><lastmod>'+LASTMOD+'</lastmod></url>' for p in sorted(PAGES,key=lambda p:p['path'])]
     (ROOT/'sitemap.xml').write_text('\n'.join(urls+['</urlset>'])+'\n')
-    facts='# Glenhold Bookkeeping\n\nSimi Valley-based small business bookkeeping. Work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. Glenhold Bookkeeping is the client-facing name of Glenhold Advisory LLC.\n\nPhone: (805) 419-3451\nEmail: jack@glenhold.com\nYouTube: https://www.youtube.com/@bookkeepingbizblueprint (Bookkeeping Business Blueprint)\n\nMonthly starting prices are $350 for Essential, $450 for Core, and $700 for Strategic. Quotes depend on volume, accounts, and reporting complexity. Cleanup and training are quoted separately. Tax return preparation and filing are separate from the listed bookkeeping plans.\n\n## Pages\n'
+    facts='# Glenhold Bookkeeping\n\nSimi Valley-based business bookkeeping. Work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. Glenhold Bookkeeping is the client-facing name of Glenhold Advisory LLC.\n\nPhone: (805) 419-3451\nEmail: jack@glenhold.com\nYouTube: https://www.youtube.com/@bookkeepingbizblueprint (Bookkeeping Business Blueprint)\n\nMonthly starting prices are $350 for Essential, $450 for Core, and $700 for Strategic. Quotes depend on volume, accounts, and reporting complexity. Cleanup and training are quoted separately. Tax return preparation and filing are separate from the listed bookkeeping plans.\n\n## Pages\n'
     short=[p for p in PAGES if p['path'] in ['/','/services/','/pricing/','/contact/','/service-areas/','/bookkeeping-faq/','/mission/','/privacy/']]
     line=lambda p:'- ['+p['title']+']('+HOME+p['path']+'): '+p['description']+'\n'
     (ROOT/'llms.txt').write_text(facts+''.join(line(p) for p in short))
