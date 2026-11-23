@@ -657,9 +657,6 @@ a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color
 }
 
 /* The mission reads as a signed note, with the invitation at the end. */
-.mission-note .page-hero {padding:40px max(5%,calc((100% - var(--content-width))/2))}
-.mission-note .page-hero h1 {font-size:clamp(2rem,4vw,2.8rem);margin-bottom:0}
-.mission-note .article-body {width:90%;max-width:var(--content-width);padding:40px 0 64px}
 .mission-note .article-body p {font-size:1.05rem;line-height:1.8;margin-bottom:24px}
 .mission-note .article-body section {padding:12px 0 0}
-.mission-note .article-body .mission-signature {margin:8px 0 28px}
+.mission-note .article-body .mission-signature {margin:24px 0 28px}

@@ -181,8 +181,8 @@ def contact_block(path: str) -> str:
 
 
 def footer(cities: list[dict], path: str) -> str:
-    description = "I’ll keep your bookkeeping current and help you understand your financial reports. You work directly with me." if path in ("/", "/service-areas/") else "I keep the books for businesses around Simi Valley. You work directly with me."
-    areas_label = "Service areas" if path == "/" else "Simi Valley, CA · Service areas"
+    description = "I’ll keep your bookkeeping current and help you understand your financial reports. You work directly with me."
+    areas_label = "Service areas"
     city_links = "".join(
         f'<a href="/service-areas/{c["slug"]}/">{esc(c["name"])}</a>' for c in cities
     )
