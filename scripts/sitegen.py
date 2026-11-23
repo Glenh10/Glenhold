@@ -33,6 +33,7 @@ SERVICE_PATHS = {
 PAGES: list[dict] = []
 
 NAV = [
+    ("/", "Home"),
     ("/services/", "Services"),
     ("/pricing/", "Pricing"),
     ("/who-we-work-with/", "Who we serve"),

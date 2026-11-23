@@ -2,6 +2,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      --content-width: 1600px;
       --slate: #3d6b65;
       --slate-mid: #4e8079;
       --sage: #a3cb9d;
@@ -28,7 +29,7 @@
     /* NAV */
     nav {
       background: var(--slate);
-      padding: 0 max(5%, calc((100% - 1600px) / 2));
+      padding: 0 max(5%, calc((100% - var(--content-width)) / 2));
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -76,7 +77,7 @@
     /* HERO */
     .hero {
       background: var(--slate);
-      padding: 80px max(5%, calc((100% - 1600px) / 2));
+      padding: 80px max(5%, calc((100% - var(--content-width)) / 2));
       display: grid;
       grid-template-columns: 1fr minmax(320px, 420px);
       gap: 60px;
@@ -191,7 +192,7 @@
     .hero-photo-mobile { display: none; }
 
     /* SECTIONS */
-    section { padding: 80px max(5%, calc((100% - 1600px) / 2)); }
+    section { padding: 80px max(5%, calc((100% - var(--content-width)) / 2)); }
 
     .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
 
@@ -348,7 +349,7 @@
     .badge { background: var(--cream-dark); border: 1px solid var(--border); border-radius: 100px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; color: var(--slate); }
 
     /* CTA BANNER */
-    .cta-banner { background: var(--sage); padding: 60px max(5%, calc((100% - 1600px) / 2)); text-align: center; }
+    .cta-banner { background: var(--sage); padding: 60px max(5%, calc((100% - var(--content-width)) / 2)); text-align: center; }
 
     .cta-banner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--slate); margin-bottom: 12px; }
 
@@ -411,7 +412,7 @@
     .contact-detail-text small { display: block; color: var(--text-muted); font-size: 0.8rem; }
 
     /* FOOTER */
-    footer { background: var(--slate); padding: 48px max(5%, calc((100% - 1600px) / 2)) 28px; }
+    footer { background: var(--slate); padding: 48px max(5%, calc((100% - var(--content-width)) / 2)) 28px; }
 
     .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
 
@@ -494,12 +495,12 @@ summary {cursor:pointer;font-weight:600;color:var(--slate);font-size:1.05rem}
 details p {max-width:800px;margin-top:12px;color:var(--text-muted)}
 .footer-resources {padding:24px 0;border-bottom:1px solid rgba(255,255,255,.15);display:flex;gap:14px 24px;flex-wrap:wrap}
 .footer-resources a {color:var(--sage-light);text-underline-offset:4px;font-size:.9rem}
-.page-hero {background:var(--slate);padding:64px max(5%,calc((100% - 1160px)/2))}
+.page-hero {background:var(--slate);padding:64px max(5%,calc((100% - var(--content-width))/2))}
 .page-hero h1 {font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.3rem);line-height:1.15;color:white;max-width:900px;margin:20px 0}
 .page-hero p {max-width:790px;color:#e5ede9;font-size:1.1rem;margin-bottom:24px}
 .breadcrumb {color:#d4ead1;font-size:.85rem}
 .breadcrumb a {color:inherit}
-.article-body {max-width:1160px;margin:auto;padding:48px 5% 64px}
+.article-body {width:90%;max-width:var(--content-width);margin:auto;padding:48px 0 64px}
 .article-body section {padding:28px 0;scroll-margin-top:88px}
 .article-body h2 {font-family:'DM Serif Display',serif;font-size:1.85rem;color:var(--slate);margin-bottom:18px;line-height:1.25}
 .article-body h3 {color:var(--slate);font-size:1.15rem;margin:22px 0 12px}
@@ -595,7 +596,7 @@ a.btn-outline-slate:visited {color:var(--slate)}
 .hero-eyebrow {color:var(--text)}
 .nav-phone, .nav-links a[aria-current="page"] {color:var(--sage-light)}
 .footer-copy {color:#e0e9e7}
-@media(max-width:1100px){
+@media(max-width:1320px){
  nav {height:auto;min-height:68px;flex-wrap:wrap;gap:10px 14px;padding-top:12px;padding-bottom:12px}
  .nav-links {display:flex;order:3;width:100%;flex-wrap:wrap;gap:8px 14px;overflow:visible;white-space:normal}
  section[id],.article-body section,.service-city-list li {scroll-margin-top:160px}
@@ -614,7 +615,7 @@ a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color
 /* Public YouTube channel feature; videos open on YouTube. */
 .hero-social {flex-wrap:wrap}
 .video-section {background:var(--cream-dark)}
-.video-inner {display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;max-width:1160px;margin:0 auto}
+.video-inner {display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;max-width:var(--content-width);margin:0 auto}
 .video-section .section-sub {margin-bottom:24px}
 .video-channel-card {background:var(--slate);color:var(--white);border-radius:6px;padding:32px}
 .video-channel-card h3 {color:var(--white);font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1.25;margin:20px 0 10px}
@@ -622,7 +623,7 @@ a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color
 @media(max-width:800px){.video-inner{grid-template-columns:1fr;gap:28px}.video-channel-card{padding:24px}}
 
 /* Pricing-page cards use component spacing rather than article defaults. */
-.article-body.pricing-page {width:90%;max-width:1160px;padding:40px 0 64px}
+.article-body.pricing-page {width:90%;max-width:var(--content-width);padding:40px 0 64px}
 .pricing-page .pricing-grid {margin-top:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
 .pricing-page .pricing-card {padding:28px 24px;min-width:0}
 .pricing-page .pricing-card h3 {font-size:1.3rem;margin:0 0 16px}
@@ -635,10 +636,10 @@ a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color
 @media(max-width:960px){.pricing-page .pricing-grid {grid-template-columns:1fr}.pricing-page .pricing-card {padding:24px}}
 
 /* About-page composition. */
-.article-body.about-page {width:90%;max-width:1160px;padding:56px 0 64px}
+.article-body.about-page {width:90%;max-width:var(--content-width);padding:56px 0 64px}
 .about-page section.about {padding:0;background:transparent}
-.about-page .about-inner {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:center}
-.about-page .about-photo-box {height:auto;aspect-ratio:1100 / 1467;width:100%;max-width:380px}
+.about-page .about-inner {grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:56px;align-items:center}
+.about-page .about-photo-box {height:auto;aspect-ratio:1100 / 1467;width:100%;max-width:440px}
 .about-page .about-content {max-width:600px}
 .about-page .about-content h2 {font-size:1.5rem;margin:28px 0 12px}
 .about-page .about-content p {color:var(--text);line-height:1.75}
@@ -656,9 +657,9 @@ a.btn-outline-slate, a.btn-outline-slate:visited {color:var(--text);border-color
 }
 
 /* The mission reads as a signed note, with the invitation at the end. */
-.mission-note .page-hero {padding:40px max(5%,calc((100% - 760px)/2))}
+.mission-note .page-hero {padding:40px max(5%,calc((100% - var(--content-width))/2))}
 .mission-note .page-hero h1 {font-size:clamp(2rem,4vw,2.8rem);margin-bottom:0}
-.mission-note .article-body {width:90%;max-width:760px;padding:40px 0 64px}
+.mission-note .article-body {width:90%;max-width:var(--content-width);padding:40px 0 64px}
 .mission-note .article-body p {font-size:1.05rem;line-height:1.8;margin-bottom:24px}
 .mission-note .article-body section {padding:12px 0 0}
 .mission-note .article-body .mission-signature {margin:8px 0 28px}
