@@ -493,8 +493,9 @@ section[id] {scroll-margin-top:88px}
 details {border-bottom:1px solid var(--border);padding:20px 0;max-width:900px}
 summary {cursor:pointer;font-weight:600;color:var(--slate);font-size:1.05rem}
 details p {max-width:800px;margin-top:12px;color:var(--text-muted)}
-.footer-resources {padding:24px 0;border-bottom:1px solid rgba(255,255,255,.15);display:flex;gap:14px 24px;flex-wrap:wrap}
+.footer-resources {padding:24px 0;border-bottom:1px solid rgba(255,255,255,.15);display:flex;gap:14px 24px;flex-wrap:wrap;align-items:center}
 .footer-resources a {color:var(--sage-light);text-underline-offset:4px;font-size:.9rem}
+.footer-resources-label {color:#e0e9e7;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .page-hero {background:var(--slate);padding:64px max(5%,calc((100% - var(--content-width))/2))}
 .page-hero h1 {font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.3rem);line-height:1.15;color:white;max-width:900px;margin:20px 0}
 .page-hero p {max-width:790px;color:#e5ede9;font-size:1.1rem;margin-bottom:24px}

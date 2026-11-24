@@ -30,6 +30,55 @@ SERVICE_PATHS = {
     "/loan-ready-books/",
 }
 
+# Public guides. Kept out of the top navigation so the header stays one compact row.
+GUIDES = [
+    {
+        "path": "/bookkeeping-cost/",
+        "label": "Bookkeeping cost",
+        "title": "How Much Does Small Business Bookkeeping Cost? | Glenhold",
+        "description": "Plain-English guide to small business bookkeeping cost. Essential starts at $350 a month, Core at $450, and Strategic at $700. The final quote depends on scope.",
+        "card_title": "How much bookkeeping costs",
+        "card_text": "Essential, Core, and Strategic, and what changes the quote.",
+        "lastmod": "2026-11-23",
+    },
+    {
+        "path": "/bookkeeper-vs-diy/",
+        "label": "Bookkeeper vs. DIY",
+        "title": "Hiring a Bookkeeper vs. Doing It Yourself | Glenhold",
+        "description": "A practical comparison for owners deciding when DIY bookkeeping stops making sense.",
+        "card_title": "Bookkeeper vs. doing it yourself",
+        "card_text": "When keeping the books yourself still works, and when it doesn't.",
+        "lastmod": "2026-11-23",
+    },
+    {
+        "path": "/bookkeeper-vs-in-house/",
+        "label": "Outsourced vs. in-house",
+        "title": "Outsourced Bookkeeper vs. Hiring an In-House Bookkeeper | Glenhold",
+        "description": "Cost, time, and flexibility of outsourced bookkeeping compared with hiring an in-house bookkeeper.",
+        "card_title": "Outsourced vs. in-house",
+        "card_text": "Cost, time, and flexibility of a monthly bookkeeper and an employee.",
+        "lastmod": "2026-11-23",
+    },
+    {
+        "path": "/signs-your-books-are-behind/",
+        "label": "Signs books are behind",
+        "title": "Signs Your Small Business Books Are Behind | Glenhold",
+        "description": "Signs the books have fallen behind, and how cleanup and monthly bookkeeping get them current.",
+        "card_title": "Signs the books are behind",
+        "card_text": "How to tell, and how cleanup gets you current again.",
+        "lastmod": "2026-11-23",
+    },
+    {
+        "path": "/what-to-ask-a-bookkeeper/",
+        "label": "What to ask a bookkeeper",
+        "title": "What to Ask Before Hiring a Bookkeeper | Glenhold",
+        "description": "Questions to ask before hiring a bookkeeper, answered in plain English.",
+        "card_title": "What to ask a bookkeeper",
+        "card_text": "The questions I would want answered before I hired someone.",
+        "lastmod": "2026-11-23",
+    },
+]
+
 PAGES: list[dict] = []
 
 NAV = [
@@ -38,7 +87,7 @@ NAV = [
     ("/pricing/", "Pricing"),
     ("/who-we-work-with/", "Who we serve"),
     ("/service-areas/", "Areas"),
-    ("/bookkeeping-faq/", "FAQ"),
+    ("/resources/", "Resources"),
     ("/about/", "About"),
     ("/mission/", "Mission"),
     ("/contact/", "Contact"),
@@ -88,7 +137,7 @@ def active(path: str, href: str) -> bool:
         return True
     if href == "/services/" and (path.startswith("/services") or path in SERVICE_PATHS):
         return True
-    if href == "/bookkeeping-faq/" and path.startswith("/bookkeeping-faq"):
+    if href == "/resources/" and (path == "/resources/" or path in {guide["path"] for guide in GUIDES}):
         return True
     return path == href
 
@@ -186,6 +235,9 @@ def footer(cities: list[dict], path: str) -> str:
     city_links = "".join(
         f'<a href="/service-areas/{c["slug"]}/">{esc(c["name"])}</a>' for c in cities
     )
+    guide_links = "".join(
+        f'\n      <a href="{guide["path"]}">{esc(guide["label"])}</a>' for guide in GUIDES
+    )
     return f'''<footer>
     <div class="footer-top">
       <div>
@@ -225,6 +277,9 @@ def footer(cities: list[dict], path: str) -> str:
       <a href="/cpa-ready-books/">CPA-ready books</a>
       <a href="/loan-ready-books/">Loan-ready financials</a>
       <a href="/getting-started/">Getting started checklist</a>
+    </div>
+    <div class="footer-resources" aria-label="Bookkeeping guides">
+      <span class="footer-resources-label" aria-hidden="true">Guides</span>{guide_links}
     </div>
     <div class="footer-resources"><a href="/service-areas/">View all service areas</a><a href="/privacy/">Privacy notice</a></div>
     <div style="padding-top: 8px; text-align: center;">

@@ -11,7 +11,7 @@ from cities import CITIES
 from industries import INDUSTRIES
 from faqs import FAQ
 from sitegen import (ROOT, HOME, LASTMOD, PAGES, CALENDAR, EMAIL, YOUTUBE,
-    INDEXNOW_KEY, area_nodes, write_page, faq_node, faq_html, service_node,
+    INDEXNOW_KEY, GUIDES, area_nodes, write_page, faq_node, faq_html, service_node,
     MONTHLY_BOOKKEEPING_TIERS, esc, crumb_html, contact_block, chips, hub_cards, related_links, cta)
 
 CORE_CITIES = ['simi-valley','moorpark','thousand-oaks','westlake-village','camarillo','santa-clarita']
@@ -179,8 +179,11 @@ def build_faq():
     write_inner('Bookkeeping FAQ | Glenhold Bookkeeping','Answers about bookkeeping pricing, monthly reports, catch-up, QuickBooks Online, service areas, and getting started with Glenhold.','/bookkeeping-faq/','Your bookkeeping questions, answered','What to expect from the services and the first conversation.',body,extra=[faq_node([(i['q'],i['a']) for i in FAQ],'/bookkeeping-faq/')])
 
 def build_resources():
+    guides=[(guide['path'], guide['card_title'], guide['card_text']) for guide in GUIDES]
     cards=[('/getting-started/','What to give your bookkeeper','An account and records checklist for a smoother handoff.'),('/bookkeeping-faq/','Common questions','Pricing, monthly reports, cleanup, and getting started.'),('/financial-statements/','Understand your reports','What a profit and loss statement and balance sheet tell you.'),('/pricing/','See monthly pricing','See what affects your quote and what to expect each month.')]
-    write_inner('Bookkeeping Resources | Glenhold Bookkeeping','Practical bookkeeping resources: preparing records, understanding financial reports, choosing a plan, and getting started.','/resources/','Bookkeeping resources','Useful information for choosing support and preparing your records.',section('Start here',hub_cards(cards)))
+    body=section('Guides','<p>These are the questions I hear most often before someone hires a bookkeeper. Start with the one that matches where you are.</p>'+hub_cards(guides))
+    body+=section('Start here',hub_cards(cards))
+    write_inner('Bookkeeping Resources | Glenhold Bookkeeping','Guides on bookkeeping cost, hiring, catch-up, and what to ask before you hire, plus checklists and pricing.','/resources/','Bookkeeping resources','Guides for choosing a bookkeeper, plus practical help preparing your records.',body)
 
 def build_getting_started():
     body=section('Start with the basics','<p>For an introductory call, tell Jack about your business, the number of accounts, whether your books are current, and the help you need. You do not need to gather every record before that conversation.</p><p>Once the work is scoped, this checklist can help prepare for a handoff. Ask how to share sensitive documents before sending them.</p>')
@@ -268,12 +271,13 @@ def build_home():
 def write_discovery():
     (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: https://glenhold.com/sitemap.xml\n')
     urls=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    urls += ['<url><loc>'+HOME+p['path']+'</loc><lastmod>'+LASTMOD+'</lastmod></url>' for p in sorted(PAGES,key=lambda p:p['path'])]
+    entries=[(p['path'], LASTMOD) for p in PAGES] + [(guide['path'], guide['lastmod']) for guide in GUIDES]
+    urls += ['<url><loc>'+HOME+path+'</loc><lastmod>'+lastmod+'</lastmod></url>' for path, lastmod in sorted(entries, key=lambda item: item[0])]
     (ROOT/'sitemap.xml').write_text('\n'.join(urls+['</urlset>'])+'\n')
     facts='# Glenhold Bookkeeping\n\nSimi Valley-based business bookkeeping. Work directly with Jack, a former Big 4 accountant and Certified QuickBooks ProAdvisor. Glenhold Bookkeeping is the client-facing name of Glenhold Advisory LLC.\n\nPhone: (805) 419-3451\nEmail: jack@glenhold.com\nYouTube: https://www.youtube.com/@bookkeepingbizblueprint (Bookkeeping Business Blueprint)\n\nMonthly starting prices are $350 for Essential, $450 for Core, and $700 for Strategic. Quotes depend on volume, accounts, and reporting complexity. Cleanup and training are quoted separately. Tax return preparation and filing are separate from the listed bookkeeping plans.\n\n## Pages\n'
     short=[p for p in PAGES if p['path'] in ['/','/services/','/pricing/','/contact/','/service-areas/','/bookkeeping-faq/','/mission/','/privacy/']]
     line=lambda p:'- ['+p['title']+']('+HOME+p['path']+'): '+p['description']+'\n'
-    (ROOT/'llms.txt').write_text(facts+''.join(line(p) for p in short))
+    (ROOT/'llms.txt').write_text(facts+''.join(line(p) for p in short)+''.join(line(guide) for guide in GUIDES))
     (ROOT/'llms-full.txt').write_text(facts+''.join(line(p) for p in PAGES)+'\n## Questions\n'+''.join('### '+i['q']+'\n\n'+i['a']+'\n\n' for i in FAQ))
     (ROOT/(INDEXNOW_KEY+'.txt')).write_text(INDEXNOW_KEY+'\n')
     (ROOT/'.nojekyll').write_text('')
